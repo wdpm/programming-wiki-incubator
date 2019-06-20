@@ -1,4 +1,6 @@
 # effective java study notes
+Effective Java中文版（第3版）读书笔记。
+
 ## 1. 考虑使用静态工厂替代构造方法
 ``` java
 // constructor method
