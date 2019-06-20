@@ -14,11 +14,3 @@ v8.0.0
 $ npm -v
 5.0.0
 ```
-
-## install node package
-For example, install vue-cli 2.9.2 version.
-``` bash
-$ npm i -g vue-cli@2.9.2
-
-$ vue init webpack my-project
-```
