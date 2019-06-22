@@ -1,0 +1,37 @@
+<html lang="">
+<head>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <my-comp header="1">Erik</my-comp>
+</div>
+
+<script>
+    Vue.component('my-comp', {
+        render(h) {
+            return h('h' + this.header,
+                {
+                    'class': 'text-center',
+                    on: {
+                        click(e) {
+                            alert('Clicked');
+                        }
+                    }
+                },
+                // this.$slots.default[0].text = Erik
+                this.welcome + this.$slots.default[0].text)
+        },
+        data() {
+            return {
+                welcome: 'Hello World '
+            }
+        },
+        props: ['header']
+    });
+    new Vue({el: '#app'})
+</script>
+</body>
+</html>

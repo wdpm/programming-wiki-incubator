@@ -14,3 +14,8 @@ v8.0.0
 $ npm -v
 5.0.0
 ```
+
+## config taobao registry[optional]
+```bash
+npm config set registry https://registry.npm.taobao.org
+```
