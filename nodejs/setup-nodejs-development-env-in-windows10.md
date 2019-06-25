@@ -19,3 +19,8 @@ $ npm -v
 ```bash
 npm config set registry https://registry.npm.taobao.org
 ```
+
+You can clean npm cache by this:
+``` bash
+npm cache clean --force
+```
