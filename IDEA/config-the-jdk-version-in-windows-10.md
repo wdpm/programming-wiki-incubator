@@ -1,4 +1,4 @@
-# Config the JDK version
+# Config the JDK version in windows 10
 > https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under
 
 我的电脑 -> 高级系统设置 -> 环境变量。
