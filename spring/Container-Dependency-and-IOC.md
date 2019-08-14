@@ -1,4 +1,5 @@
 # Container, Dependency, and IOC
+容器，依赖，控制反转
 
 ## What is dependency injection and what are the advantages?
 ```
