@@ -211,7 +211,9 @@ Ref：https://stackoverflow.com/questions/22944144/programmatically-shut-down-sp
     -> 每次请求都会产生一个新的bean实例，new了一个新的对象实例。
     
     3. request
-    Scopes a single bean definition to the lifecycle of a single HTTP request; that is each and every HTTP request will have its own instance of a bean created off the back of a single bean definition. Only valid in the context of a web-aware Spring ApplicationContext.
+    Scopes a single bean definition to the lifecycle of a single HTTP request; 
+    that is each and every HTTP request will have its own instance of a bean created off the back of a single bean definition. 
+    Only valid in the context of a web-aware Spring ApplicationContext.
     将单个bean定义范围限定为单个HTTP请求的生命周期; 每个HTTP请求都有自己的bean实例，它是在单个bean定义的后面创建的。 仅在Web感知Spring ApplicationContext的上下文中有效。
     
     4. session
@@ -341,7 +343,7 @@ BeanPostProcessor  - 对已经实例化的bean进行操作，所有依赖项（�
 Ref:http://springcertified.com/2018/12/20/what-is-a-beanpostprocessor-and-how-is-it-different-to-a-beanfactorypostprocessor-what-do-they-do-when-are-they-called/
 ```
 
-  ![](C:\Web\notes-essence\spring\assets\conf-lifecycle.png)
+  ![](assets\conf-lifecycle.png)
 
 ### What is an initialization method and how is it declared on a Spring bean?
 

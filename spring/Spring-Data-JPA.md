@@ -82,8 +82,9 @@ find(First[count])By[property expression][comparison operator][ordering operator
 这允许自定义用于带注释的存储库方法的查询，或者提供将用于存储库方法的查询，该查询不遵循前面描述的查找器方法命名约定。
   
 Example:
-public interface PersonRepository extends JpaRepository<Person, Long> { 	      @Query("select p from Person p where p.emailAddress = ?1") 
- Person findByEmailAddress(String emailAddress); 
+public interface PersonRepository extends JpaRepository<Person, Long> { 	      
+    @Query("select p from Person p where p.emailAddress = ?1") 
+    Person findByEmailAddress(String emailAddress); 
 }
   ```
 

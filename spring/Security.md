@@ -32,7 +32,7 @@ Spring Security按以下两种方式实现，取决于要保护的内容：
 
 - Spring Security Web Infrastructure
 
-![spring-security-web-infrastructure-overview](C:\Web\notes-essence\spring\assets\spring-security-web-infrastructure-overview.PNG)
+![spring-security-web-infrastructure-overview](assets\conf-lifecycle.png)
 
 1. 配置DelegatingFilterProxy类型的servlet过滤器。
 
@@ -51,7 +51,7 @@ Spring Security按以下两种方式实现，取决于要保护的内容：
 | UserDetails           | 保存用户信息，例如用户名，密码和用户权限。此信息用于在成功验证时创建Authentication对象。可以扩展为包含特定于应用程序的用户信息。 |
 | UserDetailsService    | 给定用户名，此服务将检索有关用户的信息到一个UserDetails对象中。根据所使用的用户详细信息服务的实现，如果使用自定义实现，则可以将信息存储在数据库，内存或其他地方。 |
 
-![](C:\Web\notes-essence\spring\assets\Spring-Security-5-core-components-and-their-relationships.PNG)   
+![](assets\Spring-Security-5-core-components-and-their-relationships.PNG)   
 
 ## What is the delegating filter proxy?
 
@@ -84,7 +84,7 @@ DefaultSecurityFilterChain类的构造函数采用可变数量的参数，第一
 • SecurityContextPersistenceFilter
 • ConcurrentSessionFilter
 • Any authentication filter.
-  Such as UsernamePasswordAuthenticationFilter, CasAuthenticationFilter, 	BasicAuthenticationFilter.
+  Such as UsernamePasswordAuthenticationFilter, CasAuthenticationFilter, BasicAuthenticationFilter.
 • SecurityContextHolderAwareRequestFilter
 • JaasApiIntegrationFilter
 • RememberMeAuthenticationFilter 
@@ -178,7 +178,7 @@ Salting:
 
 ## What do @PreAuthorized and @RolesAllowed do? What is the difference between them?
 
-```java
+```
 @PreAuthorize和@RolesAllowed注释，可以在单个方法或类级别上配置方法安全性。在后一种情况下，安全性约束将应用于类中的所有方法。
 
 - @PreAuthorize  
@@ -188,7 +188,8 @@ Salting:
    
 - @RolesAllowed  
 @RolesAllowed注释源于JSR-250 Java安全标准。此注释比@PreAuthorize注释更受限制，因为它仅支持基于角色的安全性。
-为了使用@RolesAllowed注释，包含此注释的库需要位于类路径上，因为它不是Spring Security的一部分。此外，@EnableGlobalMethodSecurity注解的jsr250Enabled属性需要设置为true：
+为了使用@RolesAllowed注释，包含此注释的库需要位于类路径上，因为它不是Spring Security的一部分。
+此外，@EnableGlobalMethodSecurity注解的jsr250Enabled属性需要设置为true：
 @EnableGlobalMethodSecurity(jsr250Enabled=true)   
 ```
 

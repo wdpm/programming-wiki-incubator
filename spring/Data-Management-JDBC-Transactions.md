@@ -1,10 +1,12 @@
 # Data Management: JDBC, Transactions
 ## What is the difference between checked and unchecked exceptions?
 ```
-已检异常：Java编译器需要在抛出此类异常的方法的签名中声明的异常。如果方法调用另一个在其方法签名中声明一个或多个已检查异常的方法，则调用方法必须捕获这些异常或在其方法签名中声明异常。
+已检异常：Java编译器需要在抛出此类异常的方法的签名中声明的异常。
+如果方法调用另一个在其方法签名中声明一个或多个已检查异常的方法，则调用方法必须捕获这些异常或在其方法签名中声明异常。
 java.lang.Exception类及其子类都是已检异常。
 
-未检异常：Java编译器不需要在方法签名中声明或者在调用可能抛出未经检查的异常的其他方法的方法中捕获的异常。java.lang.RuntimeException和RuntimeException的任何子类是未检异常。
+未检异常：Java编译器不需要在方法签名中声明或者在调用可能抛出未经检查的异常的其他方法的方法中捕获的异常。
+java.lang.RuntimeException和RuntimeException的任何子类是未检异常。
 ```
 
 
@@ -54,7 +56,8 @@ spring.datasource.password=secret
 2.DataSource in an application deployed to a server
 @Bean 
 public DataSource dataSource() {      
-	final JndiDataSourceLookup theDataSourceLookup = new JndiDataSourceLookup();     	 final DataSource theDataSource = theDataSourceLookup.getDataSource("java:comp/env/jdbc/MyDatabase");     
+	final JndiDataSourceLookup theDataSourceLookup = new JndiDataSourceLookup(); 
+	final DataSource theDataSource = theDataSourceLookup.getDataSource("java:comp/env/jdbc/MyDatabase");     
     return theDataSource; 
 }
 如果使用spring boot，配置jndi-name即可：
@@ -66,7 +69,8 @@ spring.datasource.jndi-name=java:comp/env/jdbc/MyDatabase
 ## What is the Template design pattern and what is the JDBC template?
 
 ```
-模板（方法）设计模式:定义了算法，并且算法的步骤被重构为具有受保护可见性的方法。定义算法的类可以为算法的不同步骤提供抽象方法，让子类定义所有步骤。或者，定义算法的类可以定义算法的不同步骤的默认实现，允许子类根据需要仅定制所选择的方法。
+模板（方法）设计模式:定义了算法，并且算法的步骤被重构为具有受保护可见性的方法。
+定义算法的类可以为算法的不同步骤提供抽象方法，让子类定义所有步骤。或者，定义算法的类可以定义算法的不同步骤的默认实现，允许子类根据需要仅定制所选择的方法。
 
 Spring JDBC template是简化JDBC使用的类。
 - 减少执行JDBC操作所需的（样板）代码量。
@@ -92,9 +96,11 @@ Spring JDBC template是简化JDBC使用的类。
 ```
 可以与查询一起使用以提取结果数据的三个回调接口是：
 - ResultSetExtractor 
-允许一次处理整个结果集，可能包含多行数据。适用于需要多行数据来创建保存查询结果数据的Java对象时。结果集提取器通常是无状态的。请注意，此接口中的extractData方法返回Java对象。
+允许一次处理整个结果集，可能包含多行数据。适用于需要多行数据来创建保存查询结果数据的Java对象时。结果集提取器通常是无状态的。
+请注意，此接口中的extractData方法返回Java对象。
 - RowCallbackHandler 
-允许逐个处理结果集中的行，通常会累积某种类型的结果。行回调处理程序通常是有状态的，将累积的结果存储在实例变量中。请注意，此接口中的processRow方法具有void返回类型。
+允许逐个处理结果集中的行，通常会累积某种类型的结果。行回调处理程序通常是有状态的，将累积的结果存储在实例变量中。
+请注意，此接口中的processRow方法具有void返回类型。
 - RowMapper 
 允许逐个处理结果集中的行并为每行创建Java对象。行映射器通常是无状态的。请注意，此接口中的mapRow方法返回Java对象。
 ```
@@ -146,7 +152,8 @@ queryForList方法都返回一个包含查询结果行的列表，有两种形�
 ## What is a transaction? What is the difference between a local and a global transaction?
 
 ```
-事务是由多个任务组成的操作，这些任务作为一个单元发生 - 要么执行所有任务，要么不执行任务。如果作为事务一部分的任务未成功完成，则事务中的其他任务将不会执行，或者对于已执行的任务，将被还原。
+事务是由多个任务组成的操作，这些任务作为一个单元发生 - 要么执行所有任务，要么不执行任务。
+如果作为事务一部分的任务未成功完成，则事务中的其他任务将不会执行，或者对于已执行的任务，将被还原。
 可靠的事务系统强制执行ACID原则：
 •原子性
 事务中的更改要么全部应用，要么不应用。“全有或全无”
@@ -157,7 +164,8 @@ queryForList方法都返回一个包含查询结果行的列表，有两种形�
 •持久性
 由于成功完成的事务而应用的更改是持久的。
 
-全局事务允许事务跨越多个事务资源。例如，考虑跨越数据库更新操作以及将消息发布到消息代理队列的全局事务。1）如果数据库操作成功但发布到队列失败，则数据库操作将回滚（撤消）。
+全局事务允许事务跨越多个事务资源。例如，考虑跨越数据库更新操作以及将消息发布到消息代理队列的全局事务。
+1）如果数据库操作成功但发布到队列失败，则数据库操作将回滚（撤消）。
 2）如果发布到队列成功但数据库操作失败，则发送到队列的消息将被回滚，因此不会出现在队列中。
 直到两个操作都成功，数据库更新才会生效，并且消息可供队列使用。
 请注意，跨越两个不同数据库上的操作的事务需要是全局事务。
@@ -180,7 +188,8 @@ queryForList方法都返回一个包含查询结果行的列表，有两种形�
 ```
 在Spring应用程序中使用Spring事务管理需要以下两个步骤： 
 - 声明PlatformTransactionManager bean。
-选择实现此接口的类，该类为要使用的事务资源提供事务管理。一些示例是JmsTransactionManager（用于单个JMS连接工厂），JpaTransactionManager（用于单个JPA实体管理器工厂）。
+选择实现此接口的类，该类为要使用的事务资源提供事务管理。
+一些示例是JmsTransactionManager（用于单个JMS连接工厂），JpaTransactionManager（用于单个JPA实体管理器工厂）。
 - 如果使用注释驱动的事务管理，则将@EnableTransactionManagement注解应用于应用程序中的一个@Configuration类。
 
 - 在应用程序代码中声明事务边界。
@@ -215,7 +224,8 @@ queryForList方法都返回一个包含查询结果行的列表，有两种形�
 
 Spring允许使用JPA javax.transaction.Transactional注释作为Spring @Transactional注释的替代，尽管它没有那么多的配置选项。
 
-PlatformTransactionManager是可以在Spring框架的事务基础结构中使用的所有事务管理器的基本接口。事务管理器（实现此接口）可以由应用程序直接使用，但建议使用声明性事务或TransactionTemplate类。
+PlatformTransactionManager是可以在Spring框架的事务基础结构中使用的所有事务管理器的基本接口。
+事务管理器（实现此接口）可以由应用程序直接使用，但建议使用声明性事务或TransactionTemplate类。
 PlatformTransactionManager接口包含以下方法：
 •void commit（TransactionStatus）提交与TransactionStatus对象事务相关的事务。
 •void rollback（TransactionStatus）回滚与TransactionStatus对象相关的事务。

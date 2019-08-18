@@ -42,7 +42,8 @@ Spring Web应用程序可以定义多个Dispatcher Servlet，每个servlet都有
 ## What is a web application context? What extra scopes does it offer?
 
 ```
-Web应用程序上下文由WebApplicationContext接口指定，是Web应用程序的Spring应用程序上下文。它具有常规Spring应用程序上下文的所有属性，因为WebApplicationContext接口扩展了ApplicationContext接口，并添加了一个方法来检索Web应用程序的标准Servlet API ServletContext。
+Web应用程序上下文由WebApplicationContext接口指定，是Web应用程序的Spring应用程序上下文。它具有常规Spring应用程序上下文的所有属性，
+因为WebApplicationContext接口扩展了ApplicationContext接口，并添加了一个方法来检索Web应用程序的标准Servlet API ServletContext。
 
 除了标准的Spring bean作用域singleton和prototype之外，Web应用程序上下文中还有三个可用的作用域：
 ```
