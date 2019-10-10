@@ -54,6 +54,8 @@ ssserver -c /etc/shadowsocks/shadowsocks.json -d stop
 // start it after boot
 nano /etc/rc.local
 ssserver -c /etc/shadowsocks/shadowsocks.json -d start
+# use echo to append
+echo 'ssserver -c /etc/shadowsocks/shadowsocks.json -d start' >> /etc/rc.local
 ```
 > Please note that you must run 'chmod +x /etc/rc.d/rc.local' to ensure that this script will be executed during boot.
 
