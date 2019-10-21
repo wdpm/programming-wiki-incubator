@@ -65,7 +65,7 @@
 
 ### 6. 启动魔灵召唤
 
-如果不出意外的话，SWEX中会有一局提示:
+如果不出意外的话，SWEX中会有一句提示:
 
 ![](assets/get-profile-json.jpg)
 
