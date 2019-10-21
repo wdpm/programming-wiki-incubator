@@ -19,15 +19,15 @@
 
    打开“网络和Internet”设置 > 更改适配器选项，选择你当前上网的适配器，右键状态：
 
-   ![](assets\WLAN-in-PC.jpg)
+   ![](assets/WLAN-in-PC.jpg)
 
-   ![](assets\get-IPv4-address.jpg)
+   ![](assets/get-IPv4-address.jpg)
 
    点击详细信息，获取IPv4地址。图中示例为192.168.31.170。
 
 ### 3. 打开SWEX并配置
 
-   ![](assets\config-SWEX.jpg)
+   ![](assets/config-SWEX.jpg)
 
    ①：选择上一步获取到的IPv4地址，这里是192.168.31.170。
 
@@ -43,7 +43,7 @@
 
    前往QQ邮箱主页 > 设置 > POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务 中开启IMAP/SMTP服务：
 
-   ![](assets\enable-IMAP-SMTP-service-in-QQ-email.jpg)
+   ![](assets/enable-IMAP-SMTP-service-in-QQ-email.jpg)
 
    在iphone中绑定QQ邮箱：设置 > 账户与密码 > 添加账户。
 
@@ -55,19 +55,19 @@
 
 ### 4. 在PC中开启无线热点wifi，并转到设置
 
-   ![](assets\start-wifi-hotspot-in-PC.jpg)
+   ![](assets/start-wifi-hotspot-in-PC.jpg)
 
    记住网络名称和设置wifi密码。
 
 ### 5. 在iphone连接PC的wifi热点
 
-![](assets\connect-to-your-wifi-proxy-in-iphone.png)
+![](assets/connect-to-your-wifi-proxy-in-iphone.png)
 
 ### 6. 启动魔灵召唤
 
 如果不出意外的话，SWEX中会有一局提示:
 
-![](assets\get-profile-json.jpg)
+![](assets/get-profile-json.jpg)
 
 在PC的 C:\Users\XXX\Desktop\Summoners War Exporter Files 路径下既可以找到该文件。
 
