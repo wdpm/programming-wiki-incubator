@@ -1,6 +1,6 @@
 # Configure RabbitMQ Server in CentOS 7
 
-## Verify Configuration
+## Verify configuration
 The active configuration file can be verified by inspecting the RabbitMQ log file.
 ```bash
 tail -f /var/log/rabbitmq/rabbit@evan-server.log
@@ -23,6 +23,23 @@ Note that `config file(s) : (none)`, You can create config file manually.
 nano  /etc/rabbitmq/rabbitmq.conf
 # ...
 ```
+
+## Enable remote visit
+> Because account guest/guest can only visit from localhost.
+```bash
+[root@vmware0 ~]# rabbitmqctl add_user evan 123456
+Adding user "evan" ...
+[root@vmware0 ~]# rabbitmqctl set_user_tags evan administrator
+Setting tags for user "evan" to [administrator] ...
+[root@vmware0 ~]# rabbitmqctl set_permissions -p / evan ".*" ".*" ".*"
+Setting permissions for user "evan" in vhost "/" ...
+```
+
+## Enable web management
+```bash
+rabbitmq-plugins enable rabbitmq_management
+```
+Then visit ``http://<your-host-ip>:15672/``
 
 ## Reference
 - https://www.rabbitmq.com/configure.html
