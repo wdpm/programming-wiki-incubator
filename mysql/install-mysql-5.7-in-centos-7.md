@@ -56,8 +56,9 @@ A password for the root user is set and stored in the log file. To reveal it by:
 ```
 You can change the root password after logging in with the generated, temporary password and set a custom password for the root account:
 ```bash
-# mysql -uroot -p
-# ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_root_password';
+mysql -uroot -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY '<your_root_password>';
+grant all privileges on *.* to 'root'@'%' identified by '<your_root_password>' with grant option;
 ```
 
 ## Reference
