@@ -51,5 +51,45 @@ total 36
 ## System Configuration
 Its system configuration file locates in `/etc/sysconfig/elasticsearch`.
 
+## Other Configuration
+- increase max_map_count for elasticsearch.
+> https://www.kernel.org/doc/Documentation/sysctl/vm.txt
+```
+
+==============================================================
+
+max_map_count:
+
+This file contains the maximum number of memory map areas a process
+may have. Memory map areas are used as a side-effect of calling
+malloc, directly by mmap, mprotect, and madvise, and also when loading
+shared libraries.
+
+While most applications need less than a thousand maps, certain
+programs, particularly malloc debuggers, may consume lots of them,
+e.g., up to one or two maps per allocation.
+
+The default value is 65536.
+
+=============================================================
+```
+```bash
+echo 'vm.max_map_count=262144' >> /etc/sysctl.conf
+sysctl -p
+```
+
+- update ``/etc/security/limits.conf``
+```bash
+nano /etc/security/limits.conf 
+```
+```
+* hard nofile 65536
+* soft nofile 65536
+* soft nproc 4096
+* hard nproc 4096
+```
+A soft limit is like a warning and hard limit is a real max limit. 
+
+
 ## Reference docs
 - https://www.elastic.co/guide/en/elasticsearch/reference/6.8/rpm.html#install-rpm
