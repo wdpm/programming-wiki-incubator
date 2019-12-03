@@ -967,7 +967,7 @@ share、your、experience、with、nosql、big、data、technologies
 
 1. 高亮查询
 
-   ```json
+```json
 "query":{
        "match":{
            "title":"elasticsearch"
@@ -981,7 +981,7 @@ share、your、experience、with、nosql、big、data、technologies
          "description":{}
      }
    }
-   ```
+```
    
 2. 高亮的其它选项：
    - 调整碎片大小（fragment_size）和数量（number_of_fragments）
@@ -995,7 +995,7 @@ share、your、experience、with、nosql、big、data、technologies
 
 1. 步骤：
 
-   ![](assets\precolator-1570610362702.PNG)
+![](assets\precolator-1570610362702.PNG)
 
    
 
