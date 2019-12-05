@@ -45,6 +45,23 @@ Passphrase / Password ******
 click ``Test configuration`` to test if Success.
 
 ## Global Tool Configuration
-
 Before config, you should install maven, git ,JDK 1.8 manually in server.
-- 
+
+check their path
+```bash
+[root@vmware0 jdk1.8.0_211-amd64]# mvn -v
+...
+Maven home: /usr/share/maven
+```
+```bash
+[root@vmware0 jdk1.8.0_211-amd64]# which git
+/usr/bin/git
+[root@vmware0 jdk1.8.0_211-amd64]# git --version
+git version 1.8.3.1
+```
+```bash
+[root@vmware0 jdk1.8.0_211-amd64]# echo $JAVA_HOME
+/usr/java/jdk1.8.0_211-amd64
+```
+go to ``Manage Jenkins``->``Global Tool Configuration``, and configure them.
+
