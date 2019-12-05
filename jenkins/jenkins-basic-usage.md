@@ -46,3 +46,5 @@ click ``Test configuration`` to test if Success.
 
 ## Global Tool Configuration
 
+Before config, you should install maven, git ,JDK 1.8 manually in server.
+- 
