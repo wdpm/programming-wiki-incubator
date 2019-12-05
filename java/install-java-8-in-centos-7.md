@@ -33,6 +33,8 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.211-b12, mixed mode)
 # for all user in this computer
 nano /etc/profile
 export JAVA_HOME=/usr/java/jdk1.8.0_211-amd64
+#export JRE_HOME=${JAVA_HOME}/jre
+#export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
 export PATH=$JAVA_HOME/bin:$PATH
 ```
 Check if work as well:
