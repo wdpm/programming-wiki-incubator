@@ -6,7 +6,7 @@ yum install maven -y
 ```
 it will update java version to openjdk. if you don't want to use openjdk,you must re-config java version.
 
-check maven version
+This is the easiest way to install Maven on CentOS, however the version included in the yum repo may lag behind the latest version of Maven.
 ```bash
 [root@vmware0 share]# mvn -v
 Apache Maven 3.0.5 (Red Hat 3.0.5-17)
@@ -17,9 +17,31 @@ Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "3.10.0-862.el7.x86_64", arch: "amd64", family: "unix"
 ```
 
-## by tar.gz file
+## by tar.gz file[recommend]
+To install the latest version of Maven, we should download Maven from their official website.
 
-> todo
+Uninstall previously installed maven
+```bash
+yum remove maven -y
+```
+
+> https://maven.apache.org/download.cgi
+```bash
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+tar -zxvf /usr/local/share/ apache-maven-3.6.3-bin.tar.gz
+mv apache-maven-3.6.3 /usr/local/share/
+```
+```bash
+nano /etc/profile
+# append this line
+export PATH=/usr/local/share/apache-maven-3.6.3/bin:$PATH
+source /etc/profile
+```
+```bash 
+[root@vmware0 apache-maven-3.6.3]# mvn -v
+Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+...
+```
 
 ## configure maven settings
 
