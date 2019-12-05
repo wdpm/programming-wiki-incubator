@@ -8,7 +8,7 @@ sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 yum install jenkins -y
 ```
 
-## configure
+## first run
 change JENKINS_PORT to 8888
 ```bash
 nano /etc/sysconfig/jenkins

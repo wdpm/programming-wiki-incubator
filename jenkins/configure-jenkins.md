@@ -1,4 +1,4 @@
-# jenkins basic usage
+# configure jenkins
 - maven
 - ssh publish
 - git
@@ -64,4 +64,3 @@ git version 1.8.3.1
 /usr/java/jdk1.8.0_211-amd64
 ```
 go to ``Manage Jenkins``->``Global Tool Configuration``, and configure them.
-
