@@ -1,6 +1,6 @@
 # configure jenkins
 - maven
-- ssh publish
+- ssh upload jar artifact
 - git
 
 in jenkins home page,click ``Manage Jenkins``
@@ -37,11 +37,13 @@ in ``Publish over SSH`` section:
 Name server0
 Hostname 192.168.31.12
 Username root
-Remote Directory /root
+Remote Directory /app
 
 [√] Use password authentication, or use a different key
 Passphrase / Password ******
 ```
+jenkins can't operate on ```/root``` folder, so you should create another folder such as ``app``.
+
 click ``Test configuration`` to test if Success.
 
 ## Global Tool Configuration
