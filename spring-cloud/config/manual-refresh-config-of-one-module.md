@@ -1,7 +1,6 @@
 # Manual refresh config of one module
 
-1.add actuator dependency
-add actuator in common module pom.xml.
+1.add actuator dependency in common module pom.xml.
 ```pom
 <dependency>
     <groupId>org.springframework.boot</groupId>
