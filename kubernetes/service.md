@@ -546,7 +546,7 @@ ingress通过与该服务关联的Endpoint对象查看pod IP ， 并将客户端
 
   ```yaml
   - host kubia.example .com
-  	http:
+  http:
         paths:
         - path: /kubia
           backend:
