@@ -73,6 +73,7 @@ public class TestApplication extends Application {
 }
 ```
 4.restart test module. visit ``http://localhost:9999/hystrix.stream`` again.
-![](./assets/hystrix-dashboard.PNG)
+
+![](../assets/hystrix-dashboard.png)
 
 
