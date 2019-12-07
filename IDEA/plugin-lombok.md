@@ -117,3 +117,6 @@ private User(final Long id, final String username, final String password) {
     this.password = password;
 }
 ```
+
+## go further
+https://projectlombok.org/
