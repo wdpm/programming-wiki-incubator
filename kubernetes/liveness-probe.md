@@ -3,7 +3,7 @@
 liveness probe，用于检测容器是否还在运行。三种机制：
 
 - HTTP GET：尝试发送HTTP请求
-- TCP Socket：尝试与容器指定端口简历TCP连接
+- TCP Socket：尝试与容器指定端口建立TCP连接
 - Exec：尝试在容器内执行命令
 
 使用存活探针：
