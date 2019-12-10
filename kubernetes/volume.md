@@ -1,6 +1,6 @@
 # volume
 
-<img src="assets/3-containers-with-2-volumes-in-1-pod.png" style="zoom: 50%;" />
+<img src="assets/3-containers-with-2-volumes-in-1-pod.png" style="zoom: 50%;"/>
 
 ## volum生命周期
 
