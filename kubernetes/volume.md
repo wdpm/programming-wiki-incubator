@@ -503,4 +503,3 @@ persistentvolumeclaim/mongodb-pvc2 created
 > 如果希望PVC 使用预先配置的PV, 请将storageClassName 显式设置为” “。
 
 <img src="assets/dynamic-PV-config-overview.jpg" style="zoom:50%;" />
-
