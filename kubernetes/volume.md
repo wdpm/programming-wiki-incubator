@@ -12,7 +12,7 @@
 ## volume类型
 
 - emptyDir： 临时数据的空目录
-- qujueyu工作节点的文件系统挂载到pod
+- hostPath：工作节点的文件系统挂载到pod
 - gitRepo： git仓库内容初始化卷
 - nfs：NFS共享卷
 - configMap, secret, downwardAPI
