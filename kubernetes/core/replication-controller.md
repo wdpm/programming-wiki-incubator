@@ -101,7 +101,7 @@ spec:
 但是由于由RC创建的pod 不是RC的组成部分，
 只是由其进行管理， 因此可以选择只删除 RC并保待pod 运行。
 
-![](assets/before-delete-rc-and-after-delete-rc.PNG)
+![](../assets/before-delete-rc-and-after-delete-rc.PNG)
 
 ```bash
 kubectl delete rc kubia --cascade=false

@@ -305,7 +305,7 @@ mongodb-pvc   Bound    mongodb-pv   1Gi        RWO,ROX                       20s
 - ROX：ReadOnlyMany：允许多个**节点**挂载只读。
 - RWX：ReadWriteMany：允许多个**节点**挂载读写这个卷。
 
-![](assets/pv-detail.PNG)
+![](../assets/pv-detail.PNG)
 
 可以看到mongodb-pv此时的声明是 default/mongodb-pvc。default代表命名空间，位于顶层集群范围。
 
@@ -498,7 +498,7 @@ spec:
 persistentvolumeclaim/mongodb-pvc2 created
 ```
 
-![](assets/pv-use-standard-sc.jpg)
+![](../assets/pv-use-standard-sc.jpg)
 
 > 如果希望PVC 使用预先配置的PV, 请将storageClassName 显式设置为” “。
 
