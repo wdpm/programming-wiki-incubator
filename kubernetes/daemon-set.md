@@ -4,7 +4,7 @@ DS在每个节点上运行一个pod副本，适用于执行系统级别的与基
 
 而RS控制的副本数量，副本分布在哪些节点是随意的。
 
-![](../assets/daemonset.PNG)
+![](assets/daemonset.PNG)
 
 ``ssd-monitor-daemonset.yaml``
 

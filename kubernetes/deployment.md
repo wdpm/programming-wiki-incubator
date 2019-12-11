@@ -403,7 +403,7 @@ kubia-75974f96b5-fqnj7   1/1     Running   0          5m21s
 kubia-75974f96b5-rggd5   1/1     Running   0          5m10s
 ```
 
-``kubia-6d46bd4cfd-w62wl`为新建的pod（V3版本），但是没有Ready。
+`kubia-6d46bd4cfd-w62wl`为新建的pod（V3版本），但是没有Ready。
 
 原因：可用探针每1秒发一次请求验证，而v3版本的pod在第5次以及之后就无法正常响应，这个时间范围在`minReadySeconds: 10`之内，于是被认为不可用。
 

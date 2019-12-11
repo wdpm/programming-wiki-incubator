@@ -4,7 +4,7 @@
 
 k8s服务是一种为一组功能相同的pod 提供单一不变的接入点的资源。
 
-![](../assets/service.PNG)
+![](assets/service.PNG)
 
 ## 创建服务
 
@@ -338,7 +338,7 @@ subsets:
 在服务创建后创建的容器将包含服务的环境变量，并且与其
 ip:port对的所有连接都将在服务端点之间进行负载均衡。
 
-![](../assets/pod-has-2-external-endpoints.PNG)
+![](assets/pod-has-2-external-endpoints.PNG)
 
 ### 创建ExternalName类型的服务
 
@@ -398,7 +398,7 @@ kubia-nodeport   NodePort    10.101.31.120   <none>        80:30123/TCP     6s
 - <1st node's ip>:30123
 - <2nd node's ip>:30123
 
-![](../assets/external-client-visit-nodeport-type-service.PNG)
+![](assets/external-client-visit-nodeport-type-service.PNG)
 
 ```bash
 [root@vmware0 Chapter05]# kubectl get node -o wide
@@ -455,7 +455,7 @@ curl http://EXTERNAL-IP
 
 总结：LoadBalancer类型的服务是一个具有额外的基础设施提供的负载平衡器NodePort服务。
 
-![](../assets/loadbalancer-type-service.PNG)
+![](assets/loadbalancer-type-service.PNG)
 
 外部连接的特性。
 
@@ -486,7 +486,7 @@ spec:
 
 每个LoadBalancer 服务都需要自己的负载均衡器， 以及独有的公有IP地址， 而Ingress 只需要一个公网IP就能为许多服务提供访问。
 
-![](../assets/ingress.PNG)
+![](assets/ingress.PNG)
 
 在minikube上启用ingress：
 
@@ -536,7 +536,7 @@ kubia   kubia.example.com   192.168.31.12   80      57s
 You've hit kubia-sls68
 ```
 
-![](../assets/ingress-visit-pod.PNG)
+![](assets/ingress-visit-pod.PNG)
 
 ingress通过与该服务关联的Endpoint对象查看pod IP ， 并将客户端的请求转发给其中一个pod。
 
@@ -656,7 +656,7 @@ You've hit kubia-sls68
 - HTTP GET：向容器发送HTTP GET 请求，通过响应的HTTP状态代码判断。
 - TCP socket：打开一个TCP 连接到容器的指定端口。
 
-![](../assets/ready-probe.PNG)
+![](assets/ready-probe.PNG)
 
 ``kubia-rc-readinessprobe.yaml``,创建就绪探针：
 

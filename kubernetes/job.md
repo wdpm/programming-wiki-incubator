@@ -2,7 +2,7 @@
 
 Job表示单个任务。这种pod 在内部进程成功结束时， 不重启容器。
 
-![](../assets/job.PNG)
+![](assets/job.PNG)
 
 dockerfile定义一个batch-job，沉默120s后打印退出。
 

@@ -61,7 +61,7 @@ kubectl port-forward kubia-manual 8888:8080
 curl localhost:8888
 ```
 
-![](../assets/port-forward.PNG)
+![](assets/port-forward.PNG)
 
 ## 标签
 
