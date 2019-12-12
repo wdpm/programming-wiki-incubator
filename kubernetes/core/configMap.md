@@ -157,7 +157,7 @@ spec:
 
 k8s允许将配置选项分离到单独的资源对象ConfigMap 中，本质上是一个键/值对映射，值可以是短字面量，也可以是完整的配置文件。
 
-<img src="../assets/pod-get-config-from-configMap.PNG" style="zoom:50%;" />
+<img src="../assets/pod-get-config-from-configMap.PNG" style="max-width: 50%;" />
 
 pod 通过名称引用ConfigMap，因此可以在多环境下使用相同的pod 定义描述。
 
