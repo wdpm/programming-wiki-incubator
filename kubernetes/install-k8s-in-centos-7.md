@@ -58,7 +58,7 @@ source <(kubectl completion bash)
 ```bash
 curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v1.2.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 
-# config default vm-driver
+# config default vm-driver none or vmware
 sudo minikube config set vm-driver none
 
 [root@vmware0 ~]# minikube start --registry-mirror=https://registry.docker-cn.com
