@@ -4,7 +4,7 @@ Deployment 基于ReplicaSet的资源， 支持声明式地更新应用程序。
 
 ## 先删除旧版本pod, 再创建新pod替换
 
-<img src="assets/change-rc-template-and-delete-old-pods.PNG" style="zoom:50%;" />
+<img src="../assets/change-rc-template-and-delete-old-pods.PNG" style="zoom:50%;" />
 
 缺点：删除旧pod到新pod创建完成期间，服务短暂性不可用。
 
@@ -14,7 +14,7 @@ Deployment 基于ReplicaSet的资源， 支持声明式地更新应用程序。
 
 - 蓝绿部署：从旧版本立即切换到新版本。
 
-<img src="assets/blue-green-deployment.PNG" style="zoom:50%;" />
+<img src="../assets/blue-green-deployment.PNG" style="zoom:50%;" />
 
 优点：避免服务短暂性不可用。
 
@@ -22,7 +22,7 @@ Deployment 基于ReplicaSet的资源， 支持声明式地更新应用程序。
 
 - 滚动升级
 
-<img src="assets/roll-upgrade.PNG" style="zoom:50%;" />
+<img src="../assets/roll-upgrade.PNG" style="zoom:50%;" />
 
 逐步使用新pod替代旧pod。
 
@@ -292,7 +292,7 @@ REVISION  CHANGE-CAUSE
 kubectl rollout undo deployment kubia --to-revision=4
 ```
 
-<img src="assets/rs-in-revision-history.PNG" style="zoom:50%;" />
+<img src="../assets/rs-in-revision-history.PNG" style="zoom:50%;" />
 
 旧版本的ReplicaSet过多会导致ReplicaSet列表过于混乱，可以指定
 Deployment 的re visionHistoryLimit 属性来限制历史版本数量。
@@ -318,7 +318,7 @@ spec:
 - maxUnavailable：在滚动升级期间，相对于期望副本数能够允许有多少pod 实例处于不可用状态。
   默认值也是25%。
 
-<img src="assets/maxSurge-and--maxUnavailable.PNG" style="zoom:50%;" />
+<img src="../assets/maxSurge-and--maxUnavailable.PNG" style="zoom:50%;" />
 
 #### 暂停/恢复滚动升级
 
@@ -407,7 +407,7 @@ kubia-75974f96b5-rggd5   1/1     Running   0          5m10s
 
 原因：可用探针每1秒发一次请求验证，而v3版本的pod在第5次以及之后就无法正常响应，这个时间范围在`minReadySeconds: 10`之内，于是被认为不可用。
 
-<img src="assets/v3-not-ready.PNG" style="zoom:50%;" />
+<img src="../assets/v3-not-ready.PNG" style="zoom:50%;" />
 
 默认情况下， 在10分钟内不能完成滚动升级的话，将被视为失败。如果运行
 kubectl describe deployment命令,可以看到ProgressDeadlineExceeded的记录。

@@ -4,9 +4,9 @@
 
 ---
 
-Docker容器的runtime
+- [x] Docker容器runtime
 
-Kubernetes编排
+- [x] Kubernetes编排
 
 Prometheus监控
 

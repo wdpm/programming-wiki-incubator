@@ -18,7 +18,7 @@ Statefulset 保证了pod在重新调度后保留它们的标识和状态，让�
 
 替换消失的宠物。
 
-<img src="assets/compare-ss-and-rs.PNG" style="zoom:50%;" />
+<img src="../assets/compare-ss-and-rs.PNG" style="zoom:50%;" />
 
 ### 扩缩容Statefulset
 
@@ -34,7 +34,7 @@ Statefulset 在有实例不健康的情况下不允许做缩容操作。若一�
 
 ### 为每个有状态实例提供稳定的专属存储
 
-<img src="assets/ss-create-pod-and-pvc.PNG" style="zoom:50%;" />
+<img src="../assets/ss-create-pod-and-pvc.PNG" style="zoom:50%;" />
 
 持久卷的创建和删除。
 
@@ -44,7 +44,7 @@ Statefulset 在有实例不健康的情况下不允许做缩容操作。若一�
 缩容Statefulset 时会保留持久卷声明， 所以在随后的扩容操作中， 新的pod
 实例会使用绑定在持久卷上的相同声明和其上的数据。
 
-<img src="assets/ss-scale-down.PNG" style="zoom:50%;" />
+<img src="../assets/ss-scale-down.PNG" style="zoom:50%;" />
 
 一个Statefulset 必须在准确确认一个pod 不再运行后，才会去创建它的替换pod。
 
@@ -254,7 +254,7 @@ spec:
 
 可以看到  persistentVolumeClaim 的声明。
 
-![](assets/data-kubia-0+1.PNG)
+![](../assets/data-kubia-0+1.PNG)
 
 ### 使用pod
 
@@ -278,7 +278,7 @@ Data stored on this pod: No data posted yet
 
 你正在使用代理的方式， 通过API 服务器与pod 通信， 每个请求都会经过两个代理（第一个是kubectl 代理， 第二个是把请求代理到pod 的API 服务器）。
 
-<img src="assets/kubectl-proxy.PNG" style="zoom:50%;" />
+<img src="../assets/kubectl-proxy.PNG" style="zoom:50%;" />
 
 - POST请求
 
@@ -368,7 +368,7 @@ Data stored on this pod: Hey there! This greeting was submitted to kubia-0.
 kubectl run -it srvlookup --image=tutum/dnsutils --rm --restart=Never -- dig SRV kubia.default.svc.cluster.local
 ```
 
-<img src="assets/SRV.PNG" style="zoom:50%;" />
+<img src="../assets/SRV.PNG" style="zoom:50%;" />
 
 ### DNS实现伙伴间彼此发现
 
@@ -425,7 +425,7 @@ var handler = function(request, response) {
 
 首先收到请求的服务器会触发一次headlessmkubia服务的SRV记录查询， 然后发送GET请求到服务背后的每一个pod(也会发送给自己，虽然没有必要，这里为了保证代码简单），然后返回所有节点和它们的数据信息的列表。
 
-<img src="assets/Get-SRV-list.PNG" style="zoom:50%;" />
+<img src="../assets/Get-SRV-list.PNG" style="zoom:50%;" />
 
 ### 更新Statefulset
 

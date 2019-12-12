@@ -166,7 +166,7 @@ Your aim is high and to the right.
 
 >  curl 使用-*k*参数忽略证书不受信问题。 
 
-<img src="assets/combine-configmap-and-secret.PNG" style="zoom:50%;" />
+<img src="../assets/combine-configmap-and-secret.PNG" style="zoom:50%;" />
 
 再次确认Secret卷存于内存，不会写入磁盘。
 

@@ -1,6 +1,6 @@
 # volume
 
-<img src="assets/3-containers-with-2-volumes-in-1-pod.png" style="zoom: 50%;"/>
+<img src="../assets/3-containers-with-2-volumes-in-1-pod.png" style="zoom: 50%;"/>
 
 ## volum生命周期
 
@@ -239,7 +239,7 @@ switched to db mystore
 (Persistent VolumeClaim, 简称PVC) 清单， 指定所需要的最低容量要求和访问模式，
 然后将持久卷声明清单提交给Kubernetes API 服务器， Kubernetes 将找到可匹配的待久卷并将其绑定到持久卷声明。
 
-<img src="assets/use-pvc.png" style="zoom:50%;" />
+<img src="../assets/use-pvc.png" style="zoom:50%;" />
 
 ### ①创建持久卷PV
 
@@ -271,7 +271,7 @@ NAME CAPACITY  ACCESS MODES   RECLAIM POLICY STATUS   CLAIM  STORAGECLASS REASON
 mongodb-pv  1Gi    RWO,ROX     Retain       Available                              19s
 ```
 
-<img src="assets/pv-and-pvc.PNG" style="zoom: 50%;" />
+<img src="../assets/pv-and-pvc.PNG" style="zoom: 50%;" />
 
 ### ②创建持久卷声明PVC
 
@@ -305,7 +305,7 @@ mongodb-pvc   Bound    mongodb-pv   1Gi        RWO,ROX                       20s
 - ROX：ReadOnlyMany：允许多个**节点**挂载只读。
 - RWX：ReadWriteMany：允许多个**节点**挂载读写这个卷。
 
-![](assets/pv-detail.PNG)
+![](../assets/pv-detail.PNG)
 
 可以看到mongodb-pv此时的声明是 default/mongodb-pvc。default代表命名空间，位于顶层集群范围。
 
@@ -354,7 +354,7 @@ switched to db mystore
 
 ### 对比两种方式
 
-<img src="assets/compare-two-way-of-using-volume.PNG" style="zoom:50%;" />
+<img src="../assets/compare-two-way-of-using-volume.PNG" style="zoom:50%;" />
 
 ### 回收持久卷PV
 
@@ -467,7 +467,7 @@ mongodb-pvc   Bound    pvc-8367d9ce-c3de-47d2-afc3-aad6aadd5d8d   100Mi      RWO
 
 此时，**对应PV会被动态创建**，PV name为 ``pvc-8367d9ce-c3de-47d2-afc3-aad6aadd5d8d``
 
-<img src="assets/get-dynamic-pv.PNG"  />
+<img src="../assets/get-dynamic-pv.PNG"  />
 
 - **不指定使用StorageClass动态配置PV**
 
@@ -498,8 +498,8 @@ spec:
 persistentvolumeclaim/mongodb-pvc2 created
 ```
 
-![](assets/pv-use-standard-sc.jpg)
+![](../assets/pv-use-standard-sc.jpg)
 
 > 如果希望PVC 使用预先配置的PV, 请将storageClassName 显式设置为” “。
 
-<img src="assets/dynamic-PV-config-overview.jpg" style="zoom:50%;" />
+<img src="../assets/dynamic-PV-config-overview.jpg" style="zoom:50%;" />
