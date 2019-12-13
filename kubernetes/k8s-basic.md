@@ -81,7 +81,7 @@ Events:
 要让pod 能够从外部访问， 要创建一个特殊的 LoadBalancer 类型的服务暴露它。
 
 ```bash
-kubectl expose re kubia --type=LoadBalancer --name kubia-http
+kubectl expose rc kubia --type=LoadBalancer --name kubia-http
 ```
 
 ```bash
