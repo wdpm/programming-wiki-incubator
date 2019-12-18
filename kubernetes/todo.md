@@ -1,21 +1,20 @@
-进行中：A，B
+# TODO
 
-未读：8,11-16,18
-
----
+- [ ] 未读章节：8,11-16
 
 - [x] Docker容器runtime
 
 - [x] Kubernetes编排
 
-Prometheus监控
+- [ ] Prometheus监控
 
-Grafana可视化
+- [ ] Grafana可视化
 
-EFK日志系统
+- [ ] EFK日志系统
 
-网络方案选型 
+- [ ] 网络方案选型 
+
+- [ ] OpenShift/OKD/Helm
 
 
 
-OpenShift/OKD 
