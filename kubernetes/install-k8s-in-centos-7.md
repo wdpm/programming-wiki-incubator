@@ -10,6 +10,8 @@
 swapoff -a
 ```
 
+如果想要永久关闭swap，可以`nano /etc/fstab`将swap的行注释掉。
+
 ## 配置 kubernetes yum repo
 
 ```bash

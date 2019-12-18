@@ -19,5 +19,3 @@ EFK日志系统
 
 
 OpenShift/OKD 
-
-rancher
