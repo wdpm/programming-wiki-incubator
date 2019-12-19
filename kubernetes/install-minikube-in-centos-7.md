@@ -102,15 +102,15 @@ minikube   Ready    master   13h   v1.15.0
 
 ## 完全卸载minikube
 ```bash
-minikube stop; minikube delete &&
+sudo minikube stop; sudo minikube delete &&
 docker stop $(docker ps -aq) &&
-rm -rf ~/.kube ~/.minikube &&
+docker system prune -f --volumes &&
+sudo rm -rf ~/.kube ~/.minikube &&
 sudo rm -rf /usr/local/bin/localkube /usr/local/bin/minikube &&
-launchctl stop '*kubelet*.mount' &&
-launchctl stop localkube.service &&
-launchctl disable localkube.service &&
-sudo rm -rf /etc/kubernetes/ &&
-docker system prune -af --volumes
+sudo systemctl stop '*kubelet*.mount' &&
+sudo systemctl stop localkube.service &&
+sudo systemctl disable localkube.service &&
+sudo rm -rf /etc/kubernetes/
 ```
 
 ## 参考文档
