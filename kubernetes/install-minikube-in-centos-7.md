@@ -1,4 +1,4 @@
-# install k8s in centos 7
+# install minikube in centos 7
 
 ## 安装 docker
 
