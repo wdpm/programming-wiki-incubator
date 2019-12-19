@@ -67,7 +67,7 @@ systemctl enable privoxy
 systemctl start privoxy
 systemctl status privoxy
 ```
-### 配置privoxy
+### 配置privoxy全局代理
 ```bash
 nano /etc/privoxy/config
 ```
@@ -76,7 +76,7 @@ listen-address 127.0.0.1:8118 # 8118为默认端口，可以不改
 forward-socks5t / 127.0.0.1:1080 . 
 ```
 
-### 设置http/https代理 
+设置http/https代理 
 ```bash
 nano /etc/profile
 ```
@@ -84,9 +84,20 @@ nano /etc/profile
 export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
 ```
-> TODO: avoid proxy local and subnet
 
 验证访问外网
 ```bash
 curl -I www.google.com
+```
+
+### 配置 privoxy 局部代理
+
+```bash
+terminal的访问(受限于/etc/profile代理规则) -> 127.0.0.1:8118(受限于privoxy配置的规则) -> 127.0.0.1:1080(受限于shawsocks的规则) -> www.google.com
+```
+开启局部代理
+```bash
+#forward-socks5t / 127.0.0.1:1080 .
+forward-socks5t *.k8s.io 127.0.0.1:1080 . 
+forward-socks5t *.google.com 127.0.0.1:1080 . 
 ```
