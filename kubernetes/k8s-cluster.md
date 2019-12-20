@@ -133,6 +133,7 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
+> 这步保证在主节点 kubectl 可以跟 cluster 通信。
 
 Kubelet会监控目录`/etc/kubernetes/manifests`，并通过Docker运行这些组件
 
@@ -249,3 +250,21 @@ kube-system   weave-net-rcbf8                      2/2     Running   0          
 
 一个功能齐全的三节点Kubemetes集群，并具有
 Weave Net提供的覆盖网络完成。
+
+## 配置node节点可以跟集群通信
+在 node1, 将主节点的 KUBECONFIG 配置复制过来。
+```bash
+mkdir -p $HOME/.kube
+sudo scp root@192.168.31.30:/etc/kubernetes/admin.conf ~/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+export KUBECONFIG=~/.kube/config
+```
+验证kubectl是否可以和进群通信
+```bash
+[root@node1 .kube]# kubectl get node
+NAME         STATUS   ROLES    AGE   VERSION
+master.k8s   Ready    master   57m   v1.17.0
+node1.k8s    Ready    <none>   45m   v1.17.0
+node2.k8s    Ready    <none>   40m   v1.17.0
+```
+node2同理。
