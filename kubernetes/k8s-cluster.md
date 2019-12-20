@@ -128,6 +128,11 @@ Then you can join any number of worker nodes by running the following on each as
 kubeadm join 192.168.31.30:6443 --token 6wqhe5.qlm7xv6lkt5upeno \
     --discovery-token-ca-cert-hash sha256:531350ac02e928a2cf22dfde3defd83e5929f0d61219a0a985cc3eb9db6d3e18 
 ```
+```bash
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
 
 Kubelet会监控目录`/etc/kubernetes/manifests`，并通过Docker运行这些组件
 
