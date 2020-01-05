@@ -2,8 +2,25 @@
 
 ## 数据结构类型
 
-字符串(String)，哈希(Hash)，列表(List)，集合(Set)。
+5种数据结构类型，分别为STRING（字符串）、LIST（列表）、SET（集合）、HASH（散列）和ZSET（有序集合）。
 
+CRUD
+
+---
+- String: set,get,del
+- List: lpush,rpush,lpop,rpop,lindex,lrange,ltrim
+- Set: sadd,smembers,sismember,srem,scard
+- Hash: hset,hdel,hget,hlen
+- ZSet: zadd,zrange,zrangbyscore,zrem
+---
+
+其他操作
+
+---
+- String: INCR/DECR/INCRBY/DECRBY/INCRBYFLOAT, APPEND/GETRANGE/SETRANGE
+- List: blpop,brpop,rpoplpush,brpoplpush
+- Set: sdiff,sinter,sunion, hexists,hkeys,hvals,hincrby,hgetall
+---
 ## 持久化选项
 
 两种磁盘持久性选项： 
