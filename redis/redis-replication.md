@@ -1,7 +1,6 @@
 # Redis 主从复制
 
 环境：
-
 - CentOS 7
 - Redis 5.0.7
 
@@ -172,5 +171,4 @@ min-slaves-max-lag 10
 
 ---
 
-无硬盘复制的功能还在试验阶段，可以在配置文件中开启：
-repl-diskless-sync yes
+无硬盘复制的功能还在试验阶段，可以在配置文件中开启：repl-diskless-sync yes
