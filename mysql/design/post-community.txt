@@ -1,0 +1,119 @@
+//one-to-many关系：外键ID关联
+//many-to-many关系：A表 A-B表（中间ID表） B表
+//many-to-many关系本质上是由2个one-to-many关系实现的
+
+//关于中间表字段的设计：
+//采用非业务键做主键
+//联合主键(AID,BID)保证唯一约束
+
+enum role_type {
+  ADMIN
+  DEVELOPER
+  CONTRIBUTOR
+  NORMAL
+}
+
+// 用户
+Table user{
+  id int [PK,increment]
+  username varchar
+  avatar varchar
+  description varchar
+  created_date date
+  password varchar
+  email varchar //唯一
+  wechat_openid varchar//唯一
+  phone_number varchar //唯一
+  role role_type
+  Indexes {
+    email [unique]
+    wechat_openid [unique]
+    phone_number [unique]
+  }
+}
+
+// todo: user RBAC desin
+
+//话题，类似于标签tag
+Table topic{
+  id int [PK,increment]
+  name varchar [unique]//话题名称，唯一
+}
+
+//帖子分类
+//warning: 如果要考虑子分类，增加parent_category
+Table category{
+  id int [PK,increment]
+  name varchar [unique] //分类名称，唯一
+}
+
+//帖子
+//一个帖子可以属于多个分类，多个话题
+Table post{
+  id int [PK,increment] //id
+  title varchar //标题
+  content text //正文
+  create_datetime datetime//发布日期
+  last_edit_datetime  datetime //最后编辑时间
+  user_id id //fk,发布人的用户id
+  Indexes {
+    user_id
+  }
+}
+
+//帖子(many)-分类(many) 中间表
+Table post_category{
+  id int [PK,increment]
+  post_id int //帖子ID
+  category_id int  //分类ID
+  Indexes {
+    (post_id,category_id) [PK]
+  }
+}
+
+//帖子(many)-话题(many) 中间表
+Table post_topic{
+  id int [PK,increment]
+  post_id int //帖子ID
+  topic_id int  //话题ID
+  Indexes {
+    (post_id,topic_id) [PK]
+  }
+}
+
+// 评论时可以对帖子进行评论，也可以对评论进行评论
+// 对评论的评论显示时应折叠在父评论之下
+// user1: commentA
+   // user2: commentA1 //没有@号，表示的是对user1的评论的评论
+   // user3: commentA2 //
+   // user4: @user2 commentA3 //对user2的评论继续评论
+// 评论
+Table comment{
+  id int [PK,increment] //评论id
+  content text //评论内容
+  user_id int //评论发布人id
+  post_id int //该评论对应的帖子id
+  parent_comment_id int //不为null时表示对某个评论进行评论
+  Indexes {
+    user_id
+    post_id
+    parent_comment_id
+  }
+
+}
+
+Ref: "user"."id" < "post"."user_id"
+
+Ref: "user"."id" < "comment"."user_id"
+
+Ref: "post"."id" < "comment"."post_id"
+
+Ref: "comment"."id" < "comment"."parent_comment_id"
+
+Ref: "post"."id" < "post_category"."post_id"
+
+Ref: "post_category"."category_id" > "category"."id"
+
+Ref: "post"."id" < "post_topic"."post_id"
+
+Ref: "post_topic"."topic_id" > "topic"."id"
