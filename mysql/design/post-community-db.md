@@ -20,5 +20,5 @@ RDBMS schema 在线建模 https://dbdiagram.io/
 
 ## 表字段
 
-![](assets/post-community.PNG)
+![](../assets/post-community.PNG)
 
