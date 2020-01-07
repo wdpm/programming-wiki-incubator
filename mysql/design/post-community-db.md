@@ -33,6 +33,7 @@ RDBMS schema 在线建模 https://dbdiagram.io/。API文档： https://www.dbml.
 索引常见的实现是BTree或者HASH。
 
 考虑外键约束：
+
 1.第一种做法：数据库表定义外键约束
 ```
 delete / update: cascade | restrict | set null | set default | no action
