@@ -27,21 +27,19 @@ CREATE TABLE `post` (
   `content` text,
   `create_datetime` datetime,
   `last_edit_datetime` datetime,
-  `user_id` id
+  `user_id` int
 );
 
 CREATE TABLE `post_category` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `post_id` int,
-  `category_id` int,
-  PRIMARY KEY (`post_id`, `category_id`)
+  `category_id` int
 );
 
 CREATE TABLE `post_topic` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `post_id` int,
-  `topic_id` int,
-  PRIMARY KEY (`post_id`, `topic_id`)
+  `topic_id` int
 );
 
 CREATE TABLE `comment` (
@@ -76,8 +74,12 @@ CREATE UNIQUE INDEX `user_index_2` ON `user` (`phone_number`);
 
 CREATE INDEX `post_index_3` ON `post` (`user_id`);
 
-CREATE INDEX `comment_index_4` ON `comment` (`user_id`);
+CREATE INDEX `post_category_index_4` ON `post_category` (`post_id`, `category_id`);
 
-CREATE INDEX `comment_index_5` ON `comment` (`post_id`);
+CREATE INDEX `post_topic_index_5` ON `post_topic` (`post_id`, `topic_id`);
 
-CREATE INDEX `comment_index_6` ON `comment` (`parent_comment_id`);
+CREATE INDEX `comment_index_6` ON `comment` (`user_id`);
+
+CREATE INDEX `comment_index_7` ON `comment` (`post_id`);
+
+CREATE INDEX `comment_index_8` ON `comment` (`parent_comment_id`);

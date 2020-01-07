@@ -55,7 +55,7 @@ Table post{
   content text //正文
   create_datetime datetime//发布日期
   last_edit_datetime  datetime //最后编辑时间
-  user_id id //fk,发布人的用户id
+  user_id int //fk,发布人的用户id
   Indexes {
     user_id
   }
@@ -67,7 +67,7 @@ Table post_category{
   post_id int //帖子ID
   category_id int  //分类ID
   Indexes {
-    (post_id,category_id) [PK]
+    (post_id,category_id)
   }
 }
 
@@ -77,7 +77,7 @@ Table post_topic{
   post_id int //帖子ID
   topic_id int  //话题ID
   Indexes {
-    (post_id,topic_id) [PK]
+    (post_id,topic_id)
   }
 }
 
