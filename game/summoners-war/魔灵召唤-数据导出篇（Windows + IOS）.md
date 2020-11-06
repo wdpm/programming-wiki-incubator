@@ -1,6 +1,6 @@
 # 魔灵召唤-数据导出篇（Windows + IOS）
 
-> Author: 暴走の凌霜降 
+> Author: wdpm
 >
 > Date：2019-10-20
 

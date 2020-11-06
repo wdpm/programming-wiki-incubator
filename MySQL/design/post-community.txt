@@ -32,8 +32,6 @@ Table user{
   }
 }
 
-// todo: user RBAC desin
-
 //话题，类似于标签tag
 Table topic{
   id int [PK,increment]
