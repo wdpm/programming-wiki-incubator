@@ -13,7 +13,7 @@
 
 ## Note
 
-Spring Data JPA 使用以下其中之一的 persisitentProvider:
+Spring Data JPA 使用以下其中之一的 persistentProvider:
 - hibernate
 - eclipseLink
 - generic

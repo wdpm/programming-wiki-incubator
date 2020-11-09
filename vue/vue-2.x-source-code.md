@@ -145,8 +145,199 @@ export default class VNode {
   - vm.$off 关键在于设置对应的event属性为null: vm._events[event] = null
   - vm.$once 关键在于先调用 vm.$off 进行移除，然后手动调用对应fn
   - vm.$emit 关键在于 cbs[i].apply(vm, args)
+ 
+- 与生命周期相关的实例方法
+
+  与生命周期相关的实例方法有 4 个，分别是 vm.$mount、vm.$forceUpdate、vm.$nextTick和 vm.$destroy。 其实
+  vm.$mount、vm.$nextTick和 vm.$destroy是挂载到 Vue.prototype 上实现的。$forceUpdate 通过 vm._watcher.update() 实现。
+  
+- 全局 API 的实现原理
+
+  ```
+  Vue.extend
+  Vue.nextTick => JS事件循环机制
+  Vue.set
+  Vue.delete
+  Vue.directive
+  Vue.filter
+  Vue.component
+  Vue.use
+  Vue.mixin
+  Vue.compile
+  Vue.version
+  ```
+  
+  这些方法是通过直接设置Vue的属性来实现，注意不是prototype。
   
 ### 生命周期
+
+4个阶段
+```
+              初始化            模板编译            挂载                       卸载
+new Vue() beforeCreate created          beforeMount     mounted   beforeDestory  destoryed
+```
+- 初始化阶段，分别初始化实例属性、事件、provide/inject 及状态等，其中状态包含 props、methods、data、computed 与 watch。
+- 已挂载阶段会持续追踪状态的变化，当数据（状态）发生变化时，Watcher 会通知虚拟 DOM 重新渲染视图。
+- 在渲染视图前触发 beforeUpdate 钩子函数，渲染完毕后触发 updated 钩子函数。
+
 ### 指令
+#### 内置指令
+- v-if
+
+  ```html
+  <li v-if="has">if</li>
+  <li v-else>else</li>
+  ```
+  ```js
+  (has)
+    ? _c('li',[_v("if")])
+    : _c('li',[_v("else")])
+  ```
+- v-for
+  ```html
+  <li v-for="(item, index) in list">v-for {{index}}</li>
+  ```
+  ```js
+  _l((list), function (item, index) {
+    return _c('li', [
+      _v("v-for " + _s(index))
+    ])
+  })
+  ```
+- v-on
+
+  本质是 node.addEventListener 或者 (_target || target).removeEventListener
+
+#### 自定义指令
+更新节点时，除了更新节点的内容外，还会触发update 钩子函数。
+因为标签上通常会绑定一些指令、事件或属性，这些内容也需要在更新节点时同步被更新。
+因此，事件、指令、属性等相关处理逻辑只需要监听钩子函数，在钩子函数触发时执行相关处理逻辑即可实现功能。
+
+指令的处理逻辑分别监听了 create、update 与 destroy。
+
+#### 虚拟DOM钩子函数
+虚拟 DOM 在渲染时会触发的所有钩子函数：
+init、create、activate、insert、prepatch、update、postpatch、destroy、remove
+
 ### 过滤器
+例子：
+```html
+{{ message | capitalize | suffix }}
+```
+代码：
+```vue
+filters: {
+  capitalize: function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  },
+  
+  suffix: function (value, symbol = '~') {
+    if (!value) return ''
+    return value + symbol
+  }
+}
+```
+编译结果：
+```js
+_s(_f("suffix")(_f("capitalize")(message)))
+```
+
+过滤器常用于格式化文本。
+
+过滤器原理：在编译阶段将过滤器编译成函数调用，串联的过滤器编译后是一个嵌套的函数调用，
+前一个过滤器函数的执行结果是后一个过滤器函数的参数。
+
+编译后的 _f 函数是 resolveFilter 函数的别名，resolveFilter 作用是找到对应的过滤器。
+
 ### 最佳实践总结
+####最佳实践
+- 为列表渲染设置属性 key（主键）；=> 加速节点查询性能
+- 在 v-if/v-if-else/v-else 中使用 key；=> 避免意料之外的副作用
+- 如何解决路由切换组件不变的问题；
+  - 路由导航守卫 beforeRouteUpdate, 在此定义每次切换路由时需要执行的逻辑。（推荐）
+  - 在组件watch中观察$route 对象的变化。（带来依赖追踪的内存开销）
+  - 为 router-view 组件添加属性 key= $route.fullPath 强制刷新。（非常浪费性能但是很有效）
+- 如何为所有路由统一添加 query；
+  - 使用全局守卫 beforeEach。（每次切换路由会切换两次，不是最佳做法）
+  - 函数劫持。拦截 router.history.transitionTo 方法，在 vue-router 内部在切换路由之前将参数添加到 query 中。（危险）
+- 区分 Vuex 与 props 的使用边界
+  - 业务组件，使用 Vuex 维护状态。适用于父子组件间通信以及兄弟组件间的通信。
+  - 通用组件，使用 props 以及事件进行父子组件间的通信。
+- 避免 v-if 和 v-for 一起使用
+  - 考虑使用计算属性，例如 v-for="user in activeUsers" 重构
+- 为组件样式设置作用域
+  - CSS规则是全局的，组件样式之间可能会污染。
+  - 可通过 scoped 特性或 CSS Modules（基于 class 的类似 BEM 的策略）来设置组件样式作用域
+  ```
+  <template>
+    <button :class="[$style.button, $style.buttonClose]">X</button>
+  </template>
+
+  <!-- 使用 CSS Modules-->
+  <style module>
+    ...
+  ```
+- 避免在 scoped 中使用元素选择器
+  - 为了给样式设置作用域，Vue.js 会为元素添加一个独一无二的特性，例如 data-v-f3f3eg9
+- 避免隐性的父子组件通信
+  - 理想的 Vue.js 应用是“prop 向下传递，事件向上传递”，这样代码容易维护。慎用this.$parent。
+
+#### 风格规范
+- 单文件组件如何命名；
+  - 文件名：MyComponent.vue 或者 my-component.vue
+  - 基础组件名：BaseXX.vue, AppXXX.vue, VButton.vue
+  - 单例组件名：TheHeading.vue
+  - 紧密耦合的组件名：TodoList.vue，TodoListItem.vue，TodoListItemButton.vue
+  - 组件名中的单词顺序：名词+动词。例如 SearchButtonClear.vue，SearchButtonRun.vue
+  - 组件名为多个单词：todo-item，避免使用单个词语todo
+  - 模板中的组件名大小写：
+    ```
+    <!-- 在单文件组件和字符串模板中 -->
+    <MyComponent/>
+    <!-- 在 DOM 模板中 -->
+    <my-component></my-component>
+    ```
+- 自闭合组件；
+  ```
+  <!-- 在单文件组件、字符串模板和 JSX 中 -->
+  <MyComponent/>
+  
+  <!-- 在 DOM 模板中 -->
+  <my-component></my-component>
+  ```
+- prop 名的大小写；
+  ```
+  props: {
+    greetingText: String
+  }
+  <WelcomeMessage greeting-text="hi"/>
+  ```
+- 多个特性的元素拆行格式化；
+  ```
+  <MyComponent
+  foo="a"
+  bar="b"
+  baz="c"
+  />
+  ```
+- 模板中只使用简单的表达式，复杂表达式逻辑重构到计算属性；
+- 简单的计算属性，复杂计算属性可以拆成多个简单计算属性的组合；
+  ```
+  computed: {
+    basePrice: function () {
+      return this.manufactureCost / (1 - this.profitMargin)
+    },
+  
+    discount: function () {
+      return this.basePrice * (this.discountPercent || 0)
+    },
+  
+    finalPrice: function () {
+      return this.basePrice - this.discount
+    }
+  }
+  ```
+- 指令缩写（:表示 v-bind:、@表示 v-on:）要保持统一；
+- 良好的代码顺序。
