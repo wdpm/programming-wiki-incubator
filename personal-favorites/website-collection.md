@@ -12,6 +12,8 @@
 - CDN
   
   - BootCDN
+  - Netlify
+  - CloudFare
   
 - JS 实用库查询
   

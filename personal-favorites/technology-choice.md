@@ -49,6 +49,7 @@
   - 其他
     - clipboard.js 复制粘贴
     - https://github.com/hakimel/reveal.js 在线幻灯片
+    - Prettier 格式化代码文本
 
 - 数据库建模
 
@@ -78,6 +79,11 @@
 
   - Jenkins
 
+- 持续集成
+  
+  - TravisCI
+  - CircleCI
+  
 - 消息队列
 
   - Kafka
