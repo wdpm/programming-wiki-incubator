@@ -14,22 +14,22 @@
 3. 分别按不同语言进行筛选，得出结果。
 
 > PHP
-- Flarum https://github.com/flarum/flarum 10.9k
+- Flarum | https://github.com/flarum/flarum 10.9k
 
 > JavaScript
-- NodeBB https://github.com/NodeBB/NodeBB 11.4k
+- NodeBB | https://github.com/NodeBB/NodeBB 11.4k
 
 > Java
-- https://github.com/tomoya92/pybbs 1.1k 基于symphony
-- https://github.com/88250/symphony 865 
-- https://github.com/fanchaoo/forum 3xx 雏形练手项目
+- symphony | https://github.com/88250/symphony 865 
+- pybbs | https://github.com/tomoya92/pybbs 1.1k 基于symphony
+- forum | https://github.com/fanchaoo/forum 3xx 起步练手项目
 
 > Ruby
-- discourse https://github.com/discourse/discourse 31.8k
+- discourse | https://github.com/discourse/discourse 31.8k
 
 > Python
-- https://github.com/rafalp/Misago 2k
-- https://github.com/nitely/Spirit 1k
+- Misago | https://github.com/rafalp/Misago 2k
+- Spirit | https://github.com/nitely/Spirit 1k
 
 ## 论坛框架的共性
 
