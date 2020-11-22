@@ -38,6 +38,7 @@
     - echart.js
     - D3.js
     - [Historical-ranking-data-visualization-based-on-d3.js](https://github.com/Jannchie/Historical-ranking-data-visualization-based-on-d3.js)
+    - wordcloud | https://www.jasondavies.com/wordcloud/
   - Rich text editor
     - Alex-D/Trumbowyg
     - summernote/summernote
@@ -50,7 +51,8 @@
   - 其他
     - clipboard.js 复制粘贴
     - https://github.com/hakimel/reveal.js 在线幻灯片
-    - Prettier 格式化代码文本
+    - Prettier 统一代码格式化
+    - editorconfig | https://editorconfig.org/ 统一代码格式化
 
 - 数据库建模
 
@@ -182,6 +184,7 @@
 - 虚拟机
   
   - VMWare Workstation
+  - Virtual Box
   
 - VPS
 
@@ -199,16 +202,15 @@
 
 - 图片处理
 
-  -  压缩  [TinyPNG](https://tinypng.com/) 
-    
+  -  压缩  [TinyPNG](https://tinypng.com/)   
   - 无损放大 [bigjpg.com](https://bigjpg.com/)
-    
   - 图片裁剪  [iloveimg.com](https://www.iloveimg.com/)
 
 - 在线演示
 
   - slides.com  在线幻灯片
   - [carbon.now.sh](https://carbon.now.sh/) 代码高亮
+  - https://asciinema.org/ Record and share your terminal sessions, the right way
 
 - 数据库管理
   - Syslog

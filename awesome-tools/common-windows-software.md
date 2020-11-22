@@ -54,6 +54,8 @@
 | \[200628\] Visual Novel Reader V3 | 翻译       | GalGame生肉翻译               |
 | Intellij IDEA                     | 开发IDE    | Java语言集成开发环境          |
 | PyCharm                           | 开发IDE    | Python语言集成开发环境        |
+| OBS Studio                        | 视频相关    | 录像和直播推流        |
+| LightBulb                     | 健康    | PC屏幕色调调整        |
 
 
 
