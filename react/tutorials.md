@@ -1,0 +1,2 @@
+- https://github.com/asbjornenge/thinking-in-react
+- https://github.com/tako-black/learnyoureact
