@@ -1,2 +1,2 @@
-# notes collection
-My notes collection.
+# Tech notes & summary & guides
+Tech notes.
