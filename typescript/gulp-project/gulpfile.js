@@ -12,6 +12,7 @@ gulp.task("copy-html", function () {
     return gulp.src(paths.pages).pipe(gulp.dest("dist"));
 });
 
+// refer docs: https://www.typescriptlang.org/docs/handbook/gulp.html#watchify-babel-and-uglify
 gulp.task(
     "default",
     gulp.series(gulp.parallel("copy-html"), function () {
@@ -30,7 +31,7 @@ gulp.task(
             .bundle()
             .pipe(source("bundle.js"))
             .pipe(buffer())
-            .pipe(sourcemaps.init({ loadMaps: true }))
+            .pipe(sourcemaps.init({loadMaps: true}))
             .pipe(sourcemaps.write("./"))
             .pipe(gulp.dest("dist"));
     })
