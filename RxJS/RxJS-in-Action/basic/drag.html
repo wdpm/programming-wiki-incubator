@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listing 5.7</title>
+    <script src="//unpkg.com/@reactivex/rxjs@5.5.11/dist/global/Rx.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
+</head>
+<body>
+<div id="dragTarget"
+     style="background-color: #000000; border: 1px solid #666666; color: #ffffff; padding: 10px; position: absolute; font-family: sans-serif; cursor: move">
+    Drag Me!
+</div>
+<script>
+    const panel = document.querySelector('#dragTarget');
+    const mouseDown$ = Rx.Observable.fromEvent(panel, 'mousedown');
+    const mouseUp$ = Rx.Observable.fromEvent(document, 'mouseup');
+    const mouseMove$ = Rx.Observable.fromEvent(document, 'mousemove');
+
+    //  Listing 5.8
+    const drag$ = mouseDown$.concatMap(() => mouseMove$.takeUntil(mouseUp$));
+
+    drag$.forEach(event => {
+        panel.style.left = event.clientX + 'px';
+        panel.style.top = event.clientY + 'px';
+    });
+</script>
+</body>
+</html>
