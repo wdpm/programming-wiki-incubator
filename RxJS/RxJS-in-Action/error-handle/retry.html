@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listing 5.7</title>
+    <script src="//unpkg.com/@reactivex/rxjs@5.5.11/dist/global/Rx.js"></script>
+</head>
+<body>
+<script>
+    Rx.Observable.of(2, 4, 5, 8, 10)
+        .map(num => {
+            if (num % 2 !== 0) {
+                throw new Error(`Unexpected odd number: ${num}`);
+            }
+            return num;
+        })
+        .retry(3)
+        .subscribe(
+            num => console.log(num),
+            err => console.log(err.message));
+</script>
+</body>
+</html>

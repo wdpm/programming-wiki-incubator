@@ -103,3 +103,43 @@ do more better:
                         Rx.Observable.bindCallback
 function(x,callback) --------------------------------> g(x) : Rx.Observable.of(data)
 ```
+
+### fork join
+```js
+Rx.Observable.forkJoin(
+  Rx.Observable.of(42),
+  Rx.Observable.interval(1000).take(5))
+.subscribe(console.log); //-> [42,4]
+```
+It will hold on to 42 for about 5 seconds and then emit the last value seen from all streams.
+
+并行执行多任务，收集结果时等待所有任务都完成。
+
+> compared to combineLatest()
+```js
+Rx.Observable.combineLatest(
+  Rx.Observable.of(42),
+  Rx.Observable.interval(1000).take(5))
+.subscribe(console.log);
+//-> [42, 0]
+     [42, 1]
+     [42, 2]
+     [42, 3]
+     [42, 4]
+```
+
+## Building a reactive database
+
+### Writing bulk data
+```js
+bufferCount(20)
+```
+
+## 总结
+- You joined parallel URL shortening services with combineLatest() and
+spawned multiple observable sequences with forkJoin().
+- You used buffering to improve the performance database queries.
+- You used observables to control the lifespans of non-observables like user
+sessions.
+- You saw how reactive databases allow you to orchestrate business flows involving
+permanent storage.

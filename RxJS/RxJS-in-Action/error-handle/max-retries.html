@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listing 5.7</title>
+    <script src="//unpkg.com/@reactivex/rxjs@5.5.11/dist/global/Rx.js"></script>
+</head>
+<body>
+<script>
+    const maxRetries = 3;
+    Rx.Observable.of(2, 4, 5, 8, 10)
+        .map(num => {
+            if (num % 2 !== 0) {
+                throw new Error(`Unexpected odd number: ${num}`);
+            }
+            return num;
+        })
+        .retryWhen(errors$ =>
+            errors$.scan((errorCount, err) => {
+                if (errorCount >= maxRetries) {
+                    throw err;
+                }
+                return errorCount + 1;
+            }, 0)
+        )
+        .subscribe(
+            num => console.log(num),
+            err => console.log(err.message));
+</script>
+</body>
+</html>

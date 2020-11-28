@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listing 5.7</title>
+    <script src="//unpkg.com/@reactivex/rxjs@5.5.11/dist/global/Rx.js"></script>
+    <script src="//cdn.bootcdn.net/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
+</head>
+<body>
+<script>
+    const interval$ = Rx.Observable.interval(500);
+
+    const isEven = x => x % 2 === 0;
+
+    interval$
+        .filter(isEven)
+        .take(5)
+        .subscribe(x => { //#A
+            console.log(`Even number found: ${x}`);
+        });
+
+    interval$
+        .filter(R.compose(R.not, isEven))
+        .take(5)
+        .subscribe(x => { //#A
+            console.log(`Odd number found: ${x}`);
+        });
+</script>
+</body>
+</html>
