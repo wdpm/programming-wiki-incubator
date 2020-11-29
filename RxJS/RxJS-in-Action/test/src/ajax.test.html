@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listing 9.2</title>
+    <script src="https://unpkg.com/@reactivex/rxjs@5.5.11/dist/global/Rx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.0.2/mocha.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/expect.js/0.2.0/expect.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/mocha/1.18.2/mocha.css">
+</head>
+<body>
+<div id="mocha"></div>
+<script>
+    mocha.setup({ui: 'bdd', checkLeaks: true});
+
+    const expect = chai.expect;
+
+    // use Allow CORS: Access-Control-Allow-Origin chrome extension
+    console.log('Ensure CORS is enabled in your browser');
+
+    describe('Ajax test', function () {
+        it('Should fetch Wikipedia pages for search term reactive programming',
+            function (done) {
+                this.timeout(20000);
+                const searchTerm = 'reactive+programming';
+                const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${searchTerm}`;
+
+                const success = results => {
+                    expect(results)
+                        .to.have.property('query')
+                        .with.property('search')
+                        .with.length(10);
+                    done();
+                };
+
+                const error = (err) => {
+                    done(err);
+                };
+
+                ajax(url, success, error);
+            });
+
+        it('Should fail for invalid URL', function (done) {
+            this.timeout(20000);
+
+            const url = 'http://localhost:9999';
+
+            const success = data => {
+                done(new Error('Should not have been succesful!'));
+            };
+
+            const error = (err) => {
+                expect(err).to.have.property('message').to.equal('IO Error');
+                done();
+            };
+
+            ajax(url, success, error);
+        });
+    });
+
+    const ajax = function (url, success, error) {
+        let req = new XMLHttpRequest();
+        req.open('GET', url);
+        req.onload = function () {
+            if (req.status === 200) {
+                let data = JSON.parse(req.responseText);
+                success(data);
+            } else {
+                req.onerror();
+            }
+        }
+        req.onerror = function () {
+            if (error) {
+                error(new Error('IO Error'));
+            }
+        };
+        req.send();
+    };
+
+    mocha.run();
+</script>
+</body>
+</html>
