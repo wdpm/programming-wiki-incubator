@@ -34,3 +34,5 @@
   })();
   ```
 - ~~Request~~ it is deprecated
+- got 
+  > https://github.com/sindresorhus/got
