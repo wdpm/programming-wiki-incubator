@@ -192,9 +192,9 @@ HTTP 请求方法
 - [x] Progress Web Apps (PWA)
 - [x] Responsive Web Design
 - [x] Mobile App Development
-  - [] React Native
-  - [] NativeScript
-  - [] Ionic
+  - [ ] React Native
+  - [ ] NativeScript
+  - [ ] Ionic
 - [x] Desktop App Development(Electron)
-- [] GraphQL
+- [ ] GraphQL
 - [x] TypeScript
