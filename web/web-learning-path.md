@@ -86,6 +86,10 @@ inline styles or CSS in JS(√)
 CSS module(√)
 - [x] 生成唯一ID后缀，来标记特定的样式。
 
+## CSS 动画
+- [x] 缓动函数速查表 | https://easings.net/cn#
+- [x] 贝塞尔曲线可视化参数 | https://cubic-bezier.com/
+
 ## JavaScript
 原始数据
 - [x] https://developer.mozilla.org/en-US/docs/Glossary/Primitive
@@ -147,6 +151,10 @@ async和await:让异步编程更简单
    > https://github.com/luobotang/simply-lazy/blob/4e5bac33886b85ec18955a755ae795a7a03148e8/index.js#L20
 - [x] 数组变异: 保存原型链方法引用，重新定义方法，覆盖原型链原方法。
 - [x] 函数变异：使用变量保存原函数引用，重新定义原函数，在新定义的函数中调用原函数。
+- [x] 虚拟列表：https://github.com/dwqs/blog/issues/70
+  - [ ] react-virtualized 组件的虚拟列表实现:https://github.com/dwqs/blog/issues/72
+  - [ ] react-virtualized 组件的虚拟列表优化分析:https://github.com/dwqs/blog/issues/73
+- [x] 图片和视频的懒加载: https://github.com/dwqs/blog/issues/74
 
 Console（用于调试）
 - [x] https://developer.mozilla.org/zh-TW/docs/Web/API/Console
