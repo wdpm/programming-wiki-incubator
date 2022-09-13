@@ -1,0 +1,4 @@
+1. isort
+2. black
+3. flake8
+4. pytest
