@@ -2,7 +2,7 @@
 
 ## 编程相关
 
-> https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab
+> [makrdown detail and summary](https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab)
 
 - 前端 CSS 框架
 
