@@ -1,3 +1,4 @@
-# Tech notes & summary & guides
-Tech notes.
-> WIP: remove all useless and deprecated. refactor by obsidian.
+# programming wiki
+> This repo is in the incubator stage.
+
+Aim to extract some common experiences about programming.
