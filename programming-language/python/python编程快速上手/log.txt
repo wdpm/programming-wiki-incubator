@@ -1,0 +1,9 @@
+2022-10-14 18:39:00,449 - WARNING- warning msg.
+2022-10-14 18:39:00,449 - ERROR- error msg.
+2022-10-14 18:39:00,449 - CRITICAL- critical msg.
+2022-10-14 18:39:06,930 - WARNING- warning msg.
+2022-10-14 18:39:06,930 - ERROR- error msg.
+2022-10-14 18:39:06,930 - CRITICAL- critical msg.
+2022-10-14 18:39:28,164 - WARNING- warning msg.
+2022-10-14 18:39:28,165 - ERROR- error msg.
+2022-10-14 18:39:28,165 - CRITICAL- critical msg.
