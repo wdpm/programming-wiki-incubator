@@ -1,0 +1,31 @@
+{
+  "name": "NeatReader",
+  "version": "8.0.8",
+  "author": "GauzyTech .Inc",
+  "description": "Great choice for reading eBook",
+  "license": "All Rights Reserved",
+  "main": "electron-main.js",
+  "dependencies": {
+    "blob-to-buffer": "1.2.6",
+    "check-disk-space": "2.1.0",
+    "co": "4.6.0",
+    "detect-port": "1.3.0",
+    "electron-log": "3.0.9",
+    "filesize": "6.0.1",
+    "font-list": "1.1.0",
+    "fs-extra": "4.0.3",
+    "get-folder-size": "^2.0.1",
+    "jquery": "^3.2.1",
+    "koa": "2.11.0",
+    "koa-static": "5.0.0",
+    "md5": "2.2.1",
+    "md5-file": "4.0.0",
+    "mime-types": "2.1.17",
+    "node-downloader-helper": "1.0.11",
+    "node-stream-zip": "1.8.2",
+    "time-zone": "1.0.0",
+    "unzipper": "0.10.5",
+    "winston": "3.1.0",
+    "xml2js": "0.4.22"
+  }
+}
