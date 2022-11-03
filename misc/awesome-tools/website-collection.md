@@ -1,5 +1,10 @@
 # 网站导航
 
+- 趋势
+  - [TIOBE](https://www.tiobe.com/tiobe-index/) 
+  - [Web Framework Benchmarks](https://www.techempower.com/benchmarks/#section=test&runid=9d5522a6-2917-467a-9d7a-8c0f6a8ed790)
+  - [Libraries.io](https://libraries.io/) - 开源package的监控者
+  
 - 论文
   - web science
   - Google 学术
@@ -20,9 +25,10 @@
   - Netlify
   
   
-- 开源项目的质量元数据徽章
+- 开源项目数据徽章/数据统计
   - Fast badge generating service https://badgen.net/
   - https://shields.io/
+  - wakatime
 
 - 图标
 
@@ -66,3 +72,6 @@
   - Udacity 
   - Coursera 
   - edX 
+
+- 后端管理系统-前端界面
+  - https://github.com/xuejianxianzun/vue-shop 一个vue2+element-ui写的简易后台管理系统的前端部分。

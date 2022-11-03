@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>如何用30行代码实现vue</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<div id="app">
+    <p>{{msg}}</p>
+    <p>{{msg}}</p>
+    <p>{{msg}}</p>
+</div>
+<script>
+    // refer: https://github.com/social-uni/30line-mini-vue/blob/master/30lineVue.html
+
+    //实例化vue
+    const app = new vue('app', {msg: 'some things.'})
+
+    //id: app
+    //initData: {msg: "hello"}
+    function vue(id, initData) {
+        //vue中一般都包含el属性，代表vue实例对应的dom元素
+        const vueDom = this.el = document.getElementById(id) //获取 #app dom <div id="app">...</div>
+        //vue的data属性，尾部为data赋值
+        const data = this.data = {}
+
+        //定义常量，用来标示需要数据绑定的dom元素使用
+        const bindingMark = 'bind-dom-flag'
+        //定义临时变量来存储模板中使用了data中的值的列表
+        const dataAttrs = {}
+
+        //替换#app dom中的模板内容
+        vueDom.innerHTML = vueDom.innerHTML.replace(/{{(.*)}}/g, (match, dataAttrName) => {
+            //用来记录模板中使用了data中的哪些值，本案例模板中只使用data中的msg
+            dataAttrs[dataAttrName] = {} // {msg: {}}
+            //给使用了模板的dom打上标志，bindingMark = data中的值msg，以便将这些dom放进 dataAttrs 中
+            // <p>{{msg}}</p>  => <p><span  bind-dom-flag="msg"></span></p>
+            return '<span ' + bindingMark + '="' + dataAttrName + '"></span>'
+        })
+
+        //遍历dom中使用的data属性
+        for (const dataAttrName in dataAttrs) {
+            //获取data对应的dom列表
+            const doms = vueDom.querySelectorAll('[' + bindingMark + '="' + dataAttrName + '"]')
+            //移除dom上的标志，标志用来获取dom列表，获取后就可以将标志删除了
+            doms.forEach((e) => {
+                e.removeAttribute(bindingMark)
+            })
+            //获取定义临时变量中的 dataAttr 对象，defineProperty实现数据绑定需要借助这个对象来实现
+            const dataAttrObj = dataAttrs[dataAttrName]
+            //劫持data属性的set，get方法
+            Object.defineProperty(data, dataAttrName, {
+                get() {
+                    //返回临时变量dataAttr中的attr
+                    return dataAttrObj.val
+                },
+                set(newVal) {
+                    //更新data中此属性对应的所有dom，更新所有模板中使用了msg的dom
+                    doms.forEach((dom) => {
+                        dataAttrObj.val = dom.textContent = newVal
+                    })
+                }
+            })
+        }
+
+        //将外部传入的初始化值赋值给vue实例的data属性
+        for (const dataAttrName in initData) {
+            //赋值，触发set，更新dom
+            this.data[dataAttrName] = initData[dataAttrName]
+        }
+    }
+</script>
+</body>
+</html>
