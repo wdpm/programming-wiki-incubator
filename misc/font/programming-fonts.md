@@ -33,6 +33,16 @@ Roboto Mono - Regular 优秀
 
 从上面个人的审美可以得知：
 
-- Roboto Mono - Regular 首选
-- DejaVu Sans Mono - Book 
+- Roboto Mono - Regular (15px/1.0): 首选
+- DejaVu Sans Mono (15px/1.0): 首选
 - Consolas - Regular 
+
+## 代码展示
+
+- 静态展示
+
+https://carbon.now.sh/
+
+- 动态展示
+
+> TODO
