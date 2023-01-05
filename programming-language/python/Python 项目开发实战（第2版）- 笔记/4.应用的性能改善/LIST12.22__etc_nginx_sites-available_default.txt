@@ -1,0 +1,16 @@
+# 名为guestbook的upstream（上游服务器）的设置
+upstream guestbook {
+    server 127.0.0.1:8000;
+}
+
+server {
+    listen   80;  # 使用端口80
+    server_name  localhost;  # 主机名为localhost
+    # 访问日志的文件路径
+    access_log  /var/log/nginx/localhost.access.log;
+
+    location / {  # 域名后的路径为/时
+        # 反向代理到名为guestbook的upstream
+        proxy_pass http://guestbook;
+    }
+}

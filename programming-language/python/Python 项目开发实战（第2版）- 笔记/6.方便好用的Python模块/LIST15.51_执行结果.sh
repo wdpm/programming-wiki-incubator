@@ -1,0 +1,15 @@
+$ python requests_post.py
+{u'args': {},
+ u'data': u'',
+ u'files': {},
+ u'form': {u'foo': u'bar'},
+ u'headers': {u'Accept': u'*/*',
+              u'Accept-Encoding': u'gzip, deflate',
+              u'Connection': u'keep-alive',
+              u'Content-Length': u'7',
+              u'Content-Type': u'application/x-www-form-urlencoded',
+              u'Host': u'127.0.0.1:5000',
+              u'User-Agent': u'python-requests/2.5.0 CPython/2.7.8 Linux/3.13.0-35-generic'},
+ u'json': None,
+ u'origin': u'127.0.0.1',
+ u'url': u'http://127.0.0.1:5000/post'}

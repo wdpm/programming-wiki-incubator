@@ -1,0 +1,9 @@
+>>> from bpmappers import Mapper, RawField, ListDelegateField
+>>> class SpamMapper(Mapper):
+...     spam = RawField('foo')
+...
+>>> class ListSpamMapper(Mapper):
+...     spam_list = ListDelegateField(SpamMapper)
+...
+>>> ListSpamMapper({'spam_list': [{'foo': 123}, {'foo': 456}]}).as_dict()
+{'spam_list': [{'spam': 123}, {'spam': 456}]}

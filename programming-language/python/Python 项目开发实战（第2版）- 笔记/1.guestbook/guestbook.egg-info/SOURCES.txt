@@ -1,0 +1,13 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+setup.py
+guestbook/__init__.py
+guestbook.egg-info/PKG-INFO
+guestbook.egg-info/SOURCES.txt
+guestbook.egg-info/dependency_links.txt
+guestbook.egg-info/entry_points.txt
+guestbook.egg-info/requires.txt
+guestbook.egg-info/top_level.txt
+guestbook/static/main.css
+guestbook/templates/index.html

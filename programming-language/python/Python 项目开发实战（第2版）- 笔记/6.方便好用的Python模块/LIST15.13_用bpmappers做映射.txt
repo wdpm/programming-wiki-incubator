@@ -1,0 +1,8 @@
+>>> from bpmappers import Mapper, RawField
+>>> class SpamMapper(Mapper):
+...     spam = RawField('foo')
+...     egg = RawField('bar')
+...
+>>>
+>>> SpamMapper(dict(foo=123, bar='abc')).as_dict()
+{'egg': 'abc', 'spam': 123}

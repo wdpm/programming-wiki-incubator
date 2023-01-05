@@ -1,0 +1,2 @@
+recursive-include guestbook *.html *.css
+include LICENSE.txt

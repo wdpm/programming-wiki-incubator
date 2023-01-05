@@ -1,0 +1,6 @@
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   1.1      0       5
+Processing:    19  466  82.5    489     497
+Waiting:       19  466  82.5    489     497
+Total:         24  467  81.5    489     497

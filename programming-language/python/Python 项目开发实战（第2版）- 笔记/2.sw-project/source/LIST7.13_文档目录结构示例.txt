@@ -1,0 +1,29 @@
+文档/
+   +-- index.txt
+   +-- 项目管理/
+   |    +-- index.txt
+   |    +-- project-goal.txt
+   |    +-- member-and-structure.txt
+   |    +-- phase1-schedule.txt
+   +-- 设计/
+   |    +-- index.txt
+   |    +-- middleware-versions.txt
+   |    +-- framework-comparision.txt
+   |    +-- server-structures.txt
+   |    +-- components-and-interfaces.txt
+   +-- 开发/
+   |    +-- index.txt
+   |    +-- repository.txt
+   |    +-- coding-rule.txt
+   |    +-- develop-environment.txt
+   |    +-- release-packaging.txt
+   +-- 参考手册/
+   |    +-- index.txt
+   |    +-- install-and-setup.txt
+   |    +-- class-and-functions.txt
+   |    +-- api-references.txt
+   +-- 会议记录/
+        +-- index.txt
+        +-- 20150201-meeting.txt
+        +-- 20150208-meeting.txt
+        +-- 20150215-meeting.txt

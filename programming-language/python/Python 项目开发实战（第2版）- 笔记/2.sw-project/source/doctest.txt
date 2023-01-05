@@ -1,0 +1,28 @@
+> python -m doctest -v path.py
+Trying:
+    commonprefix(['/usr/bin/python', '/usr/local/bin/python'])
+Expecting:
+    '/usr/'
+ok
+Trying:
+    commonprefix(['/usr/bin/python'])
+Expecting:
+    '/usr/bin/python'
+ok
+Trying:
+    commonprefix([])
+Expecting:
+    ''
+ok
+Trying:
+    commonprefix(['/usr/local/bin/python', '/usr/local/bin/pylint'])
+Expecting:
+    '/usr/local/bin/py'
+ok
+1 items had no tests:
+    path
+1 items passed all tests:
+   4 tests in path.commonprefix
+4 tests in 2 items.
+4 passed and 0 failed.
+Test passed.

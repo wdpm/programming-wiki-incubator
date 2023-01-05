@@ -1,0 +1,18 @@
+[
+  {
+    "model": "polls.poll",
+    "pk": 1,
+    "fields": {
+      "question_text": "Why not use the fixture",
+      "pub_date": "2011-11-01 00:00:00Z"
+    }
+  },
+  {
+    "model": "polls.poll",
+    "pk": 2,
+    "fields": {
+      "question_text": "Why not use the fixture2",
+      "pub_date": "2011-11-02 00:00:00Z"
+    }
+  }
+]

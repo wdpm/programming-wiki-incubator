@@ -1,0 +1,10 @@
+● django-extensions
+管理命令、数据库字段等的结合体，能便捷地为Django框架做功能扩展。
+● sorl-thumbnail
+Django应用，通过专用模板标签和管理命令简化缩略图的生成与显示。
+● bpmappers
+简化模块映射的Python库。第15章将对其作详细介绍
+
+A https://github.com/django-extensions/django-extensions
+B https://github.com/mariocesar/sorl-thumbnail
+C https://bitbucket.org/tokibito/python-bpmappers

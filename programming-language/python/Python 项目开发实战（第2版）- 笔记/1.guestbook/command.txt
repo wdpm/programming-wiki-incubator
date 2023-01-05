@@ -1,0 +1,16 @@
+python setup.py sdist
+
+guestbook
+
+pip install -e .
+
+venv\Scripts\activate.bat
+
+python setup.py bdist_wheel
+
+```
+$ pip install docutils
+$ python setup.py check -r -s
+running check
+```
+
