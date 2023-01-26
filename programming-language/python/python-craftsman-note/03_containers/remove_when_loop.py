@@ -10,6 +10,7 @@ def remove_even(numbers):
 
 
 numbers = [1, 2, 7, 4, 8, 11]
-remove_even(numbers)
+# remove_even(numbers)
+numbers = [i for i in numbers if i % 2 != 0]
 print(numbers)
 # OUTPUT: [1, 7, 8, 11]

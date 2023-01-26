@@ -10,6 +10,6 @@ print('Welcome %s, your score is %d' % (username, score))
 
 
 print('{:>20}'.format(username))
-print(f'{username:>20}')
+print(f'{username:<20}')
 
 print('{0}: name={0} score={1}'.format(username, score))
