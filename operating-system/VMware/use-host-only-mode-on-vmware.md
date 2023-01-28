@@ -12,7 +12,8 @@
    ![](asset/vmware-VMnet1-set-subnet-ip.png)
 
 3. VMware 实例重新设置 IPv4 地址和网关。
-
+   
+   名称格式：/etc/sysconfig/network-scripts/ifcfg-Iface_NAME
    ```bash
    nano /etc/sysconfig/network-scripts/ifcfg-ens33
    ```
