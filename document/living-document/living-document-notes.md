@@ -1,5 +1,5 @@
 # 活文档设计
-本文是《活文档：与代码共同演进》的读书摘录。![image](assets/image.png)
+本文是《活文档：与代码共同演进》的读书摘录。
 
 ![image 0](assets/image-0.png)
 ![image 1](assets/image-1.png)

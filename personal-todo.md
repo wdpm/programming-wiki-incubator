@@ -1,4 +1,9 @@
-# 图灵图书(未读)
+# TODO
+
+- https://github.com/rougier/numpy-100  => No.52
+- http://learnwebgl.brown37.net/ => 5.3
+
+## 图灵图书(未读)
 - 《机器学习实战》
 - 《Unity游戏设计与实现：南梦宫一线程序》
 - 《通关！游戏设计之道（第2版）》
