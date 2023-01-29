@@ -15,9 +15,11 @@ from unittest import mock
 #     assert isinstance(result, Counter), "groups should be Counter instance"
 
 
+# hn_site_grouper.requests.get 指定是mock requests这个库的get方法
 @mock.patch('hn_site_grouper.requests.get')
 def test_grouper_returning_valid_type(mocked_get):
     """测试 get_groups 是否返回了正确类型"""
+    # 这里使用本地内容来替换requests的实际get请求。
     with open('static_hn.html', 'r',encoding='utf-8') as fp:
         mocked_get.return_value.text = fp.read()
 

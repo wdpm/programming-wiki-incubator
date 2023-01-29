@@ -1,3 +1,4 @@
+# 它“描述”了 Python 获取与设置一个类（实例）成员的整个过程。
 class InfoDescriptor:
     """打印帮助信息的描述符"""
 

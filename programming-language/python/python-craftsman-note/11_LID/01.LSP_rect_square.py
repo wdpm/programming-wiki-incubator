@@ -36,7 +36,7 @@ class Square(Rectangle):
     :param length: 边长
     """
 
-    def __init__(self, length: int):
+    def __init__(self, length: int, width: int, height: int):
         self._width = length
         self._height = length
 

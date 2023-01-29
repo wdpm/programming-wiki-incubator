@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import sys
-from typing import Dict
 
 
 class InfoDumperMixin:

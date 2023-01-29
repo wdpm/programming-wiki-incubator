@@ -60,6 +60,7 @@ class EsWriter:
 class FancyLogger:
     """日志类：支持往文件、Redis、ES 等服务输出日志"""
 
+    # dependency inject
     def __init__(self, output_writer=None):
         self._writer = output_writer or FileWriter()
         ...

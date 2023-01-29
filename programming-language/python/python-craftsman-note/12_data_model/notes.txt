@@ -1,0 +1,6 @@
+00 @total_ordering的使用
+01 __str__ __repr__的使用
+02 __get___ __set___ __set_name__的使用
+04 __del__在GC时调用，而不是del 语句执行时调用
+05 @dataclass(frozen=True) 的使用
+06 __len__ __getitem__ 获取长度和items的自定义

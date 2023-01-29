@@ -6,6 +6,3 @@
 - programming-language/python/python-craftsman-note/07_function/first_album.py
 - programming-language/python/python-craftsman-note/07_function/first_album_new.py
 
-## progress
-09
-

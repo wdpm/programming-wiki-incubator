@@ -1,10 +1,10 @@
-> python 单例模式的作用？
-单例模式（Singleton Pattern）是一种常用的软件设计模式，该模式的主要目的是确保某一个类只有一个实例存在。
-主要目的在于节省计算资源。
+# python 单例模式
+单例模式（Singleton Pattern）是一种常用的软件设计模式，该模式的主要目的是确保某一个类只有一个实例存在。 主要目的在于节省计算资源。
+
 常见场景：在创建一个config对象的时候，要获取里面的配置文件，但是其他类也需要该文件，会导致很多地方都创建实例化对象，占用内存资源，
 此时可以在程序中配置只存在一个实例对象。集使用单例模式。
 
-> python 单例实现的方式？
+## python 单例实现的方式
 
 1. 文件模块实现
 
@@ -66,7 +66,7 @@ print(s1, s2)
 import time
 import threading
 class Singleton(object):
-     _instance_lock = threading.Lock() # 加锁
+     _instance_lock = threading.Lock() # 锁
       
     @classmethod
     def instance(cls, *args, **kwargs):

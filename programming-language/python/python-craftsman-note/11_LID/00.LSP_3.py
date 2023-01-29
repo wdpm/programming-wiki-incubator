@@ -11,7 +11,7 @@ class User(Model):
 
     ...
 
-    def list_related_posts(self) -> List[int]:
+    def list_related_posts(self) -> Iterable[int]:
         """查询所有与之相关的帖子 ID"""
         return [
             post.id
@@ -24,7 +24,7 @@ class Admin(User):
 
     ...
 
-    def list_related_posts(self) -> Iterable[int]:
+    def list_related_posts(self) -> List[int]:
         # 管理员与所有的帖子都有关，为了节约内存，使用生成器返回结果
         for post in session.query(Post).all():
             yield post.id
@@ -38,6 +38,7 @@ def list_user_post_titles(user: User) -> Iterable[str]:
 
 def get_user_posts_count(user: User) -> int:
     """获取与用户相关的帖子个数"""
+    # 这个bug只需要将list_related_posts的返回值声明为List类型即可。
     return len(user.list_related_posts())
 
 
@@ -80,8 +81,25 @@ class User(Model):
         # ... ...
         pass
 
-
 class Admin(User):
     def list_related_posts(self, include_hidden: bool = False) -> List[int]:
         # ... ...
         pass
+
+#  ===============================
+
+from typing import List, Iterable
+
+
+class User(object):
+    def list_related_posts(self, title=Iterable[any]) -> List[int]:
+        pass
+
+
+class Admin(User):
+    def list_related_posts(self, title=List[any]) -> List[int]:
+        pass
+
+
+admin = Admin()
+posts = admin.list_related_posts()

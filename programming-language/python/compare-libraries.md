@@ -20,6 +20,9 @@
 |functools.partial|偏函数|
 |functools.lrucache|最近最少使用工具类|
 |abc.ABC|抽象类|
+|collections.Counter| 计数器统计dict|
+|functools.total_ordering| 简化6个比较关系到2个方法实现|
+|dataclasses.dataclass|数据类，省去hash、eq、init方法|
 
 ## python thirty libraries
 
@@ -29,3 +32,9 @@
 |jinjia2|纯python的模版引擎，用于渲染长字符串|
 |sqlalchemy|著名的python ORM库，用于和常见关系数据库交互|
 |[loguru](https://github.com/Delgan/loguru)| python日志库|
+|isort|import语句排序|
+|black|强制格式化|
+|flake8|linter|
+|pre-commit|git hooks|
+|mypy|类型加强|
+|pytest|单元测试|

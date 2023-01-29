@@ -5,12 +5,12 @@ from string_utils import string_upper
 # def test_string_upper():
 #     assert string_upper('foo') == 'FOO'
 #
-# def test_string_empty(): <.>
+# def test_string_empty():
 #     assert string_upper('') == ''
 #
 # def test_string_mixed_cases():
 #     assert string_upper('foo BAR') == 'FOO BAR'
-#
+
 import pytest
 import string
 import random

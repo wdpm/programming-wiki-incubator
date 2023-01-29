@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 import sys
-from typing import List, Optional, TextIO
+from typing import Iterable, TextIO
 
 import requests
 from lxml import etree
@@ -18,31 +19,48 @@ class Post:
         self.title = title
         self.link = link
         self.points = int(points)
+        # comments_cnt may be not int
         self.comments_cnt = int(comments_cnt)
 
 
 class HNTopPostsSpider:
     """抓取 HackerNews Top 内容条目
 
+    :param fp: 存储抓取结果的目标文件对象
     :param limit: 限制条目数，默认为 5
     """
 
     items_url = 'https://news.ycombinator.com/'
+    file_title = 'Top news on HN'
 
-    def __init__(self, limit: int = 5):
+    # 注意：fp入参应该在重构后去掉
+    def __init__(self, fp: TextIO, limit: int = 5):
+        self.fp = fp
         self.limit = limit
 
-    def fetch(self) -> Iterable[Post]:
-        resp = requests.get(self.items_url)
+    # 注意：IO逻辑不应该出现于HNTopPostsSpider，即爬虫类不应该关心文件读写
+    def write_to_file(self):
+        """以纯文本格式将 Top 内容写入文件"""
+        self.fp.write(f'# {self.file_title}\n\n')
+        # enumerate 接收第二个参数，表示从这个数开始计数（默认为 0）
+        for i, post in enumerate(self.fetch(), 1):
+            self.fp.write(f'> TOP {i}: {post.title}\n')
+            self.fp.write(f'> 分数：{post.points} 评论数：{post.comments_cnt}\n')
+            self.fp.write(f'> 地址：{post.link}\n')
+            self.fp.write('------\n')
 
-        # THINK：获取爬虫结果之后，是DOM解析，思考这里是不是也可以抽象出一个XXXDOMParser呢？
-        # 当然，爬虫+解析也可以被认为是一个整体，抽象的粒度，保持适当是最好的。
-        # 结论：抽象过细，就会出现非常多的小类。抽象过少，就会出现巨无霸的大类。
+    def fetch(self) -> Iterable[Post]:
+        """从 HN 抓取 Top 内容
+
+        :return: 可迭代的 Post 对象
+        """
+        resp = requests.get(self.items_url)
 
         # 使用 XPath 可以方便的从页面解析出你需要的内容，以下均为页面解析代码
         # 如果你对 xpath 不熟悉，可以忽略这些代码，直接跳到 yield Post() 部分
         html = etree.HTML(resp.text)
         items = html.xpath('//table[@class="itemlist"]/tr[@class="athing"]')
+        # print(items)
         for item in items[: self.limit]:
             node_title = item.xpath('./td[@class="title"]/a')[0]
             node_detail = item.getnext()
@@ -58,28 +76,16 @@ class HNTopPostsSpider:
             )
 
 
-def write_posts_to_file(posts: List[Post], fp: TextIO, title: str):
-    """负责将帖子列表写入文件"""
-    fp.write(f'# {title}\n\n')
-    for i, post in enumerate(posts, 1):
-        fp.write(f'> TOP {i}: {post.title}\n')
-        fp.write(f'> 分数：{post.points} 评论数：{post.comments_cnt}\n')
-        fp.write(f'> 地址：{post.link}\n')
-        fp.write('------\n')
-
-
-def get_hn_top_posts(fp: Optional[TextIO] = None):
-    """获取 HackerNews 的 Top 内容，并将其写入文件中
-
-    :param fp: 需要写入的文件，如未提供，将往标准输出打印
-    """
-    dest_fp = fp or sys.stdout
-    crawler = HNTopPostsSpider()
-    write_posts_to_file(list(crawler.fetch()), dest_fp, title='Top news on HN')
-
-# 定义函数来实现SRP重构
 def main():
-    get_hn_top_posts()
+
+    # with open('/tmp/hn_top5.txt') as fp:
+    #     crawler = HNTopPostsSpider(fp)
+    #     crawler.write_to_file()
+
+    # 因为 HNTopPostsSpider 接收任何 file-like 的对象，所以我们可以把 sys.stdout 传进去
+    # 实现往控制台标准输出打印的功能
+    crawler = HNTopPostsSpider(sys.stdout)
+    crawler.write_to_file()
 
 
 if __name__ == '__main__':

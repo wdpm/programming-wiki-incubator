@@ -1,22 +1,63 @@
 LSP 里式替换
 解读：可以使用子类来替代父类进行使用
 细节：
-- 子类方法应该返回与父类一致的类型，或者返回父类返回值的子类型对象。例如：父类返回Iterable，子类返回List
-- 子类的方法参数应该和父类方法完全一致，或者要求更为宽松。
+- 方法返回类型：子类方法应该返回与父类一致的类型，或者返回父类返回值的子类型对象。
+==================
+- User 类：返回列表对象 List[int]。=> ，可迭代，含有len() 方法
+- Admin 类：返回可迭代对象 Iterable[int] => 可迭代，不含有len()方法
+==================
+要想符合 LSP，子类方法与父类方法所返回的结果不能只是碰巧有一些共性。
+LSP 要求子类方法的返回值类型与父类完全一致，或者返回父类结果类型的子类对象。
+
+因为，必须修改为：
+===========================
+- User 类：返回列表对象 Iterable[int]
+- Admin 类：返回可迭代对象 List[int]
+==========================
+此时任何admin类实例都可以替代User类实例。
+
+- 方法参数类型/位置/个数：子类的方法参数应该和父类方法完全一致，或者要求更为宽松。
+  - 这个论述有争议。
   > 子类方法参数居然是更为宽松？不知道如何吐槽python规范居然可以接受这一点。可能是因为自由吧。而在Java规范中，子类参数应该更为严格。
 
+```
+class User(Model):
+    def list_related_posts(self, titles=List[str]) -> List[int]:
+        pass
+
+class Admin(User):
+    def list_related_posts(self, titles=Iterable[str]) -> List[int]:
+        pass
+```
+与
+```
+```
+class User(Model):
+    def list_related_posts(self, titles=Iterable[str]) -> List[int]:
+        pass
+
+class Admin(User):
+    def list_related_posts(self, titles=List[str]) -> List[int]:
+        pass
+```
+都可以通过解释。
+
+最后，正方形有时不能当成长方形来使用，参阅01.LSP_rect_square.py
+
+------------
+
 DIP 依赖反转
-解读：高层模块和低层模块都应该依赖于抽象，也就是依赖于接口。
+解读：高层模块和低层模块都应该依赖于抽象，也就是依赖于接口。但是，这样多一个中间的抽象层。
 - 高层和底层模块之间避免直接耦合，而遵循接口契约。
 - 这样，底层可以更换实现，高层代码逻辑不会被破坏，因为它使用的是接口规定的能力，不关心实现细节。
 
 补充：
 - 在 Python 中，可以用 abc 模块来定义抽象类。
-- 除 abc 以外，也可以用 Protocol 等技术来完成依赖倒置。
+- 除 abc 以外，也可以用 Protocol 等技术来完成依赖倒置。Protocol 都比抽象类更接近传统的“接口”。
 
-hn_site_grouper_D1.py 中 page.get_text() 就是接口代表的能力，这个page具体是啥，不关心，能给我text就行。
+hn_site_grouper_D1.py 中 page.get_text() 就是接口代表的能力，这个page具体是啥，不关心，能给我str就行。
 
-
+-------------------
 ISP 接口隔离
 解读：接口设计时不应该包含任何它不需要的方法。否则就会走巨无霸大类的后尘。
 也就是接口设计要简单，不要过度设计，方法越少越好。

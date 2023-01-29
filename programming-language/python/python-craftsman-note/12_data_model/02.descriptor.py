@@ -124,13 +124,13 @@ class Rectangle:
         self.height = height
 
 
-# p = Person('A', 20)
-# p.age = 200
+p = Person('A', 20)
+p.age = 200
 # ValueError: age must between 0 and 150!
 
 
 r = Rectangle(1, 2)
 # r.width = 12
 # ValueError: width must between 1 and 10!
-r.height = 8
+# r.height = 8
 # ValueError: height must between 1 and 5!

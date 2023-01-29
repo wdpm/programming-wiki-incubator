@@ -41,6 +41,7 @@ class Square:
 from functools import total_ordering
 
 
+# 只需要实现 eq 和 lt,此时其他4个关系比较可以衍化推算出来。
 @total_ordering
 class Square:
     """正方形
