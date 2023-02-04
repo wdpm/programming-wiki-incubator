@@ -1,28 +1,3 @@
-# Python learn path
-
-## math basis
-
-- [x] 高等数学
-    - 微积分
-- [x] 线性代数
-    - 矩阵运算
-- [x] 概率论和数理统计
-
-## python 基础
-
-- [x] python语法
-- [ ] numpy-100
-
-## format
-
-- [ ] [pep 8](https://www.python.org/dev/peps/pep-0008)
-- [ ] pylint
-- [Latex 语法](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
-
-## 数据分析
-
-- [ ] 《利用python进行数据分析》
-
 ## 机器学习课程
 
 - [ ] [吴恩达《Machine Learning》](https://www.coursera.org/learn/machine-learning)
@@ -49,12 +24,4 @@
 
 - [ ] [Scikit-Learn与TensorFlow机器学习实用指南（影印版）](https://book.douban.com/subject/27154347//)
     - [代码](https://github.com/ageron/handson-ml)
-
-## 机器学习库/框架
-- [ ] Scikit-Learn 官方文档
-    - [官方文档](https://scikit-learn.org/stable/index.html)
-    - [中文文档](http://sklearn.apachecn.org/)
-- TensorFlow
-- PyTorch
-
-> https://mp.weixin.qq.com/s/fUNDdCzJrWBoKYh1tT4gSw
+  

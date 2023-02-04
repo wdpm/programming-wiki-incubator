@@ -37,7 +37,7 @@ obj2 = singleton()
 print(obj1, obj2)
 ```
 
-3. 装饰器(decorator)
+3. 装饰器(decorator)嵌套函数
 
 ```python
 def Singleton(cls, *args, **kargs):

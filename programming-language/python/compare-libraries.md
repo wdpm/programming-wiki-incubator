@@ -8,7 +8,7 @@
 |textwrap|复杂文本的包装库，例如反缩进|
 |timeit|衡量函数执行时间|
 |enum|枚举基类|
-|collections.defaultdict|含有默认初始值的字典|
+|collections.defaultdict|含有默认初始值的字典,可以给字典的默认行为加上变化|
 |collections.abc.MutableMapping|可变的字典|
 |collections.deque| 双端队列|
 |copy|浅复制copy和深复制deepcopy|
