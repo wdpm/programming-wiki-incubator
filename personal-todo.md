@@ -2,6 +2,7 @@
 
 - https://github.com/rougier/numpy-100  => No.52
 - http://learnwebgl.brown37.net/ => 5.3
+- https://kaisery.github.io/trpl-zh-cn/ch12-03-improving-error-handling-and-modularity.html => 12.3 重构改进模块性和错误处理
 
 ## 图灵图书(未读)
 - 《机器学习实战》

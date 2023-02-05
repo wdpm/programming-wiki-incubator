@@ -118,6 +118,18 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
 
 ## 工具
 
+- 代码质量检测
+  - [codacy](https://www.codacy.com/pricing)
+  - [codeclimate](https://codeclimate.com/)
+  - [goreportcard](https://goreportcard.com/) - go 项目代码质量检测和评分。
+
+- 笔记写作工具
+  - [Typora](https://typora.io/#feature)
+  - [obsidian](https://obsidian.md/) [中文帮助](https://publish.obsidian.md/help-zh)
+
+- 本地化协作翻译平台
+  - [poeditor](https://poeditor.com/)
+
 - 文本编辑器
   - GUI
     - VS Code
@@ -137,6 +149,7 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
 - 原型设计
   - AzureRP
   - Pencil Project
+  - [FigmaChina](https://figmachina.com/)
 
 - 虚拟机
   
@@ -182,3 +195,6 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
   - webbench 
   - apache  ab 
   - [siege](http://www.joedog.org/)
+
+- Web platform
+  - [Vercel is the platform for frontend developers](https://vercel.com/) 
