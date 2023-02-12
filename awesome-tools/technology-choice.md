@@ -1,6 +1,14 @@
 # Technology Choice
 
+## 开源数据
+
+- [bangumi-data](https://github.com/bangumi-data/bangumi-data)
+
 ## 编程相关
+
+- 可视化
+  - [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer) - 算法可视化
+  - [viewer](https://github.com/zetane/viewer) - ML models and internal tensors 3D visualizer.
 
 - 前端 CSS 框架
 
@@ -16,7 +24,16 @@
     - Quasar
 
 - 前端实用库
+  - 语义化版本发布
+    - [~~standard-version~~](https://github.com/conventional-changelog/standard-version) deprecated
+    - [semantic-release](https://github.com/semantic-release/semantic-release) 推荐。
+    - [release-please]() 另一个选择
 
+  - API 文档生成
+    - [JSDoc](https://jsdoc.app/) - JSDoc 3 is an API documentation generator for JavaScript, similar to Javadoc or phpDocumentor
+    - [TSDoc](https://tsdoc.org/) - TSDoc 是一项标准化 TypeScript 代码中使用的文档注释的提议。
+    - [~~typedoc~~](https://typedoc.org/) - TypeDoc 是开箱即用的 TS 注释的文档生成工具。界面很一般。
+  
   - 函数功能增强
     - lodash
     - underscore
@@ -118,6 +135,8 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
 
 ## 工具
 
+
+
 - 代码质量检测
   - [codacy](https://www.codacy.com/pricing)
   - [codeclimate](https://codeclimate.com/)
@@ -169,8 +188,8 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
   - 图片裁剪  [iloveimg.com](https://www.iloveimg.com/)
 
 - 在线演示
-
-  - slides.com  在线幻灯片
+  - [slidev](https://github.com/slidevjs/slidev) - 基于前端技术的演示幻灯片。
+  - ~~slides.com~~  在线幻灯片，低代码GUI编辑，收费。
   - [carbon.now.sh](https://carbon.now.sh/) 代码高亮
   - https://asciinema.org/ Record and share your terminal sessions, the right way
 

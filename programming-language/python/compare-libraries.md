@@ -18,6 +18,7 @@
 |contextlib|@contextmanager 和 @asynccontextmanager decorator|
 |itertools.product|笛卡儿积|
 |functools.partial|偏函数|
+|functools.wraps|修复函数嵌套时丢失原函数属性|
 |functools.lrucache|最近最少使用工具类|
 |abc.ABC|抽象类|
 |collections.Counter| 计数器统计dict|

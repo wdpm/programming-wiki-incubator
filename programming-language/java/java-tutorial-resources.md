@@ -1,6 +1,7 @@
 # Java tutorial resources
 
-- java point | https://www.javatpoint.com/
+- [java-design-patterns](https://github.com/iluwatar/java-design-patterns) - 优秀的模式、原则、代码片段。基于Java语言描述。
+- [JavaGuide](https://github.com/Snailclimb/JavaGuide) - 一份冗长的Java八股文。没有很细致的讲解，选读即可。
 
 ## source code you should read
 

@@ -29,7 +29,7 @@ class singleton(object):
         pass
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, '_instance'):
-            singleton._instance = object.__new__(cls)
+            singleton._instance = object.__new__(cls,args,kwargs)
         return singleton._instance
     
 obj1 = singleton()
