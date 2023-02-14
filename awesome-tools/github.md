@@ -1,5 +1,9 @@
 # github
 
+## documentation
+
+- [Github 官方文档](https://docs.github.com/zh) - 按需粗略阅读一次。以及当作工具书来查询参考。
+
 ## github actions
 
 - [lychee-action](https://github.com/lycheeverse/lychee-action) - 检测md中的link是否可访问，用于一些awesome-?的聚合project。
