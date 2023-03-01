@@ -27,15 +27,16 @@
 
 ## python thirty libraries
 
-|name|desc|
-|---|---|
-|dis|反编译python代码，用于调试|
-|jinjia2|纯python的模版引擎，用于渲染长字符串|
-|sqlalchemy|著名的python ORM库，用于和常见关系数据库交互|
-|[loguru](https://github.com/Delgan/loguru)| python日志库|
-|isort|import语句排序|
-|black|强制格式化|
-|flake8|linter|
-|pre-commit|git hooks|
-|mypy|类型加强|
-|pytest|单元测试|
+| name                                              | desc                        |
+|---------------------------------------------------|-----------------------------|
+| dis                                               | 反编译python代码，用于调试            |
+| jinjia2                                           | 纯python的模版引擎，用于渲染长字符串       |
+| sqlalchemy                                        | 著名的python ORM库，用于和常见关系数据库交互 |
+| [loguru](https://github.com/Delgan/loguru)        | python日志库                   |
+| isort                                             | import语句排序                  |
+| black                                             | 强制格式化                       |
+| flake8                                            | linter                      |
+| pre-commit                                        | git hooks                   |
+| mypy                                              | 类型加强                        |
+| pytest                                            | 单元测试                        |
+| [httptest](https://github.com/pdxjohnny/httptest) | 启发于go的httptest              |

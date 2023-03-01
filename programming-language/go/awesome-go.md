@@ -32,9 +32,10 @@
 - [ ] [Building RESTful Web services with Go](https://book.douban.com/subject/30154905/) - RESTful Web with Go.
   - 配套代码：https://github.com/PacktPublishing/Building-RESTful-Web-Services-with-Go
 
-### 并发
+### 其他
 
-待定。
+- [x] [Effective Go:Elegant, efficient, and testable code](https://www.manning.com/books/effective-go)
+  - 读的是MEAP V3，1-6章。偏实战，中阶。语言有些跳跃和冗余，配套代码只有最终代码。
 
 ### 深入理解
 
