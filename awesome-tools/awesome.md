@@ -180,6 +180,7 @@
 - [nodesign](https://nodesign.dev/) 设计工具收集
 - [Is Apple silicon ready?](https://isapplesiliconready.com/for/developer/) 查询 Apple M1 相关软件支持情况
 - [UIColor.io](https://www.uicolor.io) 将十六进制和RGB颜色转换为 UIColor
+- [网页配色参考](https://www.happyhues.co/)
 - [asciinema](https://asciinema.org/) 命令行录制工具
 - [yaml-to-jsonschema](https://jsonformatter.org/yaml-to-jsonschema) yaml 生成 schema
 - [Easing Gradients](https://larsenwork.com/easing-gradients/#editor) 非线性颜色和自定义颜色渐变效果编辑小工具

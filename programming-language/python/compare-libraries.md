@@ -40,3 +40,4 @@
 | mypy                                              | 类型加强                        |
 | pytest                                            | 单元测试                        |
 | [httptest](https://github.com/pdxjohnny/httptest) | 启发于go的httptest              |
+| [tenacity](https://github.com/jd/tenacity) | python 的重试库             |

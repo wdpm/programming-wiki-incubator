@@ -15,6 +15,9 @@
   - Dribble
   - Uplabs
 
+- RSS reader
+  - https://www.qireader.com/ web版，界面优秀。
+
 - 数学绘图
   
   - http://www.geogebra.org/
@@ -34,6 +37,7 @@
 
   - [Font  Awesome](https://fontawesome.com/) 
   - [Material Design Icons](http://google.github.io/material-design-icons/)
+  - [logo](https://logo.com/) 图标简易设计，免费下载
 
 - 字体
   
