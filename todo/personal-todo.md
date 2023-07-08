@@ -45,8 +45,6 @@
 ## 技术分享经验
 
 - [Thoughtworks洞见](https://insights.thoughtworks.cn/tag/featured/)
-- decohack 更新频率=周更~月更
-- 潮流周刊
 
 ## 图灵图书(未读)
 - 《机器学习实战》
