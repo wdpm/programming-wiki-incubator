@@ -1,6 +1,3 @@
-11.2.2 profile 这个方式需要复刻保存。
-11.2.4 memory profiler => python -m memory_profiler test.py
-
 如果熟悉 C，那么可以直接编写动态链接库，然后用标准库自带的 ctypes 模块载入调
 用。且 C 代码中无须引入 Python 类型，无须处理语言和解释器运行特征，其完全与编
 写普通动态库无异。这是最简单且易维护的一种方式。
