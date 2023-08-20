@@ -1,0 +1,17 @@
+.idea
+.vscode
+.fleet
+
+# artifacts
+*.aux
+*.log
+*.pdf
+*.gz
+*.dvi
+*.html
+*.txt
+*.out
+*.idx
+*.ilg
+*.ind
+

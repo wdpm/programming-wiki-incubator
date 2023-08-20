@@ -1,0 +1,191 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\lstset{
+	columns=fixed,
+	numbers=left,                                        % 在左侧显示行号
+	numberstyle=\tiny\color{gray},                       % 设定行号格式
+	frame=none,                                          % 不显示背景边框
+	backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+	keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+	numberstyle=\footnotesize\color{darkgray},
+	commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+	stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+	showstringspaces=false,                              % 不显示字符串中的空格
+%language=c++,                                        % 设置语言
+}
+
+%opening
+\title{}
+\author{}
+
+\begin{document}
+
+	\maketitle{
+		第六章 特色工具和功能
+	}
+
+	\begin{abstract}
+
+	\end{abstract}
+
+	- 参考文献和 bibtex
+
+	- makeidx
+
+
+	\section{Introduction}
+	Partl~\cite{germenTeX} has proposed that \ldots
+
+	所有类别的文献条目格式请参考 CTAN://biblio/bibtex/base/btxdoc.pdf
+
+% bibtex 样式自定义
+% \bibliographystyle{⟨bst-name⟩}
+	这里 ⟨bst-name⟩ 为 .bst 样式文件的名称，不要带 .bst 扩展名
+
+	BIBTEX 样式的排版效果，分类：plain、gbt7714-numerical 等等。
+
+
+	编译步骤：
+
+
+	1. 首先使用 pdflatex 或 xelatex 等命令编译 LATEX 源代码 demo.tex；
+
+	2. 接下来用 bibtex 命令处理 demo.aux 辅助文件记录的参考文献格式、引用条目等信息。
+	bibtex 命令处理完毕后会生成 demo.bbl 文件，内容就是一个 thebibliography 环境；
+
+	3. 再使用 pdflatex 或 xelatex 等命令把源代码 demo.tex 编译两遍，读入参考文献并正确
+	生成引用。
+
+
+	xelatex demo
+
+	bibtex demo
+
+	xelatex demo
+
+	xelatex demo
+
+	natbib
+
+	时下许多学术期刊比较喜欢使用人名——年份的引用方式，形如 (Axford et al., 2013)。natbib 宏包提供了对这种“自然”引用方式的处理。
+
+
+% 基于 biblatex 宏包排版参考文献的方式
+
+	\begin{lstlisting}
+xelatex demo
+biber demo
+xelatex demo
+xelatex demo
+	\end{lstlisting}
+
+	\begin{lstlisting}
+% File: egbibdata.bib
+@book{caimin2006,
+	title = {UML 基础和 Rose 建模教程},
+	address = {北京},
+	author = {蔡敏 and 徐慧慧 and 黄柄强},
+	publisher= {人民邮电出版社},
+	year= {2006},
+	month= {1}
+}
+% File: demo.tex
+\documentclass{ctexart}
+% 使用符合 GB/T 7714-2015 规范的参考文献样式
+\usepackage[style=gb7714-2015]{biblatex}
+% 注意加 .bib 扩展名
+\addbibresource{egbibdata.bib}
+\begin{document}
+	见文献 \cite{caimin2006}。
+	\printbibliography
+\end{document}
+	\end{lstlisting}
+
+
+% biblatex 样式
+	\begin{lstlisting}
+% 同时调用 gb7714-2015.bbx 和 gb7714-2015.cbx
+\usepackage[style=gb7714-2015]{biblatex}
+% 著录样式调用 gb7714-2015.bbx，引用样式调用 biblatex 宏包自带的 authoryear
+\usepackage[bibstyle=gb7714-2015,citestyle=authoryear]{biblatex}
+	\end{lstlisting}
+
+	6.2 索引和 makeindex 工具
+
+	要使用索引，须经过这么几个步骤（仍设源代码名为 demo.tex）：
+
+	第一步，在 LATEX 源代码的导言区调用 makeidx 宏包，并使用 \textbackslash{makeindex} 命令开启索引的收集：
+	\begin{lstlisting}
+\usepackage{makeidx}
+\makeindex
+	\end{lstlisting}
+
+	第二步，在正文中需要索引的地方使用 \textbackslash{index} 命令。\textbackslash{index} 命令的参数写法详见下一小
+	节；并在需要输出索引的地方（如所有章节之后）使用 \textbackslash{printindex} 命令。
+
+	第三步，编译过程：
+	1. 首先用 xelatex 等命令编译源代码 demo.tex。编译过程中产生索引记录文件 demo.idx；
+	2. 用 makeindex 程序处理 demo.idx，生成用于排版的索引列表文件 demo.ind；
+	3. 再次编译源代码 demo.tex，正确生成索引列表。
+
+	注意：原书文档中对 index 的生成描述过于简略，应该寻找其他资料进行补充。
+
+	Test index.
+	\index{Test@\textsf{""Test}|(textbf}
+	\index{Test@\textsf{""Test}!sub@"|sub"||see{Test}}
+	\newpage
+	Test index.
+	\index{Test@\textsf{""Test}|)textbf}
+
+	\large\sffamily
+	{\color[gray]{0.6}
+	60\% 灰色 } \\
+	{\color[rgb]{0,1,1}
+	青色 }
+
+	\large\sffamily
+	{\color{red} 红色反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复 } \\
+	{\color{blue} 蓝色 }
+
+% 注意 !40 、-red 这些用法
+	\large\sffamily
+	{\color{red!40} 40\% 红色 }\\
+	{\color{blue} 蓝色
+	\color{blue!50!black} 蓝黑
+	\color{black} 黑色 }\\
+	{\color{-red} 红色的互补色 }
+
+% 自定义颜色
+%\definecolor{⟨color-name⟩}{⟨color-mode⟩}{⟨code⟩}
+
+	\sffamily{
+		文字用 \textcolor{red}{红色} 强调 \\
+		\colorbox[gray]{0.95}{浅灰色背景} \\
+% fcolorbox 可以调节 \fboxrule 和 \fboxsep
+		\fcolorbox{blue}{yellow}{%
+			\textcolor{blue}{ 蓝色边框 + 文字，%
+			黄色背景 }
+		}
+	}
+
+% hidelinks 参数则令超链接既不变色也不加边框
+	\hypersetup{hidelinks}
+% 超链接
+	\url{https://wikipedia.org} \\
+	\nolinkurl{https://wikipedia.org} \\
+	\href{https://wikipedia.org}{Wiki}
+
+% hyperref 还提供了手动生成书签的命令：
+%\pdfbookmark[⟨level⟩]{⟨bookmark⟩}{⟨anchor⟩}
+
+% BIBTEX 数据库。推荐
+	\begin{thebibliography}{99}
+		\bibitem{germenTeX} H.~Partl: \emph{German \TeX},
+		TUGboat Volume~9, Issue~1 (1988)
+	\end{thebibliography}
+
+
+\end{document}

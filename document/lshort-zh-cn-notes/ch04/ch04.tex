@@ -1,0 +1,355 @@
+\documentclass[]{ctexart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{amsthm}
+\usepackage[a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+
+%opening
+\title{}
+\author{}
+
+\begin{document}
+
+	\section{}
+
+	第四章
+
+	The Pythagorean theorem is
+	$a^2 + b^2 = c^2$
+
+	\iffalse
+	单独成行的行间公式在 LATEX 里由 equation 环境包裹。equation 环境为公式自动生成一
+	个编号，这个编号可以用 \label 和 \ref 生成交叉引用，amsmath 的 \eqref 命令甚至为引用
+	自动加上圆括号；还可以用 \tag 命令手动修改公式的编号，或者用 \notag 命令取消为公式编
+	号（与之基本等效的命令是 \nonumber）
+	\fi
+
+	The Pythagorean theorem is:
+	\begin{equation}
+		a^2 + b^2 = c^2 \label{pythagorean}
+	\end{equation}
+	Equation \eqref{pythagorean} is
+	called `Gougu theorem' in Chinese.
+
+% 修改公式编号
+
+	It's wrong to say
+	\begin{equation}
+		1 + 1 = 3 \tag{dumb}
+	\end{equation}
+
+% 取消公式编号
+	or
+	\begin{equation}
+		1 + 1 = 4 \notag
+	\end{equation}
+
+% 行间公式
+	\begin{equation*}
+		a^2 + b^2 = c^2
+	\end{equation*}
+	For short:
+	\[a^2 + b^2 = c^2 \]
+	Or if you like the long one:
+	\begin{displaymath}
+		a^2 + b^2 = c^2
+	\end{displaymath}
+
+% $...$ 是行内公式，非常窄，排版空间很小
+
+	In text:
+	$\lim_{n \to \infty}
+	\sum_{k=1}^n \frac{1}{k^2}
+	= \frac{\pi^2}{6}$.
+
+% 行间公式周围空间很宽裕，推荐
+
+	In display:
+	\[
+		\lim_{n \to \infty}
+		\sum_{k=1}^n \frac{1}{k^2}
+		= \frac{\pi^2}{6}
+	\]
+
+% mathbb 在公式中输入正文符号 R
+
+	$x^{2} \geq 0 \qquad
+	\text{for \textbf{all} }
+	x\in\mathbb{R}$
+
+% 在矩阵中可能会用到竖排的 ... (\vdots) 和斜排的 ... (\ddots)
+
+	$a_1, a_2, \dots, a_n$ \\
+	$a_1 + a_2 + \cdots + a_n$
+
+% 指数、上下标和导数
+
+	$p^3_{ij} \qquad
+	m_\mathrm{Knuth}\qquad
+	\sum_{k=1}^3 k $\\[5pt]
+	$a^x+y \neq a^{x+y}\qquad
+	e^{x^2} \neq {e^x}^2$
+
+	$f(x) = x^2 \quad f'(x)
+	= 2x \quad f''^{2}(x) = 4$
+
+%  分式
+	In display style:
+	\[
+		3/8 \qquad \frac{3}{8}
+		\qquad \tfrac{3}{8}
+	\]
+	In text style:
+	$1\frac{1}{2}$~hours \qquad
+	$1\dfrac{1}{2}$~hours
+
+% sqrt
+	$\sqrt{x} \Leftrightarrow x^{1/2}
+	\quad \sqrt[3]{2}
+	\quad \sqrt{x^{2} + \sqrt{y}}$
+
+% 二项式
+	Pascal's rule is
+	\[
+		\binom{n}{k} =\binom{n-1}{k}
+		+ \binom{n-1}{k-1}
+	\]
+
+% 关系符号
+	\[
+		f_n(x) \stackrel{*}{\approx} 1
+	\]
+
+% 算法举例
+	\[
+		\lim_{x \rightarrow 0}
+		\frac{\sin x}{x}=1
+	\]
+
+
+	$a\bmod b \\
+	x\equiv a \pmod{b}$
+
+% 巨算符
+
+	In text:
+	$\sum_{i=1}^n \quad
+	\int_0^{\frac{\pi}{2}} \quad
+	\oint_0^{\frac{\pi}{2}} \quad
+	\prod_\epsilon $ \\
+
+	In display:
+	\[\sum_{i=1}^n \quad
+	\int_0^{\frac{\pi}{2}} \quad
+	\oint_0^{\frac{\pi}{2}} \quad
+	\prod_\epsilon \]
+
+% 巨算符的上下标位置可由 \limits 和 \nolimits 调整，前者令巨算符类似 lim 或求和算符
+%�，上下标位于上下方；后者令巨算符类似积分号，上下标位于右上方和右下方
+	In text:
+	$\sum\limits_{i=1}^n \quad
+	\int\limits_0^{\frac{\pi}{2}} \quad
+	\prod\limits_\epsilon $ \\
+	In display:
+	\[\sum\nolimits_{i=1}^n \quad
+	\int\limits_0^{\frac{\pi}{2}} \quad
+	\prod\nolimits_\epsilon \]
+
+% \usepackage{amssymb}
+	\[
+		\sum_{\substack{0\le i\le n \\
+		j\in \mathbb{R}}}
+		P(i,j) = Q(n)
+	\]
+	\[
+		\sum_{\begin{subarray}{l}
+				  0\le i\le n \\
+				  j\in \mathbb{R}
+		\end{subarray}}
+		P(i,j) = Q(n)
+	\]
+
+% 数学重音和上下括号
+	$\bar{x_0} \quad \bar{x}_0$\\[5pt]
+	$\vec{x_0} \quad \vec{x}_0$\\[5pt]
+	$\hat{\mathbf{e}_x} \quad{\tiny}
+	\hat{\mathbf{e}}_x$
+
+	$0.\overline{3} =
+	\underline{\underline{1/3}}$ \\[5pt]
+	$\hat{XY} \qquad \widehat{XY}$\\[5pt]
+	$\vec{AB} \qquad
+	\overrightarrow{AB}$
+
+	$\underbrace{\overbrace{(a+b+c)}^6
+	\cdot \overbrace{(d+e+f)}^7}
+	_\text{meaning of life} = 42$
+
+% 长度伸长的箭头
+	\[a\xleftarrow{x+y+z} b \]
+	\[c\xrightarrow[x<y]{a*b*c}d \]
+
+% \left 和 \right 必须成对使用。需要使用单个定界符时，另一个定界符写成 \left. 或 \right.
+	\[1 + \left(\frac{1}{1-x^{2}}
+	\right)^3 \qquad
+	\left.\frac{\partial f}{\partial t}
+	\right|_{t=0}\]
+
+% 长公式折行
+	\begin{multline}
+		a + b + c + d + e + f
+		+ g + h + i \\
+		= j + k + l + m + n\\
+		= o + p + q + r + s\\
+		= t + u + v + x + z
+	\end{multline}
+
+	\begin{align}
+		a & = b + c \\
+		& = d + e
+	\end{align}
+
+	\begin{align}
+		a ={} & b + c \\
+		={} & d + e + f + g + h + i
+		+ j + k + l \notag \\
+		& + m + n + o \\
+		={} & p + q + r + s
+	\end{align}
+
+	\begin{align}
+		a &=1
+		&
+		b &=2
+		& c &=3
+		\\
+		d &=-1 &
+		e &=-2
+		& f &=-5
+	\end{align}
+
+% 不对齐，仅罗列
+	\begin{gather}
+		a = b + c \\
+		d = e + f + g \\
+		h + i = j + k \notag \\
+		l + m = n
+	\end{gather}
+
+% 数学公式的尺寸，可以通过 displaystyle 这类指令来控制
+	\[
+		r = \frac
+		{\sum_{i=1}^n (x_i- x)(y_i- y)}
+		{\displaystyle \left[
+			\sum_{i=1}^n (x_i-x)^2
+			\sum_{i=1}^n (y_i-y)^2
+			\right]^{1/2} }
+	\]
+
+	\theoremstyle{definition} \newtheorem{law}{Law}
+	\theoremstyle{plain} \newtheorem{jury}[law]{Jury}
+	\theoremstyle{remark} \newtheorem*{mar}{Margaret}
+
+	\begin{law}
+		\label{law:box}
+		Don't hide in the witness box.
+	\end{law}
+	\begin{jury}[The Twelve]
+		It could be you! So beware and
+		see law~\ref{law:box}.
+	\end{jury}
+	\begin{jury}
+		You will disregard the last
+		statement.
+	\end{jury}
+	\begin{mar}
+		No, No, No
+	\end{mar}
+	\begin{mar}
+		Denis!
+	\end{mar}
+
+% 一个编号
+
+	\begin{equation}
+		\begin{aligned}
+			a &= b + c \\
+			d &= e + f + g \\
+			h + i &= j + k \\
+			l + m &= n
+		\end{aligned}
+	\end{equation}
+
+% 数组和矩阵
+	\[\mathbf{X} = \left(
+	\begin{array}{cccc}
+		x_{11} & x_{12} & \ldots & x_{1n} \\
+		x_{21} & x_{22} & \ldots & x_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		x_{n1} & x_{n2} & \ldots & x_{nn} \\
+	\end{array} \right)\]
+
+	\[ |x| = \left\{
+	\begin{array}{rl}
+		-x & \text{if} x < 0, \\
+		0  & \text{if} x = 0, \\
+		x  & \text{if} x > 0.
+	\end{array} \right. \]
+
+% cases 等价于上面的 array 排版
+	\[ |x| =
+	\begin{cases}
+		-x & \text{if} x < 0,\\
+		0 & \text{if} x = 0,\\
+		x & \text{if} x > 0.
+	\end{cases} \]
+
+	\iffalse
+	我们当然也可以用 array 环境排版各种矩阵。amsmath 宏包还直接提供了多种排版矩阵的
+	环境，包括不带定界符的 matrix，以及带各种定界符的矩阵 pmatrix（�）、bmatrix（�）、Bmatrix
+	（�）、vmatrix（
+	��）、Vmatrix（
+	��）。使用这些环境时，无需给定列格式
+	\fi
+
+	\[
+		\begin{matrix}
+			1 & 2 \\ 3 & 4
+		\end{matrix} \qquad
+		\begin{bmatrix}
+			x_{11} & x_{12} & \ldots & x_{1n} \\
+			x_{21} & x_{22} & \ldots & x_{2n} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			x_{n1} & x_{n2} & \ldots & x_{nn} \\
+		\end{bmatrix}
+	\]
+
+% 间距修复
+	\[
+		\int_a^b f(x)\mathrm{d}x
+		\qquad
+		\int_a^b f(x)\,\mathrm{d}x
+	\]
+
+% 多重积分号。如果我们直接连写两个 \int，之间的间距将会过宽，此时
+% 可以使用负间距 \! 修正之
+	\newcommand\diff{\,\mathrm{d}}
+	\begin{gather*}
+		\int\int f(x)g(y)
+		\diff x \diff y \\
+		\int\!\!\!\int
+		f(x)g(y) \diff x \diff y \\
+		\iint f(x)g(y) \diff x \diff y \\
+		\iint\quad \iiint\quad \idotsint
+	\end{gather*}
+
+% 数学字母字体，举例
+	$\mathbf{ABC}$
+
+% 加粗的数学符号
+	$\mu, M \qquad
+	\boldsymbol{\mu}, \boldsymbol{M}$
+
+\end{document}

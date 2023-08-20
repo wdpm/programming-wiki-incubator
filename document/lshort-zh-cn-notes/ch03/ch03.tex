@@ -1,0 +1,414 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{array,tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+%opening
+\title{}
+\author{}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{abstract}
+
+	\end{abstract}
+
+
+	\section{}
+
+
+	\fbox{
+		\begin{minipage}{15em}%
+			这是一个垂直盒子的测试。
+			\footnote{脚注来自 minipage。}
+		\end{minipage}
+	}
+
+	The Pythagorean theorem is:
+	\begin{equation}
+		a^2 + b^2 = c^2 \label{pythagorean}
+	\end{equation}
+	Equation \eqref{pythagorean} is
+	called `Gougu theorem' in Chinese.
+
+	\begin{equation*}
+		a^2 + b^2 = c^2
+	\end{equation*}
+	For short:
+	\[a^2 + b^2 = c^2 \]
+	Or if you like the long one:
+	\begin{displaymath}
+		a^2 + b^2 = c^2
+	\end{displaymath}
+
+	$x^{2} \geq 0 \qquad
+	\text{for \textbf{all} }
+	x\in\mathbb{R}$
+
+	${a}^{2}+{b}^{2}={c}^{2}$
+
+	\begin{enumerate}
+		\item some thing.
+		\begin{enumerate}
+			\item A nested item.\label{itref}
+			\item[*] A starred item.
+		\end{enumerate}
+		\item Reference(\ref{itref}).
+	\end{enumerate}
+
+	\renewcommand{\labelitemi}{\ddag}
+	\renewcommand{\labelitemii}{\dag}
+	\begin{itemize}
+		\item First item
+		\begin{itemize}
+			\item Subitem
+			\item Subitem
+		\end{itemize}
+		\item Second item
+	\end{itemize}
+
+	\renewcommand{\labelenumi}%
+	{\Alph{enumi}>}
+	\begin{enumerate}
+		\item First item
+		\item Second item
+	\end{enumerate}
+
+	\begin{center}
+		Centered text using a
+		\verb|center| environment.
+	\end{center}
+
+% 会引入额外的行间距
+
+	\begin{flushleft}
+		Left-aligned text using a
+		\verb|flushleft| environment.
+	\end{flushleft}
+
+	\begin{flushright}
+		Right-aligned text using a
+		\verb|flushright| environment.
+	\end{flushright}
+
+% 不会引入额外的行间距
+
+	\centering
+	Centered text paragraph.
+
+	\raggedright
+	Left-aligned text paragraph.
+
+	\raggedleft
+	Right-aligned text paragraph.
+
+% 单行引用
+
+	Francis Bacon says:
+	\begin{quote}
+		Knowledge is power.
+	\end{quote}
+
+% 《多行引用
+	《 木兰诗》：
+
+	\begin{quotation}
+		万里赴戎机，关山度若飞。
+
+		朔气传金柝，寒光照铁衣。
+
+		将军百战死，壮士十年归。
+
+		归来见天子，天子坐明堂。
+
+		策勋十二转，赏赐百千强。
+	\end{quotation}
+
+% 代码块
+
+	\begin{verbatim}
+	#include <iostream>
+	int main()
+	{
+		std::cout << "Hello, world!"
+		<< std::endl;
+		return 0;
+	}
+	\end{verbatim}
+
+% 代码块显示空格，应该用于调试
+
+	\begin{verbatim*}
+		for (int i=0; i<4; ++i)
+		printf("Number %d\n",i);
+	\end{verbatim*}
+
+% \verb⟨delim⟩⟨code⟩⟨delim⟩
+
+	\verb|\LaTeX| \\
+	\verb+(a || b)+ \verb*+(a || b)+
+
+% 为何 t 和 b 的控制似乎相反了？？？
+
+	\begin{tabular}{|c|}
+		center-\\ aligned \\
+	\end{tabular},
+
+	\begin{tabular}[t]{|c|}
+		top-\\ aligned \\
+	\end{tabular},
+
+	\begin{tabular}[b]{|c|}
+		bottom-\\ aligned\\
+	\end{tabular} tabulars.
+
+% table control
+
+	\begin{tabular}{lcr|p{6em}}
+		\hline
+		left & center & right
+		& par box with fixed width \\
+		L
+		& C
+		& R
+		& P \\
+		\hline
+	\end{tabular}
+
+	\begin{tabular}{@{} r@{:}lr @{}}
+		\hline
+		1 & 1 & one    \\
+		11 & 3 & eleven \\
+		\hline
+	\end{tabular}
+
+
+% \usepackage{array}
+	\begin{tabular}%
+	{>{\centering\arraybackslash}p{9em}}
+		\hline
+		Some center-aligned long text. \\
+		\hline
+	\end{tabular}
+
+% \usepackage{array}
+	\newcommand\txt{a b c d e f g h i}
+	\begin{tabular}{cp{2em}m{2em}b{2em}}
+		\hline
+		pos & \txt & \txt & \txt \\
+		\hline
+	\end{tabular}
+
+% control columne width: with bug of central 2 columns alignments
+	\begin{tabular*}{14em}%
+	{@{\extracolsep{\fill}}|c|c|c|c|}
+		\hline
+		A & B & C & D \\ \hline
+		a  & b & c & d \\ \hline
+	\end{tabular*}
+
+
+% 多个 X 列格式平均分配列宽
+% \usepackage{array,tabularx} 
+	\begin{tabularx}{14em}%
+	{|*{4}{>{\centering\arraybackslash}X|}}
+		\hline
+		A & B & C & D \\ \hline
+		a  & b & c & d \\ \hline
+	\end{tabularx}
+
+% 跨列横线
+
+	\begin{tabular}{|c|c|c|}
+		\hline
+		4 & 9 & 2 \\ \cline{2-3}
+		3  & 5 & 7 \\ \cline{1-1}
+		8  & 1 & 6 \\ \hline
+	\end{tabular}
+
+% 三线表
+% \usepackage{booktabs}
+	\begin{tabular}{cccc}
+		\toprule
+		& \multicolumn{3}{c}{Numbers} \\
+		\cmidrule{2-4}
+		& 1 & 2  & 3   \\
+		\midrule
+		Alphabet & A & B  & C   \\
+		Roman
+		& I & II & III \\
+		\bottomrule
+	\end{tabular}
+
+% 跨越多行
+
+% \usepackage{multirow}
+	\begin{tabular}{ccc}
+		\hline
+		\multirow{2}{*}{Item} &
+		\multicolumn{2}{c}{Value} \\
+		\cline{2-3}
+		& First & Second \\ \hline
+		A & 1
+		& 2 \\ \hline
+	\end{tabular}
+
+% 用 \multicolumn 命令配合 @{} 格式把单元格的额外边距去掉
+
+	\begin{tabular}{|c|c|c|}
+		\hline
+		a & b & c \\ \hline
+		a & \multicolumn{1}{@{}c@{}|}
+		{\begin{tabular}{c|c}
+			 e & f \\ \hline
+			 e & f \\
+		\end{tabular}}
+		& c \\ \hline
+		a  & b & c \\ \hline
+	\end{tabular}
+
+% 需要安装这个包
+	\begin{tabular}{|c|c|}
+		\hline
+		a & \makecell{d1 \\ d2}  \\
+		\hline
+		b  & c            \\
+		\hline
+	\end{tabular}
+
+% 行距控制
+	\renewcommand\arraystretch{1.8}
+	\begin{tabular}{|c|}
+		\hline
+		Really loose \\ \hline
+		tabular rows. \\ \hline
+	\end{tabular}
+
+% 行距控制方式 2
+
+	\begin{tabular}{c}
+		\hline
+		Head lines \\[6pt]
+		tabular lines \\
+		tabular lines \\ \hline
+	\end{tabular}
+
+	1
+
+	2
+
+	3
+
+	4
+
+	5
+
+	6
+
+	7
+
+	8
+
+	9
+
+% 插入图片
+	\begin{figure}[htb]
+		\centering{\includegraphics[scale=.7]{figures/miku-01.png}}
+		\caption{This is a cute miku.}
+		\label{fig}
+	\end{figure}
+
+% === mbox 只有一行的盒子， makebox 控制粒度更细
+
+	\mbox{Test some words.}\\
+	|\makebox[10em]{Test some words.}|\\
+	|\makebox[10em][l]{Test some words.}|\\
+	|\makebox[10em][r]{Test some words.}|\\
+	|\makebox[10em][s]{Test some words.}|
+
+% fbox 边框盒子
+
+	\fbox{Test some words.}\\
+	\framebox[10em][r]{Test some words.}
+
+% 通过 \setlength 命令调节边框的宽度 \fboxrule 和内边距 \fboxsep
+	\framebox[10em][r]{Test box}\\[1ex]
+	\setlength{\fboxrule}{1.6pt}
+	\setlength{\fboxsep}{1em}
+	\framebox[10em][r]{Test box}
+
+% 垂直盒子
+
+	三字经：\parbox[t]{3em}%
+	{人之初 性本善 性相近 习相远}
+	\quad
+	千字文：
+	\begin{minipage}[b][8ex][t]{4em}
+		天地玄黄 宇宙洪荒
+	\end{minipage}
+
+	以 markdown 写内容，以 latex 或者 web 界面框架来排版
+
+% 垂直盒子与迷你页
+
+	\fbox{\begin{minipage}{15em}%
+			  这是一个垂直盒子的测试。
+			  \footnote{脚注来自 minipage。}
+	\end{minipage}}
+
+% LATEX 预定义了两类浮动体环境 figure 和 table
+% 图表等浮动体提供了 \caption 命令加标题，并且自动给浮动体编号
+
+% 并排和子图表 (缺乏标题)
+
+	\begin{figure}[htbp]
+		\centering
+		{\includegraphics[scale=.3]{figures/miku-01.png}}
+		\qquad
+		{\includegraphics[scale=.4]{figures/miku-01.png}} \\[2pt]
+		{\includegraphics[scale=.7]{figures/miku-01.png}}
+		\caption{...}
+	\end{figure}
+
+% with caption
+
+	\begin{figure}[htbp]
+		\begin{minipage}[b]    {15em}
+			\centering
+			{\includegraphics[scale=0.4]{figures/miku-01.png}}
+			\caption{miku-1}
+		\end{minipage}
+		\qquad
+		\begin{minipage}[b]{15em}
+			\centering
+			{\includegraphics[scale=0.4]{figures/miku-01.png}}
+			\caption{miku-2}
+		\end{minipage}
+	\end{figure}
+
+% with subcaption
+
+	\begin{figure}[htbp]
+		\centering
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{figures/miku-01.png}
+			\subcaption{f1}
+		\end{subfigure}
+		\qquad
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{figures/miku-01.png}
+			\subcaption{f2}
+		\end{subfigure}
+	\end{figure}
+
+\end{document}

@@ -1,0 +1,107 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{listings}
+
+%opening
+\title{}
+\author{}
+
+\begin{document}
+
+% 【自定义命令】
+
+	\newcommand{\tnss}{The not so Short Introduction to \LaTeXe}
+
+	This is ``\tnss'' \ldots{} ``\tnss''
+
+	\newcommand{\txsit}[1]{This is the
+	\emph{#1} Short Introduction
+	to \LaTeXe}
+% in the document body:
+	\begin{itemize}
+		\item \txsit{not so}
+		\item \txsit{very}
+	\end{itemize}
+
+% - 使用 \renewcommand 命令 覆盖式声明
+% - 使用 \providecommand 命令是一种比较理想的方案：在命令未定义时，它
+% 相当于 \newcommand；在命令已定义时，沿用已有的定义
+
+% 自定义环境
+
+	\newenvironment{king}
+	{\rule{1ex}{1ex}%
+	\hspace{\stretch{1}}}
+	{\hspace{\stretch{1}}%
+	\rule{1ex}{1ex}}
+	\begin{king}
+		My humble subjects \ldots
+	\end{king}
+
+% 同理：\renewenvironment
+
+%=============
+
+% xparse 宏包（LATEX 2020-10-01 版本之后，xparse 宏包已集成在了格式之中，不需要显式调用）
+% \NewDocumentCommand\⟨name⟩{⟨arg spec⟩}{⟨definition⟩}
+% \NewDocumentEnvironment{⟨name⟩}{⟨arg spec⟩}{⟨before⟩}{⟨after⟩}
+
+% 百分号用于注释掉不必要的空格和换行符
+	\NewDocumentCommand\hello{om}
+	{%
+		\IfNoValueTF{#1}%
+		{Hello, #2!}%
+		{Hello, #1 and #2!}%
+	}
+	\hello{Alice}
+	\hello[Bob]{Alice}
+
+	\NewDocumentCommand\hereis{sm}
+	{Here is \IfBooleanTF{#1}{an}{a} #2.}
+	\hereis{banana}
+	\hereis*{apple}
+
+	\NewDocumentEnvironment {envstar} {s}
+	{\IfBooleanTF {#1} {star} {no star}} {}
+	\begin{envstar}
+		*
+	\end{envstar}
+
+% 定义命令
+
+	\begin{lstlisting}
+\NewDocumentCommand
+\NewDocumentEnvironment
+
+\RenewDocumentCommand
+\RenewDocumentEnvironment
+
+\ProvideDocumentCommand
+\ProvideDocumentEnvironment
+
+这个有点差别，已定义 => 覆盖， 未定义 => 定义
+\DeclareDocumentCommand
+\DeclareDocumentEnvironment
+	\end{lstlisting}
+
+% 编写自己的宏包和文档类
+
+	counter
+
+	在 article 文档类里 part 为 0，section 为 1，依此类推；
+
+	在 report / book 文档类里 part 为 -1，chapter 为 0，section 为 1，等等
+
+	secnumdepth 计数器在 article 文档类里默认为 3（subsubsection 一级）；在 report 和 book
+	文档类里默认为 2（subsection 一级）。
+
+	tocdepth 计数器控制目录的深度，如果章节的层级大于 tocdepth，那么章节将不会自动写
+	入目录项。默认值同 secnumdepth。
+
+% LATEX 可定制的一些命令和参数
+
+	- 标题名称 / 前后缀等。
+
+	- 长度。
+
+\end{document}
