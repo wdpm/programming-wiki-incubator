@@ -1,0 +1,10 @@
+- 技术类电子书
+  - Oreilly - 第一梯度推荐。
+  - Manning - 第一梯度推荐。
+  - [Packt Publishing](https://www.packtpub.com/) - 第二梯度推荐。
+  - [The pragmatic bookshelf](https://pragprog.com/) - 仅少数书籍质量较高。备选。
+  - [文泉书局](https://wqbook.wqxuetang.com/) - 国内较好的出版社。可以在这里寻找一些数字媒体类书籍。
+  - ~~图灵社区~~ - 因为翻译的缘故，更新非常滞后。除非原书不是英文，其他语种生肉啃不动，否则都不推荐。
+  - ~~Packt~~
+  - ~~Leanpub~~
+  - ~~异步社区~~

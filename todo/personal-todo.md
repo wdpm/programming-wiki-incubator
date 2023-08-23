@@ -39,6 +39,9 @@ Code/ - github一切开源项目的整理。
   - manally maintain a single index.html，文档内容也要在html中直接写，对于内容的编辑不方便，没有利用到md的优势。
   - https://github.com/susam/texme#render-markdown-and-latex 在md中为latex 提供渲染支持。
 
+---
+- [ ] 后端管理系统-前端界面 https://github.com/xuejianxianzun/vue-shop 一个vue2+element-ui写的简易后台管理系统的前端部分。
+  - 读一下这个项目的源码。稍微了解即可。
 
 ## blog template
 

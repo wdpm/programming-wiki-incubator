@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 /.idea/
 /.vscode
+.fleet
 
 **/dist/
 **/node_modules

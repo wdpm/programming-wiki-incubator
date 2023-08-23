@@ -1,8 +1,5 @@
 # Technology Choice
 
-## 开源数据
-
-- [bangumi-data](https://github.com/bangumi-data/bangumi-data)
 
 ## 编程相关
 
@@ -20,7 +17,8 @@
     - iView UI
     - [Muse-UI](http://www.muse-ui.org/)
     - [vuetify](https://vuetifyjs.com/)
-    - element ui
+    - ~~element ui~~
+    - ~~element ui - plus~~
     - Quasar
 
 - 前端实用库
@@ -35,8 +33,8 @@
     - [~~typedoc~~](https://typedoc.org/) - TypeDoc 是开箱即用的 TS 注释的文档生成工具。界面很一般。
   
   - 函数功能增强
-    - lodash
-    - underscore
+    - lodash => underscore的后继者
+    - ~~underscore~~
   - 视频播放器
     - [flv.js](https://github.com/bilibili/flv.js)           
     - [shaka-player](https://github.com/google/shaka-player) 
@@ -60,11 +58,9 @@
     - Alex-D/Trumbowyg
     - summernote/summernote
   - Markdown editor
-
     - bh-lay  / mditor 
     - lepture  / editor
-    - [sparksuite / simplemde-markdown-editor](https://github.com/sparksuite/simplemde-markdown-editor) 
-
+    - [sparksuite / simplemde-markdown-editor](https://github.com/sparksuite/simplemde-markdown-editor)
   - 其他
     - clipboard.js 复制粘贴
     - https://github.com/hakimel/reveal.js 在线幻灯片
@@ -72,7 +68,6 @@
     - editorconfig | https://editorconfig.org/ 统一代码格式化
 
 - 数据库建模
-
   - [dbdiagram.io](https://dbdiagram.io/) 
   - MySQL  Workbench
   - 数据库虚拟数据生成: https://www.mockaroo.com/
@@ -193,6 +188,8 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
   - [carbon.now.sh](https://carbon.now.sh/) 代码高亮
   - Chalk.ist 官网 https://kutt.appinn.com/8a8RRs
   - https://asciinema.org/ Record and share your terminal sessions, the right way
+  - 代码截图静态展示 https://carbon.now.sh/
+  - terminal录制动态展示 terminalizer https://github.com/faressoft/terminalizer
 
 - 数据库管理
   - Syslog

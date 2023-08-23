@@ -1,3 +1,9 @@
+## 正在处理
+
+- https://github.com/timqian/chinese-independent-blogs
+  - 进度标记 第七星尘的独立博客	https://blog.star7th.com
+
+
 ## 需要阅读的列表
 
 - [Unicode can be confusing. Here’s a “just the facts I need” presentation about how to handle it correctly.](https://nedbatchelder.com/text/unipain.html)
