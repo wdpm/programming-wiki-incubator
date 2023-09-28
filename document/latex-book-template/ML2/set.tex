@@ -1,0 +1,56 @@
+\usepackage{indentfirst}
+\setmainfont{Times New Roman}
+\usepackage{tcolorbox}
+\tcbuselibrary{listings,breakable}
+\tcbset{boxrule=0pt,sharp corners}
+\renewcommand{\ttdefault}{cmtt}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\tcbset{boxrule=0pt,sharp corners}
+\renewcommand{\ttdefault}{cmtt}
+\lstdefinestyle{mystyle}{
+  basicstyle=%
+    \ttfamily
+    \lst@ifdisplaystyle\small\fi
+}
+\lstset{basicstyle=\ttfamily,style=mystyle}
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{frenchplum}{RGB}{190,20,83}
+\lstset{language=[LaTeX]TeX,
+	texcsstyle=*\color{winered},
+	numbers=none,
+	breaklines=true,
+	keywordstyle=\color{winered},
+	commentstyle=\color{gray},
+	emph={fontenc,fontspec,xeCJK,FiraMono,xunicode,newtxmath,figure,fig,image,img,table,itemize,enumerate,newtxtext,newtxtt,ctex,microtype,description,times,newtx,booktabs,tabular,PDFLaTeX,XeLaTeX,type1cm,BibTeX,device,color,mode,lang,amsthm,tcolorbox,titlestyle,cite,marginnote,ctex,listings},
+	emphstyle={\color{frenchplum}},
+	morekeywords={DeclareSymbolFont,SetSymbolFont,toprule,midrule,bottomrule,institute,version,includegraphics,setmainfont,setsansfont,setmonofont ,setCJKmainfont,setCJKsansfont,setCJKmonofont,RequirePackage,figref,tabref,email,maketitle,keywords,definecolor,extrainfo,logo,cover,subtitle,appendix,chapter,hypersetup,mainmatter,tableofcontents,elegantpar,numbers,authoryear,heiti,kaishu,lstset,pagecolor,zhnumber,marginpar,part,equote},
+	frame=single,
+	tabsize=2,
+	rulecolor=\color{structurecolor},
+	framerule=0pt,
+	columns=flexible,
+	% backgroundcolor=\color{lightgrey}
+}
+\lstdefinestyle{R}{	
+	language={[LaTeX]TeX},
+	numbers=left,
+	numbersep=1em,
+	numberstyle=\tiny,
+	frame=single,
+	framesep=\fboxsep,
+	framerule=\fboxrule,
+	rulecolor=\color[RGB]{31, 186, 190},
+	xleftmargin=\dimexpr\fboxsep+\fboxrule\relax,
+	xrightmargin=\dimexpr\fboxsep+\fboxrule\relax,
+	breaklines=true,
+	basicstyle=\small\tt,
+	keywordstyle=\color{blue},
+	commentstyle=\color[RGB]{33, 33, 33},
+	backgroundcolor=\color[RGB]{233, 248, 248},
+	tabsize=2,
+	columns=flexible,
+	morekeywords={maketitle},
+}
+\numberwithin{equation}{section}
+\usepackage{cases,empheq}
