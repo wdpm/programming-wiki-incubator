@@ -1,29 +1,30 @@
 # python库对比
 
 ## python standard libraries
-|name|desc|
-|---|---|
-|logging|日志|
-|datetime|时间日期处理|
-|textwrap|复杂文本的包装库，例如反缩进|
-|timeit|衡量函数执行时间|
-|enum|枚举基类|
-|collections.defaultdict|含有默认初始值的字典,可以给字典的默认行为加上变化|
-|collections.abc.MutableMapping|可变的字典|
-|collections.deque| 双端队列|
-|copy|浅复制copy和深复制deepcopy|
-|collections.namedtuple| 具名元组|
-|random|随机数生成|
-|bisect|二分法|
-|contextlib|@contextmanager 和 @asynccontextmanager decorator|
-|itertools.product|笛卡儿积|
-|functools.partial|偏函数|
-|functools.wraps|修复函数嵌套时丢失原函数属性|
-|functools.lrucache|最近最少使用工具类|
-|abc.ABC|抽象类|
-|collections.Counter| 计数器统计dict|
-|functools.total_ordering| 简化6个比较关系到2个方法实现|
-|dataclasses.dataclass|数据类，省去hash、eq、init方法|
+
+| name                           | desc                                             |
+|--------------------------------|--------------------------------------------------|
+| logging                        | 日志                                               |
+| datetime                       | 时间日期处理                                           |
+| textwrap                       | 复杂文本的包装库，例如反缩进                                   |
+| timeit                         | 衡量函数执行时间                                         |
+| enum                           | 枚举基类                                             |
+| collections.defaultdict        | 含有默认初始值的字典,可以给字典的默认行为加上变化                        |
+| collections.abc.MutableMapping | 可变的字典                                            |
+| collections.deque              | 双端队列                                             |
+| copy                           | 浅复制copy和深复制deepcopy                              |
+| collections.namedtuple         | 具名元组                                             |
+| random                         | 随机数生成                                            |
+| bisect                         | 二分法                                              |
+| contextlib                     | @contextmanager 和 @asynccontextmanager decorator |
+| itertools                      | 迭代工具库，笛卡儿积                                       |
+| functools.partial              | 偏函数                                              |
+| functools.wraps                | 修复函数嵌套时丢失原函数属性                                   |
+| functools.lrucache             | 最近最少使用工具类                                        |
+| abc.ABC                        | 抽象类                                              |
+| collections.Counter            | 计数器统计dict                                        |
+| functools.total_ordering       | 简化6个比较关系到2个方法实现                                  |
+| dataclasses.dataclass          | 数据类，省去hash、eq、init方法                             |
 
 ## python thirty libraries
 
@@ -40,4 +41,4 @@
 | mypy                                              | 类型加强                        |
 | pytest                                            | 单元测试                        |
 | [httptest](https://github.com/pdxjohnny/httptest) | 启发于go的httptest              |
-| [tenacity](https://github.com/jd/tenacity) | python 的重试库             |
+| [tenacity](https://github.com/jd/tenacity)        | python 的重试库                 |

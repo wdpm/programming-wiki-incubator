@@ -161,12 +161,38 @@
 - [Dribble](https://dribbble.com/shots) Explore the world’s leading design portfolios.
 - [Uplabs](https://www.uplabs.com/) 👑 The #1 place for design files
 
-## 论文 / 电子书
+## 论文/电子书搜索
 
 - [Google 学术](https://scholar.google.com.hk/)
 - [sci hub](https://sci-hub.se/) 通过 PMID、POI、URL 来搜索，关键字是无效的。
 - [z-library](https://zlibrary-global.se/) 注意不要使用钓鱼网站。另外，也可以使用个人私有 URL 来访问。
 - [安娜的档案](https://zh.annas-archive.org/) 世界最大开源及开放数据图书馆。
+
+## 技术书籍出版社
+
+- Oreilly - 第一梯度推荐。
+- Manning - 第一梯度推荐。
+- [Packt Publishing](https://www.packtpub.com/) - 第二梯度推荐。
+- [The pragmatic bookshelf](https://pragprog.com/) - 仅少数书籍质量较高。备选。
+- [文泉书局](https://wqbook.wqxuetang.com/) - 国内较好的出版社。可以在这里寻找一些数字媒体类书籍。
+- ~~图灵社区~~ - 因为翻译的缘故，更新非常滞后。除非原书不是英文，其他语种生肉啃不动，否则都不推荐。
+- ~~Leanpub~~
+- ~~异步社区~~
+
+## 开发文档参考
+
+- [Oracle Java Docs](https://docs.oracle.com/en/java/index.html)
+- [Spring official guides](https://spring.io/guides)
+- [MDN](https://developer.mozilla.org/zh-CN/docs/Web)
+- [Can I use](http://caniuse.com/)
+- [Web Fundamentals](https://developers.google.com/web)
+- [Tools for Web Developers](https://developers.google.com/web/tools)
+- https://cssreference.io/
+- https://htmlreference.io/
+- [docker-tutorial](https://github.com/jaywcjlove/docker-tutorial)  - Docker 入门教程读书笔记。
+- [linux-command](https://jaywcjlove.github.io/linux-command/) - Linux命令搜索引擎，命令手册、详解、学习，速查手册。
+- [nginx-tutorial](https://github.com/jaywcjlove/nginx-tutorial) - Nginx 安装维护入门学习笔记。
+- [swiftui-example](https://github.com/jaywcjlove/swiftui-example)  - SwiftUI 示例，技巧和技术集合，帮助我构建应用程序。
 
 ## 其它
 

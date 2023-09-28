@@ -51,4 +51,7 @@
 
 - [Intel® Core™ i7-13700K Processor](https://www.intel.com/content/www/us/en/products/sku/230500/intel-core-i713700k-processor-30m-cache-up-to-5-40-ghz/specifications.html)
 - [GeForce RTX 40 系列显卡 | NVIDIA](https://www.nvidia.cn/geforce/graphics-cards/40-series/)
+- [GPU性价比](https://benchmarks.ul.com/zh-hans/compare/best-gpus)
+- [CPU性价比](https://benchmarks.ul.com/zh-hans/compare/best-cpus)
+- [【装机教程】全网最好的装机教程，没有之一_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1BG4y137mG/)
 

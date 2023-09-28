@@ -1,9 +1,7 @@
 # Technology Choice
-
-
 ## 编程相关
 
-- 可视化
+- 算法可视化
   - [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer) - 算法可视化
   - [viewer](https://github.com/zetane/viewer) - ML models and internal tensors 3D visualizer.
 
@@ -129,8 +127,6 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
     - [使用免费SSL证书让网站支持HTTPS访问](https://github.com/jaywcjlove/handbook/blob/master/docs/CentOS/使用免费SSL证书让网站支持HTTPS访问.md)
 
 ## 工具
-
-
 
 - 代码质量检测
   - [codacy](https://www.codacy.com/pricing)

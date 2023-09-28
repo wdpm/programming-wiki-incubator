@@ -13,6 +13,11 @@ def singleton(cls):
 @singleton
 class X: pass
 
+@singleton
+class Y: pass
+
 if __name__ == '__main__':
     print(id(X()))
     print(id(X()))
+    print(id(Y()))
+    print(id(Y()))
