@@ -35,6 +35,7 @@
 - [Pixlr X](https://pixlr.com/x) 基于 Canvas 和 WebGL 的在线图像编辑器。
 - [Excalidraw](https://github.com/excalidraw/excalidraw) 非常简单易用的白板绘图开源工具
 - [Squoosh](https://github.com/GoogleChromeLabs/squoosh) 在浏览器中使用一流的编解码器无损压缩图片。
+- [d2](https://github.com/terrastruct/d2) D2
 
 ## AI 画图
 

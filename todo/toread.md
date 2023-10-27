@@ -1,20 +1,29 @@
 ## 正在处理
 
 - https://github.com/timqian/chinese-independent-blogs
-  - Wiken	https://www.hehuapei.com
+  - Li Hui Blog
 
-筛选后的blog：
-- https://www.velasx.com 学习这个网站的UI设计，和技术选型
+筛选后的 blog：
+- https://www.velasx.com 学习这个网站的 UI 设计，和技术选型
 - https://www.ezindie.com/tool 仅查看这个页面，挑选有用的工具
 - https://tw93.fun/ 界面简洁 by github pages
-- https://www.wikimoe.com/ 二次元blog by wordpress
-- https://github.com/kahosan/MyBlog 简洁的hexo博客
+- https://weekly.tw93.fun/
+- https://www.wikimoe.com/ 二次元 blog by wordpress
+- https://github.com/kahosan/MyBlog 简洁的 hexo 博客
 - https://blog.lui8.cn/ 科研风格的 jekyll blog
-- https://blog.moeqy.com/ 二次元blog，基于hexo
-- https://chanshiyu.com/ 蝉时雨，基于React自研的blog主题。
+- https://blog.moeqy.com/ 二次元 blog，基于 hexo
+- https://chanshiyu.com/ 蝉时雨，基于 React 自研的 blog 主题。
+- https://yihui.name/cn/ 编程; 统计学; 开源
+- https://www.himiku.com/ 基于 Typecho 的简约 blog 参考
+- https://blog.henix.info/ 极致简约，二次元浓度，技术深度
+  - https://blog.henix.info/blog/my-acg-vocal-playlist/ 歌单
+
+## 在线书籍
+
+- 《自然语言处理导论》https://intro-nlp.github.io/#home
 
 ## Decohack
-> https://www.decohack.com/ （上一次阅读进度：52 期，更新频率=周更~月更）
+> https://www.decohack.com/ （上一次阅读进度：52 期，更新频率 = 周更 ~ 月更）
 
 - [Don't write clean code, write CRISP code — Bitfield Consulting](https://bitfieldconsulting.com/golang/crisp-code)
 - [I wish Asciidoc was more popular](https://pdx.su/blog/2023-02-05-asciidoc-and-markdown/)
@@ -41,7 +50,7 @@
 - [CSS Scan - The fastest and easiest way to check, copy and edit CSS](https://getcssscan.com/?ref=beautifulcheckboxes2)
 - [Open design systems from the Figma Community](https://www.designsystems.com/open-design-systems/)
 - [Hero Sections - Official Tailwind CSS UI Components](https://tailwindui.com/components/marketing/sections/heroes)
-- [内容时代下，设计师如何做知识管理_设计师Andrew-站酷ZCOOL](https://www.zcool.com.cn/article/ZMTQ0NjE2MA==.html#kuak)
+- [内容时代下，设计师如何做知识管理 _ 设计师 Andrew- 站酷 ZCOOL](https://www.zcool.com.cn/article/ZMTQ0NjE2MA==.html#kuak)
 - [Hello 算法](https://www.hello-algo.com/)
 - [UX Tools | Practical UX skills and tools](https://uxtools.co/)
 - [Anime picture arcaea 4702x2480 797319 en](https://anime-pictures.net/posts/797319?by_tag=170018&lang=en)
@@ -50,8 +59,8 @@
 - [memos - A lightweight, self-hosted memo hub. Open Source and Free forever](https://usememos.com/)
 - [Color and Contrast.com](https://colorandcontrast.com/#/)
 - [The Guide To Responsive Design In 2023 and Beyond - Ahmad Shadeed](https://ishadeed.com/article/responsive-design/)
-- [ChatGPT是干什么的？为什么它有效？（第一部分）](https://mp.weixin.qq.com/s?__biz=MzIzNzI3ODUyNw==&mid=2650539573&idx=1&sn=c41d7646f6647a11174a44aceb181258&chksm=f0c3a265c7b42b73b65b995630a4d5607e21e47d5c7f4f7a8490328d4372e337c6f67f6bf984&scene=178&cur_album_id=2810936357031542785#rd)
-- [零基础｜搭建基于私域数据的ChatGPT](https://mp.weixin.qq.com/s/naiVMuXHAScRb_jSEJN3zg)
+- [ChatGPT 是干什么的？为什么它有效？（第一部分）](https://mp.weixin.qq.com/s?__biz=MzIzNzI3ODUyNw==&mid=2650539573&idx=1&sn=c41d7646f6647a11174a44aceb181258&chksm=f0c3a265c7b42b73b65b995630a4d5607e21e47d5c7f4f7a8490328d4372e337c6f67f6bf984&scene=178&cur_album_id=2810936357031542785#rd)
+- [零基础｜搭建基于私域数据的 ChatGPT](https://mp.weixin.qq.com/s/naiVMuXHAScRb_jSEJN3zg)
 - [CSS Tip: Learn CSS the easy one](https://css-tip.com/)
 
 ## 需要阅读的列表
@@ -61,7 +70,7 @@
 - [A deep technical dive into all things Redis. Covering various Redis topologies, data persistence and process forking.](https://architecturenotes.co/redis/)
 - [Get to know your browser's performance profiler - Thomas Belin](https://blog.atomrc.dev/p/js-performance-profiling/)
 - [The lightweight, distributed relational database built on SQLite](https://github.com/rqlite/rqlite) => 数据库收集
-- [(educational) build your own disk based KV store](https://github.com/avinassh/py-caskdb) => demo数据库设计与实现
+- [(educational) build your own disk based KV store](https://github.com/avinassh/py-caskdb) => demo 数据库设计与实现
 - [Lies we tell ourselves to keep using Golang](https://fasterthanli.me/articles/lies-we-tell-ourselves-to-keep-using-golang) => Golang 感悟
 - [Learn Go with test-driven development](https://github.com/quii/learn-go-with-tests) => 一本关于 Go 学习的开源书籍。
 

@@ -43,6 +43,11 @@ Code/ - github一切开源项目的整理。
 - [ ] 后端管理系统-前端界面 https://github.com/xuejianxianzun/vue-shop 一个vue2+element-ui写的简易后台管理系统的前端部分。
   - 读一下这个项目的源码。稍微了解即可。
 
+---
+
+- [ ] CSS scroll animation
+  - 【现在原生CSS可以实现滚动动画了】 https://www.bilibili.com/video/BV1xh4y1e7Un/
+
 ## blog template
 
 ### jekyll
