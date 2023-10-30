@@ -1,28 +1,9 @@
-## 正在处理
-
-- https://github.com/timqian/chinese-independent-blogs
-  - Li Hui Blog
-
-筛选后的 blog：
-- https://www.velasx.com 学习这个网站的 UI 设计，和技术选型
-- https://www.ezindie.com/tool 仅查看这个页面，挑选有用的工具
-- https://tw93.fun/ 界面简洁 by github pages
-- https://weekly.tw93.fun/
-- https://www.wikimoe.com/ 二次元 blog by wordpress
-- https://github.com/kahosan/MyBlog 简洁的 hexo 博客
-- https://blog.lui8.cn/ 科研风格的 jekyll blog
-- https://blog.moeqy.com/ 二次元 blog，基于 hexo
-- https://chanshiyu.com/ 蝉时雨，基于 React 自研的 blog 主题。
-- https://yihui.name/cn/ 编程; 统计学; 开源
-- https://www.himiku.com/ 基于 Typecho 的简约 blog 参考
-- https://blog.henix.info/ 极致简约，二次元浓度，技术深度
-  - https://blog.henix.info/blog/my-acg-vocal-playlist/ 歌单
-
 ## 在线书籍
 
 - 《自然语言处理导论》https://intro-nlp.github.io/#home
 
 ## Decohack
+
 > https://www.decohack.com/ （上一次阅读进度：52 期，更新频率 = 周更 ~ 月更）
 
 - [Don't write clean code, write CRISP code — Bitfield Consulting](https://bitfieldconsulting.com/golang/crisp-code)
@@ -71,7 +52,8 @@
 - [Get to know your browser's performance profiler - Thomas Belin](https://blog.atomrc.dev/p/js-performance-profiling/)
 - [The lightweight, distributed relational database built on SQLite](https://github.com/rqlite/rqlite) => 数据库收集
 - [(educational) build your own disk based KV store](https://github.com/avinassh/py-caskdb) => demo 数据库设计与实现
-- [Lies we tell ourselves to keep using Golang](https://fasterthanli.me/articles/lies-we-tell-ourselves-to-keep-using-golang) => Golang 感悟
+- [Lies we tell ourselves to keep using Golang](https://fasterthanli.me/articles/lies-we-tell-ourselves-to-keep-using-golang) =>
+  Golang 感悟
 - [Learn Go with test-driven development](https://github.com/quii/learn-go-with-tests) => 一本关于 Go 学习的开源书籍。
 
 ## 图形学
@@ -111,7 +93,6 @@
 - [WebGL 教程 - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial)
 
 - [Three.js – JavaScript 3D library](https://threejs.org/)
-
 
 ## UI 组件
 
