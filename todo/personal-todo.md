@@ -11,6 +11,13 @@ Todo - 读书计划整理和归档。
 Code/ - github一切开源项目的整理。
 ```
 
+## linux
+
+systemd learning
+
+- 阅读：https://seb.jambor.dev/posts/systemd-by-example-part-1-minimization/
+- 练习：https://systemd-by-example.com/
+
 
 ## tiny projects
 

@@ -790,11 +790,1233 @@ except queue.Empty:
 
 对于i++问题，注意区分 `self._value_lock = threading.Lock()` 和 `_lock = threading.RLock() `的区别。
 
+---
 
+ 防止死锁的加锁机制，按升序规则获取锁，反序释放。
 
-12.5-12.4 还没有读完。TODO
+```python
+import threading
+from contextlib import contextmanager
+
+# Thread-local state to stored information on locks already acquired
+_local = threading.local()
+
+@contextmanager
+def acquire(*locks):
+    # Sort locks by object identifier
+    locks = sorted(locks, key=lambda x: id(x))
+
+    # Make sure lock order of previously acquired locks is not violated
+    acquired = getattr(_local,'acquired',[])
+    if acquired and max(id(lock) for lock in acquired) >= id(locks[0]):
+        raise RuntimeError('Lock Order Violation')
+
+    # Acquire all of the locks
+    acquired.extend(locks)
+    _local.acquired = acquired
+
+    try:
+        for lock in locks:
+            lock.acquire()
+        yield
+    finally:
+        # Release locks in reverse order of acquisition
+        for lock in reversed(locks):
+            lock.release()
+        del acquired[-len(locks):]
+```
+
+```python
+import threading
+x_lock = threading.Lock()
+y_lock = threading.Lock()
+
+def thread_1():
+    while True:
+        with acquire(x_lock, y_lock):
+            print('Thread-1')
+
+def thread_2():
+    while True:
+        with acquire(y_lock, x_lock):
+            print('Thread-2')
+
+t1 = threading.Thread(target=thread_1)
+t1.daemon = True
+t1.start()
+
+t2 = threading.Thread(target=thread_2)
+t2.daemon = True
+t2.start()
+```
+
+上面的代码测试通过。
+
+但是不能类似下面的嵌套。
+
+```python
+import threading
+x_lock = threading.Lock()
+y_lock = threading.Lock()
+# x id > y id
+
+def thread_1():
+
+    while True:
+        with acquire(x_lock):
+            with acquire(y_lock):
+                print('Thread-1')
+
+def thread_2():
+    while True:
+        with acquire(y_lock):
+            with acquire(x_lock):
+                print('Thread-2')
+
+t1 = threading.Thread(target=thread_1)
+t1.daemon = True
+t1.start()
+
+t2 = threading.Thread(target=thread_2)
+t2.daemon = True
+t2.start()
+```
+
+一个比较常用的死锁检测与恢复的方案是引入看门狗计数器。当线程正常 运行的时候会每隔一段时间重置计数器，在没有发生死锁的情况下，一切都正常进行。一旦发生死锁，由于无法重置计数器导致定时器 超时，这时程序会通过重启自身恢复到正常状态。
+
+避免死锁是另外一种解决死锁问题的方式，在进程获取锁的时候会严格按照对象id升序排列获取，经过数学证明，这样保证程序不会进入 死锁状态。避免死锁的主要思想是，单纯地按照对象id递增的顺序加锁不会产生循环依赖，而循环依赖是 死锁的一个必要条件，从而避免程序进入死锁状态。
+
+回顾哲学家就餐问题：
+
+```python
+import threading
+
+# The philosopher thread
+def philosopher(left, right):
+    while True:
+        with acquire(left,right):
+             print(threading.currentThread(), 'eating')
+
+# The chopsticks (represented by locks)
+NSTICKS = 5
+chopsticks = [threading.Lock() for n in range(NSTICKS)]
+
+# Create all of the philosophers
+for n in range(NSTICKS):
+    t = threading.Thread(target=philosopher,
+                         args=(chopsticks[n],chopsticks[(n+1) % NSTICKS]))
+    t.start()
+```
+
+---
+
+保存线程的状态信息，使用线程本地对象。
+
+```python
+from socket import socket, AF_INET, SOCK_STREAM
+import threading
+
+class LazyConnection:
+    def __init__(self, address, family=AF_INET, type=SOCK_STREAM):
+        self.address = address
+        self.family = AF_INET
+        self.type = SOCK_STREAM
+        self.local = threading.local()
+
+    def __enter__(self):
+        if hasattr(self.local, 'sock'):
+            raise RuntimeError('Already connected')
+        self.local.sock = socket(self.family, self.type)
+        self.local.sock.connect(self.address)
+        return self.local.sock
+
+    def __exit__(self, exc_ty, exc_val, tb):
+        self.local.sock.close()
+        del self.local.sock
+```
+
+```python
+from functools import partial
+def test(conn):
+    with conn as s:
+        s.send(b'GET /index.html HTTP/1.0\r\n')
+        s.send(b'Host: www.python.org\r\n')
+
+        s.send(b'\r\n')
+        resp = b''.join(iter(partial(s.recv, 8192), b''))
+
+    print('Got {} bytes'.format(len(resp)))
+
+if __name__ == '__main__':
+    conn = LazyConnection(('www.python.org', 80))
+
+    t1 = threading.Thread(target=test, args=(conn,))
+    t2 = threading.Thread(target=test, args=(conn,))
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+```
+
+典型的一个线程对应一个独立的网络连接，互不干扰。
+
+---
+
+创建一个线程池
+
+1. 使用 concurrent.futures.ThreadPoolExecutor
+
+```python
+from socket import AF_INET, SOCK_STREAM, socket
+from concurrent.futures import ThreadPoolExecutor
+
+def echo_client(sock, client_addr):
+    '''
+    Handle a client connection
+    '''
+    print('Got connection from', client_addr)
+    while True:
+        msg = sock.recv(65536)
+        if not msg:
+            break
+        sock.sendall(msg)
+    print('Client closed connection')
+    sock.close()
+
+def echo_server(addr):
+    pool = ThreadPoolExecutor(128)
+    sock = socket(AF_INET, SOCK_STREAM)
+    sock.bind(addr)
+    sock.listen(5)
+    while True:
+        client_sock, client_addr = sock.accept()
+        pool.submit(echo_client, client_sock, client_addr)
+
+echo_server(('',15000))
+```
+
+2.如果想手动创建你自己的线程池， 通常可以使用一个Queue来轻松实现。
+
+```python
+from socket import socket, AF_INET, SOCK_STREAM
+from threading import Thread
+from queue import Queue
+
+def echo_client(q):
+    '''
+    Handle a client connection
+    '''
+    sock, client_addr = q.get()
+    print('Got connection from', client_addr)
+    while True:
+        msg = sock.recv(65536)
+        if not msg:
+            break
+        sock.sendall(msg)
+    print('Client closed connection')
+
+    sock.close()
+
+def echo_server(addr, nworkers):
+    # Launch the client workers
+    q = Queue()
+    for n in range(nworkers):
+        t = Thread(target=echo_client, args=(q,))
+        t.daemon = True
+        t.start()
+
+    # Run the server
+    sock = socket(AF_INET, SOCK_STREAM)
+    sock.bind(addr)
+    sock.listen(5)
+    while True:
+        client_sock, client_addr = sock.accept()
+        q.put((client_sock, client_addr))
+
+echo_server(('',15000), 128)
+```
+
+这个demo本质是硬编码了128个工作线程，一旦消耗完这个程序就没有后续处理能力了。
+
+3.此外，应该避免编写线程数量可以无限制增长的程序。
+
+```python
+from threading import Thread
+from socket import socket, AF_INET, SOCK_STREAM
+
+def echo_client(sock, client_addr):
+    '''
+    Handle a client connection
+    '''
+    print('Got connection from', client_addr)
+    while True:
+        msg = sock.recv(65536)
+        if not msg:
+            break
+        sock.sendall(msg)
+    print('Client closed connection')
+    sock.close()
+
+def echo_server(addr, nworkers):
+    # Run the server
+    sock = socket(AF_INET, SOCK_STREAM)
+    sock.bind(addr)
+    sock.listen(5)
+    while True:
+        client_sock, client_addr = sock.accept()
+        t = Thread(target=echo_client, args=(client_sock, client_addr))
+        t.daemon = True
+        t.start()
+
+echo_server(('',15000))
+```
+
+---
+
+并行编程。
+
+```python
+# findrobots.py
+
+import gzip
+import io
+import glob
+from concurrent import futures
+
+def find_robots(filename):
+    '''
+    Find all of the hosts that access robots.txt in a single log file
+
+    '''
+    robots = set()
+    with gzip.open(filename) as f:
+        for line in io.TextIOWrapper(f,encoding='ascii'):
+            fields = line.split()
+            if fields[6] == '/robots.txt':
+                robots.add(fields[0])
+    return robots
+
+def find_all_robots(logdir):
+    '''
+    Find all hosts across and entire sequence of files
+    '''
+    files = glob.glob(logdir+'/*.log.gz')
+    all_robots = set()
+    with futures.ProcessPoolExecutor() as pool:
+        for robots in pool.map(find_robots, files):
+            all_robots.update(robots)
+    return all_robots
+
+if __name__ == '__main__':
+    robots = find_all_robots('logs')
+    for ipaddr in robots:
+        print(ipaddr)
+```
+
+使用范式
+
+```python
+# A function that performs a lot of work
+def work(x):
+    ...
+    return result
+
+# Nonparallel code
+results = map(work, data)
+
+# Parallel implementation
+with ProcessPoolExecutor() as pool:
+    results = pool.map(work, data)
+```
+
+或者手动提交
+
+```python
+# Some function
+def work(x):
+    ...
+    return result
+
+with ProcessPoolExecutor() as pool:
+    ...
+    # Example of submitting work to the pool
+    future_result = pool.submit(work, arg)
+
+    # Obtaining the result (blocks until done)
+    r = future_result.result()
+```
+
+如果不想阻塞，你还可以使用一个回调函数，例如：
+
+```python
+def when_done(r):
+    print('Got:', r.result())
+
+with ProcessPoolExecutor() as pool:
+     future_result = pool.submit(work, arg)
+     future_result.add_done_callback(when_done)
+```
+
+注意点：
+
+- 这种并行处理技术只适用于那些可以被分解为互相独立部分的问题。
+- 被提交的任务必须是简单函数形式。对于方法、闭包和其他类型的并行执行还不支持。
+- 函数参数和返回值必须兼容pickle，因为要使用到进程间的通信，所有解释器之间的交换数据必须被序列化
+- 被提交的任务函数不应保留状态或有副作用。除了打印日志之类简单的事情。
+
+---
+
+Actor 模式
+
+```python
+from queue import Queue
+from threading import Thread, Event
+
+# Sentinel used for shutdown
+class ActorExit(Exception):
+    pass
+
+class Actor:
+    def __init__(self):
+        self._mailbox = Queue()
+
+    def send(self, msg):
+        '''
+        Send a message to the actor
+        '''
+        self._mailbox.put(msg)
+
+    def recv(self):
+        '''
+        Receive an incoming message
+        '''
+        msg = self._mailbox.get()
+        if msg is ActorExit:
+            raise ActorExit()
+        return msg
+
+    def close(self):
+        '''
+        Close the actor, thus shutting it down
+        '''
+        self.send(ActorExit)
+
+    def start(self):
+        '''
+        Start concurrent execution
+        '''
+        self._terminated = Event()
+        t = Thread(target=self._bootstrap)
+
+        t.daemon = True
+        t.start()
+
+    def _bootstrap(self):
+        try:
+            self.run()
+        except ActorExit:
+            pass
+        finally:
+            self._terminated.set()
+
+    def join(self):
+        self._terminated.wait()
+
+    def run(self):
+        '''
+        Run method to be implemented by the user
+        '''
+        while True:
+            msg = self.recv()
+
+# Sample ActorTask
+class PrintActor(Actor):
+    def run(self):
+        while True:
+            msg = self.recv()
+            print('Got:', msg)
+
+# Sample use
+p = PrintActor()
+p.start()
+p.send('Hello')
+p.send('World')
+p.close()
+p.join()
+```
+
+其他泛化版本
+
+```python
+class TaggedActor(Actor):
+    def run(self):
+        while True:
+             tag, *payload = self.recv()
+             getattr(self,'do_'+tag)(*payload)
+
+    # Methods correponding to different message tags
+    def do_A(self, x):
+        print('Running A', x)
+
+    def do_B(self, x, y):
+        print('Running B', x, y)
+
+# Example
+a = TaggedActor()
+a.start()
+a.send(('A', 1))      # Invokes do_A(1)
+a.send(('B', 2, 3))   # Invokes do_B(2,3)
+a.close()
+a.join()
+```
+
+作为另外一个例子，下面的actor允许在一个工作者中运行任意的函数， 并且通过一个特殊的Result对象返回结果：
+
+```python
+from threading import Event
+class Result:
+    def __init__(self):
+        self._evt = Event()
+        self._result = None
+
+    def set_result(self, value):
+        self._result = value
+
+        self._evt.set()
+
+    def result(self):
+        self._evt.wait()
+        return self._result
+
+class Worker(Actor):
+    def submit(self, func, *args, **kwargs):
+        r = Result()
+        self.send((func, args, kwargs, r))
+        return r
+
+    def run(self):
+        while True:
+            func, args, kwargs, r = self.recv()
+            r.set_result(func(*args, **kwargs))
+
+# Example use
+worker = Worker()
+worker.start()
+r = worker.submit(pow, 2, 3)
+worker.close()
+worker.join()
+print(r.result())
+```
+
+---
+
+实现消息发布/订阅模型
+
+```python
+from contextlib import contextmanager
+from collections import defaultdict
+
+class Exchange:
+    def __init__(self):
+        self._subscribers = set()
+
+    def attach(self, task):
+        self._subscribers.add(task)
+
+    def detach(self, task):
+        self._subscribers.remove(task)
+
+    @contextmanager
+    def subscribe(self, *tasks):
+        for task in tasks:
+            self.attach(task)
+        try:
+            yield
+        finally:
+            for task in tasks:
+                self.detach(task)
+
+    def send(self, msg):
+        for subscriber in self._subscribers:
+            subscriber.send(msg)
+
+# Dictionary of all created exchanges
+_exchanges = defaultdict(Exchange)
+
+# Return the Exchange instance associated with a given name
+def get_exchange(name):
+    return _exchanges[name]
+
+# Example of using the subscribe() method
+exc = get_exchange('name')
+with exc.subscribe(task_a, task_b):
+     ...
+     exc.send('msg1')
+     exc.send('msg2')
+     ...
+
+# task_a and task_b detached here
+```
+
+---
+
+生成器代替线程
+
+```python
+# Two simple generator functions
+def countdown(n):
+    while n > 0:
+        print('T-minus', n)
+        yield
+        n -= 1
+    print('Blastoff!')
+
+def countup(n):
+    x = 0
+    while x < n:
+        print('Counting up', x)
+        yield
+        x += 1
+```
+
+```python
+from collections import deque
+
+class TaskScheduler:
+    def __init__(self):
+        self._task_queue = deque()
+
+    def new_task(self, task):
+        '''
+        Admit a newly started task to the scheduler
+        '''
+        self._task_queue.append(task)
+
+    def run(self):
+        '''
+        Run until there are no more tasks
+        '''
+        while self._task_queue:
+            task = self._task_queue.popleft()
+            try:
+                # Run until the next yield statement
+                next(task)
+                self._task_queue.append(task)
+            except StopIteration:
+                # Generator is no longer executing
+                pass
+
+# Example use
+sched = TaskScheduler()
+sched.new_task(countdown(10))
+sched.new_task(countdown(5))
+sched.new_task(countup(15))
+sched.run()
+```
+
+```
+T-minus 10
+T-minus 5
+Counting up 0
+T-minus 9
+T-minus 4
+Counting up 1
+T-minus 8
+T-minus 3
+Counting up 2
+T-minus 7
+T-minus 2
+...
+```
+
+可以看到某个任务执行一次CPU时间片之后，就必须到队列末尾进行排队。
+
+---
+
+原书中给出了一个更加高级的例子，演示了使用生成器来实现一个并发网络应用程序。这里省略。
+
+---
+
+多个线程队列轮询
+
+```python
+import queue
+import socket
+import os
+
+class PollableQueue(queue.Queue):
+    def __init__(self):
+        super().__init__()
+        # Create a pair of connected sockets
+        if os.name == 'posix':
+            self._putsocket, self._getsocket = socket.socketpair()
+        else:
+            # Compatibility on non-POSIX systems
+            server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            server.bind(('127.0.0.1', 0))
+            server.listen(1)
+            self._putsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self._putsocket.connect(server.getsockname())
+            self._getsocket, _ = server.accept()
+            server.close()
+
+    def fileno(self):
+        return self._getsocket.fileno()
+
+    def put(self, item):
+        super().put(item)
+        self._putsocket.send(b'x')
+
+    def get(self):
+        self._getsocket.recv(1)
+        return super().get()
+```
+
+使用例子
+
+```python
+import select
+import threading
+
+def consumer(queues):
+    '''
+    Consumer that reads data on multiple queues simultaneously
+    '''
+    while True:
+        can_read, _, _ = select.select(queues,[],[])
+        for r in can_read:
+            item = r.get()
+            print('Got:', item)
+
+q1 = PollableQueue()
+q2 = PollableQueue()
+q3 = PollableQueue()
+t = threading.Thread(target=consumer, args=([q1,q2,q3],))
+t.daemon = True
+t.start()
+
+# Feed data to the queues
+q1.put(1)
+q2.put(10)
+q3.put('hello')
+q2.put(15)
+...
+```
+
+可行的做法
+
+```python
+import select
+
+def event_loop(sockets, queues):
+    while True:
+        # polling with a timeout
+        can_read, _, _ = select.select(sockets, [], [], 0.01)
+        for r in can_read:
+            handle_read(r)
+        #可选，顺便轮询queues    
+        for q in queues:
+            if not q.empty():
+                item = q.get()
+                print('Got:', item)
+```
+
+---
+
+在Unix系统上面启动守护进程
+
+```python
+#!/usr/bin/env python3
+# daemon.py
+
+import os
+import sys
+
+import atexit
+import signal
+
+def daemonize(pidfile, *, stdin='/dev/null',
+                          stdout='/dev/null',
+                          stderr='/dev/null'):
+
+    if os.path.exists(pidfile):
+        raise RuntimeError('Already running')
+
+    # First fork (detaches from parent)
+    try:
+        if os.fork() > 0:
+            raise SystemExit(0)   # Parent exit
+    except OSError as e:
+        raise RuntimeError('fork #1 failed.')
+
+    os.chdir('/')
+    os.umask(0)
+    os.setsid()
+    # Second fork (relinquish session leadership)
+    try:
+        if os.fork() > 0:
+            raise SystemExit(0)
+    except OSError as e:
+        raise RuntimeError('fork #2 failed.')
+
+    # Flush I/O buffers
+    sys.stdout.flush()
+    sys.stderr.flush()
+
+    # Replace file descriptors for stdin, stdout, and stderr
+    with open(stdin, 'rb', 0) as f:
+        os.dup2(f.fileno(), sys.stdin.fileno())
+    with open(stdout, 'ab', 0) as f:
+        os.dup2(f.fileno(), sys.stdout.fileno())
+    with open(stderr, 'ab', 0) as f:
+        os.dup2(f.fileno(), sys.stderr.fileno())
+
+    # Write the PID file
+    with open(pidfile,'w') as f:
+        print(os.getpid(),file=f)
+
+    # Arrange to have the PID file removed on exit/signal
+    atexit.register(lambda: os.remove(pidfile))
+
+    # Signal handler for termination (required)
+    def sigterm_handler(signo, frame):
+        raise SystemExit(1)
+
+    signal.signal(signal.SIGTERM, sigterm_handler)
+
+def main():
+    import time
+    sys.stdout.write('Daemon started with pid {}\n'.format(os.getpid()))
+    while True:
+        sys.stdout.write('Daemon Alive! {}\n'.format(time.ctime()))
+        time.sleep(10)
+
+if __name__ == '__main__':
+    PIDFILE = '/tmp/daemon.pid'
+
+    if len(sys.argv) != 2:
+        print('Usage: {} [start|stop]'.format(sys.argv[0]), file=sys.stderr)
+        raise SystemExit(1)
+
+    if sys.argv[1] == 'start':
+        try:
+            daemonize(PIDFILE,
+                      stdout='/tmp/daemon.log',
+                      stderr='/tmp/dameon.log')
+        except RuntimeError as e:
+            print(e, file=sys.stderr)
+            raise SystemExit(1)
+
+        main()
+
+    elif sys.argv[1] == 'stop':
+        if os.path.exists(PIDFILE):
+            with open(PIDFILE) as f:
+                os.kill(int(f.read()), signal.SIGTERM)
+        else:
+            print('Not running', file=sys.stderr)
+            raise SystemExit(1)
+
+    else:
+        print('Unknown command {!r}'.format(sys.argv[1]), file=sys.stderr)
+        raise SystemExit(1)
+```
+
+要启动这个守护进程，用户需要使用如下的命令：
+
+```
+bash % daemon.py start
+bash % cat /tmp/daemon.pid
+2882
+bash % tail -f /tmp/daemon.log
+Daemon started with pid 2882
+Daemon Alive! Fri Oct 12 13:45:37 2012
+Daemon Alive! Fri Oct 12 13:45:47 2012
+...
+```
 
 
 
 ## 脚本编程与系统管理
 
+执行一个外部命令并以Python字符串的形式获取执行结果
+
+```python
+import subprocess
+out_bytes = subprocess.check_output(['netstat','-a'])
+```
+
+使用 `check_output()` 函数是执行外部命令并获取其返回值的最简单方式。 但是，如果你需要对子进程做更复杂的交互，比如给它发送输入，你得采用另外一种方法。 这时候可直接使用 `subprocess.Popen` 类。
+
+---
+
+`shutil` 模块有很多便捷的函数可以复制文件和目录。
+
+`configparser` 模块能被用来读取配置文件.ini。
+
+---
+
+实现一个计时器
+
+```python
+import time
+
+class Timer:
+    def __init__(self, func=time.perf_counter):
+        self.elapsed = 0.0
+        self._func = func
+        self._start = None
+
+    def start(self):
+        if self._start is not None:
+            raise RuntimeError('Already started')
+        self._start = self._func()
+
+    def stop(self):
+        if self._start is None:
+            raise RuntimeError('Not started')
+        end = self._func()
+        self.elapsed += end - self._start
+        self._start = None
+
+    def reset(self):
+        self.elapsed = 0.0
+
+    @property
+    def running(self):
+        return self._start is not None
+
+    def __enter__(self):
+        self.start()
+        return self
+
+    def __exit__(self, *args):
+        self.stop()
+```
+
+上述代码中由 `Timer` 类记录的时间是钟表时间，并包含了所有休眠时间。 如果你只想计算该进程所花费的CPU时间，应该使用 `time.process_time()` 来代替：
+
+```python
+t = Timer(time.process_time)
+with t:
+    countdown(1000000)
+print(t.elapsed)
+```
+
+---
+
+限制内存和CPU的使用量
+
+```python
+import signal
+import resource
+import os
+
+def time_exceeded(signo, frame):
+    print("Time's up!")
+    raise SystemExit(1)
+
+def set_max_runtime(seconds):
+    # Install the signal handler and set a resource limit
+    soft, hard = resource.getrlimit(resource.RLIMIT_CPU)
+    resource.setrlimit(resource.RLIMIT_CPU, (seconds, hard))
+    signal.signal(signal.SIGXCPU, time_exceeded)
+
+if __name__ == '__main__':
+    set_max_runtime(15)
+    while True:
+        pass
+```
+
+```python
+def limit_memory(maxsize):
+    soft, hard = resource.getrlimit(resource.RLIMIT_AS)
+    resource.setrlimit(resource.RLIMIT_AS, (maxsize, hard))
+```
+
+## 第十四章：测试、调试和异常
+
+测试stdout输出
+
+```python
+from io import StringIO
+from unittest import TestCase
+from unittest.mock import patch
+import mymodule
+
+class TestURLPrint(TestCase):
+    def test_url_gets_to_stdout(self):
+        protocol = 'http'
+        host = 'www'
+        domain = 'example.com'
+        expected_url = '{}://{}.{}\n'.format(protocol, host, domain)
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            mymodule.urlprint(protocol, host, domain)
+            self.assertEqual(fake_out.getvalue(), expected_url)
+```
+
+---
+
+在单元测试中给对象打补丁
+
+```python
+# example.py
+from urllib.request import urlopen
+import csv
+
+def dowprices():
+    u = urlopen('http://finance.yahoo.com/d/quotes.csv?s=@^DJI&f=sl1')
+    lines = (line.decode('utf-8') for line in u)
+    rows = (row for row in csv.reader(lines) if len(row) == 2)
+    prices = { name:float(price) for name, price in rows }
+    return prices
+```
+
+```python
+import unittest
+from unittest.mock import patch
+import io
+import example
+
+sample_data = io.BytesIO(b'''\
+"IBM",91.1\r
+"AA",13.25\r
+"MSFT",27.72\r
+\r
+''')
+
+class Tests(unittest.TestCase):
+    @patch('example.urlopen', return_value=sample_data)
+    def test_dowprices(self, mock_urlopen):
+        p = example.dowprices()
+        self.assertTrue(mock_urlopen.called)
+        self.assertEqual(p,
+                         {'IBM': 91.1,
+                          'AA': 13.25,
+                          'MSFT' : 27.72})
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+---
+
+在单元测试中测试异常情况
+
+```python
+import unittest
+
+# A simple function to illustrate
+def parse_int(s):
+    return int(s)
+
+class TestConversion(unittest.TestCase):
+    def test_bad_int(self):
+        self.assertRaises(ValueError, parse_int, 'N/A')
+```
+
+为了测试异常值，可以使用 `assertRaisesRegex()` 方法， 它可同时测试异常的存在以及通过正则式匹配异常的字符串表示:
+
+```python
+class TestConversion(unittest.TestCase):
+    def test_bad_int(self):
+        with self.assertRaisesRegex(ValueError, 'invalid literal .*'):
+            r = parse_int('N/A')
+```
+
+或者使用`assertEqual()`
+
+```python
+import errno
+
+class TestIO(unittest.TestCase):
+    def test_file_not_found(self):
+        try:
+            f = open('/file/not/found')
+        except IOError as e:
+            self.assertEqual(e.errno, errno.ENOENT)
+
+        else:
+            self.fail('IOError not raised')
+```
+
+---
+
+将测试输出用日志记录到文件中
+
+```python
+import sys
+
+def main(out=sys.stderr, verbosity=2):
+    loader = unittest.TestLoader()
+    suite = loader.loadTestsFromModule(sys.modules[__name__])
+    unittest.TextTestRunner(out,verbosity=verbosity).run(suite)
+
+if __name__ == '__main__':
+    with open('testing.out', 'w') as f:
+        main(f)
+```
+
+---
+
+跳过某些测试
+
+```python
+import unittest
+import os
+import platform
+
+class Tests(unittest.TestCase):
+    def test_0(self):
+        self.assertTrue(True)
+
+    @unittest.skip('skipped test')
+    def test_1(self):
+        self.fail('should have failed!')
+
+    @unittest.skipIf(os.name=='posix', 'Not supported on Unix')
+    def test_2(self):
+        import winreg
+
+    @unittest.skipUnless(platform.system() == 'Darwin', 'Mac specific test')
+    def test_3(self):
+        self.assertTrue(True)
+
+    @unittest.expectedFailure
+    def test_4(self):
+        self.assertEqual(2+2, 5)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+---
+
+自定义异常
+
+自定义异常类应该总是继承自内置的 `Exception` 类， 或者是继承自那些本身就是从 `Exception` 继承而来的类。 尽管所有类同时也继承自 `BaseException` ，但你不应该使用这个基类来定义新的异常。 `BaseException` 是为系统退出异常而保留的，比如 `KeyboardInterrupt` 或 `SystemExit` 以及其他那些会给应用发送信号而退出的异常。
+
+```python
+class CustomError(Exception):
+    def __init__(self, message, status):
+        super().__init__(message, status)
+        self.message = message
+        self.status = status
+```
+
+Exception的默认行为是接受所有传递的参数并将它们以元组形式存储在 `.args` 属性中。很多其他函数库和部分Python库默认所有异常都必须有 `.args` 属性， 因此如果你忽略了这一步，你会发现有些时候你定义的新异常不会按照期望运行。
+
+---
+
+捕获异常后抛出另外的异常
+
+```python
+>>> def example():
+...     try:
+...             int('N/A')
+...     except ValueError as e:
+...             raise RuntimeError('A parsing error occurred') from e
+```
+
+使用raise from 维护完整的异常链。
+
+如果，你想忽略掉异常链，可使用 `raise from None` :
+
+```python
+>>> def example3():
+...     try:
+...             int('N/A')
+...     except ValueError:
+...             raise RuntimeError('A parsing error occurred') from None
+```
+
+---
+
+重新抛出异常
+
+```python
+try:
+   ...
+except Exception as e:
+   # Process exception information in some way
+   ...
+
+   # Propagate the exception
+   raise
+```
+
+---
+
+输出警告信息
+
+```python
+import warnings
+
+def func(x, y, logfile=None, debug=False):
+    if logfile is not None:
+         warnings.warn('logfile argument deprecated', DeprecationWarning)
+    ...
+```
+
+`warn()` 的参数是一个警告消息和一个警告类，警告类有如下几种：UserWarning, DeprecationWarning, SyntaxWarning, RuntimeWarning, ResourceWarning, 或 FutureWarning。
+
+---
+
+性能测试
+
+=> 修饰函数
+
+```python
+# timethis.py
+
+import time
+from functools import wraps
+
+def timethis(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        r = func(*args, **kwargs)
+        end = time.perf_counter()
+        print('{}.{} : {}'.format(func.__module__, func.__name__, end - start))
+        return r
+    return wrapper
+```
+
+修饰代码块
+
+```python
+from contextlib import contextmanager
+
+@contextmanager
+def timeblock(label):
+    start = time.perf_counter()
+    try:
+        yield
+    finally:
+        end = time.perf_counter()
+        print('{} : {}'.format(label, end - start))
+```
+
+下面是使用这个上下文管理器的例子：
+
+```python
+>>> with timeblock('counting'):
+...     n = 10000000
+...     while n > 0:
+...             n -= 1
+...
+counting : 1.5551159381866455
+>>>
+```
+
+或者使用timeit模块。
+
+注意：
+
+> 当执行性能测试的时候，需要注意的是你获取的结果都是近似值。 `time.perf_counter()` 函数会在给定平台上获取最高精度的计时值。 不过，它仍然还是基于时钟时间，很多因素会影响到它的精确度，比如机器负载。 如果你对于执行时间更感兴趣，使用 `time.process_time()` 来代替它。
+
+## 第十五章：C语言扩展
+
+使用ctypes访问C代码
