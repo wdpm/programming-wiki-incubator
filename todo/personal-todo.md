@@ -18,6 +18,8 @@ systemd learning
 - 阅读：https://seb.jambor.dev/posts/systemd-by-example-part-1-minimization/
 - 练习：https://systemd-by-example.com/
 
+## 工具
+https://programming-idioms.org/about#about-block-cheatsheets 一个介绍编程语言语法的很好的总结网站
 
 ## tiny projects
 
@@ -107,6 +109,8 @@ systemd learning
 ## 技术分享经验
 
 - [Thoughtworks洞见](https://insights.thoughtworks.cn/tag/featured/)
+- https://tech.meituan.com 偶尔选读
+- http://mysql.taobao.org/monthly/ 偶尔选读
 
 ## 图灵图书(未读)
 - 《机器学习实战》

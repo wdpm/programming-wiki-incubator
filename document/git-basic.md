@@ -20,13 +20,14 @@ Community，通过社区审核与测试，与 Ready to be Committed（即将提�
 - 适合分散贡献者仓库的模型 -> 使用 diff 程序创建补丁文件
 - 适合并列贡献者仓库的模型 -> fork, pull to local, change, commit, push, make pull request.
 - 共同维护的模型 -> 每个人都拥有对该仓库的共享写入权限
-- 自定义访问模型 -> 一个官方项目仓库/一份限制更为宽松的仓库内部副本(用于集成)/锁定到各个贡献者的单独创建的个人仓库
+- 自定义访问模型 -> 一个官方项目仓库 / 一份限制更为宽松的仓库内部副本 (用于集成)/ 锁定到各个贡献者的单独创建的个人仓库
 
 ## 分支策略
 
 - 主线分支开发
 
-主线分支是随时可以正常部署的分支，平时开发在新分支中开发，然后合并到主分支。最好是有代码review以及测试，否则主分支很可能会被分支合并破坏，导致无法部署。
+主线分支是随时可以正常部署的分支，平时开发在新分支中开发，然后合并到主分支。最好是有代码 review
+以及测试，否则主分支很可能会被分支合并破坏，导致无法部署。
 
 <img src="assets/image-20231217171557016.png" alt="image-20231217171557016" style="zoom:33%;" />
 
@@ -54,7 +55,7 @@ Community，通过社区审核与测试，与 Ready to be Committed（即将提�
 
 ## 更新分支
 
-**rebase 命令用于更新分支**，**而 merge 命令用于引入全新的工作**。当 merge 命令用于快进（fast-forward）策略时，状态图和变基后的图形并无二致。
+**rebase 命令用于更新分支 **，** 而 merge 命令用于引入全新的工作 **。当 merge 命令用于快进（fast-forward）策略时，状态图和变基后的图形并无二致。
 
 <img src="assets/image-20231217173137018.png" alt="image-20231217173137018" style="zoom:33%;" />
 
@@ -82,7 +83,7 @@ Community，通过社区审核与测试，与 Ready to be Committed（即将提�
 - 集成合并：由评审者执行
 - 集成分支：develop
 
-这种模式类似于开源项目的贡献PR。
+这种模式类似于开源项目的贡献 PR。
 
 ## 4.4 根据计划发布软件
 
@@ -96,7 +97,7 @@ dev -> qa -> master -> hotfix
 
 ## 单人团队
 
-表5-2：基本的Git命令
+表 5-2：基本的 Git 命令
 
 | 命令                                                             | 用途                                 |
 |----------------------------------------------------------------|------------------------------------|
@@ -165,7 +166,7 @@ $ git commit
 $ git branch --delete experimental_idea
 ```
 
-### 基本的rebase
+### 基本的 rebase
 
 确保你父分支的本地副本与项目主仓库中最新的提交同步
 
@@ -185,9 +186,9 @@ $ git rebase master
 
 ### 文件删除造成的变基中冲突
 
-如果某个文件A之前在master中，master已经删除了。但是feature分支却对这个文件A进行了修改，此时就会冲突。
+如果某个文件 A 之前在 master 中，master 已经删除了。但是 feature 分支却对这个文件 A 进行了修改，此时就会冲突。
 
-此时可以查看status来确认目前的冲突情况。
+此时可以查看 status 来确认目前的冲突情况。
 
 ```bash
 git status
@@ -203,10 +204,10 @@ git status
 
 可以选择继续、跳过、还是终止。
 
-下面是保留这个文件A的做法。先unstage，然后添加，最后标记冲突已经解决。
+下面是保留这个文件 A 的做法。先 unstage，然后添加，最后标记冲突已经解决。
 
 ```bash
-# 回到文件的上一个git旧版本
+# 回到文件的上一个 git 旧版本
 git reset HEAD A.asciidoc
 git status
 
@@ -223,15 +224,13 @@ git rebase --continue
 
 ### 本地工作记录
 
-`reflog`和`cherry-pick`。
+`reflog` 和 `cherry-pick`。
 
 使用 cherry-pick 将提交复制到新的分支。
 
 ```bash
 $ git cherry-pick -x commit
 ```
-
-
 
 ### 还原文件
 
@@ -273,11 +272,12 @@ $ git add --all
 $ git commit --amend
 ```
 
-### 6.5.2 使用reset合并提交
+### 6.5.2 使用 reset 合并提交
 
-想象一串珠子。假设串上有 20 粒珠子。握住第四颗珠子，让前三个从串上滑下。你现在有一串短了一些的珠子和三个散落的珠子。你在使用 reset 命令时添加的参数决定了这些珠子的命运。
+想象一串珠子。假设串上有 20 粒珠子。握住第四颗珠子，让前三个从串上滑下。你现在有一串短了一些的珠子和三个散落的珠子。你在使用
+reset 命令时添加的参数决定了这些珠子的命运。
 
-假设你希望重置你的珠串，把最新的三颗珠子替换成一颗大珠子。这里有点类似于squash commits。
+假设你希望重置你的珠串，把最新的三颗珠子替换成一颗大珠子。这里有点类似于 squash commits。
 
 具体的例子。
 
@@ -292,26 +292,24 @@ ee3e63c Adding first file
 
 ```bash
 $ git reset eppb98c
-# 或者使用相对HEAD的记录
+# 或者使用相对 HEAD 的记录
 # $ git reset HEAD~3
 ```
 
 现在我们有三个散落的珠子四处乱撞。这些珠子在我们的仓库中称为未跟踪的变更。文件的内容将不会被改变。
 
-然后就可以add和commit了。
+然后就可以 add 和 commit 了。
 
 ```
 git add --all
 git commit -m "..."
 ```
 
-
-
 ### 6.5.3 使用交互式变基修改提交
 
 > 这一小节是重点。
 
-假设有下面的git提交记录。
+假设有下面的 git 提交记录。
 
 ```bash
 d1dc647 Revert "Adding office hours reminder."
@@ -321,8 +319,6 @@ eed5023 Joke: What goes 'ha ha bonk'?
 0f187d8 Added information about additional people to be thanked.  <---------
 c546720 Adding office hours reminder.
 3184b5d Switching back to BADCamp version of the deck.
-bd5c178 Added feedback request; formatting updates to pro-con lists
-876e951 Removing feedback request; added Twitter handle.
 ```
 
 选择 0f187d8 作为你的起点。你现在已经准备好进入变基的流程，如下所示。
@@ -353,12 +349,11 @@ pick d1dc647 Revert "Adding office hours reminder."
 # Note that empty commits are commented out
 ```
 
-这里有6个指令。
+这里有 6 个指令。
 
 - "p" 或 "pick" 命令用于提交代码。
-- "r" 或 "reword" 命令用于提交代码，但会**编辑上一次提交的消息**。
-
-- "e" 或 "edit" 命令用于提交代码，但会**停下来让你修改上一次提交的内容**。
+- "r" 或 "reword" 命令用于提交代码，但会 ** 编辑上一次提交的消息 **。
+- "e" 或 "edit" 命令用于提交代码，但会 ** 停下来让你修改上一次提交的内容 **。
 
 提交列表被倒序排列，最旧的提交现在位于列表的顶端。
 
@@ -371,7 +366,26 @@ squash 50605a1 Correcting joke about horses and baths.
 pick d1dc647 Revert "Adding office hours reminder."
 ```
 
+** 保存并退出你的编辑器以继续 **。
 
+上面的合并策略是：
+
+- 保留 77c00e2
+- 合并压缩 eed5023
+- 合并压缩 50605a1
+- 保留 d1dc647
+
+变基过程完成后，被你修订后的日志将会如下所示：
+
+```bash
+$ git log --oneline
+
+ef4409f Revert "Adding office hours reminder." <---------------- 保留
+1c10178 Adding an Easter egg of bad jokes.     <---------------- 三合一
+0f187d8 Added information about additional people to be thanked.
+c546720 Adding office hours reminder.
+3184b5d Switching back to BADCamp version of the deck.
+```
 
 ## 7.3.4 合并完成的工作
 
@@ -396,3 +410,122 @@ $ git checkout master
 # --no-ff 表示不使用 fast forward 合并策略，留下一个 commit 节点来表示提交记录
 $ git merge --no-ff 2378-add-test
 ```
+
+## 7.4 样例工作流
+
+表 7-1：每周部署工作流中的分支类型
+
+| 分支名 / 约定                   | 分支类型 | 描述                                      | 基线分支            |
+|----------------------------|------|-----------------------------------------|-----------------|
+| dev                        | 集成   | 用于放置通过同行评审的代码                           | 工单分支            |
+| `ticket#-descriptive-name` | 开发   | 用于完成工单中标识的工作                            | dev             |
+| qa                         | 集成   | 用于每个冲刺结束前的质量保证测试，没有通过 QA 测试的代码会从这个分支上移除 | dev             |
+| master                     | 集成   | 用于部署测试全部通过的代码                           | qa              |
+| hotfix-ticket#-description | 开发   | 用于为产品中发现的紧急问题开发对策                       | master 上最新的发布标签 |
+
+### 完成工单时需要的 Git 命令
+
+```bash
+$ git checkout dev
+$ git pull --rebase=preserve origin dev
+$ git checkout -b 1234-new_ticket_branch
+# 完成工作
+$ git add --all
+$ git commit
+
+# 在共享工作前，确保该分支包含了新的提交，如下所示。
+$ git checkout dev
+$ git pull --rebase=preserve
+$ git checkout 1234-new_ticket_branch
+$ git rebase dev
+
+# 最后，与其他人共享新的工作，如下所示。
+$ git push origin 1234-new_ticket_branch
+```
+
+### 完成同行评审时需要的 Git 命令
+
+```bash
+$ git checkout dev
+$ git pull --rebase=preserve
+$ git checkout 1234-new_ticket_branch
+
+// 进行评审工作
+
+# 修改完毕后，则合并到 master 分支
+$ git merge --no-ff 1234-new_ticket_branch master
+# 删除本地分支
+$ git branch --delete 1234-new_ticket_branch
+# 删除远程对应的分支
+$ git push --delete origin 1234-new_ticket_branch
+
+# 如果觉得这个分支的内容修改不能接受，应该采取其他方式（例如issue评论）进行改进，延缓合并。
+```
+
+### 设置 qa 分支时需要的命令
+
+```bash
+$ git checkout dev
+$ git pull --rebase=preserve
+$ git checkout qa
+$ git merge --no-ff dev
+$ git push
+```
+
+### 移除在发布前没能通过 QA 的工单时需要的命令
+
+```bash
+$ git log --oneline --grep ticket-number
+(找到需要撤销的提交)
+$ git revert commit_id
+$ git revert --mainline 1 merge_commit
+(但是，在理想情况下，你应该使用 --no-ff 合并工作分支，这样会产生一个便于撤销的提交 ID)
+```
+
+### 准备部署时需要的命令
+
+```bash
+$ git checkout master
+$ git merge qa
+$ git tag
+(找到最新的标签，以确定下一个标签的编号)
+
+# 通过 --annotate 参数签署，通过 -m 参数添加说明
+$ git tag --annotate -m tag_name
+$ git push --tags
+```
+
+### 创建补丁分支时需要的命令
+
+```bash
+$ git checkout master
+$ git tag
+(查看标签列表，确定当前活跃的标签)
+$ git checkout -b hotfix-issue-description tag_name
+```
+
+接下来，补丁分支将被当作常规的开发分支一样对待，经过同行评审和质量保证测试。当
+测试通过后，它会被立即合并回 master 分支并打上标签准备发布。
+
+### 准备补丁的部署时需要的命令
+
+```bash
+$ git checkout master
+$ git merge --no-ff hotfix-issue-description
+$ git tag --annotate -m new_tag_name
+$ git push --tags
+```
+
+## 写书
+
+```bash
+$ git checkout ch04
+// 编写这一章
+$ git add ch04.asciidoc
+$ git commit
+
+$ git checkout drafts
+$ git merge ch04
+```
+
+也就是开辟新分支来写每一章，然后合并到drafts草稿分支。
