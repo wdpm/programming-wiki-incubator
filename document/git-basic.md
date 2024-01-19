@@ -448,18 +448,87 @@ $ git push origin 1234-new_ticket_branch
 ```bash
 $ git checkout dev
 $ git pull --rebase=preserve
+# 1234-new_ticket_branch 是一个分支而不是一个 pr 编号
 $ git checkout 1234-new_ticket_branch
 
 // 进行评审工作
 
 # 修改完毕后，则合并到 master 分支
-$ git merge --no-ff 1234-new_ticket_branch master
+$ git merge --no-ff 1234-new_ticket_branch main
 # 删除本地分支
 $ git branch --delete 1234-new_ticket_branch
 # 删除远程对应的分支
 $ git push --delete origin 1234-new_ticket_branch
 
-# 如果觉得这个分支的内容修改不能接受，应该采取其他方式（例如issue评论）进行改进，延缓合并。
+# 如果觉得这个分支的内容修改不能接受，应该采取其他方式（例如 issue 评论）进行改进，延缓合并。
+```
+
+如果是对于 pr
+> [参考](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally)
+
+```bash
+# pr-28 是要新建的本地分支名称
+git fetch origin pull/28/head:pr-28
+git checkout pr-28
+```
+
+现在，您可以使用此分支执行任何操作。 您可以运行一些本地测试，或者将其他分支合并到该分支。
+
+准备就绪后，可以向上推送新分支：
+
+```bash
+git push origin pr-28
+```
+
+最后，使用新分支创建 PR 请求。这种方式会割裂之前的原始 PR 请求，因此不推荐。
+
+---
+=> 选择 1：可以使用 merge 方式追加到原始 pr 请求页面。
+
+```bash
+# 一般来说，GitHub 上的 PR 页面会显示基于哪个远程分支创建的 PR。
+# 您可以在页面上方的 "base" 或 "compare" 部分找到这些信息。"BRANCHNAME" 就是这个远程分支的名称。
+# 例如，如果原始 PR 是基于名为 "main" 的远程分支创建的，那么 "BRANCHNAME" 就是 "main"。
+git push origin pr-28:main
+```
+
+此时会产生两个 git commits 记录，原始 pr 界面会显示已合并 main 分支。
+
+---
+
+=> 选择2：rebase精简提交提交记录。
+
+如果不想产生多个 commits 记录，而是更加清晰的提交记录，那么最好是合并他们，最终为一个 commit 记录。
+
+````bash
+git rebase - i HEAD~n
+````
+假设这里是要修订两个记录，那么上面的 n 就是 2。
+
+在交互式界面中，将除第一个提交记录之外的所有提交记录的命令（例如 "pick"）改为 "squash" 或 "s"，表示将它们合并到第一个提交记录中。
+保存并关闭编辑器。
+```bash
+pick 95790f5 feat: Update linovel_mobile volume title
+pick 0b9f07d fix: Update linovel_mobile volume title
+```
+=>
+```bash
+pick 95790f5 fix: Update linovel_mobile volume title
+s 0b9f07d fix: Update linovel_mobile volume title
+```
+
+```bash
+$ git rebase --continue
+[detached HEAD bdd4766] fix: Update linovel_mobile volume title
+ Author: XXX <XXX@XXXXX.com>
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+Successfully rebased and updated refs/heads/main.
+```
+
+最后，推送。
+```bash
+git push -f origin main
+# git push origin HEAD:main
 ```
 
 ### 设置 qa 分支时需要的命令
@@ -528,4 +597,4 @@ $ git checkout drafts
 $ git merge ch04
 ```
 
-也就是开辟新分支来写每一章，然后合并到drafts草稿分支。
+也就是开辟新分支来写每一章，然后合并到 drafts 草稿分支。
