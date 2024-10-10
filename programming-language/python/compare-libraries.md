@@ -42,3 +42,4 @@
 | pytest                                            | 单元测试                        |
 | [httptest](https://github.com/pdxjohnny/httptest) | 启发于go的httptest              |
 | [tenacity](https://github.com/jd/tenacity)        | python 的重试库                 |
+| [sympy](https://www.sympy.org/)                   | python的数学符号库                |
