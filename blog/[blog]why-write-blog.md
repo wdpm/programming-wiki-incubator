@@ -10,7 +10,7 @@
 
 ## 一些不错的 blog 收集
 
-> 收集来源 https://github.com/timqian/chinese-independent-blogs
+> 大部分来自 https://github.com/timqian/chinese-independent-blogs
 
 - https://www.velasx.com 学习这个网站的 UI 设计，和技术选型
 - https://www.ezindie.com/tool 仅查看这个页面，挑选有用的工具
@@ -27,3 +27,4 @@
 - https://qq52o.me/category/resource 【实用资源】读一下
 - https://lesofn.com/ 文章数不多，有一定厚度，简洁有力
 - https://developers.google.com/tech-writing/overview Google 技术写作指南
+- https://www.tominlab.com/blog

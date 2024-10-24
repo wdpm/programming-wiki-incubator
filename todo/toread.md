@@ -6,6 +6,9 @@
 
 > https://www.decohack.com/ （上一次阅读进度：52 期，更新频率 = 周更 ~ 月更）
 
+- https://zh.javascript.info/
+  - 浏览器：文档，事件，接口 阅读进度位于 4.4 https://zh.javascript.info/forms-submit
+- https://madza.hashnode.dev/42-developer-resources-to-kickstart-your-coding-journey
 - [Don't write clean code, write CRISP code — Bitfield Consulting](https://bitfieldconsulting.com/golang/crisp-code)
 - [I wish Asciidoc was more popular](https://pdx.su/blog/2023-02-05-asciidoc-and-markdown/)
 - [Trends in Twitter’s Architecture](https://iosifache.me/twitter-architecture-trends)

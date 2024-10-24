@@ -5,10 +5,26 @@
   - [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer) - 算法可视化
   - [viewer](https://github.com/zetane/viewer) - ML models and internal tensors 3D visualizer.
 
+- python GUI solution
+  - https://github.com/reflex-dev/reflex Pure Python, No frontend. React frontend + FastAPI backend app. uses WebSockets to communicate between the frontend and the backend
+  - https://nicegui.io/#features Vue to Python bridge + Quasar + FastAPI + Python 3.8+
+  - https://github.com/flet-dev/flet Flet UI is built with Flutter framework.
+  - https://github.com/r0x0r/pywebview a lightweight web framework like Flask (opens new window)or on its own with a two way bridge between Python and DOM.
+  - https://github.com/python-eel/Eel
+
 - 前端 CSS 框架
 
   - 原生
     - [MDUI](https://github.com/zdhxiong/mdui)
+    
+  - https://mantine.dev/
+  - https://github.com/haiilo/catalyst A framework agnostic design system and component library based on web components and SCSS.
+
+  - based on Tailwind CSS
+    - https://tailwindui.com/templates/catalyst App UI参考
+    - https://github.com/wdpm/catalyist-ui-kit 疑似付费模版的泄露
+    - https://github.com/wdpm/ui-catalyst-tailwind 疑似付费模版的泄露
+
 
   - Vue
     - [Vue Material](https://vuematerial.io/)
@@ -189,6 +205,9 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
 
 - 数据库管理
   - Syslog
+  
+- 代码评审
+  - https://kypso.io/
 
 - API 查询
   - https://devdocs.io/

@@ -1,7 +1,10 @@
-# Created by .ignore support plugin (hsz.mobi)
+# IDE settings
 /.idea/
 /.vscode
 .fleet
 
+# build
 **/dist/
+
+# local dependencies
 **/node_modules
