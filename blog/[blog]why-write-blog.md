@@ -28,3 +28,4 @@
 - https://lesofn.com/ 文章数不多，有一定厚度，简洁有力
 - https://developers.google.com/tech-writing/overview Google 技术写作指南
 - https://www.tominlab.com/blog
+- https://www.hateonion.me/ 简约干净的博客风格

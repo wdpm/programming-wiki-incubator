@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Demo</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="banner" style="--deltaX: 0.5;">
+    <div class="scene">
+        <img src="./images/bilibili-winter-scene-morning.jpg" class="morning" alt="">
+        <img src="./images/bilibili-winter-scene-afternoon.jpg" class="afternoon" alt="">
+        <!-- 这是 22 和 33 正在玩耍的小雪球 -->
+        <img src="./images/ball.png" class="ball" alt="">
+        <!-- 本来晚上的场景应该也是图片，但是换成了更加生动的短视频 -->
+        <!--        <img src="" class="evening">-->
+        <video autoplay="autoplay" loop="loop" muted="muted" class="evening">
+            <source src="./videos/bilibili-winter-scene-evening.webm" type="video/webm">
+        </video>
+        <!-- 这是右侧屋子的窗户框（积雪） -->
+        <img src="./images/bilibili-winter-snow.png" class="window-cover" alt="">
+    </div>
+    <div class="tree">
+        <img src="./images/bilibili-winter-tree-morning.png" class="morning" alt="">
+        <img src="./images/bilibili-winter-tree-afternoon.png" class="afternoon" alt="">
+        <img src="./images/bilibili-winter-tree-evening.png" class="evening" alt="">
+    </div>
+</div>
+
+</body>
+<script>
+    let startingPoint = 0
+    const header = document.querySelector('.banner')
+
+    header.addEventListener('mouseenter', (e) => {
+        startingPoint = e.clientX
+        header.classList.add('moving')
+    })
+
+    header.addEventListener('mouseout', (e) => {
+        header.classList.remove('moving')
+        // reset css variables
+        header.style.setProperty('--deltaX', 0)
+        header.style.setProperty('--morning-opacity', 1)
+        header.style.setProperty('--afternoon-opacity', 1)
+        header.style.setProperty('--evening-opacity', 0)
+        header.style.setProperty('--ball-opacity', 1)
+        header.style.setProperty('--window-cover-opacity', 0)
+
+        header.style.setProperty('--sceneTransformX', 0)
+        header.style.setProperty('--treeTransformX', 0)
+        header.style.setProperty('--ballTransformX', 50)
+        header.style.setProperty('--ballRotateDegree', 10)
+    })
+
+    header.addEventListener('mousemove', (e) => {
+        let deltaX = (startingPoint - e.clientX) / header.clientWidth
+        // update css variables
+        // deltaX belongs to [1,-1]
+        header.style.setProperty('--deltaX', deltaX)
+
+        // opacity
+        const speedFactor = 4
+        let morningOpacity = (deltaX > 0) ? 1 : 0;
+        let afternoonOpacity = Math.max(0, Math.min(1, 1 - Math.abs(speedFactor * deltaX)));
+        let eveningOpacity = Math.max(0, Math.min(1, -speedFactor * deltaX));
+        let ballOpacity = afternoonOpacity
+        const speedSlowFactor = 2;
+        let windowCoverOpacity = Math.max(0, Math.min(1, -speedSlowFactor * deltaX));
+        header.style.setProperty('--morning-opacity', morningOpacity)
+        header.style.setProperty('--afternoon-opacity', afternoonOpacity)
+        header.style.setProperty('--evening-opacity', eveningOpacity)
+        header.style.setProperty('--ball-opacity', ballOpacity)
+        header.style.setProperty('--window-cover-opacity', windowCoverOpacity)
+
+        // 末尾的+的是initial值
+        let sceneTransformX = deltaX * 100 * 1.2
+        let treeTransformX = deltaX * 150 * 2
+        let ballTransformX = deltaX * 100 + 50
+        let ballRotateDegree = deltaX * 10 * 2 + 10
+        header.style.setProperty('--sceneTransformX', sceneTransformX)
+        header.style.setProperty('--treeTransformX', treeTransformX)
+        header.style.setProperty('--ballTransformX', ballTransformX)
+        header.style.setProperty('--ballRotateDegree', ballRotateDegree)
+    })
+</script>
+</html>
