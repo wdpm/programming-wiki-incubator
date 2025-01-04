@@ -37,9 +37,20 @@
 | isort                                             | import语句排序                  |
 | black                                             | 强制格式化                       |
 | flake8                                            | linter                      |
+| [ruff](https://github.com/astral-sh/ruff)                                              | linter                      |
 | pre-commit                                        | git hooks                   |
 | mypy                                              | 类型加强                        |
 | pytest                                            | 单元测试                        |
 | [httptest](https://github.com/pdxjohnny/httptest) | 启发于go的httptest              |
 | [tenacity](https://github.com/jd/tenacity)        | python 的重试库                 |
 | [sympy](https://www.sympy.org/)                   | python的数学符号库                |
+| [结巴](https://github.com/fxsjy/jieba)                  | 中文分词                        |
+| https://github.com/lk-geimfari/mimesis                  | data faker/mock             |
+
+## need to explore
+
+网络测试模拟库
+- VCR.py
+- Responses
+- HTTPretty
+- Betamax

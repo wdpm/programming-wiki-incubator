@@ -1,6 +1,6 @@
 # 在 win 10上安装 WSL 2和CentOS
 
-1. 下载centos-wsl 特供镜像，https://github.com/mishamosher/CentOS-WSL/releases/tag/7.9-2009，版本可以按需寻找。
+1. 下载centos-wsl 特供镜像，https://github.com/mishamosher/CentOS-WSL/releases/tag/7.9-2009 ，版本可以按需寻找。
 
 2. zip解压后，执行里面的CentOS8.exe程序，等待安装完毕。
 

@@ -61,6 +61,23 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '<your_root_password>';
 grant all privileges on *.* to 'root'@'%' identified by '<your_root_password>' with grant option;
 ```
 
+For MySQL 8.0+
+
+```bash
+sudo mysql -u root -p
+
+# change root password
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+
+# change the host of root from localhost to %
+UPDATE mysql.user SET host='%' WHERE user='root' AND host='localhost';
+FLUSH PRIVILEGES;
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+
+# root 用户不仅可以执行所有操作，还可以将这些权限分配给其他用户
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+```
+
 ## Reference
 - https://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html
 - https://tecadmin.net/install-mysql-5-7-centos-rhel/

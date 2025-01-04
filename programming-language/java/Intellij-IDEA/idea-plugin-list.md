@@ -3,7 +3,7 @@
 ## common
 
 - .ignore: for ignore file templates
-- pangu: for markdown formatting
+- [pangu](https://github.com/vinta/pangu.py): for markdown formatting
 - wakatime: for collect coding time statistics.
 
 ## other

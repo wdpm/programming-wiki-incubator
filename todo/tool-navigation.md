@@ -171,6 +171,18 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
   - Bash + Oh my Zsh
   - Fish
   - Zsh
+
+- API 调试
+  - ~~postman~~ 
+    - 特点：云账户同步，功能强大
+    - 缺点：体积臃肿、启动缓慢、商业化严重
+  - ~~bruno~~
+    - 缺点：界面朴素、功能较少。
+  - ~~insomina~~
+    - 没有特别突出的优点和缺点
+  - Hoppscotch
+    - 特点：体积小巧、启动迅速、云账号同步、界面优雅。
+    - 缺点：功能较少。
   
 - 原型设计
   - AzureRP

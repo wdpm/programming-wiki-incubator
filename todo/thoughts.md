@@ -86,23 +86,6 @@ mobaterm
 powershell 和 ssh 配置 openssh
 
 
-web 服务端框架
--
-
-数据库选择
--
-
-画图工具的选择：
-draw.io =》diagrams.net 各种风格，GUI 拖拽
-mermaid-js 基于 markdown 语法的流程图
-excalidraw 手绘风格，GUI 拖拽
-plant UML 文本控制的 uml 图例
-dot 语言 + graphviz 画图工具。基于代码文本。
-
-权衡：
-如果对于流程图要求比较规范，例如绝对对齐，优先考虑基于代码文本的生成方式。
-如果想要活泼自由的风格，可以选取 gui 拖拽风格的生成方式。
-
 api 文档生成
 apidoc
 yapi
@@ -244,10 +227,3 @@ ssrf
 5. [进阶] 阅读该语言源码，例如 JDK，或者优秀项目代码。
 ```
 
-## documentation tool
-
-- graphviz
-    - http://www.webgraphviz.com/
-    - http://dreampuf.github.io/GraphvizOnline/
-    - http://www.graphviz.org/documentation/
-- https://www.diagrams.net/ (formerly called draw.io)

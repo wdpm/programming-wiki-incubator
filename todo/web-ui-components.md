@@ -1,3 +1,8 @@
+### webGL
+
+- https://github.com/mrspence/webgl-ripples.js 水波涟漪散开效果。
+
+
 ### text
 
 - [Animated Text Reveal Effect Examples](https://www.cssscript.com/demo/animated-text-reveal-effect/)

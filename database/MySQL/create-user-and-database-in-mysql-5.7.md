@@ -6,7 +6,7 @@ mysql> create database mydb;
 Query OK, 1 row affected (0.01 sec)
 
 /* CREATE MYSQL USER FOR DATABASE */
-mysql> create user 'evan'@'localhost' identified by 'omitted';
+mysql> create user 'evan'@'localhost' identified by 'WRITE_YOUR_PASSWORD';
 Query OK, 0 rows affected (0.00 sec)
 
 /* GRANT Permission to User on Database */
