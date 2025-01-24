@@ -80,7 +80,6 @@ https://www.uicentral.fyi/ UI 框架选择对比
       分支之间同步部分 md 文件，可行，但是依旧复杂。
     - zero-md：非常简约的方案。
         - https://github.com/zerodevx/zero-md
-        - https://zerodevx.github.io/zero-md/attributes-and-helpers/
     - manally maintain a single index.html，文档内容也要在 html 中直接写，对于内容的编辑不方便，没有利用到 md 的优势。
     - https://github.com/susam/texme#render-markdown-and-latex 在 md 中为 latex 提供渲染支持。
 

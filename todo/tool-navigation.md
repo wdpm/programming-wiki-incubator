@@ -13,6 +13,8 @@
   - https://github.com/python-eel/Eel
 
 - 前端 CSS 框架
+  - https://github.com/Tencent/tdesign-react 腾讯开源的web组件库。可以参考，代码还是很规范的。
+  - https://github.com/Tencent/tdesign-vue-next vue版本
 
   - 原生
     - [MDUI](https://github.com/zdhxiong/mdui)

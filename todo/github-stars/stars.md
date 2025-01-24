@@ -1,16 +1,60 @@
 # stars
 
+星数划分
+
+- 0-100 荒无人烟（野草都三尺高了
+- 100-500 鲜为人知（没听过，你敢用吗，会不会跑路呢
+- 500-1000 初露锋芒（梭哈是一种智慧
+- 1000-3000 锋芒毕露（越看越靠谱了属于是
+- 3000-10000 门庭若市
+- 10000-100000 家喻户晓
+- 100000+ 热火朝天
+
+## fonts
+
+- [秋水字体](https://wangchujiang.com/free-font/preview.html?p=fonts/%E7%A7%8B%E6%B0%B4%E6%9B%B8%E4%BD%93/%E7%A7%8B%E6%B0%B4%E6%9B%B8%E4%BD%93.ttf&s=19.2%20MB&t=%E7%A7%8B%E6%B0%B4%E6%9B%B8%E4%BD%93&v=1.250&l=OFL-1.1&u=https%3A%2F%2Fgithub.com%2FNoHeartPen%2FQiushuiShotai)
+- [月星楷 - 简体](https://wangchujiang.com/free-font/preview.html?p=fonts/%E6%9C%88%E6%98%9F%E6%A5%B7/%E6%9C%88%E6%98%9F%E6%A5%B7-Regular.ttf&s=16.9%20MB&t=%E6%9C%88%E6%98%9F%E6%A5%B7-Regular&v=1.101&l=OFL-1.1&u=https%3A%2F%2Fgithub.com%2FGuiWonder%2FMoonStarsKai)
+
+## interview preparation
+
+- https://github.com/yangshun/tech-interview-handbook 一份面试准备指南。仅阅读网站的正文即可，不要跳到深层的相关链接。
+
 ## learning
 
+- https://github.com/kevin-wayne/algs4 算法一书的匹配代码，基于 Java。
+- https://github.com/stackgl/webgl-workshop webgl 例子指南。
+- https://github.com/dmarman/sha256algorithm SHA256 可视化。
+- https://github.com/sudoskys/StableDiffusionBook SD 画图指南。
+- https://github.com/bradtraversy/design-resources-for-developers 设计资源导航。
+- https://github.com/bregman-arie/devops-exercises devops 问答。
+- https://gitstar-ranking.com/ github stars 排行榜。可以到这里了解热门的 repo。
+- https://github.com/jwasham/coding-interview-university 关于代码面试的一些指南。
+- https://roadmap.sh/ 编程知识学习路线图。学习模式：不要理会给出的关于 item 的 links，只关注 item 自行探索即可。它提供的 links 大部分都是浪费时间。
 - https://github.com/meetqy/aspoem 中国诗词网站。界面简洁优雅。
 - https://github.com/fenixsoft/awesome-fenix 在线书籍，讨论如何构建一套可靠的大型分布式系统。
+- https://github.com/huihongxiao/MIT6.824 MIT 分布式系统系列公开课，这是中文文本描述。
 - https://github.com/jaywcjlove/reference 开发人员快速参考备忘清单
+- https://github.com/mljohns89/oauth-demo  uses Spring Boot and OAuth2 to demonstrate the Authorization Code Grant Flow
+- https://github.com/wesleyegberto/java-new-features Java 版本特性总结。
+- https://github.com/keon/algorithms 数据结构和算法，python 语言描述。
+- https://github.com/TheAlgorithms/Java 数据结构和算法，java 语言描述。
+- https://github.com/leemengtw/deep-learning-resources 关于深度学习的一些资源导航。
+- https://github.com/bangumi/api bangumi open api 规范。
+- https://github.com/ept/hermitage 一个关于不同的关系型数据库的隔离级别含义的对比实验。
+- https://github.com/jonashackt/spring-boot-vuejs spring + vue 集成的详尽指南，还不错。
+- https://github.com/SerialLain3170/AwesomeAnimeResearch 动画相关的论文研究的链接汇总。
 
 ## platform
 
 - [Supabase](https://github.com/supabase/supabase) 是一个开源的 Firebase 替代品
+- https://github.com/canonical/microk8s single-package Kubernetes。但是边缘计算的发展一言难尽。
 
 ## App
+
+### website
+
+- https://github.com/nini22P/omp 网页端 OneDrive 媒体播放器。低成本试验的选择。
+- https://github.com/maomao1996/Vue-mmPlayer 网易云 web app 示例。界面不错。
 
 ### mobile app
 
@@ -23,13 +67,84 @@
 ### desktop app
 
 - https://github.com/chanshiyucx/eriri 非常简约的本地漫画阅读器。目录导入必须为 D:/E/F/c.png 中的 E，F 当做漫画作品名称。
+- https://github.com/r0x0r/pywebview-react-boilerplate pywebview starter 模板。
+- https://github.com/zhanglun/lettura RSS 简洁阅读器，基于 tauri 实现。
 
-## tool
+## command line user interfaces
+
+- https://github.com/SBoudrias/Inquirer.js Node 生态的命令行界面工具
+- https://github.com/Textualize/textual python 生态的命令行界面工具，兼顾 web 端。
+
+## cms
+
+- https://github.com/mintlify/docs 一个基于 MDX 语法的文档生成工具栈。界面优雅简洁，可以考虑。
+- https://github.com/mediacms-io/mediacms video cms。值得阅读源码。
+- https://github.com/undb-io/undb no code database
+- https://github.com/suanju/easy-video-net 基于 gin + vue3 模仿 b 站 , 具有视频，专栏 ，直播 ，im 等功能。代码很丰富。
+- https://github.com/wangzmgit/alnitak 另一个基于 Go + Vue 3.x 模仿 b 站。
+- https://github.com/bitinn/animeshot2 动漫名场面截图分享网站，基于 Node
+- https://github.com/sunainapai/makesite 基于 python 实现的最简 SSG 工具。值得阅读源码和 fork。
+- https://github.com/ellmetha/django-machina python django 实现的简易论坛，不清楚是否具有阅读价值。
+- https://github.com/flaskbb/flaskbb python flask 实现的简易论坛，可以阅读研究。
+- https://github.com/LoeiFy/Diaspora 几年前一见倾心的 blog 主题，有不同的移植版本。界面优雅美观，不落俗套。
+
+## libraries
+
+- https://github.com/cookpete/react-player video player
+- https://github.com/bick/placeholder 一个 placeholder 工具，用于原型设计
+- https://github.com/automerge/automerge 可以被并发修改的类似 JSON 的结构
+- https://github.com/aaalloc/symfoniya Music player and yt-dlp frontend
+- https://github.com/tw93/lizhi 一个简洁的音乐播放器页面，基于 react。
+- https://github.com/iconify/iconify 前端图标库。
+- https://gitlab.com/vuedoc/md 从 vue 单文件组件导出 md 文档描述。
+- https://github.com/planetabhi/sargam-icons 开源的 SVG 图标文件下载，适用于挑选制作自己的 icon 组件。
+- https://github.com/07akioni/xicons 前端 icons 组件库聚合。
+- https://github.com/jaywcjlove/svgtofont 找几个 svg，体验一下转化为 font 的输出格式。
+- https://feathericons.com/ svg 字体下载。
+    - https://github.com/egoist/vue-feather-icons vue2.x 字体封装组件库，可以学习如何封装字体组件。
+- https://github.com/zhw2590582/ArtPlayer 一个 web 的 video player 组件，功能有清晰度调整和字幕，可以研究。
+- https://github.com/code-farmer-i/vue-markdown-editor vue-md 编辑器组件。
+- https://github.com/DIYgod/APlayer 原生 web 音乐播放器组件。
+- https://github.com/nhn/tui.calendar 前端日历组件。
+- https://github.com/nhn/tui.chart 前端图表组件，基于 canvas 实现。
+- https://github.com/nhn/tui.editor md 编辑器组件。
+
+### task manager
+
+- https://github.com/amolikvivian/task-tracker 基于 NuxtJS and Tailwind CSS 的模仿 notion UI 的任务管理库。
+- https://github.com/21sparker/devee flask + web => todo app, 例子很小，可以看看
+
+## Tool
+
+### dev
+
+- https://github.com/charmbracelet/lipgloss 基于 GoLang 的 cli 工具库，UI 定义非常华丽。
+- https://github.com/HotswapProjects/HotswapAgent JRebel 的开源替代？
+- https://github.com/share/sharedb 基于操作转换（OT）的实时数据库后端。用于多人共享编辑文档的场景。
+
+### crawling
+
+- https://github.com/lexiforest/curl_cffi 模拟浏览器指纹
+- https://github.com/RapidAI/RapidOCR OCR 选择
+- https://github.com/PaddlePaddle/PaddleOCR OCR 选择
+- https://github.com/Yuliang-Liu/MultimodalOCR OCR 选择
+- https://github.com/Ucas-HaoranWei/GOT-OCR2.0 OCR 选择
+- https://github.com/mindee/doctr OCR 选择
+- https://github.com/sml2h3/ddddocr 验证码 OCR 特化
+- https://github.com/Python3WebSpider/ProxyPool IP 代理池的实现参考。
+
+### os utility
+
+- https://github.com/amir1376/ab-download-manager IDM 的一个开源替代。但是 1.5.0 有界面不断闪烁的 bug。
+- https://github.com/Majjcom/BiliDownloader b 站视频下载器，基于 python 实现
+
 ### drawing
 
+- https://github.com/OsciiArt/DeepAA 图片 Ascii 风格化，效果很棒。
 - https://www.diagrams.net/ (formerly called draw.io) 各种风格，GUI 拖拽
 - [mermaid-js](https://github.com/mermaid-js/mermaid) 基于 markdown 语法，js 实现的画图语言
 - excalidraw 手绘风格，GUI 拖拽
+- https://tikz.net/ latex 生态的标准绘图工具包
 - plant UML 文本控制的 uml 图例 https://github.com/plantuml/plantuml
 - dot 语言 + graphviz 画图工具。基于代码文本。
     - http://www.webgraphviz.com/
@@ -42,48 +157,17 @@
 - b) 如果想要活泼自由的风格，可以选取 gui 拖拽风格的生成方式。
 
 ### writing
-- https://github.com/Azure1210/VividBooK 一个latex书籍排版的模板。
-- https://github.com/rreece/markdown-memo md -> pdf的实验程序，背后是latex格式，模板风格简洁。作者没有整理，文档很乱。
-- https://github.com/M-Mono/Beginning-Perl-for-Bioinformatics 一个极好的latex书籍模板，需要认真研究该仓库.tex文件和生成步骤。⭐
-- https://github.com/mre/pandoc-memoir md -> pdf，利用pandoc 和latex引擎，书记模板非常接近动物书模板，值得参考研究。⭐
 
-## command line user interfaces
-
-- https://github.com/SBoudrias/Inquirer.js Node 生态的命令行界面工具
-- https://github.com/Textualize/textual python 生态的命令行界面工具，兼顾 web 端。
-
-## cms
-
-- https://github.com/mediacms-io/mediacms video cms
-- https://github.com/undb-io/undb no code database
-
-## libraries
-
-- https://github.com/cookpete/react-player video player
-- https://github.com/bick/placeholder 一个 placeholder 工具，用于原型设计
-- https://github.com/automerge/automerge 可以被并发修改的类似 JSON 的结构
-- https://github.com/aaalloc/symfoniya Music player and yt-dlp frontend
-- https://github.com/tw93/lizhi 一个简洁的音乐播放器页面，基于react。
-- https://github.com/iconify/iconify 前端图标库。
-
-### task manager
-
-- https://github.com/amolikvivian/task-tracker 基于 NuxtJS and Tailwind CSS 的模仿notion UI的任务管理库。
-
-## crawling tool
-
-- https://github.com/lexiforest/curl_cffi 模拟浏览器指纹
-- https://github.com/RapidAI/RapidOCR OCR 选择
-- https://github.com/PaddlePaddle/PaddleOCR OCR 选择
-- https://github.com/Yuliang-Liu/MultimodalOCR OCR 选择
-- https://github.com/Ucas-HaoranWei/GOT-OCR2.0 OCR 选择
-- https://github.com/mindee/doctr OCR 选择
-- https://github.com/sml2h3/ddddocr 验证码 OCR 特化
-
-## os tool
-
-- https://github.com/amir1376/ab-download-manager IDM 的一个开源替代。但是 1.5.0 有界面不断闪烁的 bug。
-- https://github.com/Majjcom/BiliDownloader b 站视频下载器，基于 python 实现
+- https://github.com/thunlp/WantWords 反向词典。最新版本已更新为 [深言达意](https://www.shenyandayi.com/)。
+- https://github.com/Azure1210/VividBooK 一个 latex 书籍排版的模板。
+- https://github.com/rreece/markdown-memo md -> pdf 的实验程序，背后是 latex 格式，模板风格简洁。作者没有整理，文档很乱。
+- https://github.com/M-Mono/Beginning-Perl-for-Bioinformatics 一个极好的 latex 书籍模板，需要认真研究该仓库.tex 文件和生成步骤。⭐
+- https://github.com/mre/pandoc-memoir md -> pdf，利用 pandoc 和 latex 引擎，书记模板非常接近动物书模板，值得参考研究。⭐
+- https://github.com/Azure1210/elegantbook-magic-revision 基于 latex 的书籍模板。
+- https://github.com/wisdomfusion/latex-templates 其中的 Templates for Books 模版还不错，但是代码行间隔太大了。
+- https://github.com/re-book/ptmst latex 排版数学书的范例之一。
+- https://github.com/Wandmalfarbe/pandoc-latex-template 基于 pandoc 的模板，文档规范，examples 详尽，是一个不错的项目。
+- https://github.com/sivan/heti 在 web 端优化中文文字的排版和显示，是一个侧重于 CSS 的工具库。
 
 ## game dev
 
