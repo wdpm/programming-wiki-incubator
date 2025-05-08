@@ -7,8 +7,8 @@
 - 500-1000 初露锋芒（梭哈是一种智慧
 - 1000-3000 锋芒毕露（越看越靠谱了属于是
 - 3000-10000 门庭若市
-- 10000-100000 家喻户晓
-- 100000+ 热火朝天
+- 10000-30000 家喻户晓
+- 30000+ 热火朝天
 
 ## fonts
 
@@ -21,6 +21,8 @@
 
 ## learning
 
+- https://github.com/microsoft/api-guidelines API设计指南。仅需关注仓库的azure和graph文件夹，选读。
+- https://github.com/daumann/ECMAScript-new-features-list ECMA规范逐年速览。
 - https://github.com/kevin-wayne/algs4 算法一书的匹配代码，基于 Java。
 - https://github.com/stackgl/webgl-workshop webgl 例子指南。
 - https://github.com/dmarman/sha256algorithm SHA256 可视化。
@@ -37,12 +39,25 @@
 - https://github.com/mljohns89/oauth-demo  uses Spring Boot and OAuth2 to demonstrate the Authorization Code Grant Flow
 - https://github.com/wesleyegberto/java-new-features Java 版本特性总结。
 - https://github.com/keon/algorithms 数据结构和算法，python 语言描述。
+- https://github.com/tayllan/awesome-algorithms 精心挑选的算法学习资源。
 - https://github.com/TheAlgorithms/Java 数据结构和算法，java 语言描述。
 - https://github.com/leemengtw/deep-learning-resources 关于深度学习的一些资源导航。
 - https://github.com/bangumi/api bangumi open api 规范。
 - https://github.com/ept/hermitage 一个关于不同的关系型数据库的隔离级别含义的对比实验。
 - https://github.com/jonashackt/spring-boot-vuejs spring + vue 集成的详尽指南，还不错。
+- https://github.com/stackgl/shader-school shader入门学习。
+- https://github.com/ssloy/tinyrenderer OpenGL 渲染器入门小例子。
+
+### reading
+
+- https://github.com/ascoders/weekly 一些简短的技术文章选读，前端为主。
+- https://google.github.io/comprehensive-rust/zh-CN/index.html rust在线培训课程，来自Google Team。
+
+### explore 
+> 一些列表导航，由于内容繁多，不可能顺序学习。只能优中选优，有的放矢。
+
 - https://github.com/SerialLain3170/AwesomeAnimeResearch 动画相关的论文研究的链接汇总。
+- https://github.com/JoseDeFreitas/awesome-youtubers
 
 ## platform
 
@@ -69,6 +84,11 @@
 - https://github.com/chanshiyucx/eriri 非常简约的本地漫画阅读器。目录导入必须为 D:/E/F/c.png 中的 E，F 当做漫画作品名称。
 - https://github.com/r0x0r/pywebview-react-boilerplate pywebview starter 模板。
 - https://github.com/zhanglun/lettura RSS 简洁阅读器，基于 tauri 实现。
+- electron 工具库，有待探索。
+  - https://github.com/alex8088/electron-toolkit
+  - https://github.com/alex8088/electron-uikit
+  - https://github.com/alex8088/electron-conf
+  - https://github.com/alex8088/sqlite3-queries
 
 ## command line user interfaces
 
@@ -87,6 +107,7 @@
 - https://github.com/ellmetha/django-machina python django 实现的简易论坛，不清楚是否具有阅读价值。
 - https://github.com/flaskbb/flaskbb python flask 实现的简易论坛，可以阅读研究。
 - https://github.com/LoeiFy/Diaspora 几年前一见倾心的 blog 主题，有不同的移植版本。界面优雅美观，不落俗套。
+- https://github.com/201206030/novel 小说网站项目学习。
 
 ## libraries
 
@@ -109,6 +130,10 @@
 - https://github.com/nhn/tui.chart 前端图表组件，基于 canvas 实现。
 - https://github.com/nhn/tui.editor md 编辑器组件。
 
+### web 视觉效果加强
+- https://github.com/tengbao/vanta web 3D 视觉创意效果demo。Globe或者Rings这两个效果很好，可以研究一下原理。
+- https://github.com/css-doodle/css-doodle 第5,6个效果不错，可以研究原理。
+
 ### task manager
 
 - https://github.com/amolikvivian/task-tracker 基于 NuxtJS and Tailwind CSS 的模仿 notion UI 的任务管理库。
@@ -121,6 +146,13 @@
 - https://github.com/charmbracelet/lipgloss 基于 GoLang 的 cli 工具库，UI 定义非常华丽。
 - https://github.com/HotswapProjects/HotswapAgent JRebel 的开源替代？
 - https://github.com/share/sharedb 基于操作转换（OT）的实时数据库后端。用于多人共享编辑文档的场景。
+- https://github.com/podman-desktop/podman-desktop 管理容器和k8s的本地GUI客户端。
+- https://github.com/duke-git/lancet go生态的lodash。
+- https://github.com/alex8088/quick-start 前端快速脚手架。
+- https://github.com/charmbracelet/bubbletea 一个美观的go TUI framework.
+- https://github.com/prisma/prisma#getting-started 一个NodeJS的ORM框架。
+- https://github.com/k3s-io/k3s 轻量级的k8s框架。
+- https://github.com/derailed/k9s k8s的cli管理界面工具。
 
 ### crawling
 
@@ -132,14 +164,18 @@
 - https://github.com/mindee/doctr OCR 选择
 - https://github.com/sml2h3/ddddocr 验证码 OCR 特化
 - https://github.com/Python3WebSpider/ProxyPool IP 代理池的实现参考。
+- https://github.com/jhao104/proxy_pool IP 代理池的实现参考。推荐。
 
 ### os utility
 
 - https://github.com/amir1376/ab-download-manager IDM 的一个开源替代。但是 1.5.0 有界面不断闪烁的 bug。
 - https://github.com/Majjcom/BiliDownloader b 站视频下载器，基于 python 实现
+- https://github.com/iawia002/lux 针对视频网站的下载器，基于Go实现，API设计的不错。
+- https://github.com/oldj/SwitchHosts 本地电脑host分组管理工具。
 
 ### drawing
 
+- https://github.com/pfnet/PaintsChainer 动画线稿自动上色的AI工具。
 - https://github.com/OsciiArt/DeepAA 图片 Ascii 风格化，效果很棒。
 - https://www.diagrams.net/ (formerly called draw.io) 各种风格，GUI 拖拽
 - [mermaid-js](https://github.com/mermaid-js/mermaid) 基于 markdown 语法，js 实现的画图语言
@@ -158,6 +194,8 @@
 
 ### writing
 
+- https://github.com/liangjingkanji/DrakeTyporaTheme 一款简洁美观的typora主题。
+- pangu 一个为文本添加空格的格式化工具。含有bug，例如markdown中的`~~XX~~`会被意外添加空格。
 - https://github.com/thunlp/WantWords 反向词典。最新版本已更新为 [深言达意](https://www.shenyandayi.com/)。
 - https://github.com/Azure1210/VividBooK 一个 latex 书籍排版的模板。
 - https://github.com/rreece/markdown-memo md -> pdf 的实验程序，背后是 latex 格式，模板风格简洁。作者没有整理，文档很乱。

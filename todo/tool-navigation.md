@@ -17,10 +17,10 @@
   - https://github.com/Tencent/tdesign-vue-next vue版本
 
   - 原生
+    - https://getuikit.com/docs/javascript UIKit，原生 UI组件效果实现参考。
     - [MDUI](https://github.com/zdhxiong/mdui)
-    
-  - https://mantine.dev/
-  - https://github.com/haiilo/catalyst A framework agnostic design system and component library based on web components and SCSS.
+    - https://mantine.dev/
+    - https://github.com/haiilo/catalyst A framework agnostic design system and component library based on web components and SCSS.
 
   - based on Tailwind CSS
     - https://tailwindui.com/templates/catalyst App UI参考
@@ -31,6 +31,7 @@
   - Vue
     - [Vue Material](https://vuematerial.io/)
     - iView UI
+    - [naive-ui](https://www.naiveui.com/) 一个界面优雅的UI组件库，从文档来看作者是个有趣、自娱自乐的人。
     - [Muse-UI](http://www.muse-ui.org/)
     - [vuetify](https://vuetifyjs.com/)
     - ~~element ui~~
@@ -39,7 +40,8 @@
 
 - 前端实用库
   - 语义化版本发布
-    - [~~standard-version~~](https://github.com/conventional-changelog/standard-version) deprecated
+    - [~~standard-version~~](https://github.com/conventional-changelog/standard-version) 
+      > standard-version is deprecated. If you're a GitHub user, I recommend release-please as an alternative.
     - [semantic-release](https://github.com/semantic-release/semantic-release) 推荐。
     - [release-please]() 另一个选择
 

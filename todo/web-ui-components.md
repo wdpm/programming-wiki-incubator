@@ -1,3 +1,26 @@
+
+## CSS 创意汇总
+- https://github.com/chokcoco/iCSS/issues/78 CSS 故障艺术
+- https://github.com/chokcoco/iCSS/issues/109
+  - 关注者例子：实战一下，使用 CSS @Property 配合 background 实现屏保动画
+- https://github.com/chokcoco/iCSS/issues/114 CSS获取背景图片主色调
+- https://github.com/chokcoco/iCSS/issues/129 文字雨
+- https://github.com/chokcoco/iCSS/issues/148 3D 穿梭效果。可以改进的地方：动画衔接有间断。
+- https://github.com/chokcoco/iCSS/issues/166 制作文章阅读进度条指示器。
+- https://github.com/chokcoco/iCSS/issues/178 前进阶梯视差。
+- https://github.com/chokcoco/iCSS/issues/195 旋转的粒子星空。
+- https://github.com/chokcoco/iCSS/issues/196 多行文字渐隐效果。
+- https://github.com/chokcoco/iCSS/issues/201 了解容器查询。
+- https://github.com/chokcoco/iCSS/issues/226 网格图片旋转。
+- https://github.com/chokcoco/iCSS/issues/221 不规则边框。
+- https://getuikit.com/changelog changelog 页面参考。注意 ADD|Remove|Changed标注的颜色徽章。
+- https://github.com/chokcoco/iCSS/issues/239 Anchor Positioning 锚点定位
+- https://github.com/chokcoco/iCSS/issues/253 相对颜色
+- https://github.com/chokcoco/iCSS/issues/244 基于滚动驱动的路径动画
+- https://github.com/chokcoco/iCSS/issues/262 类 ChatGpt 多行文本打字效果
+- https://github.com/chokcoco/iCSS/issues/257 复杂线条光效动画
+- https://github.com/chokcoco/iCSS/issues/254 神奇的 3D 卡片反光闪烁动效
+
 ### webGL
 
 - https://github.com/mrspence/webgl-ripples.js 水波涟漪散开效果。

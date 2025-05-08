@@ -80,7 +80,7 @@ flutter ？
 
 ssh 工具:
 永久抛弃 xshell
-windterm
+windterm => https://github.com/kingToolbox/WindTerm 不错
 tabby
 mobaterm
 powershell 和 ssh 配置 openssh
