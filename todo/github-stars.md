@@ -1,5 +1,11 @@
 # stars
 
+api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user
+
+这个API得到的数据结果和网页上看到的总数据条数不一致，api是 576，网页是578。
+
+---
+
 星数划分
 
 - 0-100 荒无人烟（野草都三尺高了
@@ -210,6 +216,7 @@
 ## game dev
 
 - https://github.com/thexeondev/Shorekeeper 鸣潮服务端代码模拟
+- https://github.com/ellisonleao/magictools 游戏开发资源导航。
 - https://github.com/clear-code-projects/PyDew-Valley 星露谷启发的 game
 
 ### 四子棋 AI

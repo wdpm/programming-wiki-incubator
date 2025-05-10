@@ -56,7 +56,7 @@
   - 视频播放器
     - [flv.js](https://github.com/bilibili/flv.js)           
     - [shaka-player](https://github.com/google/shaka-player) 
-    - DPlayer                                                
+    - [DPlayer](https://github.com/DIYgod/DPlayer)  一个古老的 html5 视频播放器封装。可以读一下源码。                                              
   - JavaScript语法高亮
     - Prism.js
     - MathJax

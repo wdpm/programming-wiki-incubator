@@ -25,6 +25,8 @@
 
 - https://github.com/mrspence/webgl-ripples.js 水波涟漪散开效果。
 
+### skeleton
+- https://github.com/danilowoz/react-content-loader 一个基于React的骨架UI库。
 
 ### text
 
