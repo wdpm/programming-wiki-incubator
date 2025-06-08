@@ -2,7 +2,7 @@
 
 ## REST API and HTTP Method Cheat Sheet
 
-![image-20220705113059323](assets/image-20220705113059323.png)
+![image-20220705113059323](../assets/image-20220705113059323.png)
 
 
 

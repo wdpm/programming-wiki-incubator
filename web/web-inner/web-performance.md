@@ -323,6 +323,21 @@ HTTP 1.x 支持有限的并行机制，要求打包资源、跨域分散资源�
 HTTP 2.0 只要建立一个连接就能实现最优性能，同时无需针对HTTP 1.x 的
 那些优化方法。
 
+额外补充：
+```
+启用Chrome开发者工具的 Priority 列。
+尽可能减少所需的关键请求的数量。
+检查哪些请求必须在用户看到完整渲染的页面之前发出。使用 <link rel="preload" /> 对这些关键请求进行优先处理。
+使用 link prefetching[16]，优化可能在下一个导航中使用的资源。
+使用 Link Preload HTTP headers[17] 声明要在 HTML 完全交付之前预加载的资源。
+图片懒加载。并确保图像尺寸正确的提前写好，避免布局抖动。
+使用内联 SVG 展示 Logo 和图标。
+使用更好的图像格式，如 AVIF 或 WEBP。
+使用 font-display: swap 在初始渲染中展示文本。
+使用压缩的字体格式，如 WOFF2 或 variable fonts（可变形字体）。
+在 Chrome://net-internals/#events 中查看 Chrome 的网络事件。
+```
+
 ### 在客户端缓存资源
 - Cache-Control 首部用于指定缓存时间；
 - Last-Modified 和ETag 首部提供验证机制。
@@ -494,3 +509,19 @@ UDP首选。
 
 ### 通过SRTP和SRTCP交付媒体
 ![](assets/SRTP-and-SRTCP.png)
+
+## 清单
+
+- [x] 缓存
+  - [x] 客户端缓存：service worker
+  - [x] 服务器缓存：通过 HTTP 报文协议控制
+- [x] 资源预加载
+  - [x] DNS-prefetch
+  - [x] resource prefetch
+- [x] 资源懒加载
+  - [x] 图片懒加载
+- [x] 文件压缩：代码压缩，网页资源压缩
+- [x] 保证JS不阻塞页面渲染，合理使用script标签的async（异步下载，下载完就执行）和defer(等待DOM渲染完成）属性
+- [x] 适当使用 SVG 或者 icon font
+- [x] 使用 srcset 提供浏览器更多的图片源选择，使用src作为fallback
+- [x] 背景图片使用 media-query 提供不同尺寸的下载源

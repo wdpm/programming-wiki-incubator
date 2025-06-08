@@ -1,47 +1,38 @@
 # Technology Choice
 ## 编程相关
 
-- 算法可视化
-  - [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer) - 算法可视化
-  - [viewer](https://github.com/zetane/viewer) - ML models and internal tensors 3D visualizer.
-
-- python GUI solution
-  - https://github.com/reflex-dev/reflex Pure Python, No frontend. React frontend + FastAPI backend app. uses WebSockets to communicate between the frontend and the backend
-  - https://nicegui.io/#features Vue to Python bridge + Quasar + FastAPI + Python 3.8+
-  - https://github.com/flet-dev/flet Flet UI is built with Flutter framework.
-  - https://github.com/r0x0r/pywebview a lightweight web framework like Flask (opens new window)or on its own with a two way bridge between Python and DOM.
-  - https://github.com/python-eel/Eel
-
-- 前端 CSS 框架
-  - https://github.com/Tencent/tdesign-react 腾讯开源的web组件库。可以参考，代码还是很规范的。
-  - https://github.com/Tencent/tdesign-vue-next vue版本
-
+- CSS 框架
   - 原生
     - https://getuikit.com/docs/javascript UIKit，原生 UI组件效果实现参考。
     - [MDUI](https://github.com/zdhxiong/mdui)
     - https://mantine.dev/
-    - https://github.com/haiilo/catalyst A framework agnostic design system and component library based on web components and SCSS.
+    - https://github.com/haiilo/catalyst A framework-agnostic design system and component library based on web components and SCSS.
 
   - based on Tailwind CSS
     - https://tailwindui.com/templates/catalyst App UI参考
-    - https://github.com/wdpm/catalyist-ui-kit 疑似付费模版的泄露
-    - https://github.com/wdpm/ui-catalyst-tailwind 疑似付费模版的泄露
+    - https://github.com/wdpm/catalyist-ui-kit 一个付费模版
 
+  - base on web component
+    - https://github.com/shoelace-style/shoelace 复杂度不高，可以阅读源码。挑一些有趣的组件研究。
+
+  - based on React
+    - https://pro.chakra-ui.com/ web常见UI blocks参考。
 
   - Vue
     - [Vue Material](https://vuematerial.io/)
     - iView UI
+    - [PrimeVue](https://primevue.org/) 基于Vue的功能性组件库。质量很高，组件丰富，功能强大。
     - [naive-ui](https://www.naiveui.com/) 一个界面优雅的UI组件库，从文档来看作者是个有趣、自娱自乐的人。
     - [Muse-UI](http://www.muse-ui.org/)
     - [vuetify](https://vuetifyjs.com/)
+    - https://reka-ui.com/docs/overview/introduction
+    - https://www.shadcn-vue.com/docs/introduction.html not a library,just copy and paste
     - ~~element ui~~
     - ~~element ui - plus~~
-    - Quasar
+    - ~~Quasar~~
 
 - 前端实用库
   - 语义化版本发布
-    - [~~standard-version~~](https://github.com/conventional-changelog/standard-version) 
-      > standard-version is deprecated. If you're a GitHub user, I recommend release-please as an alternative.
     - [semantic-release](https://github.com/semantic-release/semantic-release) 推荐。
     - [release-please]() 另一个选择
 
@@ -90,31 +81,6 @@
   - MySQL  Workbench
   - 数据库虚拟数据生成: https://www.mockaroo.com/
 
-- 在线图床
-
-  - sm.ms 
-  - [路过图床](http://imgchr.com/) 
-  - [chevereto（自建）](https://chevereto.com/get-started) 
-
-- 在线网盘
-  - seafile 一个开源的国内网盘。
-  - https://github.com/filebrowser/filebrowser
-
-- 私有Git
-
-  - GitLab 
-  - Gogs 
-
-- 静态站点生成器
-
-  - docsify 不需要预编译
-  - Github
-  - Jekyll
-  - Hexo
-  - Hugo
-  - VuePress
-  - ~~GitBook~~
-  
 - API相关
 
   - Swagger
@@ -206,7 +172,7 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
 
 - 图片处理
 
-  -  压缩  [TinyPNG](https://tinypng.com/)   
+  - 压缩  [TinyPNG](https://tinypng.com/)   
   - 无损放大 [bigjpg.com](https://bigjpg.com/)
   - 图片裁剪  [iloveimg.com](https://www.iloveimg.com/)
 
@@ -244,5 +210,8 @@ auto-enable HTTPS on your server. It can also act as a client for any other CA t
   - apache  ab 
   - [siege](http://www.joedog.org/)
 
-- Web platform
-  - [Vercel is the platform for frontend developers](https://vercel.com/) 
+- 不同语言生态下的工具库 utils
+
+  - JavaScript 生态的 lodash、underscore、ramda、fp-ts、date-fns、day.js
+  - Java 生态的 Hutool
+  - Python 生态的 Pydash

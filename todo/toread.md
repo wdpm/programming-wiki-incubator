@@ -1,20 +1,76 @@
-## 在线书籍
+## Decohack 精选
 
-- 《自然语言处理导论》https://intro-nlp.github.io/#home
+36. [【第2915期】基于 HTTP Range 实现文件分片并发下载！](https://mp.weixin.qq.com/s/kZvD2OvsY-aFfb34grjqug)
+39. [The Illustrated Stable Diffusion – Jay Alammar – Visualizing machine learning one concept at a time.](https://jalammar.github.io/illustrated-stable-diffusion/)
+40. [图解 QUIC](https://cangsdarm.github.io/illustrate/quic)
+41. [Memory Allocation](https://samwho.dev/memory-allocation/)
+43. [来！试试这个让你少加班的表单方案 FormRender - 掘金](https://juejin.cn/post/6871121209396822029)
+44. [Web Worker 文献综述 | AlloyTeam](http://www.alloyteam.com/2020/07/14680/)
+45. [探索现代的移动网络](https://mp.weixin.qq.com/s/ds6QkVrBwcurxp3RkvZe8Q)
+46. [美团外卖Flutter动态化实践 - 美团技术团队](https://tech.meituan.com/2020/06/23/meituan-flutter-flap.html)
+47. [教遗传算法人工智能玩超级马里奥大陆 - 知乎](https://zhuanlan.zhihu.com/p/389481450)
+48. [AVIF has landed - JakeArchibald.com](https://jakearchibald.com/2020/avif-has-landed/)
+49. [达利欧最新长文：中国大周期及其货币_新浪财经_新浪网](https://finance.sina.com.cn/china/gncj/2020-09-21/doc-iivhvpwy8038347.shtml)
+50. [一位iOS开发者的进阶之旅](https://mp.weixin.qq.com/s/cKuVFRPUnnScLM3y26mgIQ)
+51. https://mp.weixin.qq.com/s/adC-YUWd-xuUlzeAPHzJoQ
+52. [对不起，学会这些 Linux 知识后，我有点飘 - 掘金](https://juejin.cn/post/6881755746216706062)
+53. [改变世界的一次代码提交 | 胡涂说](https://hutusi.com/articles/the-greatest-git-commit)
+54. [来来来，Flutter Widget 体系架构与 UI 渲染流程 - 掘金](https://juejin.cn/post/6874737011325059086)
+55. [如何保持长时间专注？](https://www.yuque.com/deerain/wqpb2o/nwazye)
+56. [后端 - 建议收藏！超全的 Linux Shell 文本处理工具集锦 - 民工哥技术之路 - SegmentFault 思否](https://segmentfault.com/a/1190000037480939)
+57. [javascript - 一文了解文件上传全过程（1.8w字深度解析，进阶必备） - 蓝色的秋风 - SegmentFault 思否](https://segmentfault.com/a/1190000037411957)
+58. [超详|2020年你不应该错过的CSS新特性 - 掘金](https://juejin.cn/post/6886258269137043464)
+59. [计算机网络基础知识总结 - 掘金](https://juejin.cn/post/6885468617580904455)
+60. [Awesome Data Engineering Learning Path - Best resources, books, courses](https://awesomedataengineering.com/)
+61. [OnRL: 基于在线强化学习的移动视频传输优化](https://mp.weixin.qq.com/s/YPgxinHa_mGQ82waLqNDqA)
+62. [nusr/hacker-laws-zh: 💻📖对开发人员有用的定律、理论、原则和模式。(Laws, Theories, Principles and Patterns that developers will find useful.)](https://github.com/nusr/hacker-laws-zh)
+63. [聊一聊二维码扫描登录原理 - 掘金](https://juejin.cn/post/6844904111398191117)
+65. [产品经理如何做产品架构设计 | 人人都是产品经理](https://www.woshipm.com/pd/4231285.html)
+66. [Flutter之全埋点思考与实现 - 掘金](https://juejin.cn/post/6892371163859976199)
+67. [他把闲鱼APP长列表流畅度翻了倍（良心教程）](https://mp.weixin.qq.com/s/dlOQ3Hw_U3CFQM91vcTGWQ)
+68. [Notion的思想来源和投资人](https://mp.weixin.qq.com/s/eatQQa-ArDI96wROtX66dQ)
+69. [外卖客户端容器化架构的演进 - 美团技术团队](https://tech.meituan.com/2020/09/30/waimai-mobile-architecture-evolution.html)
+70. [How to Use AVIF: The New Next-Gen Image Compression Format — Lightspeed](https://reachlightspeed.com/blog/using-the-new-high-performance-avif-image-format-on-the-web-today/)
+71. [Flutter 的可视化界面、绘制性能调优 🔧 —— DevTools - 掘金](https://juejin.cn/post/6897101906158714887)
+72. [10 Inspiring Ideas for Your Next Front-End Project - DEV Community](https://dev.to/simonholdorf/10-inspiring-ideas-for-your-next-front-end-project-11bh)
+73. [git-flight-rules/README_zh-CN.md at master · k88hudson/git-flight-rules · GitHub](https://github.com/k88hudson/git-flight-rules/blob/master/README_zh-CN.md)
+75. [UME - 丰富的Flutter调试工具](https://mp.weixin.qq.com/s/9GjXB9Eu-OP3fIjdQWKklg)
+77. [Dayjs vs Moment: Which One to Choose? - Moiva.io](https://moiva.io/?npm=dayjs+moment)
+78. [2020 腾讯Techo Park - Flutter与大前端的革命 - 掘金](https://juejin.cn/post/6908357007749693454)
+79. [2019 Design Tools Survey | UX Tools](https://uxtools.co/survey/2020/)
+80. [Design Tools Database - UI Design Tools | UX Tools](https://uxtools.co/tools/design)
+82. [【第2163期】增量 DOM 与虚拟 DOM 的对比使用](https://mp.weixin.qq.com/s/F0VpHnUhObWzrwul9dW4rg)
+83. [HTTP/3 原理实战](https://mp.weixin.qq.com/s/MHYMOYHqhrAbQ0xtTkV2ig)
+84. [课程概览与 shell · the missing semester of your cs education](https://missing-semester-cn.github.io/2020/course-shell/)
+85. [Flutter 中一行文字到屏幕上，渲染全过程！](https://mp.weixin.qq.com/s/RAM3GbJ_vjnC_JcgNrFKtg)
+86. [Facebook 重构：抛弃 Sass / Less ，迎接原子化 CSS 时代 - 掘金](https://juejin.cn/post/6917073600474415117)
+87. [那些高效的界面设计工具 - Tencent ISUX Design](https://isux.tencent.com/articles/designtools.html)
+88. [设计师必看的图标（icon）设计指南](https://mp.weixin.qq.com/s/2rp-SjrSh0ZjAyr7D-QOng)
+89. [Why Tailwind Isn’t for Me | The Spicy Web](https://www.spicyweb.dev/why-tailwind-isnt-for-me/)
+90. [Qcon演讲实录 | XQUIC与多路径传输技术Multipath QUIC](https://mp.weixin.qq.com/s/3dnidnhCW-61PS5Stlb0Iw)
+91. [从博弈论谈35、996和内卷 – Writing Is Leading](https://writingisleading.com/2021/01/13/从博弈论谈35、996和内卷/)
+92. [Whirl: CSS loading animations with minimal effort!](https://whirl.netlify.app/)
+93. [设计稿（UI视图）自动生成代码方案的探索 - 美团技术团队](https://tech.meituan.com/2021/03/25/ui2dsl-dsl2code.html)
+94. [五分钟看懂开源协议 - 知乎](https://zhuanlan.zhihu.com/p/80075905)
+95. [组件库按需加载原理分析](https://mp.weixin.qq.com/s/ty4IUtLlTgxdc8-7_UGyiQ)
+96. [重新認識 Pixel、DPI / PPI 以及像素密度 | INFOLINK Blog](https://blog.infolink.com.tw/2021/rediscover-pixel-dpi-ppi-and-pixel-density/)
+98. [音频可视化：采样、频率和傅里叶变换 - CJ Ting's Blog](https://cjting.me/2021/08/07/fourier-transform-and-audio-visualization/)
+99. [浏览器中的音视频知识总结v1.0(工作中需要和视频打交道必看！) - 掘金](https://juejin.cn/post/7002288264413446157)
+100. [如何优雅地记录操作日志？ - 美团技术团队](https://tech.meituan.com/2021/09/16/operational-logbook.html)
+103. [实现无感刷新token我是这样做的 - 掘金](https://juejin.cn/post/6983582201690456071)
+105. https://mp.weixin.qq.com/s/h8uRkY8wzzP-ajmEIHkzwQ
+106. https://mp.weixin.qq.com/s/uTHi8SfCvXJfbie1A1YNVA
+108. [HASTY | JS performance - Dev tool](https://hasty.dev/)
 
-## Decohack
-
-> https://www.decohack.com/ （上一次阅读进度：52 期，更新频率 = 周更 ~ 月更）
 
 - https://zh.javascript.info/
-  - 浏览器：文档，事件，接口 阅读进度位于 4.4 https://zh.javascript.info/forms-submit
+    - 浏览器：文档，事件，接口 阅读进度位于 4.4 https://zh.javascript.info/forms-submit
 - https://madza.hashnode.dev/42-developer-resources-to-kickstart-your-coding-journey
 - [Don't write clean code, write CRISP code — Bitfield Consulting](https://bitfieldconsulting.com/golang/crisp-code)
 - [I wish Asciidoc was more popular](https://pdx.su/blog/2023-02-05-asciidoc-and-markdown/)
 - [Trends in Twitter’s Architecture](https://iosifache.me/twitter-architecture-trends)
 - https://www.youtube.com/watch?v=4hyLcedcIyk
 - [What I learned analyzing 10,000 Product Hunt Listings to show what products are successful & unsuccessful](https://www.indiehackers.com/post/what-i-learned-analyzing-10-000-product-hunt-listings-to-show-what-products-are-successful-unsuccessful-4ceb5f6770)
-- [The myth of work/life balance - YouTube](https://www.youtube.com/watch?v=KJddP2m_WDo)
 - [Gridzzly.com - Make your own grid paper](http://www.gridzzly.com/)
 - [Coding Projects - codedamn](https://codedamn.com/projects)
 - [Toools.design – An archive of 1000+ Design Resources](https://www.toools.design/)
@@ -49,6 +105,7 @@
 
 ## 需要阅读的列表
 
+- [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure – Google Research](https://research.google/pubs/pub36356/)
 - [如何保证数据库和缓存双写一致性？](https://developer.aliyun.com/article/926545)
 - [Unicode can be confusing. Here’s a “just the facts I need” presentation about how to handle it correctly.](https://nedbatchelder.com/text/unipain.html)
 - [A deep technical dive into all things Redis. Covering various Redis topologies, data persistence and process forking.](https://architecturenotes.co/redis/)
@@ -65,35 +122,22 @@
 - [LearnOpenGL CN](https://learnopengl-cn.github.io/)
 - [主页](http://www.opengl-tutorial.org/cn/)
 - [OpenGL Step by Step - OpenGL Development](http://ogldev.atspace.co.uk/)
-
 - [game-programmer/game-programmer-zh-cn.jpg at master · miloyip/game-programmer](https://github.com/miloyip/game-programmer/blob/master/game-programmer-zh-cn.jpg)
-
 - [GAMES101: 现代计算机图形学入门](https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html)
-
 - [www.pbr-book.org/3ed-2018/contents.html](http://www.pbr-book.org/3ed-2018/contents.html)
-
 - [Stanford University CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu/)
-
 - [如何通俗易懂地解释卷积？ - 知乎](https://www.zhihu.com/question/22298352)
 
 ## web shader
 
 - [WebGL shader examples](https://webgl-shaders.com/index.html)
 - [The Book of Shaders: Running your shader](https://thebookofshaders.com/04/?lan=ch)
-
 - [Shaders are Easy - Awwwards](https://www.awwwards.com/awwwards/collections/shaders-are-easy/)
-
 - [An Introduction to Shaders - HTML5 Rocks](https://www.html5rocks.com/en/tutorials/webgl/shaders/)
-
 - [stack.gl](http://stack.gl/)
-
 - [airbnb/lottie-web: Render After Effects animations natively on Web, Android and iOS, and React Native. http://airbnb.io/lottie/](https://github.com/airbnb/lottie-web)
-
 - [Learn WebGL — LearnWebGL](http://learnwebgl.brown37.net/)
-
 - [WebGL Fundamentals](https://webglfundamentals.org/)
-
 - [WebGL 教程 - Web API 接口参考 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial)
-
 - [Three.js – JavaScript 3D library](https://threejs.org/)
 

@@ -1,6 +1,6 @@
 # The C10K problem
 
-> http://www.kegel.com/c10k.html
+对 http://www.kegel.com/c10k.html 的翻译。
 
 ## I/O frameworks
 

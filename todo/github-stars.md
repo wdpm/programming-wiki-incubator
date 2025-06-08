@@ -58,12 +58,20 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 
 - https://github.com/ascoders/weekly 一些简短的技术文章选读，前端为主。
 - https://google.github.io/comprehensive-rust/zh-CN/index.html rust在线培训课程，来自Google Team。
+- https://intro-nlp.github.io/#home 《自然语言处理导论》
+- [前端Base64编码的实现](https://mp.weixin.qq.com/s/Xc4v21d5qcbpMcSZF-N6AQ) 已读，质量不错。
+- [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer) - 算法可视化
+- [viewer](https://github.com/zetane/viewer) - ML models and internal tensors 3D visualizer. 机器学习可视化
 
 ### explore 
 > 一些列表导航，由于内容繁多，不可能顺序学习。只能优中选优，有的放矢。
 
 - https://github.com/SerialLain3170/AwesomeAnimeResearch 动画相关的论文研究的链接汇总。
 - https://github.com/JoseDeFreitas/awesome-youtubers
+- https://github.com/LingDong-/shan-shui-inf JS实现中国山水画？
+  - 解析1：https://megaemce.github.io/shan_shui_docs/index.html
+  - 解析2：https://zverok.space/blog/2021-12-28-grok-shan-shui.html
+  - TS重写：https://github.com/RedContritio/shan_shui_inf
 
 ## platform
 
@@ -117,6 +125,7 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 
 ## libraries
 
+- https://github.com/nextapps-de/flexsearch 一个高性能的全文搜索库。
 - https://github.com/cookpete/react-player video player
 - https://github.com/bick/placeholder 一个 placeholder 工具，用于原型设计
 - https://github.com/automerge/automerge 可以被并发修改的类似 JSON 的结构
@@ -132,7 +141,7 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://github.com/zhw2590582/ArtPlayer 一个 web 的 video player 组件，功能有清晰度调整和字幕，可以研究。
 - https://github.com/code-farmer-i/vue-markdown-editor vue-md 编辑器组件。
 - https://github.com/DIYgod/APlayer 原生 web 音乐播放器组件。
-- https://github.com/nhn/tui.calendar 前端日历组件。
+- https://github.com/nhn/tui.calendar 前端日历组件。效果很好。
 - https://github.com/nhn/tui.chart 前端图表组件，基于 canvas 实现。
 - https://github.com/nhn/tui.editor md 编辑器组件。
 
@@ -212,6 +221,7 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://github.com/re-book/ptmst latex 排版数学书的范例之一。
 - https://github.com/Wandmalfarbe/pandoc-latex-template 基于 pandoc 的模板，文档规范，examples 详尽，是一个不错的项目。
 - https://github.com/sivan/heti 在 web 端优化中文文字的排版和显示，是一个侧重于 CSS 的工具库。
+- https://github.com/vercel/geist-font 一款不错的mono编程字体 ，由vercel出品。
 
 ## game dev
 

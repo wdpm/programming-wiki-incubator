@@ -72,18 +72,6 @@ https://www.uicentral.fyi/ UI 框架选择对比
 
 ---
 
-- [ ] 探索最为简洁的轻量 md 渲染到页面的方案。主要应用于：organization introduction
-
-    - jekyll：一本正经地使用传统的 jekyll 模式，似乎有点厚重。依次，同类技术例如 hexo、hugo 博客之类都不适合。
-    - 文档知识库，例如 vitepress 这类也不合适。因为往往用不到这么多的页面。不过依旧厚重。
-    - https://stackoverflow.com/questions/15214762/how-can-i-sync-documentation-with-github-pages main <-> gh-pages
-      分支之间同步部分 md 文件，可行，但是依旧复杂。
-    - zero-md：非常简约的方案。
-        - https://github.com/zerodevx/zero-md
-    - manally maintain a single index.html，文档内容也要在 html 中直接写，对于内容的编辑不方便，没有利用到 md 的优势。
-    - https://github.com/susam/texme#render-markdown-and-latex 在 md 中为 latex 提供渲染支持。
-
----
 
 - [ ] 后端管理系统 - 前端界面 https://github.com/xuejianxianzun/vue-shop 一个 vue2+element-ui 写的简易后台管理系统的前端部分。
     - 读一下这个项目的源码。稍微了解即可。

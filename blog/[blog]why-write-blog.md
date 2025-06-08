@@ -4,11 +4,29 @@
 
 > your life is the result of your own decision.
 
-什么时候应该 BFS => 架构技术调研，增大眼界时，什么时候应该 DFS => 有明确的思维想法，并预估可以实现时。
+## 技术选型
 
-写博客的巨大陷阱之一：使用乱七八糟的图床，几年后很多都崩溃了。
+探索最为简洁的轻量 md 渲染到页面的方案。
 
-## 一些不错的 blog 收集
+- zero-md https://github.com/zerodevx/zero-md 简洁
+- https://stackoverflow.com/questions/15214762/how-can-i-sync-documentation-with-github-pages main <-> gh-pages
+    - 分支之间同步部分 md 文件，可行，但是依旧复杂。
+- docsify 不需要预编译
+- Github
+- Jekyll
+- Hexo
+- Hugo
+- VitePress/VuePress 厚重，偏向项目说明文档。
+- ~~GitBook~~
+- [texme](https://github.com/susam/texme#render-markdown-and-latex) 在 md 中为 latex 提供渲染支持。
+
+## 陷阱
+
+- 使用个性化域名，这可能需要长期支付续费域名使用权的费用。
+- 使用乱七八糟的图床，多年之后很多都无法访问了。把鸡蛋放在别人的篮子里，难免会出现篮子破损的情况。
+- 持久性不行，写着写着就停止了。
+
+## blog 样式/灵感参考
 
 > 大部分来自 https://github.com/timqian/chinese-independent-blogs
 
@@ -29,3 +47,4 @@
 - https://developers.google.com/tech-writing/overview Google 技术写作指南
 - https://www.tominlab.com/blog
 - https://www.hateonion.me/ 简约干净的博客风格
+- https://www.7h34.fr/ 很好的全屏视觉效果设计。
