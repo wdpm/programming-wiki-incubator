@@ -1,10 +1,11 @@
 # IDE settings
-/.idea/
+/.idea
 /.vscode
 .fleet
 
 # build
 **/dist/
+build
 
-# local dependencies
+# node dependencies
 **/node_modules

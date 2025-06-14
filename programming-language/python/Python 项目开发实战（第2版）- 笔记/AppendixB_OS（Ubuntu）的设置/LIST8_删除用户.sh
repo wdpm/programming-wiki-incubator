@@ -1,1 +1,0 @@
-$ sudo userdel -r bpuser

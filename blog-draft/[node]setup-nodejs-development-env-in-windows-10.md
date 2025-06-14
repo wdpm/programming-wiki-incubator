@@ -26,6 +26,9 @@ You can clean npm cache by this:
 npm cache clean --force
 ```
 
+## using fnm
+/
+
 ## use Volta
 in windows os:
 ```bash

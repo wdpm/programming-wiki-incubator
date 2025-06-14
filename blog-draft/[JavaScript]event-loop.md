@@ -96,7 +96,7 @@ Task queue: ~~setInterval(done)~~, setTimeout 1, setInterval
 Cycle 3:
 
 - the microtask queue is empty, `setTimeout 1`'s handler can be run, `promise 3` and `promise 4` are scheduled as microtasks,
-- handlers of `promise 3` and `promise 4` are run `setTimeout 2` is scheduled as task
+- handlers of `promise 3` and `promise 4` are run, `setTimeout 2` is scheduled as task
 ```
 setTimeout 1
 promise 3

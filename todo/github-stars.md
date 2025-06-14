@@ -62,6 +62,10 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - [前端Base64编码的实现](https://mp.weixin.qq.com/s/Xc4v21d5qcbpMcSZF-N6AQ) 已读，质量不错。
 - [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer) - 算法可视化
 - [viewer](https://github.com/zetane/viewer) - ML models and internal tensors 3D visualizer. 机器学习可视化
+- React 原理学习
+  - https://pomb.us/build-your-own-react/
+  - https://github.com/asbjornenge/thinking-in-react
+  - https://github.com/tako-black/learnyoureact
 
 ### explore 
 > 一些列表导航，由于内容繁多，不可能顺序学习。只能优中选优，有的放矢。
