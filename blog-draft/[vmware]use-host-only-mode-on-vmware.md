@@ -5,11 +5,11 @@
 
 1. 在虚拟机实例右键 -> 设置 -> 网络适配器 -> 仅主机模式。
 
-   ![](asset/vmware-instance-set-host-only-mode.png)
+   ![](assets/vmware-instance-set-host-only-mode.png)
 
 2. VMware 顶部工具栏 -> 编辑 -> 虚拟网络编辑器 ，设置子网地址。示例中为 192.168.137.0
 
-   ![](asset/vmware-VMnet1-set-subnet-ip.png)
+   ![](assets/vmware-VMnet1-set-subnet-ip.png)
 
 3. VMware 实例重新设置 IPv4 地址和网关。
    
@@ -51,11 +51,11 @@
 
 4. 检查宿主机系统（示例中为Windows 10）设置。
 
-   ![](asset/check-host-os-VMnet1-config.png)
+   ![](assets/check-host-os-VMnet1-config.png)
 
 5. 将宿主机 wifi 共享网络连接。
 
-   ![](asset/wifi-share-Internet-connection-on-host-os.png)
+   ![](assets/wifi-share-Internet-connection-on-host-os.png)
 
 6. 测试 VMware 实例的上网环境。
 

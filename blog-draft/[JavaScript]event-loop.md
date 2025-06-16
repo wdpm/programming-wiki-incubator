@@ -1,5 +1,53 @@
 # event loop
 
+## a small example
+```js
+// is a macrotask, put it in next event loop
+// 回调函数被放入 宏任务队列，等待当前调用栈和微任务队列清空后执行
+setTimeout(function () {
+    console.log(1)
+}, 0);
+
+// synchronous code
+new Promise(function executor(resolve) {
+    console.log(2);
+    for (var i = 0; i < 10000; i++) {
+        i === 9999 && resolve();
+    }
+    console.log(3);
+}).then(function () {
+    // then 回调是微任务，需等待当前同步代码执行完毕
+    // in the end of current event loop
+    console.log(4);
+});
+
+// main thread
+console.log(5);
+
+// synchronous code
+// 2 3
+// 5
+// in the end of current event loop
+// 4
+// in next event loop
+// 1
+```
+
+## task queue will not be affected by uncaughtException in main thread
+```js
+process.on('uncaughtException', (err) => {
+    console.log(`Caught exception: ${err}`);
+});
+
+setTimeout(() => {
+    console.log('This will still run.');
+}, 500);
+
+// Intentionally cause an exception, but don't catch it.
+nonexistentFunc();
+console.log('This will not run.');
+```
+
 ## Microtasks and Macrotasks
 
 examples of microtasks:
@@ -15,7 +63,7 @@ examples of macrotasks:
 - setImmediate
 - I/O
 
-## Example
+Code Example:
 ```js
 console.log('script start') //1
 
