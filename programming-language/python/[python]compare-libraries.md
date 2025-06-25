@@ -111,9 +111,20 @@ Documentation
 
 GUI Development
 
-- pywebview
-- pyside6
-- pyqt
+- [reflex](https://github.com/reflex-dev/reflex)
+  - Pure Python, No frontend. React frontend + FastAPI backend app. uses WebSockets to communicate between the frontend and the backend
+  - 封装前端元素的使用为python API，不使用原生HTML。
+- [nicegui](https://nicegui.io/#features) 
+  - Vue to Python bridge + Quasar + FastAPI
+  - 封装前端元素为python API，不使用原生HTML。
+- [flet](https://github.com/flet-dev/flet) 
+  - Flet UI is built with Flutter framework.
+  - 将flutter移植到python GUI生态，组件样式类似flutter，不使用原生HTML。
+- [pywebview](https://github.com/r0x0r/pywebview) 
+  - a lightweight web framework like Flask (opens new window)or on its own with a two way bridge between Python and DOM.
+  - 使用原生HTML。
+- [Eel](https://github.com/r0x0r/pywebview)
+  - 使用原生HTML。
 
 HTML Manipulation
 

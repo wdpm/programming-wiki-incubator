@@ -96,6 +96,7 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://github.com/guozhigq/pilipala 第三方 b 站客户端，基于 flutter，界面不错。最新版本不开源。
 - https://github.com/czy0729/Bangumi bangumi 第三方客户端，基于 react-native.
 - https://github.com/15dd/wenku8reader wenku8 第三方客户端，基于 kotlin。
+- [YourMusicStation 你的点歌台](https://ymsv2.top/) 一个仿网易云的第三方PC桌面播放器，界面优秀，不开源，基于Electron。
 
 ### desktop app
 

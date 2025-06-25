@@ -1,7 +1,7 @@
 # IDE settings
 /.idea
 /.vscode
-.fleet
+.git
 
 # build
 **/dist/

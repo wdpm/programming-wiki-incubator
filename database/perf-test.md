@@ -1,0 +1,4 @@
+- AB
+- SQlslap 是MySQL自带的性能测试工具命令
+- https://github.com/akopytov/sysbench
+- https://github.com/jackfrued/Python-100-Days/blob/master/Day91-100/93.MySQL%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md

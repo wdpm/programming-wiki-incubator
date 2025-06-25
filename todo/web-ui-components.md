@@ -25,6 +25,8 @@
 - https://magic-akari.github.io/solved-by-flexbox/demos/sticky-footer/ 页脚footer沉底
 - https://github.com/mrspence/webgl-ripples.js 水波涟漪散开效果。这个适合用灵梦泡水图片作为背景。
 - https://github.com/kenangundogan/javascript-accordion 原生accordion实现参考。
+- [p5.js 绘制纸飞机](https://codepen.io/feelSpace/pen/rNNgROK)
+- [天空与飞鸟群](https://codepen.io/tmrDevelops/pen/dMdNvy)
 - [100 Days CSS Challenge](https://100dayscss.com/) 只需要关注下面挑选的效果
   - https://100dayscss.com/days/23/
   - https://100dayscss.com/days/28/

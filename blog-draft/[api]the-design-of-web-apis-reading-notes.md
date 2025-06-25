@@ -2,9 +2,7 @@
 
 ## REST API and HTTP Method Cheat Sheet
 
-![image-20220705113059323](../assets/image-20220705113059323.png)
-
-
+![image-20220705113059323](assets/image-20220705113059323.png)
 
 ## Designing the API’s data
 
@@ -16,8 +14,6 @@
 - response's design
 - parameter's design
 - parameter's control
-
-
 
 ### concept design
 
@@ -32,8 +28,6 @@
 下面是一个具体的例子：
 
 ![image-20220705114725161](assets/image-20220705114725161.png)
-
-
 
 ### response's design
 
@@ -50,8 +44,6 @@
 ### parameter's control
 
 ![image-20220705145317474](assets/image-20220705145317474.png)
-
-
 
 ## 权衡
 
@@ -82,11 +74,9 @@
 ## 回顾API设计的历史演化
 
 - RPC - 1970s
-- SOAP -  the end of 20th century
+- SOAP - the end of 20th century
 - REST
 - gRPC、GraphQL
-
-
 
 ## 识别一切可能的错误反馈
 
@@ -131,19 +121,17 @@ spurce 表示出错的字段，message只是附加的信息，来说明错误的
 
 没有标准答案，但是，第二种处理方式可以明显地降低网络请求往返次数。这算一个优点。
 
-
-
 ## 返回信息丰富的成功反馈
 
 ![image-20220708130948314](assets/image-20220708130948314.png)
 
-> If the money transfer is an immediate one, we could return a 201 Created HTTP status code, which means that the transfer has been created. 
+> If the money transfer is an immediate one, we could return a 201 Created HTTP status code, which means that the
+> transfer has been created.
 >
-> For a delayed transfer, we could return a 202 Accepted response, indicating that the money transfer request has been accepted but not yet executed.
+> For a delayed transfer, we could return a 202 Accepted response, indicating that the money transfer request has been
+> accepted but not yet executed.
 
 ![image-20220708134431150](assets/image-20220708134431150.png)
-
-
 
 ## 组织相关的数据
 
@@ -157,13 +145,9 @@ spurce 表示出错的字段，message只是附加的信息，来说明错误的
 
 ![image-20220708223006020](assets/image-20220708223006020.png)
 
-
-
 ## Getting credentials to consume the API
 
 ![image-20220711160721665](assets/image-20220711160721665.png)
-
-
 
 ## Defining fine-grained scopes based on concepts and actions
 
@@ -172,8 +156,6 @@ spurce 表示出错的字段，message只是附加的信息，来说明错误的
 ## The evolution of the Banking API and its implementation
 
 ![image-20220718133423250](assets/image-20220718133423250.png)
-
-
 
 ## Grouping similar data in a list
 
