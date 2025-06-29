@@ -1,7 +1,6 @@
 ## Decohack 精选
 
-36. [【第2915期】基于 HTTP Range 实现文件分片并发下载！](https://mp.weixin.qq.com/s/kZvD2OvsY-aFfb34grjqug)
-39. [The Illustrated Stable Diffusion – Jay Alammar – Visualizing machine learning one concept at a time.](https://jalammar.github.io/illustrated-stable-diffusion/)
+36. [【第2915期】基于 HTTP Range 实现文件分片并发下载！](https://mp.weixin.qq.com/s/kZvD2OvsY-aFfb34grjqug) => 需要实践
 40. [图解 QUIC](https://cangsdarm.github.io/illustrate/quic)
 41. [Memory Allocation](https://samwho.dev/memory-allocation/)
 43. [来！试试这个让你少加班的表单方案 FormRender - 掘金](https://juejin.cn/post/6871121209396822029)
@@ -10,18 +9,10 @@
 46. [美团外卖Flutter动态化实践 - 美团技术团队](https://tech.meituan.com/2020/06/23/meituan-flutter-flap.html)
 47. [教遗传算法人工智能玩超级马里奥大陆 - 知乎](https://zhuanlan.zhihu.com/p/389481450)
 48. [AVIF has landed - JakeArchibald.com](https://jakearchibald.com/2020/avif-has-landed/)
-49. [达利欧最新长文：中国大周期及其货币_新浪财经_新浪网](https://finance.sina.com.cn/china/gncj/2020-09-21/doc-iivhvpwy8038347.shtml)
-50. [一位iOS开发者的进阶之旅](https://mp.weixin.qq.com/s/cKuVFRPUnnScLM3y26mgIQ)
 51. https://mp.weixin.qq.com/s/adC-YUWd-xuUlzeAPHzJoQ
-52. [对不起，学会这些 Linux 知识后，我有点飘 - 掘金](https://juejin.cn/post/6881755746216706062)
-53. [改变世界的一次代码提交 | 胡涂说](https://hutusi.com/articles/the-greatest-git-commit)
 54. [来来来，Flutter Widget 体系架构与 UI 渲染流程 - 掘金](https://juejin.cn/post/6874737011325059086)
-55. [如何保持长时间专注？](https://www.yuque.com/deerain/wqpb2o/nwazye)
-56. [后端 - 建议收藏！超全的 Linux Shell 文本处理工具集锦 - 民工哥技术之路 - SegmentFault 思否](https://segmentfault.com/a/1190000037480939)
 57. [javascript - 一文了解文件上传全过程（1.8w字深度解析，进阶必备） - 蓝色的秋风 - SegmentFault 思否](https://segmentfault.com/a/1190000037411957)
 58. [超详|2020年你不应该错过的CSS新特性 - 掘金](https://juejin.cn/post/6886258269137043464)
-59. [计算机网络基础知识总结 - 掘金](https://juejin.cn/post/6885468617580904455)
-60. [Awesome Data Engineering Learning Path - Best resources, books, courses](https://awesomedataengineering.com/)
 61. [OnRL: 基于在线强化学习的移动视频传输优化](https://mp.weixin.qq.com/s/YPgxinHa_mGQ82waLqNDqA)
 62. [nusr/hacker-laws-zh: 💻📖对开发人员有用的定律、理论、原则和模式。(Laws, Theories, Principles and Patterns that developers will find useful.)](https://github.com/nusr/hacker-laws-zh)
 63. [聊一聊二维码扫描登录原理 - 掘金](https://juejin.cn/post/6844904111398191117)
@@ -45,14 +36,11 @@
 85. [Flutter 中一行文字到屏幕上，渲染全过程！](https://mp.weixin.qq.com/s/RAM3GbJ_vjnC_JcgNrFKtg)
 86. [Facebook 重构：抛弃 Sass / Less ，迎接原子化 CSS 时代 - 掘金](https://juejin.cn/post/6917073600474415117)
 87. [那些高效的界面设计工具 - Tencent ISUX Design](https://isux.tencent.com/articles/designtools.html)
-88. [设计师必看的图标（icon）设计指南](https://mp.weixin.qq.com/s/2rp-SjrSh0ZjAyr7D-QOng)
 89. [Why Tailwind Isn’t for Me | The Spicy Web](https://www.spicyweb.dev/why-tailwind-isnt-for-me/)
 90. [Qcon演讲实录 | XQUIC与多路径传输技术Multipath QUIC](https://mp.weixin.qq.com/s/3dnidnhCW-61PS5Stlb0Iw)
 91. [从博弈论谈35、996和内卷 – Writing Is Leading](https://writingisleading.com/2021/01/13/从博弈论谈35、996和内卷/)
 92. [Whirl: CSS loading animations with minimal effort!](https://whirl.netlify.app/)
 93. [设计稿（UI视图）自动生成代码方案的探索 - 美团技术团队](https://tech.meituan.com/2021/03/25/ui2dsl-dsl2code.html)
-94. [五分钟看懂开源协议 - 知乎](https://zhuanlan.zhihu.com/p/80075905)
-95. [组件库按需加载原理分析](https://mp.weixin.qq.com/s/ty4IUtLlTgxdc8-7_UGyiQ)
 96. [重新認識 Pixel、DPI / PPI 以及像素密度 | INFOLINK Blog](https://blog.infolink.com.tw/2021/rediscover-pixel-dpi-ppi-and-pixel-density/)
 98. [音频可视化：采样、频率和傅里叶变换 - CJ Ting's Blog](https://cjting.me/2021/08/07/fourier-transform-and-audio-visualization/)
 99. [浏览器中的音视频知识总结v1.0(工作中需要和视频打交道必看！) - 掘金](https://juejin.cn/post/7002288264413446157)
@@ -62,9 +50,6 @@
 106. https://mp.weixin.qq.com/s/uTHi8SfCvXJfbie1A1YNVA
 108. [HASTY | JS performance - Dev tool](https://hasty.dev/)
 
-
-- https://zh.javascript.info/
-    - 浏览器：文档，事件，接口 阅读进度位于 4.4 https://zh.javascript.info/forms-submit
 - https://madza.hashnode.dev/42-developer-resources-to-kickstart-your-coding-journey
 - [Don't write clean code, write CRISP code — Bitfield Consulting](https://bitfieldconsulting.com/golang/crisp-code)
 - [I wish Asciidoc was more popular](https://pdx.su/blog/2023-02-05-asciidoc-and-markdown/)

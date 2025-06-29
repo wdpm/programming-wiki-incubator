@@ -37,7 +37,8 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://github.com/bregman-arie/devops-exercises devops 问答。
 - https://gitstar-ranking.com/ github stars 排行榜。可以到这里了解热门的 repo。
 - https://github.com/jwasham/coding-interview-university 关于代码面试的一些指南。
-- https://roadmap.sh/ 编程知识学习路线图。学习模式：不要理会给出的关于 item 的 links，只关注 item 自行探索即可。它提供的 links 大部分都是浪费时间。
+- https://roadmap.sh/ 编程知识学习路线图。学习模式：不要理会给出的关于 item 的 links，只关注 item 自行探索即可。它提供的
+  links 大部分都是浪费时间。
 - https://github.com/meetqy/aspoem 中国诗词网站。界面简洁优雅。
 - https://github.com/fenixsoft/awesome-fenix 在线书籍，讨论如何构建一套可靠的大型分布式系统。
 - https://github.com/huihongxiao/MIT6.824 MIT 分布式系统系列公开课，这是中文文本描述。
@@ -56,6 +57,15 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 
 ### reading
 
+- [Oracle Java Docs](https://docs.oracle.com/en/java/index.html)
+- [Spring official guides](https://spring.io/guides)
+- [MDN](https://developer.mozilla.org/zh-CN/docs/Web)
+- [Can I use](http://caniuse.com/)
+- [Web Fundamentals](https://developers.google.com/web)
+- [Tools for Web Developers](https://developers.google.com/web/tools)
+- https://cssreference.io/
+- https://htmlreference.io/
+- [linux-command](https://jaywcjlove.github.io/linux-command/) - Linux命令搜索引擎，命令手册、详解、学习，速查手册。
 - https://github.com/ascoders/weekly 一些简短的技术文章选读，前端为主。
 - https://google.github.io/comprehensive-rust/zh-CN/index.html rust在线培训课程，来自Google Team。
 - https://intro-nlp.github.io/#home 《自然语言处理导论》
@@ -63,24 +73,58 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer) - 算法可视化
 - [viewer](https://github.com/zetane/viewer) - ML models and internal tensors 3D visualizer. 机器学习可视化
 - React 原理学习
-  - https://pomb.us/build-your-own-react/
-  - https://github.com/asbjornenge/thinking-in-react
-  - https://github.com/tako-black/learnyoureact
+    - https://pomb.us/build-your-own-react/
+    - https://github.com/asbjornenge/thinking-in-react
+    - https://github.com/tako-black/learnyoureact
+- https://zh.javascript.info/
+    - 浏览器：文档，事件，接口 阅读进度位于 4.4 https://zh.javascript.info/forms-submit
 
-### explore 
-> 一些列表导航，由于内容繁多，不可能顺序学习。只能优中选优，有的放矢。
+### 技术书籍出版社
 
+- Oreilly - 第一梯度推荐。
+- Manning - 第一梯度推荐。
+- [Packt Publishing](https://www.packtpub.com/) - 第二梯度推荐。
+- [The pragmatic bookshelf](https://pragprog.com/) - 仅少数书籍质量较高。备选。
+- [文泉书局](https://wqbook.wqxuetang.com/) - 国内较好的出版社。可以在这里寻找一些数字媒体类书籍。
+- ~~图灵社区~~ - 因为翻译的缘故，更新非常滞后。除非原书不是英文，其他语种生肉啃不动，否则都不推荐。
+- ~~Leanpub~~
+- ~~异步社区~~
+
+### 论文/电子书搜索
+
+- [Google 学术](https://scholar.google.com.hk/)
+- [sci hub](https://sci-hub.se/) 通过 PMID、POI、URL 来搜索，关键字是无效的。
+- [z-library](https://zlibrary-global.se/) 注意不要使用钓鱼网站。另外，也可以使用个人私有 URL 来访问。
+- [安娜的档案](https://zh.annas-archive.org/) 世界最大开源及开放数据图书馆。
+
+### explore
+
+- https://mui.com/material-ui/getting-started/learn/ MUI学习资源导航
+- [GeoGebra](http://www.geogebra.org/) GeoGebra 是一款适用于各级教育的动态数学软件, 它将几何, 代数, 表格, 绘图,
+  统计和微积分整合到一个引擎中。
+- [Web 框架性能测试排名](https://www.techempower.com/benchmarks/)
 - https://github.com/SerialLain3170/AwesomeAnimeResearch 动画相关的论文研究的链接汇总。
 - https://github.com/JoseDeFreitas/awesome-youtubers
+- [一个演示汉字笔画顺序的 JS 库](https://github.com/chanind/hanzi-writer)
 - https://github.com/LingDong-/shan-shui-inf JS实现中国山水画？
-  - 解析1：https://megaemce.github.io/shan_shui_docs/index.html
-  - 解析2：https://zverok.space/blog/2021-12-28-grok-shan-shui.html
-  - TS重写：https://github.com/RedContritio/shan_shui_inf
+    - 解析1：https://megaemce.github.io/shan_shui_docs/index.html
+    - 解析2：https://zverok.space/blog/2021-12-28-grok-shan-shui.html
+    - TS重写：https://github.com/RedContritio/shan_shui_inf
+
+## UI 灵感参考
+
+- [Dribble](https://dribbble.com/shots) Explore the world’s leading design portfolios.
+- [Uplabs](https://www.uplabs.com/) 👑 The #1 place for design files
 
 ## platform
 
 - [Supabase](https://github.com/supabase/supabase) 是一个开源的 Firebase 替代品
 - https://github.com/canonical/microk8s single-package Kubernetes。但是边缘计算的发展一言难尽。
+
+## open dataset
+
+- [bangumi-data](https://github.com/bangumi-data/bangumi-data)
+- [一言](https://developer.hitokoto.cn/)
 
 ## App
 
@@ -104,10 +148,10 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://github.com/r0x0r/pywebview-react-boilerplate pywebview starter 模板。
 - https://github.com/zhanglun/lettura RSS 简洁阅读器，基于 tauri 实现。
 - electron 工具库，有待探索。
-  - https://github.com/alex8088/electron-toolkit
-  - https://github.com/alex8088/electron-uikit
-  - https://github.com/alex8088/electron-conf
-  - https://github.com/alex8088/sqlite3-queries
+    - https://github.com/alex8088/electron-toolkit
+    - https://github.com/alex8088/electron-uikit
+    - https://github.com/alex8088/electron-conf
+    - https://github.com/alex8088/sqlite3-queries
 
 ## command line user interfaces
 
@@ -150,7 +194,13 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://github.com/nhn/tui.chart 前端图表组件，基于 canvas 实现。
 - https://github.com/nhn/tui.editor md 编辑器组件。
 
+### 图标
+
+- ~~[Font Awesome](https://fontawesome.com/)~~ 商业化严重，谨慎观望。
+- [Material Design Icons](https://developers.google.com/fonts/docs/material_icons?hl=zh-cn)
+
 ### web 视觉效果加强
+
 - https://github.com/tengbao/vanta web 3D 视觉创意效果demo。Globe或者Rings这两个效果很好，可以研究一下原理。
 - https://github.com/css-doodle/css-doodle 第5,6个效果不错，可以研究原理。
 
@@ -211,6 +261,17 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 
 - a) 如果对于流程图要求比较规范，例如绝对对齐，优先考虑基于代码文本的生成方式。
 - b) 如果想要活泼自由的风格，可以选取 gui 拖拽风格的生成方式。
+
+### AI draw
+
+- https://wolfchen.top/tag/doc.html 一个详尽的AI画图资源导航。
+- [SD-WebUI 安装方案 | AiDraw](https://guide.novelai.dev/guide/install/sd-webui)
+- [StableDiffusionBook](https://draw.dianas.cyou/)
+- [Danbooru 标签超市](https://tags.novelai.dev/)
+- [Run Data Science & Machine Learning Code Online | Kaggle](https://www.kaggle.com/code)
+- [Best & Easiest Way to Run Stable Diffusion for Free (WebUI)](https://bytexd.com/best-way-to-run-stable-diffusion-for-free/)
+- [Get Started With Stable Diffusion (Free) in Google Colab for AI Generated Art](https://bytexd.com/get-started-with-stable-diffusion-google-colab-for-ai-generated-art/)
+- [The Illustrated Stable Diffusion – Visualizing machine learning one concept at a time.](https://jalammar.github.io/illustrated-stable-diffusion/)
 
 ### writing
 
