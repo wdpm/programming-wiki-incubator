@@ -72,6 +72,8 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - [前端Base64编码的实现](https://mp.weixin.qq.com/s/Xc4v21d5qcbpMcSZF-N6AQ) 已读，质量不错。
 - [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer) - 算法可视化
 - [viewer](https://github.com/zetane/viewer) - ML models and internal tensors 3D visualizer. 机器学习可视化
+- [illustrate QUIC, TLS 1.2, TLS 1.3, DTLS 中文翻译](https://github.com/cangSDARM/illustrate/)
+- [Memory Allocation](https://samwho.dev/memory-allocation/) 已读，写的不错。
 - React 原理学习
     - https://pomb.us/build-your-own-react/
     - https://github.com/asbjornenge/thinking-in-react
@@ -111,10 +113,14 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
     - 解析2：https://zverok.space/blog/2021-12-28-grok-shan-shui.html
     - TS重写：https://github.com/RedContritio/shan_shui_inf
 
-## UI 灵感参考
+## UI
 
 - [Dribble](https://dribbble.com/shots) Explore the world’s leading design portfolios.
 - [Uplabs](https://www.uplabs.com/) 👑 The #1 place for design files
+- [Open design systems from the Figma Community](https://www.designsystems.com/open-design-systems/) Figma 设计系统合集，可以参考。
+- [Vertex Gallery](https://vertexgallery.pavece.com/) 由Three.js实现的3D画廊展览室，没有找到源码实现。
+- [Components | The Component Gallery](https://component.gallery/components/) 对比各种UI框架的特定组件实现。
+- [Blending Modes | Dan Hollick 🇿🇦](https://typefully.com/DanHollick/KrBa0JP) 前景和背景色彩混合模式的数学计算原理。
 
 ## platform
 
