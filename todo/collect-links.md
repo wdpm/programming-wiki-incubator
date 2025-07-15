@@ -229,6 +229,7 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://github.com/prisma/prisma#getting-started 一个NodeJS的ORM框架。
 - https://github.com/k3s-io/k3s 轻量级的k8s框架。
 - https://github.com/derailed/k9s k8s的cli管理界面工具。
+- https://github.com/avinassh/py-caskdb (educational) build your own disk based KV store
 
 ### crawling
 

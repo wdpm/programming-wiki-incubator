@@ -1,4 +1,0 @@
-1. isort：import语句排序
-2. black
-3. flake8
-4. pytest

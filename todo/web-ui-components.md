@@ -27,6 +27,7 @@
 - https://github.com/kenangundogan/javascript-accordion 原生accordion实现参考。
 - [p5.js 绘制纸飞机](https://codepen.io/feelSpace/pen/rNNgROK)
 - [天空与飞鸟群](https://codepen.io/tmrDevelops/pen/dMdNvy)
+- https://codepen.io/goodkatz/pen/LYPGxQz 简单波浪背景
 - [100 Days CSS Challenge](https://100dayscss.com/) 只需要关注下面挑选的效果
   - https://100dayscss.com/days/23/
   - https://100dayscss.com/days/28/

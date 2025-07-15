@@ -1,5 +1,7 @@
 # web learning path
 
+> 整理链接格式即可，不要展开说明
+
 ## HTML
 
 块级元素和行内元素

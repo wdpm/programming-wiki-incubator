@@ -1,8 +1,0 @@
-00 类继承，以及ABC抽象类
-01 依赖注入，组合，方法重写
-02 @property @NAME.setter @NAME.deleter 修饰器将方法标记为属性
-03 python的鸭子类型，例如你有read方法，那就是视为fp
-04 利用 InfoDumperMixin 可以将某些调试方法注入到其他类中，扩展功能
-05 mro解析方法链，注意diamond地狱
-06 利用属性依赖注入实现多态
-07 利用__new__方法实现单例模式
