@@ -1,3 +1,6 @@
+# OAuth GitHub Login
+
+```python
 # Somewhere in webapp_example.py, before the app.run for example
 import os
 
@@ -7,7 +10,7 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 # Credentials you get from registering a new application
 client_id = 'd9d39cdf5d7fe3379049'
-client_secret = '690f0945220dacd07b1060878c5c2a73396f450e'
+client_secret = 'replace-with-yours'
 
 # OAuth endpoints given in the GitHub API documentation
 authorization_base_url = 'https://github.com/login/oauth/authorize'
@@ -36,3 +39,4 @@ github.fetch_token(token_url, client_secret=client_secret,
 r = github.get('https://api.github.com/user')
 print(r.content)
 # b'{"login":"wdpm","id":14016242,"node_id":"MDQ6VXNlcjE0MDE2MjQy",......
+```

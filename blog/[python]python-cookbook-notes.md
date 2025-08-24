@@ -1,59 +1,69 @@
-pythonheapq 堆 优先级队列
-from collections import OrderedDict 有序字典，3.7 dict也保留插入顺序
-zip() 压缩函数
-from collections import Counter 简单计数
-operator 模块中的 itemgetter(用于字典) attrgetter(用于对象) 用于排序的sorted()中key
-itertools.groupby()函数 根据字段分组
-from collections import defaultdict 默认值的dict
-filter 过滤
-collections.namedtuple() 命名元组
-s = sum(x * x for x in nums) 生成器表达式
-from collections import ChainMap 多个字段合并成一个字典，修改映射的操作总是会作用在列出的第一个映射结构。读操作从左到右查找。
+# python cookbook notes
 
-dict.update() 字段合并
-----------------
-任意分隔符拆分字符串 re.split()
-在字符串的开头或结尾处做文本匹配 startswith() endswith() re.match()
-利用 Shell 通配符做字符串匹配 from fnmatch import fnmatch, fnmatchcase ，或者 glob 模块
-文本的任意位置查找 text.find('no') ，或首先用 re.compile()对模式进行编译，然后使用像match()、findall()或 finditer()这样的方法做匹配和搜索
-文本替换 str.replace()，  re 模块中的 sub()函数/方法
-不区分大小写的方式对文本做查找和替换 re.findall('python', text, flags=re.IGNORECASE)
-re.compile()函数可接受标记re.DOTALL。这使得正则表达式中的句点(.)可以匹配所有的字符，也包括换行符。或者自定义正则  re.compile(r'/\*((?:.|\n)*?)\*/')
-unicodedata.normalize()的第一个参数指定了字符串应该如何完成规范表示。NFC（全组成） NFD（组合字符）
-从字符串中去掉不需要的字符 replace() 或者 strip() lstrip() rstrip() 或者高级的translate() 或者 结合 encode()和 decode()操作
-对齐文本字符串 ljust() rjust() center()，或者format(text, '>20')
-textwrap.fill(s, 70) 打印制定列宽的文本
-html.escape()，from html.parser import HTMLParser，from xml.sax.saxutils import unescape 都有转义的方法
-2.18 分词器，参阅 PyParsing 或 PLY 包
-2.29 解析器
-----------------
-from decimal import Decimal 小数精确计算， 它的localcontext 也很方便
-小数格式化输出 format(x, '0.1f')
-bin()、oct()和 hex()函数 打印一个数值， format(2**32 -1234, 'b') 产生无符号位的数值表示， int('10011010010', 2)数值转化
-从字节串中打包和解包大整数，应用: IP地址的保存和表示 int.from_bytes() x.to_bytes()
-无穷大和 NaN：float('inf') float('nan')。唯一安全检测 NaN 的方法是使用 math.isnan()
-分数的计算：fractions 模块
-随机选择 random.choice() random.sample()，洗牌 random.shuffle() ，随机数 random.randint()，0-1随机数 random.random()
-时间换算 datetime，或者 dateutil。dateutil 在处理有关月份的问题时能填补一些 datetime模块留下的空缺。from dateutil.relativedelta import relativedelta
-dateutil 模块中的 relativedelta()函数对于计算类似“上周五是几月几号”这种问题比较有用。
-datetime.strptime()方法支持许多格式化代码
-一旦日期经过了本地化处理，它就可以转换为其他的时区。pyzt 模块主要用来本地化由 datetime 库创建的日期。
-【为了不让我们的头炸掉，通常用来处理本地时间的方法是将所有的日期都转换为 UTC
-（世界统一时间）时间，然后在所有的内部存储和处理中都使用 UTC 时间。】
+## 字典
+- heapq 堆，优先级队列                                          |
+- from collections import OrderedDict 有序字典，3.7 dict也保留插入顺序
+- zip() 压缩函数
+- from collections import Counter 简单计数
+- operator 模块中的 itemgetter(用于字典) attrgetter(用于对象) 用于排序的sorted()中key
+- itertools.groupby()函数 根据字段分组
+- from collections import defaultdict 默认值的dict
+- filter() 过滤
+- collections.namedtuple() 命名元组
+- s = sum(x * x for x in nums) 生成器表达式
+- from collections import ChainMap 多个字典合并成一个字典，修改映射的操作总是会作用在列出的第一个映射结构。读操作从左到右查找。
+- dict.update() 字段合并
 
----------------
-实现__reversed__()方法，那么就可以在自定义的类上实现反向迭代
-要对迭代器和生成器做切片操作，itertools.islice()函数是完美的选择。islice()产生的结果是一个迭代器，它可以产生出所需要的切
-片元素，但这是通过访问并丢弃所有起始索引之前的元素来实现的。此外还有dropwhile()
+## 文本处理
+- 任意分隔符拆分字符串 re.split()
+- 在字符串的开头或结尾处做文本匹配 startswith() endswith() re.match()
+- 利用 Shell 通配符做字符串匹配 from fnmatch import fnmatch, fnmatchcase ，或者 glob 模块
+- 文本的任意位置查找 text.find('no') ，或首先用 re.compile()对模式进行编译，然后使用像match()、findall()或 finditer()这样的方法做匹配和搜索
+- 文本替换 str.replace()，re 模块中的 sub()函数/方法
+- 不区分大小写的方式对文本做查找和替换 re.findall('python', text, flags=re.IGNORECASE)
+- re.compile()函数可接受标记re.DOTALL。这使得正则表达式中的句点(.)可以匹配所有的字符，也包括换行符。或者自定义正则 re.compile(r'/\*((?:.|\n)*?)\*/')
+- unicodedata.normalize()的第一个参数指定了字符串应该如何完成规范表示。NFC（全组成） NFD（组合字符）
+- 从字符串中去掉不需要的字符 replace() 或者 strip() lstrip() rstrip()，或者高级的translate() 或者 结合 encode()和 decode()操作
+- 对齐文本字符串 ljust() rjust() center()，或者format(text, '>20')
+- textwrap.fill(s, 70) 打印制定列宽的文本
+- html.escape()，from html.parser import HTMLParser，from xml.sax.saxutils import unescape 都有转义的方法
+- 2.18 分词器，参阅 PyParsing 或 PLY 包
+- 2.29 解析器
 
-heapq.merge(a, b) 合并多个序列
+## 日期和数字
+- from decimal import Decimal 小数精确计算，它的 localcontext 是一个上下文管理器，用于临时修改 Decimal 运算的上下文环境（如精度、舍入方式等）。
+- 小数部分格式化输出 format(x, '0.1f')
+- bin()、oct()和 hex()函数。打印一个数值，format(2**32 -1234, 'b') 产生无符号位的数值表示， int('10011010010', 2)数值转化
+- 从字节串中打包和解包大整数，应用: IP地址的保存和表示 int.from_bytes() x.to_bytes()
+    ```python
+    import socket
+    
+    ip_str = "192.168.1.1"
+    packed_ip = socket.inet_aton(ip_str)  # b'\xc0\xa8\x01\x01'
+    ip_int = int.from_bytes(packed_ip, 'big')  # 3232235777
+    
+    unpacked_ip = ip_int.to_bytes(4, 'big')  # b'\xc0\xa8\x01\x01'
+    restored_ip = socket.inet_ntoa(unpacked_ip)  # "192.168.1.1"
+    ```
+- 无穷大和 NaN：float('inf') float('nan')。唯一安全检测 NaN 的方法是使用 math.isnan()
+- 分数的计算：fractions 模块
+- 随机选择 random.choice() random.sample()，洗牌 random.shuffle() ，随机数 random.randint()，0-1随机数 random.random()
+- 时间换算 datetime，或者 dateutil。dateutil 在处理有关月份的问题时能填补一些 datetime 模块留下的空缺。from dateutil.relativedelta import relativedelta
+- dateutil 模块中的 relativedelta()函数对于计算类似“上周五是几月几号”这种问题比较有用。
+- datetime.strptime() 方法支持许多格式化代码
+- 一旦日期经过了本地化处理，它就可以转换为其他的时区。pyzt 模块主要用来本地化由 datetime 库创建的日期。
+- 为了不让我们的头炸掉，通常用来处理本地时间的方法是将所有的日期都转换为 UTC （世界统一时间）时间，然后在所有的内部存储和处理中都使用 UTC 时间。
 
-当出于某种原因需要模拟出一个普通文件时，这种情况下 StringIO 和 BytesIO 类是最为
-适用的。例如，在单元测试中，可能会使用 StringIO 来创建一个文件型的对象，对象中
-包含了测试用的数据。之后我们可将这个对象发送给一个可以接受普通文件的函数
+## 文件
+- 实现__reversed__()方法，那么就可以在自定义的类上实现反向迭代
+- 要对迭代器和生成器做切片操作，itertools.islice()函数是完美的选择。islice()产生的结果是一个迭代器，它可以产生出所需要的切片元素，
+但这是通过访问并丢弃所有起始索引之前的元素来实现的。此外还有dropwhile()
+- heapq.merge(a, b) 可以合并多个序列
 
- gzip 或 bz2 格式压缩
+- 当出于某种原因需要模拟出一个普通文件时，这种情况下 StringIO 和 BytesIO 类是最为适用的。
+例如，在单元测试中，可能会使用 StringIO 来创建一个文件型的对象，对象中包含了测试用的数据。之后我们可将这个对象发送给一个可以接受普通文件的函数。
 
+- gzip 或 bz2 格式压缩
 ```
 >>> f = open('sample.txt','w')
 >>> f
@@ -64,39 +74,37 @@ heapq.merge(a, b) 合并多个序列
 <_io.FileIO name='sample.txt' mode='wb'>
 >>>
 ```
+在这个例子中，io.TextIOWrapper 是一个文本处理层，它负责编码和解码 Unicode。而 io.BufferedWriter 是一个缓冲 I/O 层，负责处理二进制数据。
+最后，io.FileIO 是一个原始文件，代表着操作系统底层的文件描述符。
 
-在这个例子中，io.TextIOWrapper 是一个文本处理层，它负责编码和解码 Unicode。而
-io.BufferedWriter 是一个缓冲 I/O 层，负责处理二进制数据。最后，io.FileIO 是一个原
-始文件，代表着操作系统底层的文件描述符
-
-临时文件目录
+- 临时文件目录
+```python
+# 参阅：http://docs.python.org/3/library/tempfile.html）。
 with NamedTemporaryFile('w+t', delete=False) as f:
-print('filename is:', f.name)
+    print('filename is:', f.name)
+```
 
-参阅：http://docs.python.org/3/library/tempfile.html）。
+## 常见数据文件格式
 
--------------
+- csv.reader() DictReader() 或者pandas csv数据统计
+- json对类的序列化 serialize_instance(obj) 、 unserialize_object(d):
+- xml、lxml库处理XML
+- 创建XML不要手动str拼接，必须从数据结构来考虑数据的构造和表示，否则不好维护。
+- 6.12 内存视图的复杂例子（很难）
 
-csv.reader() DictReader() 或者pandas csv数据统计
+## 函数技巧
 
-json对类的序列化 serialize_instance(obj) 、 unserialize_object(d):
-
-xml、lxml库处理XML
-
-创建XML不要手动str拼接，必须从数据结构来考虑数据的设计，否则不好维护。
-
-6.12 内存视图的复杂例子（很难）
-
-------------
-
-如果不打算提供一个默认值，只是想编写代码来检测可选参数是否被赋予了某个特定
-的值，那么可以采用下面的惯用手法：
+- 如果不打算提供一个默认值，只是想编写代码来检测可选参数是否被赋予了某个特定的值，那么可以采用下面的惯用手法：
+```python
 _no_value = object()
 def spam(a, b=_no_value):
     if b is _no_value:
-    print('No b value supplied')
-仔细区分不传递任何值和传递 None 之间的区别
+        print('No b value supplied')
+```
+仔细区分不传递任何值和传递 None 之间的区别。
 
+- 值绑定
+```
 初始化就绑定
 >>> x = 10
 >>> a = lambda y, x=x: x + y
@@ -104,29 +112,23 @@ def spam(a, b=_no_value):
 运行时绑定
 >>> x = 10
 >>> a = lambda y, x: x + y
+```
+- 在回调函数中携带额外的状态，四种方式：类，闭包，协程send()函数，通过额外的参数在回调函数中携带状态，然后用 partial()来处理参数个数的问题。
 
+- 对于__repr__()，标准的做法是让它产生的字符串文本能够满足 eval(repr(x)) == x。
+如果不可能办到或者说不希望有这种行为，那么通常就让它产生一段有帮助意义的文本， 并且以<和>括起来。
 
-在毁掉函数中携带额外的状态，四种方式：类，闭包，协程send()函数，通过额外的参数在回调函数中携带状态，然后用 partial()来处理参数个数的问题。
+- 让对象支持上下文管理协议，实现__enter__()和__exit__()，参阅  contextmanager 模块。
 
---------
+- property 一般用来定义需要计算的属性。
 
-对于__repr__()，标准的做法是让它产生的字符串文本能够满足 eval(repr(x)) == x。如果
-不可能办到或者说不希望有这种行为，那么通常就让它产生一段有帮助意义的文本，
-并且以<和>括起来
+- super()函数的一种常见用途是调用父类的__init__()方法，确保父类被正确地初始化。
 
-让对象支持上下文管理协议，实现__enter__()和__exit__()，参阅  contextmanager 模块。
-
-property 一般用来定义需要计算的属性。
-
-super()函数的一种常见用途是调用父类的__init__()方法，确保父类被正确地初始化。
-
-如果只是想访问某个特定的类中的一种属性，并对此做定制化
-处理，那么最好不要编写描述符来实现。对于这个任务，用 property 属性方法来完成会
+- 如果只是想访问某个特定的类中的一种属性，并对此做定制化处理，那么最好不要编写描述符来实现。对于这个任务，用 property 属性方法来完成会
 更加简单（见 8.6 节）。在需要大量重用代码的情况下，描述符会更加有用。
 
-让属性具有惰性求值的能力
-
-```
+- 让属性具有惰性求值的能力
+```pyton
 class lazyproperty:
     def __init__(self, func):
     	self.func = func
@@ -139,8 +141,7 @@ class lazyproperty:
             setattr(instance, self.func.__name__, value)
             return value
 ```
-
-```
+```python
 import math
 class Circle:
     def __init__(self, radius):
@@ -152,7 +153,7 @@ class Circle:
         return math.pi * self.radius ** 2	
 ```
 
-本节讨论的技术有一个潜在的缺点，即，计算出的值在创建之后就变成可变的（mutable）了。
+本节讨论的技术有一个潜在的缺点，即计算出的值在创建之后就变成可变的（mutable）了。
 
 ```
 def lazyproperty(func):
@@ -168,10 +169,9 @@ def lazyproperty(func):
             return value
     return lazy
 ```
+这种方式的缺点就是所有的 get 操作都必须经由属性的 getter 函数来处理。这比直接在实例字典中查找相应的值要慢一些。即函数开销比dict的hash查找开销要高。
 
-这种方式的缺点就是所有的 get 操作都必须经由属性的 getter 函数来处理。这比直接在实例字典中查找相应的值要慢一些。=> 函数开销比dict的hash查找开销要高。
-
----
+- 严格的类初始化的位置参数
 
 ```python
 class Structure:
@@ -186,17 +186,11 @@ class Structure:
 ```
 
 这种技术的一个潜在缺点就是会影响到 IDE（集成开发环境）的文档和帮助功能。如果用户针对某个特定的类寻求帮助，那么所需的参数将不会以正常的形式来表述。
-
 这些问题可以通过在__init__()函数中强制施行类型签名来解决，相关内容请参阅 9.16 节。
 
----
+- bisect 模块能够方便地让列表中的元素保持有序。bisect.insort()函数能够将元素插入到列表中且让列表仍然保持有序
 
-定义一个接口或抽象基类。
-
-bisect 模块能够方便地让列表中的元素保持有序。bisect.insort()函数能够将元素插入到列表中且让列表仍然保持有序
-
-类方法的明确性
-
+- 类方法的名称具有语义明确性
 ```python
 a = Date(2012, 12, 21) # Clear. A specific date.
 b = Date()
@@ -207,15 +201,9 @@ c = Date.today()
 # Clear. Today's date.
 ```
 
----
+- mixins 类一般没有状态，`__slots__`一般是()
 
-mixins 类一般没有状态，`__slots__`一般是()
-
-实现带有状态的对象或状态机
-
-- 直接修改实例的__class__属性
-- 或者使用依赖注入模式
-
+- 实现带有状态的对象或状态机 。直接修改实例的__class__属性，同时使用依赖注入模式。
 ```python
 # Alternative implementation
 class State:
@@ -228,53 +216,27 @@ class State:
 
 class State_A(State):
     def action(self, x):
-    # Action for A
-    ...
-    self.new_state(State_B)
+        # Action for A
+        ...
+        self.new_state(State_B)
 ```
 
-在环状数据结构中管理内存，
-
-```
+- 在环状数据结构中管理内存，
+```python
 @parent.setter
 def parent(self, node):
 	self._parent = weakref.ref(node)	
 ```
-
 弱引用就是一个指向对象的指针，但不会增加对象本身的引用计数。
 
----
-
-创建缓存实例。
-
-解决方案：使用一个和类本身分开的工厂函数。
-
-```python
-# The class in question
-class Spam:
-    def __init__(self, name):
-        self.name = name
-
-# Caching support
-import weakref
-_spam_cache = weakref.WeakValueDictionary()
-def get_spam(name):
-    if name not in _spam_cache:
-        s = Spam(name)
-        _spam_cache[name] = s
-    else:
-        s = _spam_cache[name]
-    return s
-```
-
-或者
-
+- 创建缓存实例。
 ```python
 # ------------------------最后的修正方案------------------------
 class CachedSpamManager2:
     def __init__(self):
         self._cache = weakref.WeakValueDictionary()
 
+    # 唯一获取入口    
     def get_spam(self, name):
         if name not in self._cache:
             temp = Spam3._new(name)  # Modified creation
@@ -284,7 +246,7 @@ class CachedSpamManager2:
         return temp
 
     def clear(self):
-            self._cache.clear()
+        self._cache.clear()
 
 class Spam3:
     def __init__(self, *args, **kwargs):
@@ -298,17 +260,10 @@ class Spam3:
         return self
 ```
 
----
-
-
-
 ## 元编程
 
-- 函数修饰器
-
----
-
-```python
+### 函数修饰器
+```
 >>> @somedecorator
 >>> def add(x, y):
 ...     return x + y
@@ -318,13 +273,9 @@ class Spam3:
 7
 >>>
 ```
+`__wrapped__` 直接访问原函数。但是，如果有多个包装器，那么访问 `__wrapped__` 属性的行为是不可预知的，应该避免这样做。
 
-__wrapped__ 直接访问原函数。但是，如果有多个包装器，那么访问 `__wrapped__` 属性的行为是不可预知的，应该避免这样做。
-
----
-
-可自定义属性的装饰器。
-
+### 可自定义属性的装饰器。
 ```python
 from functools import wraps, partial
 import logging
@@ -376,7 +327,7 @@ def add(x, y):
 def spam():
     print('Spam!')
 ```
-
+用例
 ```bash
 >>> import logging
 >>> logging.basicConfig(level=logging.DEBUG)
@@ -396,17 +347,14 @@ WARNING:__main__:Add called
 >>>
 ```
 
----
-
-将装饰器定义为类
-
+### 将装饰器定义为类
 ```python
 import types
 from functools import wraps
 
 class Profiled:
     def __init__(self, func):
-        # => self.__wrapped__被定义
+        # => self 会被添加 __wrapped__ 属性，指向原始函数 func
         wraps(func)(self)
         self.ncalls = 0
 
@@ -421,7 +369,6 @@ class Profiled:
             # 将方法绑定到instance实例
             return types.MethodType(self, instance)
 ```
-
 ```python
 @Profiled
 def add(x, y):
@@ -455,9 +402,7 @@ def add(x, y):
     return x + y
 ```
 
-
-
-装饰器为被包装函数增加参数
+### 装饰器为被包装函数增加参数
 
 ```python
 from functools import wraps
@@ -476,14 +421,12 @@ def optional_debug(func):
     # 修复函数签名
     sig = inspect.signature(func)
     parms = list(sig.parameters.values())
-    parms.append(inspect.Parameter('debug',
-                inspect.Parameter.KEYWORD_ONLY,
-                default=False))
+    parms.append(inspect.Parameter('debug',inspect.Parameter.KEYWORD_ONLY,default=False))
     wrapper.__signature__ = sig.replace(parameters=parms)
     
     return wrapper
 ```
-
+用例
 ```bash
 >>> @optional_debug
 ... def add(x,y):
@@ -496,9 +439,7 @@ def optional_debug(func):
 >>>
 ```
 
-
-
-使用装饰器扩充类的功能
+### 使用装饰器扩充类的功能
 
 ```python
 def log_getattribute(cls):
@@ -514,7 +455,6 @@ def log_getattribute(cls):
     cls.__getattribute__ = new_getattribute
     return cls
 
-# Example use
 @log_getattribute
 class A:
     def __init__(self,x):
@@ -523,9 +463,7 @@ class A:
         pass
 ```
 
-
-
-单例模式——基于元类的实现。
+### 单例模式——基于元类的实现
 
 ```python
 class Singleton(type):
@@ -540,13 +478,12 @@ class Singleton(type):
         else:
             return self.__instance
 
-# Example
 class Spam(metaclass=Singleton):
     def __init__(self):
         print('Creating Spam')
 ```
 
-缓存模式的实现。是否缓存取决于 *args。
+缓存模式的实现，是否缓存取决于 *args。
 
 ```python
 import weakref
@@ -571,7 +508,7 @@ class Spam(metaclass=Cached):
         self.name = name
 ```
 
-单例模式——别扭的实现。全局变量。
+### 单例模式——别扭的实现，全局变量
 
 ```python
 class _Spam:
@@ -591,10 +528,10 @@ def Spam():
 ```
 
 
+### *args和**kwargs的强制参数签名
+> https://python3-cookbook.readthedocs.io/zh-cn/latest/c09/p16_enforce_argument_signature_on_args_kwargs.html#id1
 
- [*](https://python3-cookbook.readthedocs.io/zh-cn/latest/c09/p16_enforce_argument_signature_on_args_kwargs.html#id1)args和**kwargs的强制参数签名
-
-> 你有一个函数或方法，它使用*args和**kwargs作为参数，这样使得它比较通用， 但有时候你想检查传递进来的参数是不是某个你想要的类型。
+你有一个函数或方法，它使用*args和**kwargs作为参数，这样使得它比较通用，但有时候你想检查传递进来的参数是不是某个你想要的类型。
 
 ```python
 from inspect import Signature, Parameter
@@ -618,10 +555,15 @@ class Stock(Structure):
 class Point(Structure):
     __signature__ = make_sig('x', 'y')
 ```
+检验
+```bash
+>>> import inspect
+>>> print(inspect.signature(Stock))
+(name, shares, price)
+```
+注意Stock只是声明，没有实例化，但是 ` __signature__ ` 也生效了。
 
-
-
-在类上执行强制规约
+### 在类上执行强制规约
 
 ```python
 class NoMixedCaseMeta(type):
@@ -643,9 +585,7 @@ class B(Root):
         pass
 ```
 
-
-
-属性类型检查
+### 属性类型检查
 
 ```python
 def typed_property(name, expected_type):
@@ -691,47 +631,29 @@ class Person:
         self.age = age
 ```
 
-
-
 ## 模块与包
-
-> 合并多个文件合并成一个单一的逻辑命名空间
-
-```python
-from mymodule.a import A
-from mymodule.b import B
-```
-
-上面这张方式不好，应该为
-
-```python
-from mymodule import A, B
-```
-
----
 
 包命名空间是一种特殊的封装设计，为合并不同的目录的代码到一个共同的命名空间。
 
 
-
 ## 并发编程
 
-> 线程间通信
+### 线程间通信
 
-使用哨兵对象。
+- 使用哨兵对象。
 
 ```
 # Object that signals shutdown
 _sentinel = object()
 ```
 
-使用条件变量
+- 使用条件变量
 
 ```
 self._cv = threading.Condition()
 ```
 
-使用Event
+- 使用Event
 
 ```python
 from queue import Queue
@@ -760,8 +682,10 @@ def consumer(in_q):
         evt.set()
 ```
 
-使用线程队列有一个要注意的问题是，向队列中添加数据项时并不会复制此数据项，线程间通信实际上是在线程间传递对象引用。如果你担心对象的共享状态，那你最好只传递不可修改的数据结构（如：整型、字符串或者元组）或者一个对象的深拷贝。
+使用线程队列有一个要注意的问题是，向队列中添加数据项时并不会复制此数据项，**线程间通信实际上是在线程间传递对象引用**。
+如果你担心对象的共享状态，那你最好只传递不可修改的数据结构（如：整型、字符串或者元组）或者一个对象的深拷贝。
 
+### 队列的get和set
 `get()` 和 `put()` 方法都支持非阻塞方式和设定超时
 
 ```python
@@ -784,15 +708,13 @@ except queue.Empty:
     ...
 ```
 
----
-
-> 关键部分加锁
+### 关键部分加锁
 
 对于i++问题，注意区分 `self._value_lock = threading.Lock()` 和 `_lock = threading.RLock() `的区别。
 
----
+### 加锁机制
 
- 防止死锁的加锁机制，按升序规则获取锁，反序释放。
+防止死锁的加锁机制，按升序规则获取锁，反序释放。
 
 ```python
 import threading
@@ -850,9 +772,7 @@ t2.daemon = True
 t2.start()
 ```
 
-上面的代码测试通过。
-
-但是不能类似下面的嵌套。
+上面的代码测试通过。但是不能类似下面的嵌套。
 
 ```python
 import threading
@@ -861,7 +781,6 @@ y_lock = threading.Lock()
 # x id > y id
 
 def thread_1():
-
     while True:
         with acquire(x_lock):
             with acquire(y_lock):
@@ -882,11 +801,13 @@ t2.daemon = True
 t2.start()
 ```
 
-一个比较常用的死锁检测与恢复的方案是引入看门狗计数器。当线程正常 运行的时候会每隔一段时间重置计数器，在没有发生死锁的情况下，一切都正常进行。一旦发生死锁，由于无法重置计数器导致定时器 超时，这时程序会通过重启自身恢复到正常状态。
+一个比较常用的死锁检测与恢复的方案是引入看门狗计数器。当线程正常运行的时候会每隔一段时间重置计数器，在没有发生死锁的情况下，一切都正常进行。
+一旦发生死锁，由于无法重置计数器导致定时器超时，这时程序会通过重启自身恢复到正常状态。
 
-避免死锁是另外一种解决死锁问题的方式，在进程获取锁的时候会严格按照对象id升序排列获取，经过数学证明，这样保证程序不会进入 死锁状态。避免死锁的主要思想是，单纯地按照对象id递增的顺序加锁不会产生循环依赖，而循环依赖是 死锁的一个必要条件，从而避免程序进入死锁状态。
+避免死锁是另外一种解决死锁问题的方式，在进程获取锁的时候会严格按照对象id升序排列获取，经过数学证明，这样保证程序不会进入死锁状态。
+避免死锁的主要思想是，单纯地按照对象id递增的顺序加锁不会产生循环依赖，而循环依赖是死锁的一个必要条件，从而避免程序进入死锁状态。
 
-回顾哲学家就餐问题：
+### 哲学家就餐问题
 
 ```python
 import threading
@@ -908,7 +829,7 @@ for n in range(NSTICKS):
     t.start()
 ```
 
----
+### 线程本地对象
 
 保存线程的状态信息，使用线程本地对象。
 
@@ -958,22 +879,22 @@ if __name__ == '__main__':
     t2.join()
 ```
 
-典型的一个线程对应一个独立的网络连接，互不干扰。
+这里，一个线程对应一个独立的网络连接，互不干扰。
 
----
+### 线程池
 
 创建一个线程池
 
-1. 使用 concurrent.futures.ThreadPoolExecutor
+1. 使用 `concurrent.futures.ThreadPoolExecutor`
 
 ```python
 from socket import AF_INET, SOCK_STREAM, socket
 from concurrent.futures import ThreadPoolExecutor
 
 def echo_client(sock, client_addr):
-    '''
+    """
     Handle a client connection
-    '''
+    """
     print('Got connection from', client_addr)
     while True:
         msg = sock.recv(65536)
@@ -1003,9 +924,9 @@ from threading import Thread
 from queue import Queue
 
 def echo_client(q):
-    '''
+    """
     Handle a client connection
-    '''
+    """
     sock, client_addr = q.get()
     print('Got connection from', client_addr)
     while True:
@@ -1045,9 +966,9 @@ from threading import Thread
 from socket import socket, AF_INET, SOCK_STREAM
 
 def echo_client(sock, client_addr):
-    '''
+    """
     Handle a client connection
-    '''
+    """
     print('Got connection from', client_addr)
     while True:
         msg = sock.recv(65536)
@@ -1058,7 +979,6 @@ def echo_client(sock, client_addr):
     sock.close()
 
 def echo_server(addr, nworkers):
-    # Run the server
     sock = socket(AF_INET, SOCK_STREAM)
     sock.bind(addr)
     sock.listen(5)
@@ -1071,9 +991,7 @@ def echo_server(addr, nworkers):
 echo_server(('',15000))
 ```
 
----
-
-并行编程。
+### 并行编程
 
 ```python
 # findrobots.py
@@ -1084,10 +1002,10 @@ import glob
 from concurrent import futures
 
 def find_robots(filename):
-    '''
+    """
     Find all of the hosts that access robots.txt in a single log file
 
-    '''
+    """
     robots = set()
     with gzip.open(filename) as f:
         for line in io.TextIOWrapper(f,encoding='ascii'):
@@ -1097,9 +1015,9 @@ def find_robots(filename):
     return robots
 
 def find_all_robots(logdir):
-    '''
+    """
     Find all hosts across and entire sequence of files
-    '''
+    """
     files = glob.glob(logdir+'/*.log.gz')
     all_robots = set()
     with futures.ProcessPoolExecutor() as pool:
@@ -1113,7 +1031,7 @@ if __name__ == '__main__':
         print(ipaddr)
 ```
 
-使用范式
+### 并行任务的使用范式
 
 ```python
 # A function that performs a lot of work
@@ -1158,15 +1076,12 @@ with ProcessPoolExecutor() as pool:
 ```
 
 注意点：
-
 - 这种并行处理技术只适用于那些可以被分解为互相独立部分的问题。
 - 被提交的任务必须是简单函数形式。对于方法、闭包和其他类型的并行执行还不支持。
-- 函数参数和返回值必须兼容pickle，因为要使用到进程间的通信，所有解释器之间的交换数据必须被序列化
+- 函数参数和返回值必须兼容pickle，因为要使用到进程间的通信，所有解释器之间的交换数据必须被序列化。
 - 被提交的任务函数不应保留状态或有副作用。除了打印日志之类简单的事情。
 
----
-
-Actor 模式
+### Actor 模式
 
 ```python
 from queue import Queue
@@ -1281,7 +1196,6 @@ class Result:
 
     def set_result(self, value):
         self._result = value
-
         self._evt.set()
 
     def result(self):
@@ -1299,7 +1213,6 @@ class Worker(Actor):
             func, args, kwargs, r = self.recv()
             r.set_result(func(*args, **kwargs))
 
-# Example use
 worker = Worker()
 worker.start()
 r = worker.submit(pow, 2, 3)
@@ -1308,9 +1221,7 @@ worker.join()
 print(r.result())
 ```
 
----
-
-实现消息发布/订阅模型
+### 实现消息发布/订阅模型
 
 ```python
 from contextlib import contextmanager
@@ -1358,9 +1269,7 @@ with exc.subscribe(task_a, task_b):
 # task_a and task_b detached here
 ```
 
----
-
-生成器代替线程
+### 生成器代替线程
 
 ```python
 # Two simple generator functions
@@ -1387,15 +1296,15 @@ class TaskScheduler:
         self._task_queue = deque()
 
     def new_task(self, task):
-        '''
+        """
         Admit a newly started task to the scheduler
-        '''
+        """
         self._task_queue.append(task)
 
     def run(self):
-        '''
+        """
         Run until there are no more tasks
-        '''
+        """
         while self._task_queue:
             task = self._task_queue.popleft()
             try:
@@ -1428,16 +1337,11 @@ T-minus 7
 T-minus 2
 ...
 ```
-
-可以看到某个任务执行一次CPU时间片之后，就必须到队列末尾进行排队。
-
----
+可以看到某个任务执行一次CPU时间片之后，就必须到队列末尾进行排队。任务是按批（3个任务为一次批处理）执行的。
 
 原书中给出了一个更加高级的例子，演示了使用生成器来实现一个并发网络应用程序。这里省略。
 
----
-
-多个线程队列轮询
+### 多个线程队列轮询
 
 ```python
 import queue
@@ -1521,9 +1425,7 @@ def event_loop(sockets, queues):
                 print('Got:', item)
 ```
 
----
-
-在Unix系统上面启动守护进程
+### 在Unix系统启动守护进程
 
 ```python
 #!/usr/bin/env python3
@@ -1624,7 +1526,7 @@ if __name__ == '__main__':
 
 要启动这个守护进程，用户需要使用如下的命令：
 
-```
+```bash
 bash % daemon.py start
 bash % cat /tmp/daemon.pid
 2882
@@ -1635,10 +1537,9 @@ Daemon Alive! Fri Oct 12 13:45:47 2012
 ...
 ```
 
-
-
 ## 脚本编程与系统管理
 
+### 执行外部程序并获取结果
 执行一个外部命令并以Python字符串的形式获取执行结果
 
 ```python
@@ -1646,17 +1547,15 @@ import subprocess
 out_bytes = subprocess.check_output(['netstat','-a'])
 ```
 
-使用 `check_output()` 函数是执行外部命令并获取其返回值的最简单方式。 但是，如果你需要对子进程做更复杂的交互，比如给它发送输入，你得采用另外一种方法。 这时候可直接使用 `subprocess.Popen` 类。
+使用 `check_output()` 函数是执行外部命令并获取其返回值的最简单方式。 
+但是，如果你需要对子进程做更复杂的交互，比如给它发送输入，你得采用另外一种方法。这时候可直接使用 `subprocess.Popen` 类。
 
----
+### 实用工具库
 
-`shutil` 模块有很多便捷的函数可以复制文件和目录。
+- `shutil` 模块有很多便捷的函数可以复制文件和目录。
+- `configparser` 模块能被用来读取配置文件.ini。
 
-`configparser` 模块能被用来读取配置文件.ini。
-
----
-
-实现一个计时器
+### 实现一个计时器
 
 ```python
 import time
@@ -1694,7 +1593,8 @@ class Timer:
         self.stop()
 ```
 
-上述代码中由 `Timer` 类记录的时间是钟表时间，并包含了所有休眠时间。 如果你只想计算该进程所花费的CPU时间，应该使用 `time.process_time()` 来代替：
+上述代码中由 `Timer` 类记录的时间是钟表时间，并包含了所有休眠时间。 
+如果你只想计算该进程所花费的CPU时间，应该使用 `time.process_time()` 来代替 func ：
 
 ```python
 t = Timer(time.process_time)
@@ -1703,14 +1603,12 @@ with t:
 print(t.elapsed)
 ```
 
----
+### 限制内存和CPU使用量
 
-限制内存和CPU的使用量
-
+限制CPU时间片
 ```python
 import signal
 import resource
-import os
 
 def time_exceeded(signo, frame):
     print("Time's up!")
@@ -1728,15 +1626,18 @@ if __name__ == '__main__':
         pass
 ```
 
-```python
+限制内存。RLIMIT_AS 是用于控制进程地址空间（Address Space）最大大小的资源限制常量。
+```
 def limit_memory(maxsize):
     soft, hard = resource.getrlimit(resource.RLIMIT_AS)
+    # 设置虚拟内存上限为2GB（单位：字节）
+    # maxsize = 2 * 1024**3  # 2GB
     resource.setrlimit(resource.RLIMIT_AS, (maxsize, hard))
 ```
 
 ## 第十四章：测试、调试和异常
 
-测试stdout输出
+### 测试stdout输出
 
 ```python
 from io import StringIO
@@ -1755,10 +1656,9 @@ class TestURLPrint(TestCase):
             mymodule.urlprint(protocol, host, domain)
             self.assertEqual(fake_out.getvalue(), expected_url)
 ```
+这里假设 mymodule.urlprint() 会往 sys.stdout 输出文本。
 
----
-
-在单元测试中给对象打补丁
+### 在单元测试中给对象打补丁
 
 ```python
 # example.py
@@ -1769,10 +1669,10 @@ def dowprices():
     u = urlopen('http://finance.yahoo.com/d/quotes.csv?s=@^DJI&f=sl1')
     lines = (line.decode('utf-8') for line in u)
     rows = (row for row in csv.reader(lines) if len(row) == 2)
-    prices = { name:float(price) for name, price in rows }
+    prices = { name: float(price) for name, price in rows }
     return prices
 ```
-
+测试代码
 ```python
 import unittest
 from unittest.mock import patch
@@ -1791,8 +1691,7 @@ class Tests(unittest.TestCase):
     def test_dowprices(self, mock_urlopen):
         p = example.dowprices()
         self.assertTrue(mock_urlopen.called)
-        self.assertEqual(p,
-                         {'IBM': 91.1,
+        self.assertEqual(p,{'IBM': 91.1,
                           'AA': 13.25,
                           'MSFT' : 27.72})
 
@@ -1800,14 +1699,11 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
----
-
-在单元测试中测试异常情况
+### 在单元测试中测试异常情况
 
 ```python
 import unittest
 
-# A simple function to illustrate
 def parse_int(s):
     return int(s)
 
@@ -1836,14 +1732,11 @@ class TestIO(unittest.TestCase):
             f = open('/file/not/found')
         except IOError as e:
             self.assertEqual(e.errno, errno.ENOENT)
-
         else:
             self.fail('IOError not raised')
 ```
 
----
-
-将测试输出用日志记录到文件中
+### 将测试输出用日志记录到文件
 
 ```python
 import sys
@@ -1858,9 +1751,7 @@ if __name__ == '__main__':
         main(f)
 ```
 
----
-
-跳过某些测试
+### 跳过某些测试
 
 ```python
 import unittest
@@ -1891,11 +1782,11 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
----
+### 自定义异常
 
-自定义异常
-
-自定义异常类应该总是继承自内置的 `Exception` 类， 或者是继承自那些本身就是从 `Exception` 继承而来的类。 尽管所有类同时也继承自 `BaseException` ，但你不应该使用这个基类来定义新的异常。 `BaseException` 是为系统退出异常而保留的，比如 `KeyboardInterrupt` 或 `SystemExit` 以及其他那些会给应用发送信号而退出的异常。
+自定义异常类应该总是继承自内置的 `Exception` 类， 或者是继承自那些本身就是从 `Exception` 继承而来的类。 
+尽管所有类同时也继承自 `BaseException` ，但你不应该使用这个基类来定义新的异常。
+`BaseException` 是为系统退出异常而保留的，比如 `KeyboardInterrupt` 或 `SystemExit` 以及其他那些会给应用发送信号而退出的异常。
 
 ```python
 class CustomError(Exception):
@@ -1905,13 +1796,12 @@ class CustomError(Exception):
         self.status = status
 ```
 
-Exception的默认行为是接受所有传递的参数并将它们以元组形式存储在 `.args` 属性中。很多其他函数库和部分Python库默认所有异常都必须有 `.args` 属性， 因此如果你忽略了这一步，你会发现有些时候你定义的新异常不会按照期望运行。
+Exception的默认行为是接受所有传递的参数并将它们以元组形式存储在 `.args` 属性中。
+很多其他函数库和部分Python库默认所有异常都必须有 `.args` 属性，因此如果你忽略了这一步，你会发现有些时候你定义的新异常不会按照期望运行。
 
----
+### 捕获异常后抛出另外的异常
 
-捕获异常后抛出另外的异常
-
-```python
+```bash
 >>> def example():
 ...     try:
 ...             int('N/A')
@@ -1919,21 +1809,17 @@ Exception的默认行为是接受所有传递的参数并将它们以元组形�
 ...             raise RuntimeError('A parsing error occurred') from e
 ```
 
-使用raise from 维护完整的异常链。
+使用raise from 维护完整的异常链。 如果，你想忽略掉异常链，可使用 `raise from None`:
 
-如果，你想忽略掉异常链，可使用 `raise from None` :
-
-```python
+```bash
 >>> def example3():
 ...     try:
-...             int('N/A')
+...         int('N/A')
 ...     except ValueError:
-...             raise RuntimeError('A parsing error occurred') from None
+...         raise RuntimeError('A parsing error occurred') from None
 ```
 
----
-
-重新抛出异常
+### 重新抛出异常
 
 ```python
 try:
@@ -1946,9 +1832,7 @@ except Exception as e:
    raise
 ```
 
----
-
-输出警告信息
+### 输出警告信息
 
 ```python
 import warnings
@@ -1961,11 +1845,9 @@ def func(x, y, logfile=None, debug=False):
 
 `warn()` 的参数是一个警告消息和一个警告类，警告类有如下几种：UserWarning, DeprecationWarning, SyntaxWarning, RuntimeWarning, ResourceWarning, 或 FutureWarning。
 
----
+### 性能测试
 
-性能测试
-
-=> 修饰函数
+用修饰器修饰函数
 
 ```python
 # timethis.py
@@ -2013,9 +1895,8 @@ counting : 1.5551159381866455
 
 或者使用timeit模块。
 
-注意：
-
-> 当执行性能测试的时候，需要注意的是你获取的结果都是近似值。 `time.perf_counter()` 函数会在给定平台上获取最高精度的计时值。 不过，它仍然还是基于时钟时间，很多因素会影响到它的精确度，比如机器负载。 如果你对于执行时间更感兴趣，使用 `time.process_time()` 来代替它。
+注意： 当执行性能测试的时候，需要注意的是你获取的结果都是近似值。`time.perf_counter()` 函数会在给定平台上获取最高精度的计时值。
+不过，它仍然还是基于时钟时间，很多因素会影响到它的精确度，比如机器负载。如果你对于执行时间更感兴趣，使用 `time.process_time()` 来代替它。
 
 ## 第十五章：C语言扩展
 
