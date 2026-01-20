@@ -45,6 +45,7 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 
 ### reading
 
+- [craftinginterpreters](https://craftinginterpreters.com/dedication.html) 从0开始写编译器，在线书籍。
 - https://github.com/Tikam02/DevOps-Guide 运维方面的基础知识和教程
 - https://101.lug.ustc.edu.cn/ 中国科学技术大学 Linux 用户协会编写的《Linux 101》在线讲义
 - https://book.mixu.net/distsys/index.html Distributed Systems for Fun and Profit (Blog)
@@ -99,6 +100,8 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 
 ### explore
 
+- [研究和写作指南](https://www.cs.cmu.edu/~mleone/how-to.html) 
+- [自学计算机科学指引](https://github.com/izackwu/TeachYourselfCS-CN/blob/master/TeachYourselfCS-CN.md)
 - https://github.com/PKUFlyingPig/rubber-docker 基于 python 实现的迷你 docker 容器引擎。
 - https://github.com/practical-tutorials/project-based-learning Curated list of project-based tutorials. 项目导向。
 - https://github.com/codecrafters-io/build-your-own-x Master programming by recreating your favorite technologies from
@@ -120,7 +123,7 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 
 - https://www.learncs.site/ CS 自学社区。部分著名公开课的汉化版，挑选感兴趣的来读。
 - https://csdiy.wiki/CS%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%92/ csdiy 只看这个导航页面即可。
-    - 科普向系列视频 [Crash Course: Computer Science](https://www.bilibili.com/video/BV1EW411u7th)
+    - 科普向系列视频 [Crash Course: Computer Science](https://www.bilibili.com/video/BV1EW411u7th) 计算机科学概论，范围很广，点到即止。【已看】
     - MIT 的 [Calculus Course](https://csdiy.wiki/数学基础/MITmaths/) 和 [18.06: Linear Algebra](https://csdiy.wiki/数学基础/MITLA/) 微积分和线性代数
     - MIT 的 [6.050J: Information theory and Entropy](https://csdiy.wiki/数学基础/information/) 信息论入门
     - [UCB CS70 : discrete Math and probability theory](https://csdiy.wiki/数学进阶/CS70/) 和 [UCB CS126 : Probability theory](https://csdiy.wiki/数学进阶/CS126/) 是 UC Berkeley 的概率论课程，前者覆盖了离散数学和概率论基础，后者则涉及随机过程以及深入的理论内容。

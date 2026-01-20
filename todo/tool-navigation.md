@@ -8,10 +8,6 @@
     - https://mantine.dev/
     - https://github.com/haiilo/catalyst A framework-agnostic design system and component library based on web components and SCSS.
 
-  - based on Tailwind CSS
-    - https://tailwindui.com/templates/catalyst App UI参考
-    - https://github.com/wdpm/catalyist-ui-kit 一个付费模版
-
   - base on web component
     - https://github.com/shoelace-style/shoelace 复杂度不高，可以阅读源码。挑一些有趣的组件研究。
 
