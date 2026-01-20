@@ -1,0 +1,13 @@
+cards_proj
+├── ... top level project files, src dir, docs, etc ...
+├── pytest.ini
+└── tests
+    ├── conftest.py
+    ├── api
+        ├── __init__.py
+        ├── conftest.py
+        └── ... test files for api ...
+    └── cli
+        ├── __init__.py
+        ├── conftest.py
+        └── ... test files for cli ...

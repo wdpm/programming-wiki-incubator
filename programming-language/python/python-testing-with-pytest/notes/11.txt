@@ -1,0 +1,46 @@
+pip install tox
+tox
+
+---
+
+tox -c tox_multiple_pythons.ini
+
+```
+py37: OK (29.41=setup[23.67]+cmd[5.73] seconds)
+py38: SKIP (4.36 seconds)
+py39: OK (25.16=setup[22.34]+cmd[2.81] seconds)
+py310: OK (6.59=setup[4.36]+cmd[2.23] seconds)
+congratulations :) (66.03 seconds)
+```
+
+---
+
+tox -c tox_multiple_pythons.ini -p
+
+---
+
+tox -c tox_coverage.ini -e py310
+
+```
+---------- coverage: platform win32, python 3.10.7-final-0 -----------
+Name                                             Stmts   Miss  Cover
+--------------------------------------------------------------------
+.tox\py310\Lib\site-packages\cards\__init__.py       3      0   100%
+.tox\py310\Lib\site-packages\cards\api.py           72      0   100%
+.tox\py310\Lib\site-packages\cards\cli.py           86      0   100%
+.tox\py310\Lib\site-packages\cards\db.py            23      0   100%
+--------------------------------------------------------------------
+TOTAL                                              184      0   100%
+```
+
+---
+
+tox -c tox_coverage_min.ini -e py310
+
+---
+
+Pass parameters to tox by `--`
+
+tox -c tox_posargs.ini -e py310 -- -k test_version --no-cov
+
+---

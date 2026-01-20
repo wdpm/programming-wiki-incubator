@@ -1,0 +1,18 @@
+cd script/
+
+tox -e py310 -c tox_bad.ini
+tox -e py310 -c tox.ini
+
+---
+
+In addition, you learned several techniques for testing scripts and applications:
+• Using subprocess.run() and pipes to run a script and read the output
+• Refactoring a script code into functions, including main()
+• Calling main() from a if __name__ == "__main__" block
+• Using capsys to capture output
+• Using pythonpath to move tests into tests and source code into src
+• Specifying requirements.txt in tox.ini for applications with dependencies
+
+---
+
+参考exercises/ch12

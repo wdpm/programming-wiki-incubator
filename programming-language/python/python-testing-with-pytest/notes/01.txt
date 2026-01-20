@@ -1,0 +1,18 @@
+# turn off tracebacks info
+pytest --tb=no
+pytest --tb=no ch1
+pytest --tb=no test_one.py test_two.py
+pytest -v ch1/test_one.py::test_passing
+
+• Test files should be named test_<something>.py or <something>_test.py.
+• Test methods and functions should be named test_<something>.
+• Test classes should be named Test<Something>
+
+Here are the possible outcomes of a test:
+• PASSED (.)—The test ran successfully.
+• FAILED (F)—The test did not run successfully.
+• SKIPPED (s)—The test was skipped.
+• XFAIL (x)—The test was not supposed to pass, and it ran and failed.
+• XPASS (X)—The test was marked with xfail, but it ran and passed.
+• ERROR (E)—An exception happened either during the execution of a fixture
+or hook function, and not during the execution of a test function.

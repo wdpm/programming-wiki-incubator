@@ -1,0 +1,104 @@
+常用 markers
+
+• @pytest.mark.parametrize()
+• @pytest.mark.skip()
+• @pytest.mark.skipif()
+• @pytest.mark.xfail()
+
+---
+builtins/
+
+pytest -v -ra test_skip.py
+
+-r means report
+The a in -ra stands for “all except passed."
+
+---
+
+
+reg/
+
+pytest -v -m smoke test_start.py
+
+
+---
+
+multiple/
+
+pytestmark=[pytest.mark.marker_one,pytest.mark.marker_two]
+
+If pytest sees a pytestmark attribute in a test module, it will apply the marker(s)
+to all the tests in that module.
+
+---
+
+pytest -m exception
+
+Markers give us that ability to group tests regardless of where
+the tests are in the directory/file structure.
+
+---
+
+select tests
+
+pytest -v -m "finish and exception"
+pytest -v -m "finish and not smoke"
+
+---
+
+pip install Faker
+
+```
+@pytest.fixture(scope="function")
+def cards_db(session_cards_db, request, faker):
+```
+
+1. The term `request.node` is pytest’s representation of a test.
+
+2. Well, remember that we can place markers on tests,
+classes, and even files. get_closest_marker('num_cards') returns the marker closest
+to the test, which is usually what we want.
+
+$ cd /path/to/code/ch6/combined
+$ pytest -v -s test_num_cards.py
+
+---
+
+小结
+
+```
+addopts =
+    --strict-markers
+    -ra
+xfail_strict = true
+```
+
+• Custom markers are declared with the markers section.
+• The --strict-markers flag tells pytest to raise an error if it sees us using an
+undeclared marker. The default is a warning.
+• The -ra flag tells pytest to list the reason for any test that isn’t passing.
+This includes fail, error, skip, xfail, and xpass.
+• Setting xfail_strict = true turns any passing tests marked with xfail into failed
+tests since our understanding of the system behavior was wrong. Leave
+this out if you want xfail tests that pass to result in XPASS.
+• Custom markers can be used to select a subset of tests to run with -m
+<marker name> or not run with -m "not <marker name>".
+• Markers are placed on tests using the syntax, @pytest.mark.<marker_name>.
+• Markers on classes also use the @pytest.mark.<marker_name> syntax and will
+result in each class test method being marked.
+• Files can have markers, using pytestmark = pytest.mark.<marker_name> or
+pytestmark = [pytest.mark.<marker_one>, pytest.mark.<marker_two>].
+• For parametrized tests, an individual parametrization can be marked with
+pytest.param(<actual parameter>, marks=pytest.mark.<marker_name>). Like the file
+version, the parametrized version can accept a list of markers.
+• The -m flag can use logic operators and, or, not, and parentheses.
+• pytest --markers lists all available markers.
+• Builtin markers provide extra behavior functionality, and we discussed
+skip, skipif, and xfail.
+• Tests can have more than one marker, and a marker can be used on more
+than one test.
+• From a fixture, you can access markers using request.node.get_closest_mark-
+er(<marker_name>).
+• Markers can have parameters that can be accessed with .args and .kwargs
+attributes
+

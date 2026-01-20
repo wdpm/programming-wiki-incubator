@@ -1,0 +1,55 @@
+(venv) D:\Code\OtherGithubProjects\Python_Testing_with_pytest\ch2>pip install ../cards_proj/
+
+进行对cards的CRUD命令测试。
+
+cards add some thing -o wdpm
+cards add other thing
+cards
+
+cards update 2 -o wdpm
+cards
+
+cards start 1
+cards finish 1
+cards start 2
+cards
+
+cards delete 1
+cards
+
+---
+
+> pytest test_card_fail.py -vv
+
+-vv 可以显示全部的diff字段。
+
+pytest.fail() vs assert
+
+---
+
+ch2/test_experiment.py
+
+--
+
+使用 with pytest.raises(TypeError): 期望发生报错
+
+three-stage structure 方法论：
+Arrange-Act-Assert and Given-When-Then
+
+---
+
+pytest -v test_classes.py::TestEquality
+pytest -v test_classes.py::TestEquality::test_equality
+
+---
+
+重要：
+pip list --not-required
+
+这个命令可以列出当前venv top-level的package。
+
+Pushing setup and teardown into fixtures is extremely
+powerful, as it allows for an elegant separation of complex system state and
+test code and keeps track of external resources
+
+---

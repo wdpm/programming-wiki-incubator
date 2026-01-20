@@ -1,0 +1,16 @@
+Here’s the current Cards testing strategy:
+• Test the behaviors and features that are accessible through the end user
+interface, the CLI.
+• Test those features through the API as much as possible.
+• Test the CLI enough to verify the API is getting properly called for all fea-
+tures.
+• Test the following core features thoroughly: add, count, delete, finish, list, start,
+and update.
+• Include cursory tests for config and version.
+• Test our use of TinyDB with subsystem tests against db.py
+
+---
+
+Taking the time to write down the features to test, an initial list of test cases,
+and a test strategy is up-front time, but it pays for itself quickly as we blast
+through implementing the tests, which is the next step

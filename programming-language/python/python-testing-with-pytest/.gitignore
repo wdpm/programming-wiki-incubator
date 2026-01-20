@@ -1,0 +1,11 @@
+.idea
+.fleet
+.vscode
+
+venv
+.pytest_cache
+__pycache__
+**/*/.tox*
+**/*/dist*
+
+htmlcov

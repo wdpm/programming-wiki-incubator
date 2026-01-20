@@ -1,0 +1,87 @@
+pytest --setup-show test_count.py
+
+可以可视化 setup 和 teardown 部分的细节
+
+```
+test_count.py
+    SETUP F cards_db
+    ch3/test_count.py::test_empty (fixtures used: cards_db).
+    TEARDOWN F cards_db
+    SETUP F cards_db
+    ch3/test_count.py::test_two (fixtures used: cards_db).
+    TEARDOWN F cards_db
+```
+
+F 表示function 作用域范围，每次test_func调用前都调用单独的fixtures
+
+---
+
+Here’s a rundown of each scope value:
+
+scope='function'
+Run once per test function. The setup portion is run before each test using
+the fixture. The teardown portion is run after each test using the fixture.
+This is the default scope used when no scope parameter is specified.
+
+scope='class'
+Run once per test class, regardless of how many test methods are in the class.
+
+scope='module'
+Run once per module, regardless of how many test functions or methods
+or other fixtures in the module use it.
+
+scope='package'
+Run once per package, or test directory, regardless of how many test
+functions or methods or other fixtures in the package use it.
+
+scope='session'
+Run once per session. All test methods and functions using a fixture of
+session scope share one setup and teardown call.
+
+---
+
+$ cd /path/to/code/ch3/a/
+$ pytest --fixtures -v
+
+---
+
+>pytest --fixtures-per-test test_count.py::test_empty
+
+----
+
+a/
+
+pytest -v --tb=line test_count.py test_three.py
+
+会报错
+
+---
+
+b/
+
+pytest -v --tb=line test_count.py test_three.py
+
+---
+
+review
+
+In this chapter, we covered a lot about fixtures:
+• Fixtures are @pytest.fixture() decorated functions.
+• Test functions or other fixtures depend on a fixture by putting its name
+in their parameter list.
+• Fixtures can return data using return or yield.
+• Code before the yield is the setup code. Code after the yield is the teardown code.
+• Fixtures can be set to function, class, module, package, or session scope.
+The default is function scope. You can even define the scope dynamically.
+• Multiple test functions can use the same fixture.
+• Multiple test modules can use the same fixture if it’s in a conftest.py file.
+• Multiple fixtures at different scope can speed up test suites while main-
+taining test isolation.
+• Tests and fixtures can use multiple fixtures.
+• Autouse fixtures don’t have to be named by the test function.
+• You can have the name of a fixture be different than the fixture function name.
+We also covered a few new command-line flags:
+• pytest --setup-show is used to see the order of execution.
+• pytest --fixtures is used to list available fixtures and where the fixture is located.
+• -s and --capture=no allow print statements to be seen even in passing tests
+

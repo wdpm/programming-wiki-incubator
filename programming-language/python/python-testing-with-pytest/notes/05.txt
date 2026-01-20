@@ -1,0 +1,27 @@
+- Parametrizing functions
+• Parametrizing fixtures
+• Using a hook function called pytest_generate_tests
+
+---
+
+Fixture parametrization is also a different way to think about the same problem. Even in the case of testing finish(),
+ if I’m thinking about it in terms of “same test, different data,” I often gravitate toward function parametrization.
+ But if I’m thinking about it as “same test, different start state,” I gravitate toward fixture parametrization
+
+```python
+#  using a hook function called pytest_generate_tests
+def pytest_generate_tests(metafunc):
+    if "start_state" in metafunc.fixturenames:
+        metafunc.parametrize("start_state", ["done", "in prog", "todo"])
+```
+
+In this chapter, we looked at three ways to parametrize tests:
+• We can parametrize test functions, creating many test cases, when we
+apply the @pytest.mark.parametrize() decorator.
+
+• We can parametrize fixtures with @pytest.fixture(params=()). This is helpful if
+the fixture needs to do different work based on the parameter values.
+
+• We can generate complex parametrization sets with pytest_generate_tests.
+We also looked at how we can run subsets of parametrized test cases using
+pytest -k

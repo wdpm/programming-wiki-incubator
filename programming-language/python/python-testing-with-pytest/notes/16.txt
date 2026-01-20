@@ -1,0 +1,14 @@
+There’s a lot of parametrization fun in this chapter! We covered
+• using data structures and objects as parameter values and how that
+results in numbered test IDs;
+• creating custom identifiers using ids and ID functions, including repr, str,
+custom functions, and lambdas;
+• using the id setting of pytest.param for identifiers;
+• using a list for IDs and using dictionaries to keep track of test cases and
+identifiers;
+• using functions for parameter values, which allow us to dynamically create
+values at test collection time;
+• using multiple parameters and even stacking parametrize decorators to
+create a test matrix, and
+• moving parameter values from fixture to test function using indirect
+parametrization

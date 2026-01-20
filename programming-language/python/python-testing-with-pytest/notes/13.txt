@@ -1,0 +1,62 @@
+pip install -e "./cards_proj/[test]"
+
+editable mode and optional test deps
+
+---
+
+pytest --lf --tb=no
+
+pytest --lf -x
+
+pytest --lf -x -l --tb=short
+
+- we can run the same test over again with -l/--showlocals.
+- We don’t need the full traceback again, so we can shorten it with --tb=short
+
+---
+
+You can launch pdb from pytest in a few different ways:
+• Add a breakpoint() call to either test code or application code. When a pytest
+run hits a breakpoint() function call, it will stop there and launch pdb.
+• Use the --pdb flag. With --pdb, pytest will stop at the point of failure. In our
+case, that will be at the assert len(the_list) == 2 line.
+• Use the --trace flag. With --trace, pytest will stop at the beginning of each
+test.
+
+---
+
+pytest
+pytest --lf --trace
+
+利用 pdb 指令进行细致的debug。
+
+---
+可以使用tox + pdb来组合调试
+
+pytest有很多flags帮助调试。
+
+常用pdb指令：
+- ll（获取当前断点的周围代码显示），
+- until [line-no]，调到特定行
+- pp [variable], 打印变量值
+- step(进入下一行，即使是进入内部函数),
+- return 从当前函数返回
+- exit 退出
+
+tox -e py310 -- --pdb --no-cov
+
+```
+(Pdb) pp output
+('                                  \n'
+ '  ID   state   owner   summary    \n'
+ ' ──────────────────────────────── \n'
+ '  1    done            some task  \n'
+ '  3    done            a third')
+(Pdb) pp expected
+('\n'
+ '  ID   state   owner   summary    \n'
+ ' ──────────────────────────────── \n'
+ '  1    done            some task  \n'
+ '  3    done            a third')
+```
+也就是第一行不一致。在IDE打开空格显示后，对齐第一行的空格即可。
