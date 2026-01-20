@@ -1,0 +1,23 @@
+plugins {
+    id 'java-library'
+    id 'application'
+    id "org.gradle.java.experimental-jigsaw" version "0.1.1"
+}
+
+group 'com.kousenit'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.9
+
+javaModule.name = 'com.kousenit.clients'
+
+mainClassName = 'com.kousenit.clients.Main'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation project(':server')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
