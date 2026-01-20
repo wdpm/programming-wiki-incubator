@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:jpa-query;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      # Drop and create new tables (create, create-drop, validate, update)
+      # Only for testing purpose - comment this in production
+      ddl-auto: create
+  h2:
+    console:
+      path: "/h2-console"
+      enabled: true
+
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings>xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+    version="2.1">
+
+    <!-- Customer Details Fetch -->
+    <named-native-query name="customerEntity.getCustomerDetails">
+        <query><![CDATA[
+            SELECT
+                cust.id as customerId,
+                cust.FIRST_NAME as firstName,
+                cust.LAST_NAME as lastName,
+                cust.CITY as city,
+                cust.COUNTRY as country,
+                corder.ORDER_NUMBER as orderNumber,
+                corder.TOTAL_AMOUNT as totalAmount
+            FROM CUSTOMER cust LEFT JOIN CUSTOMER_ORDER corder
+                 ON corder.CUSTOMER_ID = cust.ID
+         ]]></query>
+    </named-native-query>
+
+    <!-- Search Customer By First Name -->
+    <named-native-query name="customerEntity.searchCustomerByFirstName">
+        <query><![CDATA[
+            SELECT
+                cust.id as customerId,
+                cust.FIRST_NAME as firstName,
+                cust.LAST_NAME as lastName,
+                cust.CITY as city,
+                cust.COUNTRY as country,
+                corder.ORDER_NUMBER as orderNumber,
+                corder.TOTAL_AMOUNT as totalAmount
+            FROM CUSTOMER cust LEFT JOIN CUSTOMER_ORDER corder
+                 ON corder.CUSTOMER_ID = cust.ID
+            WHERE
+                 cust.FIRST_NAME = :firstName
+         ]]></query>
+    </named-native-query>
+
+</entity-mappings>

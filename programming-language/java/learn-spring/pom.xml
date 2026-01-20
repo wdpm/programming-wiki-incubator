@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>lets-java-test</module>
+        <module>lets-spring-beans</module>
+        <module>lets-spring-web-mvc</module>
+        <module>lets-spring-web-mvc-java-config</module>
+        <module>lets-spring-jdbc-template</module>
+        <module>lets-spring-data-jpa</module>
+        <module>lets-spring-cookie</module>
+        <module>lets-spring-export-and-upload-csv</module>
+        <module>lets-spring-rest-template</module>
+        <module>lets-spring-upload-file</module>
+        <module>lets-spring-data-jpa-projection</module>
+        <module>lets-spring-data-jpa-pagination</module>
+        <module>lets-spring-data-jpa-sort</module>
+        <module>lets-spring-data-jpa-specification</module>
+        <module>lets-spring-data-jpa-auditing</module>
+        <module>lets-spring-thymeleaf-form</module>
+        <module>lets-spring-thymeleaf-layout</module>
+        <module>lets-spring-oauth</module>
+        <module>lets-spring-web-service-producer</module>
+        <module>lets-spring-web-service-consumer</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>io.github.wdpm</groupId>
+    <artifactId>lets-spring</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>lets-spring</name>
+    <description>Learning Spring and Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring.version>5.2.0.RELEASE</spring.version>
+
+        <servlets.version>3.1.0</servlets.version>
+        <jstl.version>1.2</jstl.version>
+        <tld.version>1.1.2</tld.version>
+
+        <junit.version>5.7.0-M1</junit.version>
+        <easymock.version>4.2</easymock.version>
+        <mockito.version>3.3.3</mockito.version>
+
+        <maven-jetty-plugin.version>9.4.7.v20170914</maven-jetty-plugin.version>
+        <jackson.version>2.11.0</jackson.version>
+        <org.json.version>20190722</org.json.version>
+
+        <lombok.version>1.18.12</lombok.version>
+        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
+        <opencsv.version>4.5</opencsv.version>
+        <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
+        <spring-webflux.version>5.2.2.RELEASE</spring-webflux.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

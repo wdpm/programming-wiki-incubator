@@ -1,0 +1,7 @@
+[ My-Scheduler-1] io.github.wdpm.ScheduledTasks : Fixed Rate Task: Current Time - 13:57:43
+[ My-Scheduler-1] io.github.wdpm.ScheduledTasks : Fixed Rate Task: Current Time - 13:57:46
+[ My-Scheduler-2] io.github.wdpm.ScheduledTasks : Fixed Rate Task: Current Time - 13:57:49
+[ My-Scheduler-1] io.github.wdpm.ScheduledTasks : Fixed Rate Task: Current Time - 13:57:52
+[ My-Scheduler-3] io.github.wdpm.ScheduledTasks : Fixed Rate Task: Current Time - 13:57:55
+[ My-Scheduler-2] io.github.wdpm.ScheduledTasks : Fixed Rate Task: Current Time - 13:57:58
+[ My-Scheduler-4] io.github.wdpm.ScheduledTasks : Fixed Rate Task: Current Time - 13:58:01

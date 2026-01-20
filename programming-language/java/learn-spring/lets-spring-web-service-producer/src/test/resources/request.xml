@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:ws="http://wdpm.github.io/webservice">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ws:getCountryRequest>
+            <ws:name>Spain</ws:name>
+        </ws:getCountryRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
+
+
