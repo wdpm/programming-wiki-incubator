@@ -1,0 +1,121 @@
+<div id="app"></div>
+
+<div data-a="3" mmm="asdf" draggable="true"></div>
+
+<form id="aaa"></form>
+<input value="aaa" form="aaa" />
+
+<script src="https://unpkg.com/@vue/reactivity@3.0.5/dist/reactivity.global.js"></script>
+<script>
+
+function shouldSetAsProps(el, key, value) {
+  if (key === 'form' && el.tagName === 'INPUT') return false
+  return key in el
+}
+
+function createRenderer(options) {
+
+  const {
+    createElement,
+    insert,
+    setElementText,
+    patchProps
+  } = options
+
+  function mountElement(vnode, container) {
+    const el = createElement(vnode.type)
+    if (typeof vnode.children === 'string') {
+      setElementText(el, vnode.children)
+    } else if (Array.isArray(vnode.children)) {
+      vnode.children.forEach(child => {
+        patch(null, child, el)
+      })
+    }
+
+    if (vnode.props) {
+      for (const key in vnode.props) {
+        patchProps(el, key, null, vnode.props[key])
+      }
+    }
+
+    insert(el, container)
+  }
+
+  function patch(n1, n2, container) {
+    if (!n1) {
+      mountElement(n2, container)
+    } else {
+      //
+    }
+  }
+
+  function render(vnode, container) {
+    if (vnode) {
+      // 新 vnode 存在，将其与旧 vnode 一起传递给 patch 函数进行打补丁
+      patch(container._vnode, vnode, container)
+    } else {
+      if (container._vnode) {
+        // 旧 vnode 存在，且新 vnode 不存在，说明是卸载(unmount)操作
+        // 只需要将 container 内的 DOM 清空即可
+
+        // innerHTML="" 的弊端
+
+        // 1)容器的内容可能是由某个或多个组件渲染的，当卸载操作发生
+        // 时，应该正确地调用这些组件的 beforeUnmount、unmounted
+        // 等生命周期函数。
+
+        // 2)即使内容不是由组件渲染的，有的元素存在自定义指令，我们应
+        // 该在卸载操作发生时正确执行对应的指令钩子函数。
+
+        // 3)使用 innerHTML 清空容器元素内容的另一个缺陷是，它不会移
+        // 除绑定在 DOM 元素上的事件处理函数
+        container.innerHTML = ''
+      }
+    }
+    // 把 vnode 存储到 container._vnode 下，即后续渲染中的旧 vnode
+    container._vnode = vnode
+  }
+  
+  return {
+    render
+  }
+}
+
+const renderer = createRenderer({
+  createElement(tag) {
+    return document.createElement(tag)
+  },
+  setElementText(el, text) {
+    el.textContent = text
+  },
+  insert(el, parent, anchor = null) {
+    parent.insertBefore(el, anchor)
+  },
+  patchProps(el, key, preValue, nextValue) {
+    if (key === 'class') {
+      // 为了方便开发者而提供的class API设置
+      el.className = nextValue
+    } else if (shouldSetAsProps(el, key, nextValue)) {
+      const type = typeof el[key]
+      if (type === 'boolean' && nextValue === '') {
+        el[key] = true
+      } else {
+        el[key] = nextValue
+      }
+    } else {
+      el.setAttribute(key, nextValue)
+    }
+  }
+})
+
+const vnode = {
+  type: 'p',
+  props: {
+    class: 'foo bar baz'
+  },
+  children: 'text'
+}
+renderer.render(vnode, document.querySelector('#app'))
+
+
+</script>

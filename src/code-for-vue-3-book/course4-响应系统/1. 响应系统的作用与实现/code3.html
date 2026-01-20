@@ -1,0 +1,55 @@
+<body></body>
+<script>
+  // 存储副作用函数的桶
+  const bucket = new Set()
+
+  // 原始数据
+  const data = {text: 'hello world'}
+  // 对原始数据的代理
+  const obj = new Proxy(data, {
+    // 拦截读取操作
+    get(target, key) {
+      // 将副作用函数 activeEffect 添加到存储副作用函数的桶中
+      // 这个无条件add的操作粒度太粗，需要修改
+      bucket.add(activeEffect)
+      // 返回属性值
+      return target[key]
+    },
+    // 拦截设置操作
+    set(target, key, newVal) {
+      // 设置属性值
+      target[key] = newVal
+      // 把副作用函数从桶里取出并执行
+      bucket.forEach(fn => fn())
+    }
+  })
+
+
+  // 用一个全局变量存储当前激活的 effect 函数
+  let activeEffect
+
+  function effect(fn) {
+    // 当调用 effect 注册副作用函数时，将副作用函数复制给 activeEffect
+    activeEffect = fn
+    // 执行副作用函数
+    fn()
+  }
+
+  effect(() => {
+    console.log('effect run')
+    document.body.innerText = obj.text
+  })
+
+  console.log(activeEffect)
+
+  setTimeout(() => {
+    obj.notExist = 'hello vue3'
+  }, 3000)
+
+
+//   导致该问题的根本原因是，没有在副作用函数与被操作的目标字段之间建立明确的联系。
+//   例如当读取属性时，无论读取的是哪一个属性，其实都一样，都会把副作用函数收集到“桶”里；当
+//   设置属性时，无论设置的是哪一个属性，也都会把“桶”里的副作用函
+//   数取出并执行。副作用函数与被操作的字段之间没有明确的联系。
+//   也就是响应式的粒度太粗了。
+</script>

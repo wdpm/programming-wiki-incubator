@@ -1,0 +1,166 @@
+<div id="app"></div>
+
+<div data-a="3" mmm="asdf" draggable="true"></div>
+
+<form id="aaa"></form>
+<input value="aaa" form="aaa" />
+
+<script src="https://unpkg.com/@vue/reactivity@3.0.5/dist/reactivity.global.js"></script>
+<script>
+
+function shouldSetAsProps(el, key, value) {
+  if (key === 'form' && el.tagName === 'INPUT') return false
+  return key in el
+}
+
+function createRenderer(options) {
+
+  const {
+    createElement,
+    insert,
+    setElementText,
+    patchProps
+  } = options
+
+  function mountElement(vnode, container) {
+    const el = vnode.el = createElement(vnode.type)
+    if (typeof vnode.children === 'string') {
+      setElementText(el, vnode.children)
+    } else if (Array.isArray(vnode.children)) {
+      vnode.children.forEach(child => {
+        patch(null, child, el)
+      })
+    }
+
+    if (vnode.props) {
+      for (const key in vnode.props) {
+        patchProps(el, key, null, vnode.props[key])
+      }
+    }
+
+    insert(el, container)
+  }
+
+  function patchElement(n1, n2) {
+    const el = n2.el = n1.el
+    const oldProps = n1.props
+    const newProps = n2.props
+
+    // 这里是只能做属性update，属性create
+    for (const key in newProps) {
+      // 脏值检测
+      if (newProps[key] !== oldProps[key]) {
+        patchProps(el, key, oldProps[key], newProps[key])
+      }
+    }
+
+    // 这里是属性delete
+    for (const key in oldProps) {
+      if (!(key in newProps)) {
+        patchProps(el, key, oldProps[key], null)
+      }
+    }
+  }
+
+  function unmount(vnode) {
+    const parent = vnode.el.parentNode
+    if (parent) {
+      parent.removeChild(vnode.el)
+    }
+  }
+
+  function patch(n1, n2, container) {
+    // 旧Node和新Node的类型不一致，没有diff的意义，将旧Node删掉
+    if (n1 && n1.type !== n2.type) {
+      unmount(n1)
+      n1 = null
+    }
+
+    // 旧Node和新Node类型一致，或者旧Node=null
+
+    const { type } = n2
+
+    // type 的类型是string，说明type是例如 p、div的情况
+    if (typeof type === 'string') {
+      if (!n1) {
+        // 走入这里，说明n1类型和n2不一致导致n1被删了，或者n1直接不存在，是n2 create的情况
+        mountElement(n2, container)
+      } else {
+        // 走入这里，就是n1 和n2都不为空，而且n2 类型是字符串，需要diff
+        patchElement(n1, n2)
+      }
+    } else if (typeof type === 'object') {
+      // 组件
+      console.log('todo component diff')
+    }
+  }
+
+  function render(vnode, container) {
+    if (vnode) {
+      // 新 vnode 存在，将其与旧 vnode 一起传递给 patch 函数进行打补丁
+      patch(container._vnode, vnode, container)
+    } else {
+      if (container._vnode) {
+        // 旧 vnode 存在，且新 vnode 不存在，说明是卸载(unmount)操作
+        unmount(container._vnode)
+      }
+    }
+    // 把 vnode 存储到 container._vnode 下，即后续渲染中的旧 vnode
+    container._vnode = vnode
+  }
+  
+  return {
+    render
+  }
+}
+
+const renderer = createRenderer({
+  createElement(tag) {
+    return document.createElement(tag)
+  },
+  setElementText(el, text) {
+    el.textContent = text
+  },
+  insert(el, parent, anchor = null) {
+    parent.insertBefore(el, anchor)
+  },
+  patchProps(el, key, preValue, nextValue) {
+    if (key === 'class') {
+      el.className = nextValue || ''
+    } else if (shouldSetAsProps(el, key, nextValue)) {
+      const type = typeof el[key]
+      if (type === 'boolean' && nextValue === '') {
+        el[key] = true
+      } else {
+        el[key] = nextValue
+      }
+    } else {
+      el.setAttribute(key, nextValue)
+    }
+  }
+})
+
+const vnode = {
+  type: 'p',
+  props: {
+    class: 'foo bar baz'
+  },
+  children: 'text'
+}
+renderer.render(vnode, document.querySelector('#app'))
+
+const newVnode = {
+  type: 'div',
+  props: {
+    id: 'foo'
+  },
+  children: 'hello'
+}
+
+// 这里是展示同一个el不同type的更新，也就是旧node删除，新node挂载
+setTimeout(() => {
+  renderer.render(newVnode, document.querySelector('#app'))  
+}, 1000);
+
+
+</script>

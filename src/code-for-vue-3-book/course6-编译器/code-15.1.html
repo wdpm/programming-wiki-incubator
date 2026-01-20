@@ -1,0 +1,110 @@
+<script>
+const template = `<p>Vue</p>`
+
+const State = {
+  initial: 1,
+  tagOpen: 2,
+  tagName: 3,
+  text: 4,
+  tagEnd: 5,
+  tagEndName: 6
+}
+
+function isAlpha(char) {
+  return char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z'
+}
+
+function tokenize(str) {
+  let currentState = State.initial
+  const chars = []
+  const tokens = []
+  while(str) {
+    const char = str[0]
+    switch (currentState) {
+      // initial -> tagOpen or text
+      case State.initial:
+        if (char === '<') {
+          currentState = State.tagOpen
+          str = str.slice(1)
+        } else if (isAlpha(char)) {
+          currentState = State.text
+          chars.push(char)
+          str = str.slice(1)
+        }
+        break
+      // tagOpen -> tagName or tagEnd("/")
+      case State.tagOpen:
+        if (isAlpha(char)) {
+          currentState = State.tagName
+          chars.push(char)
+          str = str.slice(1)
+        } else if (char === '/') {
+          currentState = State.tagEnd
+          str = str.slice(1)
+        }
+        break
+      // tagName(这个指的是开始的标签，取名不太好) -> more char or initial
+      case State.tagName:
+        if (isAlpha(char)) {
+          chars.push(char)
+          str = str.slice(1)
+        } else if (char === '>') {
+          // 遇到> 代表可以收集开始的标签
+          currentState = State.initial
+          tokens.push({
+            type: 'tag',
+            name: chars.join('')
+          })
+          // reset current char array
+          chars.length = 0
+          str = str.slice(1)
+        }
+        break
+      // text -> more char or tagOpen
+      case State.text:
+        if (isAlpha(char)) {
+          chars.push(char)
+          str = str.slice(1)
+        } else if (char === '<') {
+          // 遇到 < 代表可以收集Text了
+          currentState = State.tagOpen
+          tokens.push({
+            type: 'text',
+            content: chars.join('')
+          })
+          chars.length = 0
+          str = str.slice(1)
+        }
+        break
+      // tagEnd -> tagEndName
+      case State.tagEnd:
+        if (isAlpha(char)) {
+          currentState = State.tagEndName
+          chars.push(char)
+          str = str.slice(1)
+        }
+        break
+      // tagEndName -> more char or ">"
+      case State.tagEndName:
+        if (isAlpha(char)) {
+          chars.push(char)
+          str = str.slice(1)
+        } else if (char === '>') {
+          // 遇到 > 表示可以收集结束标签名称
+          currentState = State.initial
+          tokens.push({
+            type: 'tagEnd',
+            name: chars.join('')
+          })
+          chars.length = 0
+          str = str.slice(1)
+        }
+        break
+    }
+  }
+
+  return tokens
+}
+
+console.log(tokenize(template))
+</script>

@@ -1,0 +1,139 @@
+<body></body>
+<script>
+
+
+  // 存储副作用函数的桶
+  const bucket = new WeakMap()
+
+  // 原始数据
+  const data = {foo: 1}
+  // 对原始数据的代理
+  const obj = new Proxy(data, {
+    // 拦截读取操作
+    get(target, key) {
+      // 将副作用函数 activeEffect 添加到存储副作用函数的桶中
+      track(target, key)
+      // 返回属性值
+      return target[key]
+    },
+    // 拦截设置操作
+    set(target, key, newVal) {
+      // 设置属性值
+      target[key] = newVal
+      // 把副作用函数从桶里取出并执行
+      trigger(target, key)
+    }
+  })
+
+  function track(target, key) {
+    if (!activeEffect) return
+    let depsMap = bucket.get(target)
+    if (!depsMap) {
+      bucket.set(target, (depsMap = new Map()))
+    }
+    let deps = depsMap.get(key)
+    if (!deps) {
+      depsMap.set(key, (deps = new Set()))
+    }
+    deps.add(activeEffect)
+    activeEffect.deps.push(deps)
+  }
+
+  function trigger(target, key) {
+    const depsMap = bucket.get(target)
+    if (!depsMap) return
+    const effects = depsMap.get(key)
+
+    const effectsToRun = new Set()
+    effects && effects.forEach(effectFn => {
+      if (effectFn !== activeEffect) {
+        effectsToRun.add(effectFn)
+      }
+    })
+    effectsToRun.forEach(effectFn => {
+      if (effectFn.options.scheduler) {
+        effectFn.options.scheduler(effectFn)
+      } else {
+        effectFn()
+      }
+    })
+    // effects && effects.forEach(effectFn => effectFn())
+  }
+
+  // 用一个全局变量存储当前激活的 effect 函数
+  let activeEffect
+  // effect 栈
+  const effectStack = []
+
+  function effect(fn, options = {}) {
+    const effectFn = () => {
+      cleanup(effectFn)
+      // 当调用 effect 注册副作用函数时，将副作用函数复制给 activeEffect
+      activeEffect = effectFn
+      // 在调用副作用函数之前将当前副作用函数压栈
+      effectStack.push(effectFn)
+      fn()
+      // 在当前副作用函数执行完毕后，将当前副作用函数弹出栈，并还原 activeEffect 为之前的值
+      effectStack.pop()
+      activeEffect = effectStack[effectStack.length - 1]
+    }
+    // 将 options 挂在到 effectFn 上
+    effectFn.options = options
+    // activeEffect.deps 用来存储所有与该副作用函数相关的依赖集合
+    effectFn.deps = []
+    // 执行副作用函数
+    effectFn()
+  }
+
+  function cleanup(effectFn) {
+    for (let i = 0; i < effectFn.deps.length; i++) {
+      const deps = effectFn.deps[i]
+      deps.delete(effectFn)
+    }
+    effectFn.deps.length = 0
+  }
+
+
+  // =========================
+
+  const jobQueue = new Set()
+  const p = Promise.resolve()
+
+  let isFlushing = false
+
+  function flushJob() {
+    if (isFlushing) return
+
+    // 一旦 flushJob 函数开始执行，isFlushing 标志就会设置为
+    // true，意思是无论调用多少次 flushJob 函数，在一个周期内都只会执行一次.
+    // 其实就是这个函数本身具有去重抵御机制。
+    isFlushing = true
+    p.then(() => {
+      jobQueue.forEach(job => job())
+    }).finally(() => {
+      isFlushing = false
+    })
+
+    //  这个功能有点类似于在 Vue.js 中连续多次修改响应式数据但只会触发一次更新
+  }
+
+
+  effect(() => {
+    console.log(obj.foo)
+  }, {
+    scheduler(fn) {
+      // 强行将 fn 放到宏任务 (Macro task) 队列中，等待下一次事件轮询
+      // setTimeout(fn)
+
+      jobQueue.add(fn)
+      flushJob()
+    }
+  })
+
+  obj.foo++
+  obj.foo++
+
+  console.log('main done')
+
+
+</script>

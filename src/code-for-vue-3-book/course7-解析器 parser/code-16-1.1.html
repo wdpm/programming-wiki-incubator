@@ -1,0 +1,472 @@
+<body>
+<div>
+    <p>text 1</p>
+    <p>text 2</p>
+</div>
+</body>
+
+<div id="foo">+--<p>Text1</p>+--<p>Text2</p>+</div>
+
+<div><span></div></span>
+
+<div>&#xfffd; asdf</div>
+
+
+<script>
+
+  const TextModes = {
+    DATA: 'DATA',
+    RCDATA: 'RCDATA',
+    RAWTEXT: 'RAWTEXT',
+    CDATA: 'CDATA'
+  }
+
+  function parse(str) {
+    const context = {
+      source: str,
+      mode: TextModes.DATA,
+      advanceBy(num) {
+        context.source = context.source.slice(num)
+      },
+      advanceSpaces() {
+        const match = /^[\t\r\n\f ]+/.exec(context.source)
+        if (match) {
+          context.advanceBy(match[0].length)
+        }
+      }
+    }
+
+    // 第一个参数是上下文对象 context
+    // 第二个参数是由父代节点构成的节点栈，初始时栈为空
+    const nodes = parseChildren(context, [])
+
+    return {
+      type: 'Root',
+      children: nodes
+    }
+  }
+
+  function parseChildren(context, ancestors) {
+    let nodes = []
+
+    const {mode} = context
+
+    while (!isEnd(context, ancestors)) {
+      let node
+
+      if (mode === TextModes.DATA || mode === TextModes.RCDATA) {
+        if (mode === TextModes.DATA && context.source[0] === '<') {
+          if (context.source[1] === '!') {
+            if (context.source.startsWith('<!--')) {
+              // 注释
+              node = parseComment(context)
+            } else if (context.source.startsWith('<![CDATA[')) {
+              // CDATA
+              node = parseCDATA(context, ancestors)
+            }
+          } else if (context.source[1] === '/') {
+            // 结束标签
+            //  状态机遭遇了闭合标签，此时应该抛出错误，因为它缺少与之对应的开始标签
+
+            console.log('Found invalid end tag.')
+            continue
+          } else if (/[a-z]/i.test(context.source[1])) {
+            // 标签
+            node = parseElement(context, ancestors)
+          }
+        } else if (context.source.startsWith('{{')) {
+          // 解析插值
+          node = parseInterpolation(context)
+        }
+      }
+
+      if (!node) {
+        node = parseText(context)
+      }
+
+      nodes.push(node)
+    }
+
+    return nodes
+  }
+
+  function parseElement(context, ancestors) {
+    const element = parseTag(context)
+    if (element.isSelfClosing) return element
+
+    ancestors.push(element)
+    if (element.tag === 'textarea' || element.tag === 'title') {
+      context.mode = TextModes.RCDATA
+    } else if (/style|xmp|iframe|noembed|noframes|noscript/.test(element.tag)) {
+      context.mode = TextModes.RAWTEXT
+    } else {
+      context.mode = TextModes.DATA
+    }
+    element.children = parseChildren(context, ancestors)
+    ancestors.pop()
+
+    if (context.source.startsWith(`</${element.tag}`)) {
+      parseTag(context, 'end')
+    } else {
+      console.error(`${element.tag} 标签缺少闭合标签`)
+    }
+
+    return element
+  }
+
+  function parseTag(context, type = 'start') {
+    const {advanceBy, advanceSpaces} = context
+
+    const match = type === 'start'
+        ? /^<([a-z][^\t\r\n\f />]*)/i.exec(context.source)
+        : /^<\/([a-z][^\t\r\n\f />]*)/i.exec(context.source)
+
+    // 匹配成功后，正则表达式的第一个捕获组的值就是标签名称 div
+    const tag = match[1]
+
+    // 消费正则表达式匹配的全部内容，例如 '<div' 这段内容
+    advanceBy(match[0].length)
+
+    // 消费空白内容
+    advanceSpaces()
+
+    const props = parseAttributes(context)
+
+    const isSelfClosing = context.source.startsWith('/>')
+    // 如果是自闭合标签，则消费 '/>'， 否则消费 '>'
+    advanceBy(isSelfClosing ? 2 : 1)
+
+    return {
+      type: 'Element',
+      tag,
+      props,
+      children: [],
+      isSelfClosing
+    }
+  }
+
+  function parseAttributes(context) {
+    const {advanceBy, advanceSpaces} = context
+    const props = []
+
+    // id="foo" v-show="display" >
+    // 该函数只用来解析属性和指令，因此它会不断地消费上面这段模板内
+    // 容，直到遇到标签的“结束部分”为止。其中，结束部分指的是字符 >
+    // 或者字符串 />
+
+    while (
+        !context.source.startsWith('>') &&
+        !context.source.startsWith('/>')
+        ) {
+
+      // ^[^\t\r\n\f />] 用于匹配一个位置，这个位置不能是空白字符，也不能是字符 / 或字符 >，并且字符串要以该位置开头
+      // [^\t\r\n\f />=]* 实现了匹配=号之前的内容
+      const match = /^[^\t\r\n\f />][^\t\r\n\f />=]*/.exec(context.source)
+      const name = match[0]
+
+      advanceBy(name.length)
+      advanceSpaces()
+      // =
+      advanceBy(1)
+      advanceSpaces()
+
+      let value = ''
+
+      const quote = context.source[0]
+      const isQuoted = quote === '"' || quote === "'"
+      if (isQuoted) {
+        advanceBy(1)
+        const endQuoteIndex = context.source.indexOf(quote)
+        if (endQuoteIndex > -1) {
+          value = context.source.slice(0, endQuoteIndex)
+          advanceBy(value.length)
+          advanceBy(1)
+        } else {
+          console.error('缺少引号')
+        }
+      } else {
+        // 用来匹配没有使用引号引用的属性值
+        const match = /^[^\t\r\n\f >]+/.exec(context.source)
+        value = match[0]
+        advanceBy(value.length)
+      }
+
+      advanceSpaces()
+
+      props.push({
+        type: 'Attribute',
+        name,
+        value
+      })
+
+    }
+
+    return props
+  }
+
+  function parseText(context) {
+    //endIndex 为文本内容的结尾索引，默认将整个模板剩余内容都作为文本内容
+    let endIndex = context.source.length
+    const ltIndex = context.source.indexOf('<')
+    const delimiterIndex = context.source.indexOf('{{')
+
+    if (ltIndex > -1 && ltIndex < endIndex) {
+      // endIndex 为最小的哪一个
+      endIndex = ltIndex
+    }
+    if (delimiterIndex > -1 && delimiterIndex < endIndex) {
+      // endIndex 为最小的哪一个
+      endIndex = delimiterIndex
+    }
+
+    // endIndex =min(endIndex,ltIndex,delimiterIndex)
+
+    const content = context.source.slice(0, endIndex)
+
+    context.advanceBy(content.length)
+
+    return {
+      type: 'Text',
+      content: decodeHtml(content)
+    }
+  }
+
+
+  function isEnd(context, ancestors) {
+    // 当解析器遇到开始标签时，会将该标签压入父级节点栈，同时开启新的状态机。
+    // 当解析器遇到结束标签，并且父级节点栈中存在与该标签同名的开始标签节点时，会停止当前正在运行的状态机。
+
+    if (!context.source) return true
+
+    // <div><span></div></span>  => </span> 是多余的
+
+    // 与节点栈内全部的节点比较
+    for (let i = ancestors.length - 1; i >= 0; --i) {
+      if (context.source.startsWith(`</${ancestors[i].tag}`)) {
+        return true
+      }
+    }
+  }
+
+  const namedCharacterReferences = {
+    "gt": ">",
+    "gt;": ">",
+    "lt": "<",
+    "lt;": "<",
+    "ltcc;": "⪦"
+    //  ......
+  }
+
+  function decodeHtml(rawText, asAttr = false) {
+    // HTML 实体是一段以字符 & 开始的文本内容。实体用来描述
+    // HTML 中的保留字符和一些难以通过普通键盘输入的字符，以及一些不可见的字
+
+    // 假定状态机当前处于初始的 DATA 模式。由图 16-21 可知，当解析
+    // 器遇到字符 & 时，会进入“字符引用状态”，并消费字符 &，接着解析下一个字符。
+    // a) 如果下一个字符是 ASCII 字母或数字（ASCII alphanumeric），则进入“命名字符引用状态”，其中 ASCII 字母或数字
+    // 指的是 0~9 这十个数字以及字符集合 a~z 再加上字符集合 A~Z。
+    // b) 当然，如果下一个字符是 #，则进入“数字字符引用状态”
+
+    // a&ltcc => 最短原则 a&lt 来渲染 a<
+
+    let offset = 0
+    const end = rawText.length
+    let decodedText = ''
+    //引用表中实体名称的最大长度
+    let maxCRNameLength = 0
+
+    function advance(length) {
+      offset += length
+      rawText = rawText.slice(length)
+    }
+
+    while (offset < end) {
+      // 1. head[0] === '&'，这说明该字符引用是命名字符引用
+      // 2. head[0] === '&#'，这说明该字符引用是用十进制表示的数字字符引用
+      // 3. head[0] === '&#x'，这说明该字符引用是用十六进制表示的数字字符
+
+      const head = /&(?:#x?)?/i.exec(rawText)
+      if (!head) {
+        const remaining = end - offset
+        decodedText += rawText.slice(0, remaining)
+        advance(remaining)
+        break
+      }
+      // head.index 为匹配的字符 & 在 rawText 中的位置索引
+      // 截取字符 & 之前的内容加到 decodedText 上
+      // Advance to the "&".
+      decodedText += rawText.slice(0, head.index)
+      advance(head.index)
+
+      if (head[0] === '&') {
+        // Named character reference.
+        let name = ''
+        let value
+        if (/[0-9a-z]/i.test(rawText[1])) {
+          if (!maxCRNameLength) {
+            maxCRNameLength = Object.keys(namedCharacterReferences).reduce(
+                (max, name) => Math.max(max, name.length),
+                0
+            )
+          }
+          // !value 表示value为falsy值时才会继续下一轮循环来查找。也就是找到一个就会停止for
+          for (let length = maxCRNameLength; !value && length > 0; --length) {
+            // substr(fromIndex, length)
+            name = rawText.substr(1, length)
+            value = (namedCharacterReferences)[name]
+          }
+          if (value) {
+            const semi = name.endsWith(';')
+            // 如果解码的文本作为属性值，最后一个匹配的字符不是分号
+            // 并且最后一个匹配字符的下一个字符是等于号（=）、ASCII 字母或数字
+            if (
+                asAttr &&
+                !semi &&
+                /[=a-z0-9]/i.test(rawText[name.length + 1] || '')
+            ) {
+              decodedText += '&' + name
+              advance(1 + name.length)
+            } else {
+              // 其他情况下，正常使用解码后的内容拼接到 decodedText 上
+              decodedText += value
+              advance(1 + name.length)
+            }
+          } else {
+            // 如果没有找到对应的值，说明解码失败
+            decodedText += '&' + name
+            advance(1 + name.length)
+          }
+        } else {
+          // 如果字符 & 的下一个字符不是 ASCII 字母或数字，则将字符 & 作为普通文本
+          decodedText += '&'
+          advance(1)
+        }
+      } else {
+        // 判断是十进制表示还是十六进制表示
+        const hex = head[0] === '&#x'
+        // 根据不同进制表示法，选用不同的正则
+        const pattern = hex ? /^&#x([0-9a-f]+);?/i : /^&#([0-9]+);?/
+        // 最终，body[1] 的值就是 Unicode 码点
+        const body = pattern.exec(rawText)
+
+        // 码点 0xfffd 对应的符号是 � 是错误替换字符
+
+        // 如果匹配成功，则调用 String.fromCodePoint 函数进行解码
+        if (body) {
+          // 将码点字符串转为十进制数字
+          let cp = Number.parseInt(body[1], hex ? 16 : 10)
+          // 码点的合法性检查
+          if (cp === 0) {
+            // 如果码点值为 0x00，替换为 0xfffd
+            cp = 0xfffd
+          } else if (cp > 0x10ffff) {
+            // 如果码点值超过了 Unicode 的最大值，替换为 0xfffd
+            cp = 0xfffd
+          } else if (cp >= 0xd800 && cp <= 0xdfff) {
+            // 如果码点值处于 surrogate pair 范围，替换为 0xfffd
+            cp = 0xfffd
+          } else if ((cp >= 0xfdd0 && cp <= 0xfdef) || (cp & 0xfffe) === 0xfffe) {
+            // 如果码点值是 noncharacter，这也是一个解析错误，但什么都
+            // 不需要做。这里的 noncharacter 代表 Unicode 永久保留的码
+            // 点，用于 Unicode 内部，它的取值范围是：[0xFDD0,
+            // 0xFDEF]，还包括：0xFFFE、0xFFFF、0x1FFFE、0x1FFFF、
+            // 0x2FFFE、0x2FFFF、0x3FFFE、0x3FFFF、0x4FFFE、
+            // 0x4FFFF、0x5FFFE、0x5FFFF、0x6FFFE、0x6FFFF、
+            // 0x7FFFE、0x7FFFF、0x8FFFE、0x8FFFF、0x9FFFE、
+            // 0x9FFFF、0xAFFFE、0xAFFFF、0xBFFFE、0xBFFFF、
+            // 0xCFFFE、0xCFFFF、0xDFFFE、0xDFFFF、0xEFFFE、
+            // 0xEFFFF、0xFFFFE、0xFFFFF、0x10FFFE、0x10FFFF
+
+            // 如果码点值处于 `noncharacter` 范围，则什么都不做，交给平台处理
+            // noop
+          } else if (
+              // 控制字符集的范围是：[0x01, 0x1f] 加上 [0x7f, 0x9f]
+              // 去掉 ASICC 空白符：0x09(TAB)、0x0A(LF)、0x0C(FF)
+              // 0x0D(CR) 虽然也是 ASICC 空白符，但需要包含
+              (cp >= 0x01 && cp <= 0x08) ||
+              cp === 0x0b ||
+              (cp >= 0x0d && cp <= 0x1f) ||
+              (cp >= 0x7f && cp <= 0x9f)
+          ) {
+            // 在 CCR_REPLACEMENTS 表中查找替换码点，如果找不到则使用原码点
+            cp = CCR_REPLACEMENTS[cp] || cp
+          }
+          // 解码后追加到 decodedText 上
+          decodedText += String.fromCodePoint(cp)
+          // 消费掉整个数字字符引用的内容
+          advance(body[0].length)
+        } else {
+          // 如果没有匹配，则不进行解码操作，只是把 head[0] 追加到 decodedText 并消费掉
+          decodedText += head[0]
+          advance(head[0].length)
+        }
+      }
+    }
+    return decodedText
+  }
+
+  const CCR_REPLACEMENTS ={
+      0x80: 0x20ac,
+      0x82: 0x201a,
+      0x83: 0x0192,
+      0x84: 0x201e,
+      0x85: 0x2026,
+      0x86: 0x2020,
+      0x87: 0x2021,
+      0x88: 0x02c6,
+      0x89: 0x2030,
+      0x8a: 0x0160,
+      0x8b: 0x2039,
+      0x8c: 0x0152,
+      0x8e: 0x017d,
+      0x91: 0x2018,
+      0x92: 0x2019,
+      0x93: 0x201c,
+      0x94: 0x201d,
+      0x95: 0x2022,
+      0x96: 0x2013,
+      0x97: 0x2014,
+      0x98: 0x02dc,
+      0x99: 0x2122,
+      0x9a: 0x0161,
+      0x9b: 0x203a,
+      0x9c: 0x0153,
+      0x9e: 0x017e,
+      0x9f: 0x0178
+  }
+
+  function parseInterpolation(context) {
+    context.advanceBy('{{'.length)
+    closeIndex = context.source.indexOf('}}')
+    const content = context.source.slice(0, closeIndex)
+    context.advanceBy(content.length)
+    context.advanceBy('}}'.length)
+
+    return {
+      type: 'Interpolation',
+      content: {
+        type: 'Expression',
+        content: decodeHtml(content)
+      }
+    }
+  }
+
+  function parseComment(context) {
+    context.advanceBy('<!--'.length)
+    closeIndex = context.source.indexOf('-->')
+    const content = context.source.slice(0, closeIndex)
+    context.advanceBy(content.length)
+    context.advanceBy('-->'.length)
+
+    return {
+      type: 'Comment',
+      content
+    }
+  }
+
+
+  const s = `<div><!-- comments --></div>`
+  const ast = parse(s)
+  console.log(ast)
+
+</script>

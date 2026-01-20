@@ -1,0 +1,194 @@
+<div id="app"></div>
+
+<script src="https://unpkg.com/@vue/reactivity@3.0.5/dist/reactivity.global.js"></script>
+<script>
+
+function shouldSetAsProps(el, key, value) {
+  if (key === 'form' && el.tagName === 'INPUT') return false
+  return key in el
+}
+
+function createRenderer(options) {
+
+  const {
+    createElement,
+    insert,
+    setElementText,
+    patchProps
+  } = options
+
+  function mountElement(vnode, container) {
+    const el = vnode.el = createElement(vnode.type)
+    if (typeof vnode.children === 'string') {
+      setElementText(el, vnode.children)
+    } else if (Array.isArray(vnode.children)) {
+      vnode.children.forEach(child => {
+        patch(null, child, el)
+      })
+    }
+
+    if (vnode.props) {
+      for (const key in vnode.props) {
+        patchProps(el, key, null, vnode.props[key])
+      }
+    }
+
+    insert(el, container)
+  }
+
+  function patchElement(n1, n2) {
+    const el = n2.el = n1.el
+    const oldProps = n1.props
+    const newProps = n2.props
+    
+    for (const key in newProps) {
+      if (newProps[key] !== oldProps[key]) {
+        patchProps(el, key, oldProps[key], newProps[key])
+      }
+    }
+    for (const key in oldProps) {
+      if (!(key in newProps)) {
+        patchProps(el, key, oldProps[key], null)
+      }
+    }
+  }
+
+  function unmount(vnode) {
+    const parent = vnode.el.parentNode
+    if (parent) {
+      parent.removeChild(vnode.el)
+    }
+  }
+
+  function patch(n1, n2, container) {
+    if (n1 && n1.type !== n2.type) {
+      unmount(n1)
+      n1 = null
+    }
+
+    const { type } = n2
+
+    if (typeof type === 'string') {
+      if (!n1) {
+        mountElement(n2, container)
+      } else {
+        patchElement(n1, n2)
+      }
+    } else if (typeof type === 'object') {
+      // 组件
+    }
+  }
+
+  function render(vnode, container) {
+    if (vnode) {
+      // 新 vnode 存在，将其与旧 vnode 一起传递给 patch 函数进行打补丁
+      patch(container._vnode, vnode, container)
+    } else {
+      if (container._vnode) {
+        // 旧 vnode 存在，且新 vnode 不存在，说明是卸载(unmount)操作
+        unmount(container._vnode)
+      }
+    }
+    // 把 vnode 存储到 container._vnode 下，即后续渲染中的旧 vnode
+    container._vnode = vnode
+  }
+  
+  return {
+    render
+  }
+}
+
+const renderer = createRenderer({
+  createElement(tag) {
+    return document.createElement(tag)
+  },
+  setElementText(el, text) {
+    el.textContent = text
+  },
+  insert(el, parent, anchor = null) {
+    parent.insertBefore(el, anchor)
+  },
+  patchProps(el, key, prevValue, nextValue) {
+    // handle event listeners
+    if (/^on/.test(key)) {
+      // 常规实现思路：移除之前的监听函数（如果存在对应的旧监听），注册新的监听函数
+
+      //性能优化：在绑定事件时，我们可以绑定一个伪造的事件处理
+      // 函数 invoker，然后把真正的事件处理函数设置为 invoker.value
+      // 属性的值。这样当更新事件的时候，我们将不再需要调用
+      // removeEventListener 函数来移除上一次绑定的事件，只需要更新
+      // invoker.value 的值即可
+
+      const invokers = el._vei || (el._vei = {})
+      // 取key的设计可以容纳多个不同类型的事件
+      let invoker = invokers[key]
+      const name = key.slice(2).toLowerCase()
+      if (nextValue) {
+        if (!invoker) {
+          // 注册新的监听
+          invoker = el._vei[key] = (e) => {
+            // 对于同一个事件类型，可以容纳多个监听函数
+            if (Array.isArray(invoker.value)) {
+              invoker.value.forEach(fn => fn(e))
+            } else {
+              invoker.value(e)
+            }
+          }
+          invoker.value = nextValue
+          el.addEventListener(name, invoker)
+        } else {
+          // 更新已有的监听函数
+          invoker.value = nextValue
+        }
+      } else if (invoker) {
+        //新的事件绑定函数nextValue不存在，且之前绑定的 invoker 存在，则移除绑定
+        el.removeEventListener(name, invoker)
+      }
+    } else if (key === 'class') {
+      el.className = nextValue || ''
+    } else if (shouldSetAsProps(el, key, nextValue)) {
+      const type = typeof el[key]
+      if (type === 'boolean' && nextValue === '') {
+        el[key] = true
+      } else {
+        el[key] = nextValue
+      }
+    } else {
+      el.setAttribute(key, nextValue)
+    }
+  }
+})
+
+const vnode = {
+  type: 'p',
+  props: {
+    onClick: [
+      () => {
+        alert('clicked 1')
+      },
+      () => {
+        alert('clicked 2')
+      }
+    ]
+  },
+  children: 'text'
+}
+renderer.render(vnode, document.querySelector('#app'))
+
+// const newVnode = {
+//   type: 'p',
+//   props: {
+//     onContextmenu: () => {
+//       alert('contextmenu')
+//     }
+//   },
+//   children: 'text'
+// }
+// setTimeout(() => {
+//   renderer.render(newVnode, document.querySelector('#app'))
+//   console.log('update')
+// }, 1000)
+
+
+
+</script>

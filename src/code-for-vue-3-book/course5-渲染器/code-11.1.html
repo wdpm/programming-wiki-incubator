@@ -1,0 +1,441 @@
+<div id="app"></div>
+
+<script>
+
+  function shouldSetAsProps(el, key, value) {
+    if (key === 'form' && el.tagName === 'INPUT') return false
+    return key in el
+  }
+
+  function createRenderer(options) {
+
+    const {
+      createElement,
+      insert,
+      setElementText,
+      patchProps,
+      createText,
+      setText
+    } = options
+
+    function mountElement(vnode, container, anchor) {
+      const el = vnode.el = createElement(vnode.type)
+      if (typeof vnode.children === 'string') {
+        setElementText(el, vnode.children)
+      } else if (Array.isArray(vnode.children)) {
+        vnode.children.forEach(child => {
+          patch(null, child, el)
+        })
+      }
+
+      if (vnode.props) {
+        for (const key in vnode.props) {
+          patchProps(el, key, null, vnode.props[key])
+        }
+      }
+
+      insert(el, container, anchor)
+    }
+
+    function patchChildren(n1, n2, container) {
+      if (typeof n2.children === 'string') {
+        if (Array.isArray(n1.children)) {
+          n1.children.forEach((c) => unmount(c))
+        }
+        setElementText(container, n2.children)
+      } else if (Array.isArray(n2.children)) {
+        patchKeyedChildren(n1, n2, container)
+      } else {
+        if (Array.isArray(n1.children)) {
+          n1.children.forEach(c => unmount(c))
+        } else if (typeof n1.children === 'string') {
+          setElementText(container, '')
+        }
+      }
+    }
+
+    function patchKeyedChildren(n1, n2, container) {
+      const newChildren = n2.children
+      const oldChildren = n1.children
+      // 【更新相同的前缀节点】
+      // 索引 j 指向新旧两组子节点的开头
+      let j = 0
+      let oldVNode = oldChildren[j]
+      let newVNode = newChildren[j]
+      // while 循环向后遍历，直到遇到拥有不同 key 值的节点为止
+      while (oldVNode.key === newVNode.key) {
+        // 调用 patch 函数更新
+        patch(oldVNode, newVNode, container)
+        j++
+        oldVNode = oldChildren[j]
+        newVNode = newChildren[j]
+      }
+
+      // 【更新相同的后缀节点】
+      // 索引 oldEnd 指向旧的一组子节点的最后一个节点
+      let oldEnd = oldChildren.length - 1
+      // 索引 newEnd 指向新的一组子节点的最后一个节点
+      let newEnd = newChildren.length - 1
+
+      oldVNode = oldChildren[oldEnd]
+      newVNode = newChildren[newEnd]
+
+      // while 循环向前遍历，直到遇到拥有不同 key 值的节点为止
+      while (oldVNode.key === newVNode.key) {
+        // 调用 patch 函数更新
+        patch(oldVNode, newVNode, container)
+        oldEnd--
+        newEnd--
+        oldVNode = oldChildren[oldEnd]
+        newVNode = newChildren[newEnd]
+      }
+
+      // 满足条件，则说明从 j -> newEnd 之间的节点应作为新节点插入
+      if (j > oldEnd && j <= newEnd) {
+        // 锚点的索引
+        const anchorIndex = newEnd + 1
+        // 锚点元素
+        // anchorIndex < newChildren.length 说明索引 newEnd 对应的节点不是尾部节点，而且在新节点组中
+        // anchorIndex >= newChildren.length 说明索引 newEnd 对应的节点已经是尾部节点了，这时无须提供锚点元素
+        const anchor = anchorIndex < newChildren.length ? newChildren[anchorIndex].el : null
+        // 采用 while 循环，调用 patch 函数逐个挂载新增的节点
+        while (j <= newEnd) {
+          patch(null, newChildren[j++], container, anchor)
+        }
+      } else if (j > newEnd && j <= oldEnd) {
+        // j -> oldEnd 之间的节点应该被卸载
+        while (j <= oldEnd) {
+          unmount(oldChildren[j++])
+        }
+      } else {
+        // 这个分支的情况：
+        // 经过预处理后，无论是新的一组子节点，还是旧的一
+        // 组子节点，都有部分节点未经处理。这时就需要我们进一步处理
+
+        // 构造 source 数组
+        const count = newEnd - j + 1  // 新的一组子节点中剩余未处理节点的数量
+        const source = new Array(count)
+        // 全部初始化为-1
+        source.fill(-1)
+
+        // source 数组将用来存储新的一组子节点中的节点在旧的一组子节点
+        // 中的位置索引，后面将会使用它计算出一个最长递增子序列，并用于辅助完成 DOM 移动的操作
+
+        const oldStart = j
+        const newStart = j
+        let moved = false
+        let pos = 0
+        // 为新的一组子节点构建一张索引表
+        // 用来存储节点的 key 和节点位置索引之间的映射:
+        // <节点的key,新节点的位置索引>
+        const keyIndex = {}
+        for (let i = newStart; i <= newEnd; i++) {
+          keyIndex[newChildren[i].key] = i
+        }
+
+        let patched = 0
+        for (let i = oldStart; i <= oldEnd; i++) {
+          oldVNode = oldChildren[i]
+          if (patched < count) {
+            // 通过索引表快速找到新的一组子节点中具有相同 key 值的节点位置
+            const k = keyIndex[oldVNode.key]
+            if (typeof k !== 'undefined') {
+              newVNode = newChildren[k]
+              patch(oldVNode, newVNode, container)
+              patched++
+              source[k - newStart] = i
+              // 判断是否需要移动
+              if (k < pos) {
+                moved = true
+              } else {
+                pos = k
+              }
+            } else {
+              // 否则说明该节点已经不存在于新的一组子节点中了，这时我们需要调用 unmount 函数卸载它
+              unmount(oldVNode)
+            }
+          } else {
+            // 如果更新过的节点数量大于需要更新的节点数量，则卸载多余的节点
+            unmount(oldVNode)
+          }
+        }
+
+        if (moved) {
+          // 假设给定数值序列 [ 0, 8, 4, 12 ]，那么它的最长递增子序列就是 [0, 8, 12]
+
+          const seq = lis(source) // [0,1] 返回的是索引，而不是值
+
+          // 用索引 s 指向最长递增子序列中的最后一个元素的索引值
+          let s = seq.length - 1
+          // 用索引 i 指向新的一组子节点中的最后一个节点的索引值
+          let i = count - 1
+          // 从数组尾部往头部进行遍历
+          for (i; i >= 0; i--) {
+            if (source[i] === -1) {
+              // 说明索引为 i 的节点是全新的节点，应该将其挂载
+              // 该节点在新 children 中的真实位置索引
+              const pos = i + newStart
+              const newVNode = newChildren[pos]
+              // 该节点下一个节点的位置索引
+              const nextPos = pos + 1
+              // 锚点
+              const anchor = nextPos < newChildren.length
+                  ? newChildren[nextPos].el
+                  : null
+              // 挂载
+              patch(null, newVNode, container, anchor)
+            } else if (i !== seq[s]) {
+              // 说明该节点需要移动
+              // 该节点在新的一组子节点中的真实位置索引
+              const pos = i + newStart
+              const newVNode = newChildren[pos]
+              // 该节点下一个节点的位置索引
+              const nextPos = pos + 1
+              // 锚点
+              const anchor = nextPos < newChildren.length
+                  ? newChildren[nextPos].el
+                  : null
+              // 移动
+              insert(newVNode.el, container, anchor)
+            } else {
+              // 当 i === seq[j] 时，说明该位置的节点不需要移动
+              // 并让 s 指向下一个位置
+              s--
+            }
+          }
+        }
+      }
+
+    }
+
+    function patchElement(n1, n2) {
+      const el = n2.el = n1.el
+      const oldProps = n1.props
+      const newProps = n2.props
+
+      for (const key in newProps) {
+        if (newProps[key] !== oldProps[key]) {
+          patchProps(el, key, oldProps[key], newProps[key])
+        }
+      }
+      for (const key in oldProps) {
+        if (!(key in newProps)) {
+          patchProps(el, key, oldProps[key], null)
+        }
+      }
+
+      patchChildren(n1, n2, el)
+    }
+
+    function unmount(vnode) {
+      if (vnode.type === Fragment) {
+        vnode.children.forEach(c => unmount(c))
+        return
+      }
+      const parent = vnode.el.parentNode
+      if (parent) {
+        parent.removeChild(vnode.el)
+      }
+    }
+
+    function patch(n1, n2, container, anchor) {
+      if (n1 && n1.type !== n2.type) {
+        unmount(n1)
+        n1 = null
+      }
+
+      const {type} = n2
+
+      if (typeof type === 'string') {
+        if (!n1) {
+          mountElement(n2, container, anchor)
+        } else {
+          patchElement(n1, n2)
+        }
+      } else if (type === Text) {
+        if (!n1) {
+          const el = n2.el = createText(n2.children)
+          insert(el, container)
+        } else {
+          const el = n2.el = n1.el
+          if (n2.children !== n1.children) {
+            setText(el, n2.children)
+          }
+        }
+      } else if (type === Fragment) {
+        if (!n1) {
+          n2.children.forEach(c => patch(null, c, container))
+        } else {
+          patchChildren(n1, n2, container)
+        }
+      }
+    }
+
+    function render(vnode, container) {
+      if (vnode) {
+        // 新 vnode 存在，将其与旧 vnode 一起传递给 patch 函数进行打补丁
+        patch(container._vnode, vnode, container)
+      } else {
+        if (container._vnode) {
+          // 旧 vnode 存在，且新 vnode 不存在，说明是卸载(unmount)操作
+          unmount(container._vnode)
+        }
+      }
+      // 把 vnode 存储到 container._vnode 下，即后续渲染中的旧 vnode
+      container._vnode = vnode
+    }
+
+    return {
+      render
+    }
+  }
+
+  const renderer = createRenderer({
+    createElement(tag) {
+      return document.createElement(tag)
+    },
+    setElementText(el, text) {
+      el.textContent = text
+    },
+    insert(el, parent, anchor = null) {
+      parent.insertBefore(el, anchor)
+    },
+    createText(text) {
+      return document.createTextNode(text)
+    },
+    setText(el, text) {
+      el.nodeValue = text
+    },
+    patchProps(el, key, prevValue, nextValue) {
+      if (/^on/.test(key)) {
+        const invokers = el._vei || (el._vei = {})
+        let invoker = invokers[key]
+        const name = key.slice(2).toLowerCase()
+        if (nextValue) {
+          if (!invoker) {
+            invoker = el._vei[key] = (e) => {
+              console.log(e.timeStamp)
+              console.log(invoker.attached)
+              if (e.timeStamp < invoker.attached) return
+              if (Array.isArray(invoker.value)) {
+                invoker.value.forEach(fn => fn(e))
+              } else {
+                invoker.value(e)
+              }
+            }
+            invoker.value = nextValue
+            invoker.attached = performance.now()
+            el.addEventListener(name, invoker)
+          } else {
+            invoker.value = nextValue
+          }
+        } else if (invoker) {
+          el.removeEventListener(name, invoker)
+        }
+      } else if (key === 'class') {
+        el.className = nextValue || ''
+      } else if (shouldSetAsProps(el, key, nextValue)) {
+        const type = typeof el[key]
+        if (type === 'boolean' && nextValue === '') {
+          el[key] = true
+        } else {
+          el[key] = nextValue
+        }
+      } else {
+        el.setAttribute(key, nextValue)
+      }
+    }
+  })
+
+  const Fragment = Symbol()
+  const VNode1 = {
+    type: 'div',
+    children: [
+      {type: 'p', children: '1', key: 1},
+      {type: 'p', children: '2', key: 2},
+      {type: 'p', children: '3', key: 3},
+      {type: 'p', children: '4', key: 4},
+      {type: 'p', children: '6', key: 6},
+      {type: 'p', children: '5', key: 5},
+    ]
+  }
+  renderer.render(VNode1, document.querySelector('#app'))
+
+  const VNode2 = {
+    type: 'div',
+    children: [
+      {type: 'p', children: '1', key: 1},
+      {type: 'p', children: '3', key: 3},
+      {type: 'p', children: '4', key: 4},
+      {type: 'p', children: '2', key: 2},
+      {type: 'p', children: '7', key: 7},
+      {type: 'p', children: '5', key: 5},
+    ]
+  }
+
+  setTimeout(() => {
+    console.log('update')
+    renderer.render(VNode2, document.querySelector('#app'))
+  }, 400);
+
+  /**
+   * 最长递增子序列
+   *
+   * Q:为何使用二分查找？
+   *
+   * 假设我们已经维护了一个长度为k的递增序列，其中的元素是有序的。
+   * 我们可以利用二分查找在O(logk)的时间复杂度内找到一个位置j，使得序列的第j个元素刚好小于第i个元素。
+   * 然后，我们将第i个元素放在该位置上，形成一个新的长度为k+1的递增序列。
+   *
+   *  https://stackoverflow.com/questions/3992697/longest-increasing-subsequence
+   *  这个链接的二分查找，是在L长度的递增序列中，寻找一个合适的位置索引j，可以用于s[i]的插入。s[i]是当前处理的元素。
+   *  With a binary search find the j that let seq[M[j]] be < than seq[i]
+   *
+   * https://en.wikipedia.org/wiki/Longest_increasing_subsequence
+   * https://zh.wikipedia.org/wiki/%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97
+   * @param arr
+   * @returns {[number]}
+   */
+  function lis(arr) {
+    const p = arr.slice()
+    const result = [0]
+    let i, j, u, v, c
+    const len = arr.length
+    for (i = 0; i < len; i++) {
+      const arrI = arr[i]
+      if (arrI !== 0) {
+        j = result[result.length - 1]
+        if (arr[j] < arrI) {
+          p[i] = j
+          result.push(i)
+          continue
+        }
+        u = 0
+        v = result.length - 1
+        while (u < v) {
+          c = ((u + v) / 2) | 0
+          if (arr[result[c]] < arrI) {
+            u = c + 1
+          } else {
+            v = c
+          }
+        }
+        if (arrI < arr[result[u]]) {
+          if (u > 0) {
+            p[i] = result[u - 1]
+          }
+          result[u] = i
+        }
+      }
+    }
+    u = result.length
+    v = result[u - 1]
+    while (u-- > 0) {
+      result[u] = v
+      v = p[v]
+    }
+    return result
+  }
+
+
+</script>

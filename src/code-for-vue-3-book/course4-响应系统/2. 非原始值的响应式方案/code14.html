@@ -1,0 +1,62 @@
+<body></body>
+<script>
+
+const obj = {
+  val: 0,
+  [Symbol.iterator]() {
+    return {
+      next() {
+        return {
+          value: obj.val++,
+          done: obj.val > 10
+        }
+      }
+    }
+  }
+}
+
+// for (const value of obj) {
+//   console.log(value)
+//   //  0...9
+// }
+
+
+const arr = [1, 2, 3, 4, 5]
+
+const itr = arr[Symbol.iterator]()
+
+// console.log(itr.next())
+// console.log(itr.next())
+// console.log(itr.next())
+// console.log(itr.next())
+// console.log(itr.next())
+// console.log(itr.next())
+//
+// for (const val of arr) {
+//   console.log(val)
+// }
+
+
+const arr2 = [1, 2, 3, 4, 5]
+
+arr2[Symbol.iterator] = function() {
+  const target = this
+  const len = target.length
+  let index = 0
+
+  return {
+    next() {
+      return {
+        value: index < len ? target[index] : undefined,
+        done: index++ >= len
+      }
+    }
+  }
+}
+
+for (const val of arr2) {
+  console.log(val)
+}
+
+
+</script>
