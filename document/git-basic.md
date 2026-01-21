@@ -1,5 +1,11 @@
 # git basic
 
+## 修改已提交的记录信息
+```bash
+git commit --amend -m "新的提交信息"
+git push --force-with-lease origin 你的分支名
+```
+
 ## 工作区、暂存、本地仓库
 ```
 # working dir ----> stage -----> committed
