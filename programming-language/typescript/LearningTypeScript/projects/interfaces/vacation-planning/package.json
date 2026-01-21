@@ -1,0 +1,11 @@
+{
+	"name": "vacation-planning",
+	"scripts": {
+		"test": "jest",
+		"test:solutions": "cross-env TEST_SOLUTIONS=1 jest",
+		"test:planning": "cross-env TEST_SOLUTIONS=1 jest ./01-cities",
+		"test:restaurants": "cross-env TEST_SOLUTIONS=1 jest ./02-restaurants",
+		"test:landmarks": "cross-env TEST_SOLUTIONS=1 jest ./03-landmarks",
+		"tsc": "tsc"
+	}
+}

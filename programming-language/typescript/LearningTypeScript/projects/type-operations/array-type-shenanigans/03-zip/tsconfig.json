@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"paths": {
+			"~/index": ["./index.ts"]
+		}
+	},
+	"extends": "../../../../tsconfig.json",
+	"include": ["."]
+}

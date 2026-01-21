@@ -1,0 +1,11 @@
+{
+	"name": "the-typeinator",
+	"scripts": {
+		"test": "jest",
+		"test:solutions": "cross-env TEST_SOLUTIONS=1 jest",
+		"test:sugar": "cross-env TEST_SOLUTIONS=1 jest ./01-syntactic-sugar",
+		"test:class": "cross-env TEST_SOLUTIONS=1 jest ./02-prototypes-to-classes",
+		"test:async": "cross-env TEST_SOLUTIONS=1 jest ./03-callbacks-to-async-await",
+		"tsc": "exit 0"
+	}
+}

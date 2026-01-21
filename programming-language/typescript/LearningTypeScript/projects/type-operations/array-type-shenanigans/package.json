@@ -1,0 +1,8 @@
+{
+	"name": "array-type-shenanigans",
+	"scripts": {
+		"test": "tsc -b",
+		"test:solutions": "tsc -b ./tsconfig.test.json",
+		"tsc": "tsc -b"
+	}
+}

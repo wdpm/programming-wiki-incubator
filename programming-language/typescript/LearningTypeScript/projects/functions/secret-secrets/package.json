@@ -1,0 +1,11 @@
+{
+	"name": "secret-secrets",
+	"scripts": {
+		"test": "jest",
+		"test:solutions": "cross-env TEST_SOLUTIONS=1 jest",
+		"test:cipher": "cross-env TEST_SOLUTIONS=1 jest ./01-incoming-cipher",
+		"test:dron": "cross-env TEST_SOLUTIONS=1 jest ./02-dr-on",
+		"test:golden": "cross-env TEST_SOLUTIONS=1 jest ./03-the-golden-code",
+		"tsc": "tsc"
+	}
+}
