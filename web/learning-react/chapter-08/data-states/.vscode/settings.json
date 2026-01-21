@@ -1,0 +1,36 @@
+{
+  "zenMode.hideLineNumbers": false,
+  "workbench.colorTheme": "Visual Studio Light",
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+  "editor.wordBasedSuggestions": false,
+  "editor.suggestOnTriggerCharacters": false,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "workbench.statusBar.visible": false,
+  "editor.renderLineHighlight": "none",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.startupEditor": "welcomePage",
+  "editor.minimap.enabled": false,
+  "git.enableSmartCommit": true,
+  "window.zoomLevel": 1,
+  "zenMode.centerLayout": false,
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "html.suggest.html5": false,
+  "editor.parameterHints.enabled": false,
+  "workbench.tips.enabled": false,
+  "editor.lightbulb.enabled": false,
+  "editor.hover.sticky": false,
+  "npm.fetchOnlinePackageInfo": false,
+  "editor.hover.enabled": false,
+  "editor.formatOnSave": true,
+  "workbench.iconTheme": "vs-minimal",
+  "editor.fontSize": 16,
+  "git.enabled": false, 
+  "prettier.printWidth": 50,
+  "editor.cursorBlinking": "solid"
+}

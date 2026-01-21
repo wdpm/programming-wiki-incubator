@@ -1,5 +1,15 @@
 # git basic
 
+## 工作区、暂存、本地仓库
+```
+# working dir ----> stage -----> committed
+
+# git rm --cached **/*.pyc to uncommit
+# git restore --staged **/*.pyc to unstage
+#"git restore <file>..." to discard changes in working directory
+*.pyc
+```
+
 ## 2.1.3 项目治理 - 领导力模型
 
 - 仁慈的独裁者（BDFL）

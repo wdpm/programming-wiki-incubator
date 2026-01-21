@@ -12,4 +12,9 @@ build
 
 __pycache__
 
+# working dir ----> stage -----> committed
+
+# git rm --cached **/*.pyc to uncommit
+# git restore --staged **/*.pyc to unstage
+#"git restore <file>..." to discard changes in working directory
 *.pyc
