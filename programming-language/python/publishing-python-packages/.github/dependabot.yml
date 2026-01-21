@@ -1,0 +1,23 @@
+# Create the dependabot.yml file in the .github/ directory of your project now.
+# Note that it should not live in the .github/workflows/ directory next to your GitHub Actions, because it isn’t a GitHub Action
+
+# docs: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+
+updates:
+  # check for updates for your GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+
+  # check for updates for your Python dependencies
+  - package-ecosystem: "pip"
+    directory: "/ch08"  # Leave this as "/" in your project
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"

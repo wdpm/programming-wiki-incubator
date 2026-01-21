@@ -1,0 +1,14 @@
+name: list file
+
+on:
+  workflow_dispatch:
+
+jobs:
+  list-file:
+    name: list file
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Display structure of test files
+        run: ls -R
+        working-directory: ./ch08/first-python-package/test

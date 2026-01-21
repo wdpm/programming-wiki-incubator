@@ -1,0 +1,32 @@
+repos:
+  - hooks:
+      - args:
+          - --py39-plus
+        id: pyupgrade
+    repo: https://github.com/asottile/pyupgrade
+    rev: v2.31.0
+  - hooks:
+      - args:
+          - --config=ch09/first-python-package/pyproject.toml
+        files: ^ch09/
+        id: black
+        language_version: python3.10
+        types_or:
+          - python
+    repo: https://github.com/psf/black
+    rev: 22.3.0
+  - hooks:
+      - args:
+          - --config=ch09/first-python-package/setup.cfg
+          - --ignore=E303
+        exclude: ^(ch10/|other/folder/)
+        id: flake8
+    repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+  - hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages:
+          - push
+    repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.40.0

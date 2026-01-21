@@ -1,0 +1,35 @@
+name: test color a11y
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-color-a11y:
+    name: Test color accessibility
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        text-color:
+          - value: "#000000"
+          - value: "#33A5F3"
+          - value: "#59FFE9"
+          - value: "#999999"
+        background-color:
+          - value: "#000000"
+          - value: "#336633"
+          - value: "#989A5F"
+        standard:
+          - name: "WCAG"
+            level: "AA"
+          - name: "WCAG"
+            level: "AAA"
+
+#    4x3x2=24 choices
+    steps:
+      - name: Check accessibility
+        run: |
+          echo Checking ${{ matrix.text-color.value }}
+            on ${{ matrix.background-color.value }}
+            for ${{ matrix.standard.name }}
+            level ${{ matrix.standard.level }}

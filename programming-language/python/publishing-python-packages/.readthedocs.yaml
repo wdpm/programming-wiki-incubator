@@ -1,0 +1,20 @@
+#refer: https://docs.readthedocs.io/en/stable/config-file/v2.html
+
+version: 2
+
+sphinx:
+  configuration: ch08/first-python-package/docs/conf.py
+
+formats:
+  - htmlzip
+
+build:
+  os: ubuntu-20.04
+  tools:
+    python: "3.10"
+
+python:
+  install:
+    #  How to install dependencies for the documentation build
+    - method: pip
+      path: ch08/first-python-package

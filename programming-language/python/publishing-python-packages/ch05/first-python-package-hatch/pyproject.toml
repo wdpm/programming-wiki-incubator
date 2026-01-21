@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling", "cython"]
+build-backend = "hatchling.build"
+
+[project]
+name = "first-python-package"
+description = "This package does amazing things."
+readme = "README.md"
+authors = [
+    { name = "Dane Hillard", email = "github@danehillard.com" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+]
+keywords = [
+    "...",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "termcolor>=1.1.0,<2",
+]
+dynamic = ["version"]
+
+[project.urls]
+Documentation = "..."
+Source = "..."
+
+[project.optional-dependencies]
+#feature = ["..."]
+
+[project.scripts]
+harmony = "imppkg.harmony:main"
+
+[tool.hatch.version]
+path = "src/imppkg/__about__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/test",
+]
+
+#[tool.hatch.build.targets.wheel.hooks.mypyc]
+#dependencies = ["hatch-mypyc", "termcolor"]
+#include = ["/src/imppkg/"]
+#
+#[tool.mypy]
+#mypy_path = "src"
+#ignore_missing_imports = true
