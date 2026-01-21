@@ -1,0 +1,78 @@
+goos: windows
+goarch: amd64
+pkg: github.com/inancgumus/effective-go/ch04/url
+cpu: Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz
+BenchmarkURLString-8   	 5990785	       196.3 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 5990785
+BenchmarkURLString-8   	 6138031	       217.3 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 6138031
+BenchmarkURLString-8   	 5559500	       194.8 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 5559500
+BenchmarkURLString-8   	 5718652	       195.7 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 5718652
+BenchmarkURLString-8   	 6436290	       215.1 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 6436290
+BenchmarkURLString-8   	 5963497	       220.6 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 5963497
+BenchmarkURLString-8   	 5889044	       225.4 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 4460959
+    url_test.go:114: Loop time 5889044
+BenchmarkURLString-8   	 5488729	       186.7 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 5488729
+BenchmarkURLString-8   	 6497661	       209.8 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 6497661
+BenchmarkURLString-8   	 6481521	       200.1 ns/op	      64 B/op	       4 allocs/op
+--- BENCH: BenchmarkURLString-8
+    url_test.go:114: Loop time 1
+    url_test.go:114: Loop time 100
+    url_test.go:114: Loop time 10000
+    url_test.go:114: Loop time 1000000
+    url_test.go:114: Loop time 5084781
+    url_test.go:114: Loop time 6481521
+PASS
+ok  	github.com/inancgumus/effective-go/ch04/url	17.284s

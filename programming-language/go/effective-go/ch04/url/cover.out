@@ -1,0 +1,25 @@
+mode: set
+github.com/inancgumus/effective-go/ch04/url/url.go:18.41,20.9 2 1
+github.com/inancgumus/effective-go/ch04/url/url.go:23.2,24.38 2 1
+github.com/inancgumus/effective-go/ch04/url/url.go:20.9,22.3 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:27.64,33.2 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:35.57,37.9 2 1
+github.com/inancgumus/effective-go/ch04/url/url.go:40.2,40.19 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:37.9,39.3 1 0
+github.com/inancgumus/effective-go/ch04/url/url.go:44.33,46.9 2 1
+github.com/inancgumus/effective-go/ch04/url/url.go:49.2,49.13 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:46.9,48.3 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:55.29,58.2 2 1
+github.com/inancgumus/effective-go/ch04/url/url.go:63.57,65.11 2 1
+github.com/inancgumus/effective-go/ch04/url/url.go:68.2,68.36 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:65.11,67.3 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:72.31,73.14 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:76.2,77.30 2 1
+github.com/inancgumus/effective-go/ch04/url/url.go:81.2,81.26 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:84.2,84.26 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:88.2,88.19 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:73.14,75.3 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:77.30,80.3 2 1
+github.com/inancgumus/effective-go/ch04/url/url.go:81.26,83.3 1 1
+github.com/inancgumus/effective-go/ch04/url/url.go:84.26,87.3 2 1
+github.com/inancgumus/effective-go/ch04/url/url.go:106.35,108.2 1 0
