@@ -1,0 +1,12 @@
+.idea
+.vscode
+.fleet
+*.iml
+out
+target
+
+*.class
+*.exe
+
+# test javadoc
+javadocout
