@@ -1,0 +1,1 @@
+Good luck, CTF boy! Here is the flags: flag1{happy2023}
