@@ -1,0 +1,99 @@
+{
+  "_from": "electron-settings@^2.2.2",
+  "_id": "electron-settings@2.2.4",
+  "_inBundle": false,
+  "_integrity": "sha1-dq/VPZpKrAL8DCr8r9JTPoBHhZM=",
+  "_location": "/electron-settings",
+  "_phantomChildren": {
+    "glob": "7.1.6",
+    "graceful-fs": "4.2.4",
+    "jsonfile": "2.4.0",
+    "klaw": "1.3.1",
+    "path-is-absolute": "1.0.1"
+  },
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "electron-settings@^2.2.2",
+    "name": "electron-settings",
+    "escapedName": "electron-settings",
+    "rawSpec": "^2.2.2",
+    "saveSpec": null,
+    "fetchSpec": "^2.2.2"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/electron-settings/-/electron-settings-2.2.4.tgz",
+  "_shasum": "76afd53d9a4aac02fc0c2afcafd2533e80478593",
+  "_spec": "electron-settings@^2.2.2",
+  "_where": "/Users/augus/Projects/Eagle-electron8",
+  "author": {
+    "name": "Nathan Buchar",
+    "email": "hello@nathanbuchar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/nathanbuchar/electron-settings/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Nathan Buchar",
+      "email": "hello@nathanbuchar.com",
+      "url": "http://nathanbuchar,com/"
+    },
+    {
+      "name": "Kai Eichinger",
+      "email": "kai.eichinger@outlook.com"
+    }
+  ],
+  "dependencies": {
+    "clone": "^1.0.2",
+    "debug": "^2.2.0",
+    "deep-equal": "^1.0.1",
+    "deep-extend": "^0.4.1",
+    "file-exists": "^2.0.0",
+    "fs-extra": "^0.30.0",
+    "key-path-helpers": "^0.4.0"
+  },
+  "deprecated": "electron-settings <3.0.0 is no longer supported. Please upgrade :)",
+  "description": "A simple persistent user settings manager for Electron.",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "electron-mocha": "^3.0.0",
+    "electron-prebuilt": "^1.2.6",
+    "mocha": "^3.0.2"
+  },
+  "homepage": "https://github.com/nathanbuchar/electron-settings#readme",
+  "keywords": [
+    "electron",
+    "app",
+    "user",
+    "data",
+    "settings",
+    "manager",
+    "config",
+    "json",
+    "storage",
+    "promise",
+    "has",
+    "get",
+    "set",
+    "delete",
+    "reset",
+    "clear"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "electron-settings",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanbuchar/electron-settings.git"
+  },
+  "scripts": {
+    "test": "npm run test:main && npm run test:renderer",
+    "test:main": "electron-mocha test",
+    "test:renderer": "electron-mocha test --renderer"
+  },
+  "version": "2.2.4"
+}

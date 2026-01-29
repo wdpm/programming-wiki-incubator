@@ -1,0 +1,96 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "screencapture",
+        "scope": null,
+        "escapedName": "screencapture",
+        "name": "screencapture",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/Augus/Projects/Anteater Desktop"
+    ]
+  ],
+  "_from": "screencapture@latest",
+  "_id": "screencapture@0.3.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/screencapture",
+  "_nodeVersion": "6.3.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/screencapture-0.3.0.tgz_1478222843191_0.4192340583540499"
+  },
+  "_npmUser": {
+    "name": "uiureo",
+    "email": "uiureo@gmail.com"
+  },
+  "_npmVersion": "3.10.6",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "screencapture",
+    "scope": null,
+    "escapedName": "screencapture",
+    "name": "screencapture",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/screencapture/-/screencapture-0.3.0.tgz",
+  "_shasum": "9a2ad86c8c7e98997ab9600893e2dd15b230fd65",
+  "_shrinkwrap": null,
+  "_spec": "screencapture",
+  "_where": "/Users/Augus/Projects/Anteater Desktop",
+  "author": {
+    "name": "uiureo"
+  },
+  "bugs": {
+    "url": "https://github.com/uiureo/node-screencapture/issues"
+  },
+  "dependencies": {
+    "tmp": "0.0.23"
+  },
+  "description": "Take a screenshot of your desktop",
+  "devDependencies": {
+    "standard": "^5.3.1",
+    "tap-spec": "^4.1.0",
+    "tape": "^2.14.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "9a2ad86c8c7e98997ab9600893e2dd15b230fd65",
+    "tarball": "https://registry.npmjs.org/screencapture/-/screencapture-0.3.0.tgz"
+  },
+  "gitHead": "cdaf9522ed5063f54b3efd917bc19ab81118d9c1",
+  "homepage": "https://github.com/uiureo/node-screencapture#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "uiureo",
+      "email": "uiureo@gmail.com"
+    }
+  ],
+  "name": "screencapture",
+  "optionalDependencies": {},
+  "os": [
+    "freebsd",
+    "win32",
+    "darwin",
+    "linux"
+  ],
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uiureo/node-screencapture.git"
+  },
+  "scripts": {
+    "test": "standard && tape 'test/**/*.js' | tap-spec"
+  },
+  "version": "0.3.0"
+}

@@ -1,0 +1,80 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "jpgjs@github:notmasteryet/jpgjs",
+        "scope": null,
+        "escapedName": "jpgjs",
+        "name": "jpgjs",
+        "rawSpec": "github:notmasteryet/jpgjs",
+        "spec": "github:notmasteryet/jpgjs",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:notmasteryet/jpgjs.git",
+          "sshUrl": "git+ssh://git@github.com/notmasteryet/jpgjs.git",
+          "httpsUrl": "git+https://github.com/notmasteryet/jpgjs.git",
+          "gitUrl": "git://github.com/notmasteryet/jpgjs.git",
+          "shortcut": "github:notmasteryet/jpgjs",
+          "directUrl": "https://raw.githubusercontent.com/notmasteryet/jpgjs/master/package.json"
+        }
+      },
+      "/Users/Augus/Projects/Anteater Desktop/node_modules/utif"
+    ]
+  ],
+  "_from": "notmasteryet/jpgjs",
+  "_id": "jpgjs@1.0.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/jpgjs",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "jpgjs@github:notmasteryet/jpgjs",
+    "scope": null,
+    "escapedName": "jpgjs",
+    "name": "jpgjs",
+    "rawSpec": "github:notmasteryet/jpgjs",
+    "spec": "github:notmasteryet/jpgjs",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:notmasteryet/jpgjs.git",
+      "sshUrl": "git+ssh://git@github.com/notmasteryet/jpgjs.git",
+      "httpsUrl": "git+https://github.com/notmasteryet/jpgjs.git",
+      "gitUrl": "git://github.com/notmasteryet/jpgjs.git",
+      "shortcut": "github:notmasteryet/jpgjs",
+      "directUrl": "https://raw.githubusercontent.com/notmasteryet/jpgjs/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "/utif"
+  ],
+  "_resolved": "git://github.com/notmasteryet/jpgjs.git#f1d30922fda93417669246f5a25cf2393dd9c108",
+  "_shasum": "090293cb8d863db5f564bb07067d3d5e20a69f39",
+  "_shrinkwrap": null,
+  "_spec": "jpgjs@github:notmasteryet/jpgjs",
+  "_where": "/Users/Augus/Projects/Anteater Desktop/node_modules/utif",
+  "bugs": {
+    "url": "https://github.com/mozilla/pdf.js/issues"
+  },
+  "dependencies": {},
+  "description": "Simple JPEG/DCT data decoder in JavaScript.",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.11.0",
+    "grunt-contrib-uglify": "~0.8.0"
+  },
+  "gitHead": "f1d30922fda93417669246f5a25cf2393dd9c108",
+  "keywords": [
+    "jpgjs",
+    "JPEG",
+    "JPG"
+  ],
+  "license": "Apache-2.0",
+  "main": "jpg.js",
+  "name": "jpgjs",
+  "optionalDependencies": {},
+  "readme": "Simple JPEG/DCT data decoder in JavaScript. Also this project includes JPEG 2000 and JBIG2 decoders.\n\nExample URL:\n   http://notmasteryet.github.com/jpgjs/example.html\n\nThe images decoders are maintained as part of the PDF.js project, please submit patches there.\n\n  https://github.com/mozilla/pdf.js/\n",
+  "readmeFilename": "README",
+  "version": "1.0.0"
+}

@@ -1,0 +1,62 @@
+{
+  "_args": [
+    [
+      "chinese_convert@1.0.8",
+      "C:\\Users\\User\\Desktop\\EagleApp"
+    ]
+  ],
+  "_from": "chinese_convert@1.0.8",
+  "_id": "chinese_convert@1.0.8",
+  "_inBundle": false,
+  "_integrity": "sha1-JaxM3WVlwVzrRkJvGlTZKAB6f3A=",
+  "_location": "/chinese_convert",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "chinese_convert@1.0.8",
+    "name": "chinese_convert",
+    "escapedName": "chinese_convert",
+    "rawSpec": "1.0.8",
+    "saveSpec": null,
+    "fetchSpec": "1.0.8"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/chinese_convert/-/chinese_convert-1.0.8.tgz",
+  "_spec": "1.0.8",
+  "_where": "C:\\Users\\User\\Desktop\\EagleApp",
+  "author": {
+    "name": "Chung-Chen Chen",
+    "email": "ccckmit@gmail.com"
+  },
+  "bin": {},
+  "bugs": {
+    "url": "https://github.com/ccckmit/chinese_convert/issues"
+  },
+  "dependencies": {},
+  "description": "簡繁轉換 (簡體轉繁體，繁體轉簡體)",
+  "devDependencies": {
+    "mocha": "^3.1.0"
+  },
+  "homepage": "https://github.com/ccckmit/chinese_convert",
+  "keywords": [
+    "chinese",
+    "convert",
+    "zh",
+    "cn",
+    "tw"
+  ],
+  "license": "MIT",
+  "main": "chinese_convert.js",
+  "name": "chinese_convert",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ccckmit/chinese_convert.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "version": "1.0.8"
+}

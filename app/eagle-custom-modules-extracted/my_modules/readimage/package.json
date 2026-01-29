@@ -1,0 +1,98 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "readimage@^1.1.1",
+        "scope": null,
+        "escapedName": "readimage",
+        "name": "readimage",
+        "rawSpec": "^1.1.1",
+        "spec": ">=1.1.1 <2.0.0",
+        "type": "range"
+      },
+      "/Users/Augus/Projects/Anteater Desktop/node_modules/image-palette"
+    ]
+  ],
+  "_from": "readimage@>=1.1.1 <2.0.0",
+  "_id": "readimage@1.1.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/readimage",
+  "_npmUser": {
+    "name": "bryce",
+    "email": "bryce@ravenwall.com"
+  },
+  "_npmVersion": "1.4.21",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "readimage@^1.1.1",
+    "scope": null,
+    "escapedName": "readimage",
+    "name": "readimage",
+    "rawSpec": "^1.1.1",
+    "spec": ">=1.1.1 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/image-palette"
+  ],
+  "_resolved": "https://registry.npmjs.org/readimage/-/readimage-1.1.1.tgz",
+  "_shasum": "4cd23652a7bdea595d521fd254feea2692e5c35c",
+  "_shrinkwrap": null,
+  "_spec": "readimage@^1.1.1",
+  "_where": "/Users/Augus/Projects/Anteater Desktop/node_modules/image-palette",
+  "author": {
+    "name": "Bryce B. Baril"
+  },
+  "bugs": {
+    "url": "https://github.com/revisitors/readimage/issues"
+  },
+  "dependencies": {
+    "buffer-equal": "0.0.1",
+    "isnumber": "^1.0.0",
+    "jpeg-js": "0.0.4",
+    "omggif": "^1.0.5",
+    "pngparse": "^2.0.1"
+  },
+  "description": "Read an image (jpg, png, gif) into memory in the same format.",
+  "devDependencies": {
+    "tape": "^2.14.0"
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "dist": {
+    "shasum": "4cd23652a7bdea595d521fd254feea2692e5c35c",
+    "tarball": "https://registry.npmjs.org/readimage/-/readimage-1.1.1.tgz"
+  },
+  "gitHead": "e86b95d3dea3604631b6d126b333b0fdf1dc3039",
+  "homepage": "https://github.com/revisitors/readimage",
+  "keywords": [
+    "image",
+    "jpg",
+    "jpeg",
+    "png",
+    "gif",
+    "read"
+  ],
+  "license": "MIT",
+  "main": "readimage.js",
+  "maintainers": [
+    {
+      "name": "bryce",
+      "email": "bryce@ravenwall.com"
+    }
+  ],
+  "name": "readimage",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/revisitors/readimage.git"
+  },
+  "scripts": {
+    "test": "node test/"
+  },
+  "version": "1.1.1"
+}

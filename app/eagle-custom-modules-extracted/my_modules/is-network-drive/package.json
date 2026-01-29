@@ -1,0 +1,60 @@
+{
+  "_from": "is-network-drive@0.0.7",
+  "_id": "is-network-drive@0.0.7",
+  "_inBundle": false,
+  "_integrity": "sha512-sMo830d1AYs2NNyvNjodX6TvbsuUYhd5LTsZIjzfbdtnGiuy3qN41Ak4Oe4/jwJjvbHeDY0C1XvnUF+GnfIzzA==",
+  "_location": "/is-network-drive",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "is-network-drive@0.0.7",
+    "name": "is-network-drive",
+    "escapedName": "is-network-drive",
+    "rawSpec": "0.0.7",
+    "saveSpec": null,
+    "fetchSpec": "0.0.7"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/is-network-drive/-/is-network-drive-0.0.7.tgz",
+  "_shasum": "0c739475edae312842bbe71799d1981a521de337",
+  "_spec": "is-network-drive@0.0.7",
+  "_where": "C:\\Users\\User\\Desktop\\network-path-test",
+  "author": {
+    "name": "pickuse"
+  },
+  "bugs": {
+    "url": "https://github.com/pickuse2013/is-network-drive/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "bindings": "~1.2.1",
+    "node-addon-api": "^1.0.0"
+  },
+  "deprecated": false,
+  "description": "test drive or path is network drive(SMB)",
+  "devDependencies": {},
+  "gypfile": true,
+  "homepage": "https://github.com/pickuse2013/is-network-drive#readme",
+  "keywords": [
+    "smb",
+    "smbfs",
+    "drive",
+    "networkdrive"
+  ],
+  "license": "MIT",
+  "main": "main.js",
+  "name": "is-network-drive",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pickuse2013/is-network-drive.git"
+  },
+  "scripts": {
+    "install": "node-gyp rebuild",
+    "test": "node addon.js"
+  },
+  "version": "0.0.7"
+}

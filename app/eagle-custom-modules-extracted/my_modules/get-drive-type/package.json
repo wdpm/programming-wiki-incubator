@@ -1,0 +1,59 @@
+{
+  "_from": "get-drive-type",
+  "_id": "get-drive-type@0.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-KYm7BXeaH79Az8fZtUU6BxtF8gMpiPGUE3/yRXhrXy3CXewggAJFoNLO0LlG65d0spQOomCbmoCFZTzCee0aKA==",
+  "_location": "/get-drive-type",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "get-drive-type",
+    "name": "get-drive-type",
+    "escapedName": "get-drive-type",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/get-drive-type/-/get-drive-type-0.0.2.tgz",
+  "_shasum": "6749ec99dadcff6a80b55495798f1993f0d775d6",
+  "_spec": "get-drive-type",
+  "_where": "/Users/augus/Downloads/getdrivetype",
+  "author": {
+    "name": "pickuse"
+  },
+  "bugs": {
+    "url": "https://github.com/pickuse2013/get-drive-type/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "node-addon-api": "^4.0.0"
+  },
+  "deprecated": false,
+  "description": "get drive type with node",
+  "gypfile": true,
+  "homepage": "https://github.com/pickuse2013/get-drive-type#readme",
+  "keywords": [
+    "filesystem",
+    "type",
+    "drive",
+    "path"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "get-drive-type",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pickuse2013/get-drive-type.git"
+  },
+  "scripts": {
+    "install": "node-gyp rebuild",
+    "test": "node test.js"
+  },
+  "version": "0.0.2"
+}
