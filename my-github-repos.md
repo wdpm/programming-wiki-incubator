@@ -13,11 +13,16 @@
 ## 等待开发
 - https://github.com/wdpm/todo-dashboard todo看板管理工具开发，目标是汇聚不同渠道的待办事项，提供统一视图
 
+## 已阅读，未整理
+- https://github.com/wdpm/gwp# 注意tiles文件夹很大，而且有冗余。
+
+
 ## 未完成的阅读
 - https://github.com/wdpm/daf-materials 书籍配套代码
 
 ## 脚手架模版项目
 - https://github.com/wdpm/get-started-mkdocs mkdocs入门指南。
+- https://github.com/wdpm/vue-markdown-app-starter# 基于vue 3.x的组件文档网页生成工具。
 
 ## 开发参考
 - https://github.com/PacktPublishing/Mastering-Kotlin-for-Android Android 14 入门例子。
