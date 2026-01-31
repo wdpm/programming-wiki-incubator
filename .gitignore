@@ -12,6 +12,7 @@ build
 **/node_modules
 
 __pycache__
+out
 
 # working dir ----> stage -----> committed
 
