@@ -9,6 +9,7 @@
 ## 等待进一步研究
 - https://github.com/wdpm/electron-examples electron 开发探索
 - https://github.com/wdpm/bee-ui 基于vue2.x的UI组件库，代码简洁，有测试用例。源码还没有阅读完成。
+- https://github.com/wdpm/yuumi-ui-vue 基于vue3.x的UI组件库，需要继续阅读源码并理解设计意图。
 
 ## 等待开发
 - https://github.com/wdpm/todo-dashboard todo看板管理工具开发，目标是汇聚不同渠道的待办事项，提供统一视图
@@ -16,17 +17,21 @@
 ## 已阅读，未整理
 - https://github.com/wdpm/gwp# 注意tiles文件夹很大，而且有冗余。
 
-
 ## 未完成的阅读
 - https://github.com/wdpm/daf-materials 书籍配套代码
+- https://github.com/wdpm/Django-4-by-example 豆瓣有读书进度标记，本地电脑仓库有部分notes
 
 ## 脚手架模版项目
 - https://github.com/wdpm/get-started-mkdocs mkdocs入门指南。
 - https://github.com/wdpm/vue-markdown-app-starter# 基于vue 3.x的组件文档网页生成工具。
+- https://github.com/wdpm/docsify-zh-cn-simple-guide docisfy 自定义配置的起始项目。
 
 ## 开发参考
 - https://github.com/PacktPublishing/Mastering-Kotlin-for-Android Android 14 入门例子。
 - https://github.com/wdpm/codelab-android-compose compose 官方文档例子。
+
+## 舍不得删，归档
+-  https://github.com/wdpm/bilibili-2022-sec-1024
 
 ## 未竟之旅
 - https://github.com/wdpm/mad-plan 【私有仓库】以前的AE笔记，和两个MAD灵感（已包含分镜构想），以后还有机会制作完成吗？
