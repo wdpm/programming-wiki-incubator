@@ -1767,4 +1767,404 @@ Saga 方案
 
 ## 高可用架构
 
-https://github.com/doocs/advanced-java/blob/main/docs/high-availability/hystrix-introduction.md
+Hystrix 
+- 避免请求排队和积压，采用限流和 `fail fast` 来控制故障。
+- 提供 fallback 降级机制来应对故障。
+- 使用资源隔离技术，比如 `bulkhead`（舱壁隔离技术）、`swimlane`（泳道技术）、`circuit breaker`（断路技术）来限制任何一个依赖服务的故障的影响。
+
+### 大型电商网站的商品详情页系统架构
+
+大型电商网站商品详情页的系统设计中，当商品数据发生变更时，会将变更消息压入 MQ 消息队列中。**缓存服务**从消息队列中消费这条消息时，感知到有数据发生变更，便通过调用数据服务接口，获取变更后的数据，然后将整合好的数据推送至 redis 中。Nginx 本地缓存的数据是有一定的时间期限的，比如说 10 分钟，当数据过期之后，它就会从 redis 获取到最新的缓存数据，并且缓存到自己本地。
+
+### Hystrix 资源隔离 —— 线程池技术
+
+HystrixCommand 获取单条数据。
+
+Hystrix 进行资源隔离，提供了一个抽象，叫做 Command。这也是 Hystrix 最最基本的资源隔离技术。
+
+```java
+public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
+
+    private Long productId;
+
+    public GetProductInfoCommand(Long productId) {
+        super(HystrixCommandGroupKey.Factory.asKey("GetProductInfoCommandGroup"));
+        this.productId = productId;
+    }
+
+    @Override
+    protected ProductInfo run() {
+        String url = "http://localhost:8081/getProductInfo?productId=" + productId;
+        // 调用商品服务接口
+        String response = HttpClientUtils.sendGetRequest(url);
+        return JSONObject.parseObject(response, ProductInfo.class);
+    }
+}
+```
+通过将调用商品服务的操作封装在 HystrixCommand 中，限定一个 key，比如下面的 `GetProductInfoCommandGroup`，可以简单认为这是一个线程池，每次调用商品服务，就只会用该线程池中的资源。
+
+```java
+@RequestMapping("/getProductInfo")
+@ResponseBody
+public String getProductInfo(Long productId) {
+    HystrixCommand<ProductInfo> getProductInfoCommand = new GetProductInfoCommand(productId);
+
+    // 通过command执行，获取最新商品数据
+    ProductInfo productInfo = getProductInfoCommand.execute();
+    System.out.println(productInfo);
+    return "success";
+}
+```
+
+在缓存服务接口中，根据 productId 创建 Command 并执行，获取到商品数据。
+
+---
+
+利用 HystrixObservableCommand 批量获取数据。
+
+```java
+public class GetProductInfosCommand extends HystrixObservableCommand<ProductInfo> {
+
+    private String[] productIds;
+
+    public GetProductInfosCommand(String[] productIds) {
+        // 还是绑定在同一个线程池
+        super(HystrixCommandGroupKey.Factory.asKey("GetProductInfoGroup"));
+        this.productIds = productIds;
+    }
+
+    @Override
+    protected Observable<ProductInfo> construct() {
+        return Observable.unsafeCreate((Observable.OnSubscribe<ProductInfo>) subscriber -> {
+
+            for (String productId : productIds) {
+                // 批量获取商品数据
+                String url = "http://localhost:8081/getProductInfo?productId=" + productId;
+                String response = HttpClientUtils.sendGetRequest(url);
+                ProductInfo productInfo = JSONObject.parseObject(response, ProductInfo.class);
+                subscriber.onNext(productInfo);
+            }
+            subscriber.onCompleted();
+
+        }).subscribeOn(Schedulers.io());
+    }
+}
+```
+
+使用例子
+
+```java
+public String getProductInfos(String productIds) {
+    String[] productIdArray = productIds.split(",");
+    HystrixObservableCommand<ProductInfo> getProductInfosCommand = new GetProductInfosCommand(productIdArray);
+    Observable<ProductInfo> observable = getProductInfosCommand.observe();
+
+    observable.subscribe(new Observer<ProductInfo>() {
+        @Override
+        public void onCompleted() {
+            System.out.println("获取完了所有的商品数据");
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            e.printStackTrace();
+        }
+
+        /**
+         * 获取完一条数据，就回调一次这个方法
+         * @param productInfo
+         */
+        @Override
+        public void onNext(ProductInfo productInfo) {
+            System.out.println(productInfo);
+        }
+    });
+    return "success";
+}
+```
+
+### Hystrix 资源隔离——信号量机制
+
+线程池隔离技术，是用 Hystrix 自己的线程去执行调用；而信号量隔离技术，是直接让 tomcat 线程去调用依赖服务。信号量有多少，就允许多少个 tomcat 线程通过它，然后去执行。
+
+信号量技术适用于内部系统的流量控制。
+
+```java
+public class GetCityNameCommand extends HystrixCommand<String> {
+
+    private Long cityId;
+
+    public GetCityNameCommand(Long cityId) {
+        // 设置信号量隔离策略
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("GetCityNameGroup"))
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)));
+
+        this.cityId = cityId;
+    }
+
+    @Override
+    protected String run() {
+        // 需要进行信号量隔离的代码
+        return LocationCache.getCityName(cityId);
+    }
+}
+```
+
+### Hystrix 执行时内部原理
+
+步骤一：创建 command
+
+```java
+// 创建 HystrixCommand
+HystrixCommand hystrixCommand = new HystrixCommand(arg1, arg2);
+
+// 创建 HystrixObservableCommand
+HystrixObservableCommand hystrixObservableCommand = new HystrixObservableCommand(arg1, arg2);
+```
+
+步骤二：调用 command 执行方法
+
+要执行 command，可以在 4 个方法中选择其中的一个：execute()、queue()、observe()、toObservable()。
+
+其中 execute() 和 queue() 方法仅仅对 HystrixCommand 适用。
+
+- execute()：调用后直接 block 住，属于同步调用，直到依赖服务返回单条结果，或者抛出异常。
+- queue()：返回一个 Future，属于异步调用，后面可以通过 Future 获取单条结果。
+- observe()：订阅一个 Observable 对象，Observable 代表的是依赖服务返回的结果，获取到一个代表结果的 Observable 对象的拷贝对象。
+- toObservable()：返回一个 Observable 对象，如果我们订阅这个对象，就会执行 command 并且获取返回结果。
+
+```java
+K             value    = hystrixCommand.execute();
+Future<K>     fValue   = hystrixCommand.queue();
+Observable<K> oValue   = hystrixObservableCommand.observe();
+Observable<K> toOValue = hystrixObservableCommand.toObservable();
+```
+
+步骤三：检查是否开启缓存（不太常用）
+
+如果这个 command 开启了请求缓存 Request Cache，而且这个调用的结果在缓存中存在，那么直接从缓存中返回结果。
+
+步骤四：检查是否开启了断路器
+
+检查这个 command 对应的依赖服务是否开启了断路器。如果断路器被打开了，那么 Hystrix 就不会执行这个 command，而是直接去执行 fallback 降级机制，返回降级结果。
+
+步骤五：检查线程池/队列/信号量是否已满
+
+如果这个 command 线程池和队列已满，或者 semaphore 信号量已满，那么也不会执行 command，而是直接去调用 fallback 降级机制，同时发送 reject 信息给断路器统计。
+
+步骤六：执行 command
+
+调用 HystrixObservableCommand 对象的 construct() 方法，或者 HystrixCommand 的 run() 方法来实际执行这个 command。
+
+如果是采用线程池方式，并且 HystrixCommand.run() 或者 HystrixObservableCommand.construct() 的执行时间超过了 timeout 时长的话，那么 command 所在的线程会抛出一个 TimeoutException，这时会执行 fallback 降级机制，不会去管 run() 或 construct() 返回的值。另一种情况，如果 command 执行出错抛出了其它异常，那么也会走 fallback 降级。这两种情况下，Hystrix 都会发送异常事件给断路器统计。
+
+步骤七：断路健康检查
+
+Hystrix 会把每一个依赖服务的调用成功、失败、Reject、Timeout 等事件发送给 circuit breaker 断路器。断路器就会对这些事件的次数进行统计，根据异常事件发生的比例来决定是否要进行断路（熔断）。如果打开了断路器，那么在接下来一段时间内，会直接断路，返回降级结果。
+
+如果在之后，断路器尝试执行 command，调用没有出错，返回了正常结果，那么 Hystrix 就会把断路器关闭。
+
+步骤八：调用 fallback 降级机制
+
+在以下几种情况中，Hystrix 会调用 fallback 降级机制。
+
+- 断路器处于打开状态；
+- 线程池/队列/semaphore 满了；
+- command 执行超时；
+- run() 或者 construct() 抛出异常
+
+在降级中，如果一定要进行网络调用的话，应该将那个调用放在一个 HystrixCommand 中进行隔离。
+
+- HystrixCommand 中，实现 getFallback() 方法，可以提供降级机制。
+- HystrixObservableCommand 中，实现 resumeWithFallback() 方法，返回一个 Observable 对象，可以提供降级结果。
+
+不同的 command 执行方式，其 fallback 为空或者异常时的返回结果不同。
+
+- 对于 execute()，直接抛出异常。
+- 对于 queue()，返回一个 Future，调用 get() 时抛出异常。
+- 对于 observe()，返回一个 Observable 对象，但是调用 subscribe() 方法订阅它时，立即抛出调用者的 onError() 方法。
+- 对于 toObservable()，返回一个 Observable 对象，但是调用 subscribe() 方法订阅它时，立即抛出调用者的 onError() 方法。
+
+
+
+### Hystrix 断路器执行原理
+
+HystrixCommand 配置参数
+
+在 GetProductInfoCommand 中配置 Setter 断路器相关参数。
+
+- 滑动窗口中，最少 20 个请求，才可能触发断路。
+- 异常比例达到 40% 时，才触发断路。
+- 断路后 3000ms 内，所有请求都被 reject，直接走 fallback 降级，不会调用 run() 方法。3000ms 过后，变为 half-open 状态。
+
+```java
+public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
+
+    private Long productId;
+
+    private static final HystrixCommandKey KEY = HystrixCommandKey.Factory.asKey("GetProductInfoCommand");
+
+    public GetProductInfoCommand(Long productId) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductInfoService"))
+                .andCommandKey(KEY)
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        // 是否允许断路器工作
+                        .withCircuitBreakerEnabled(true)
+                        // 滑动窗口中，最少有多少个请求，才可能触发断路
+                        .withCircuitBreakerRequestVolumeThreshold(20)
+                        // 异常比例达到多少，才触发断路，默认50%
+                        .withCircuitBreakerErrorThresholdPercentage(40)
+                        // 断路后多少时间内直接reject请求，之后进入half-open状态，默认5000ms
+                        .withCircuitBreakerSleepWindowInMilliseconds(3000)));
+        this.productId = productId;
+    }
+
+    @Override
+    protected ProductInfo run() throws Exception {
+        System.out.println("调用接口查询商品数据，productId=" + productId);
+
+        if (productId == -1L) {
+            throw new Exception();
+        }
+
+        String url = "http://localhost:8081/getProductInfo?productId=" + productId;
+        String response = HttpClientUtils.sendGetRequest(url);
+        return JSONObject.parseObject(response, ProductInfo.class);
+    }
+
+    @Override
+    protected ProductInfo getFallback() {
+        ProductInfo productInfo = new ProductInfo();
+        productInfo.setName("降级商品");
+        return productInfo;
+    }
+}
+```
+
+断路测试类：前 30 次请求，传入 productId=-1，然后休眠 3s，之后 70 次请求，传入 productId=1。
+
+```java
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class CircuitBreakerTest {
+
+    @Test
+    public void testCircuitBreaker() {
+        String baseURL = "http://localhost:8080/getProductInfo?productId=";
+
+        for (int i = 0; i < 30; ++i) {
+            // 传入-1，会抛出异常，然后走降级逻辑
+            HttpClientUtils.sendGetRequest(baseURL + "-1");
+        }
+
+        TimeUtils.sleep(3);
+        System.out.println("After sleeping...");
+
+        for (int i = 31; i < 100; ++i) {
+            // 传入1，走服务正常调用
+            HttpClientUtils.sendGetRequest(baseURL + "1");
+        }
+    }
+}
+```
+
+前 30 次请求，传入的 productId 为 -1，服务执行过程中会抛出异常。由于设置了最少 20 次请求通过断路器并且异常比例超出 40% 就触发断路。因此执行了 21 次接口调用，每次都抛异常并且走降级，21 次过后，断路器就被打开了。
+
+之后的 9 次请求，都不会执行 `run()` 方法，也就不会打印以下信息：`调用接口查询商品数据，productId=-1`，而是直接走降级逻辑，调用 getFallback() 执行。
+
+### Hystrix 线程池隔离与接口限流
+
+**舱壁隔离**，是说将船体内部空间区隔划分成若干个隔舱，一旦某几个隔舱发生破损进水，水流不会在其间相互流动，如此一来船舶在受损时，依然能具有足够的浮力和稳定性，进而减低立即沉船的危险。
+
+接口限流 Demo
+
+假设一个线程池大小为 8，等待队列的大小为 10。timeout 时长我们设置长一些，20s。
+
+在 command 内部，写死代码，做一个 sleep，比如 sleep 3s。
+
+- withCoreSize：设置线程池大小。
+- withMaxQueueSize：设置等待队列大小。
+- withQueueSizeRejectionThreshold：这个与 withMaxQueueSize 配合使用，等待队列的大小，取得是这两个参数的较小值。
+
+如果只设置了线程池大小，另外两个 queue 相关参数没有设置的话，等待队列是处于关闭的状态。
+
+```java
+public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
+
+    private Long productId;
+
+    private static final HystrixCommandKey KEY = HystrixCommandKey.Factory.asKey("GetProductInfoCommand");
+
+    public GetProductInfoCommand(Long productId) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ProductInfoService"))
+                .andCommandKey(KEY)
+                // 线程池相关配置信息
+                .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
+                        // 设置线程池大小为8
+                        .withCoreSize(8)
+                        // 设置等待队列大小为10
+                        .withMaxQueueSize(10)
+                        .withQueueSizeRejectionThreshold(12))
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        .withCircuitBreakerEnabled(true)
+                        .withCircuitBreakerRequestVolumeThreshold(20)
+                        .withCircuitBreakerErrorThresholdPercentage(40)
+                        .withCircuitBreakerSleepWindowInMilliseconds(3000)
+                        // 设置超时时间
+                        .withExecutionTimeoutInMilliseconds(20000)
+                        // 设置fallback最大请求并发数
+                        .withFallbackIsolationSemaphoreMaxConcurrentRequests(30)));
+        this.productId = productId;
+    }
+
+    @Override
+    protected ProductInfo run() throws Exception {
+        System.out.println("调用接口查询商品数据，productId=" + productId);
+
+        if (productId == -1L) {
+            throw new Exception();
+        }
+
+        // 请求过来，会在这里hang住3秒钟
+        if (productId == -2L) {
+            TimeUtils.sleep(3);
+        }
+
+        String url = "http://localhost:8081/getProductInfo?productId=" + productId;
+        String response = HttpClientUtils.sendGetRequest(url);
+        System.out.println(response);
+        return JSONObject.parseObject(response, ProductInfo.class);
+    }
+
+    @Override
+    protected ProductInfo getFallback() {
+        ProductInfo productInfo = new ProductInfo();
+        productInfo.setName("降级商品");
+        return productInfo;
+    }
+}
+```
+
+模拟 25 个请求。前 8 个请求，调用接口时会直接被 hang 住 3s，那么后面的 10 个请求会先进入等待队列中等待前面的请求执行完毕。最后的 7 个请求过来，会直接被 reject，调用 fallback 降级逻辑。
+
+```java
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class RejectTest {
+
+    @Test
+    public void testReject() {
+        for (int i = 0; i < 25; ++i) {
+            new Thread(() -> HttpClientUtils.sendGetRequest("http://localhost:8080/getProductInfo?productId=-2")).start();
+        }
+        // 防止主线程提前结束执行
+        TimeUtils.sleep(50);
+    }
+}
+```
+
+## 大数据中 TopK 问题的常用套路
+
+参阅：[advanced-java/docs/big-data/topk-problems-and-solutions.md](https://github.com/doocs/advanced-java/blob/main/docs/big-data/topk-problems-and-solutions.md)
+

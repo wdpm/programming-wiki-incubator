@@ -45,7 +45,8 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 
 ### reading
 
-- [craftinginterpreters](https://craftinginterpreters.com/dedication.html) 从0开始写编译器，在线书籍。
+- https://github.com/funstory-ai/BabelDOC PDF scientific paper translation and bilingual comparison library.
+- [craftinginterpreters](https://craftinginterpreters.com/dedication.html) 从 0 开始写编译器，在线书籍。
 - https://github.com/Tikam02/DevOps-Guide 运维方面的基础知识和教程
 - https://101.lug.ustc.edu.cn/ 中国科学技术大学 Linux 用户协会编写的《Linux 101》在线讲义
 - https://book.mixu.net/distsys/index.html Distributed Systems for Fun and Profit (Blog)
@@ -124,43 +125,43 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://www.learncs.site/ CS 自学社区。部分著名公开课的汉化版，挑选感兴趣的来读。
 - https://csdiy.wiki/CS%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%92/ csdiy 只看这个导航页面即可。
     - 科普向系列视频 [Crash Course: Computer Science](https://www.bilibili.com/video/BV1EW411u7th) 计算机科学概论，范围很广，点到即止。【已看】
-    - MIT 的 [Calculus Course](https://csdiy.wiki/数学基础/MITmaths/) 和 [18.06: Linear Algebra](https://csdiy.wiki/数学基础/MITLA/) 微积分和线性代数
-    - MIT 的 [6.050J: Information theory and Entropy](https://csdiy.wiki/数学基础/information/) 信息论入门
-    - [UCB CS70 : discrete Math and probability theory](https://csdiy.wiki/数学进阶/CS70/) 和 [UCB CS126 : Probability theory](https://csdiy.wiki/数学进阶/CS126/) 是 UC Berkeley 的概率论课程，前者覆盖了离散数学和概率论基础，后者则涉及随机过程以及深入的理论内容。
+    - MIT 的 [Calculus Course](https://csdiy.wiki/ 数学基础 /MITmaths/) 和 [18.06: Linear Algebra](https://csdiy.wiki/ 数学基础 /MITLA/) 微积分和线性代数
+    - MIT 的 [6.050J: Information theory and Entropy](https://csdiy.wiki/ 数学基础 /information/) 信息论入门
+    - [UCB CS70 : discrete Math and probability theory](https://csdiy.wiki/ 数学进阶 /CS70/) 和 [UCB CS126 : Probability theory](https://csdiy.wiki/ 数学进阶 /CS126/) 是 UC Berkeley 的概率论课程，前者覆盖了离散数学和概率论基础，后者则涉及随机过程以及深入的理论内容。
     - [MIT 6.003: signal and systems](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-003-signals-and-systems-fall-2011/lecture-videos/lecture-1-signals-and-systems/) 信号系统
-    - [UCB EE120: Signal and Systems](https://csdiy.wiki/电子基础/signal/) 关于傅立叶变换的 notes 写得非常好，提供了6 个非常有趣的 Python 编程作业。
-    - 伯克利的 [UCB CS61B: Data Structures and Algorithms](https://csdiy.wiki/数据结构与算法/CS61B/) 和普林斯顿的 [Coursera: Algorithms I & II](https://csdiy.wiki/数据结构与算法/Algo/) 数据结构和算法。
-    - 偏好 Python 的同学可以学习 MIT 的算法入门课 [MIT 6.006: Introduction to Algorithms](https://csdiy.wiki/数据结构与算法/6.006/)
-    - 【高阶】伯克利的算法设计与分析课程 [UCB CS170: Efficient Algorithms and Intractable Problems](https://csdiy.wiki/数据结构与算法/CS170/) 或者 MIT 的高阶算法 [MIT 6.046: Design and Analysis of Algorithms](https://csdiy.wiki/数据结构与算法/6.046/)
-    - [MIT 6.031: Software Construction](https://csdiy.wiki/软件工程/6031/) 软件工程入门课，以及伯克利的 [UCB CS169: software engineering](https://csdiy.wiki/软件工程/CS169/)
-    - [Coursera: Nand2Tetris](https://csdiy.wiki/体系结构/N2T/) 计算机体系结构
-    - 深入现代计算机体系结构的复杂细节，大学本科难度的课程 [UCB CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/体系结构/CS61C/)
+    - [UCB EE120: Signal and Systems](https://csdiy.wiki/ 电子基础 /signal/) 关于傅立叶变换的 notes 写得非常好，提供了 6 个非常有趣的 Python 编程作业。
+    - 伯克利的 [UCB CS61B: Data Structures and Algorithms](https://csdiy.wiki/ 数据结构与算法 /CS61B/) 和普林斯顿的 [Coursera: Algorithms I & II](https://csdiy.wiki/ 数据结构与算法 /Algo/) 数据结构和算法。
+    - 偏好 Python 的同学可以学习 MIT 的算法入门课 [MIT 6.006: Introduction to Algorithms](https://csdiy.wiki/ 数据结构与算法 /6.006/)
+    - 【高阶】伯克利的算法设计与分析课程 [UCB CS170: Efficient Algorithms and Intractable Problems](https://csdiy.wiki/ 数据结构与算法 /CS170/) 或者 MIT 的高阶算法 [MIT 6.046: Design and Analysis of Algorithms](https://csdiy.wiki/ 数据结构与算法 /6.046/)
+    - [MIT 6.031: Software Construction](https://csdiy.wiki/ 软件工程 /6031/) 软件工程入门课，以及伯克利的 [UCB CS169: software engineering](https://csdiy.wiki/ 软件工程 /CS169/)
+    - [Coursera: Nand2Tetris](https://csdiy.wiki/ 体系结构 /N2T/) 计算机体系结构
+    - 深入现代计算机体系结构的复杂细节，大学本科难度的课程 [UCB CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/ 体系结构 /CS61C/)
     - [MIT6.033: System Engineering](http://web.mit.edu/6.033/www/) 是 MIT 的系统入门课，主题涉及了操作系统、网络、分布式和系统安全
-    - [CMU 15-213: Introduction to Computer System](https://csdiy.wiki/计算机系统基础/CSAPP/) 是 CMU 的系统入门课，内容覆盖了体系结构、操作系统、链接、并行、网络等等
-    - [MIT 6.S081: Operating System Engineering](https://csdiy.wiki/操作系统/MIT6.S081/)，MIT 著名 PDOS 实验室出品，11 个 Project 让你在一个实现非常优雅的类Unix操作系统xv6上增加各类功能模块。
-    - [UCB CS162: Operating System](https://csdiy.wiki/操作系统/CS162/)，伯克利的操作系统课，采用和 Stanford 同样的 Project —— 一个教学用操作系统 Pintos
-    - [NJU: Operating System Design and Implementation](https://csdiy.wiki/操作系统/NJUOS/)，南京大学的蒋炎岩老师开设的操作系统课程
-    - [HIT OS: Operating System](https://csdiy.wiki/操作系统/HITOS/)，哈尔滨工业大学的李治军老师开设的中文操作系统课程
-    - [CMU 15-418/Stanford CS149: Parallel Computing](https://csdiy.wiki/并行与分布式系统/CS149/) 会带你深入理解现代并行计算架构的设计原则与必要权衡
-    - [MIT 6.824: Distributed System](https://csdiy.wiki/并行与分布式系统/MIT6.824/) 4 个编程作业循序渐进带你实现一个基于 Raft 共识算法的 KV-store 框架
-    - 计算机网络 [Stanford CS144: Computer Network](https://csdiy.wiki/计算机网络/CS144/)，8 个 Project 带你实现整个 TCP/IP 协议栈。想在理论上对计算机网络有所了解，那么推荐阅读 [UCB CS168](https://csdiy.wiki/计算机网络/CS168/) 这门课程配套的[教材](https://textbook.cs168.io/)。
-    - [CMU 15-445: Introduction to Database System](https://csdiy.wiki/数据库系统/15445/) 会通过 4 个 Project 带你为一个用于教学的关系型数据库 [bustub](https://github.com/cmu-db/bustub) 添加各种功能
-    - [UCB CS186: Introduction to Database System](https://csdiy.wiki/数据库系统/CS186/) 会让你用 Java 语言实现一个支持 SQL 并发查询、B+ 树索引和故障恢复的关系型数据库
-    - 计算机图形学 [Stanford CS148](https://csdiy.wiki/计算机图形学/CS148/) [Games101](https://csdiy.wiki/计算机图形学/GAMES101/) [Games103](https://csdiy.wiki/计算机图形学/GAMES103/) [Games202](https://csdiy.wiki/计算机图形学/GAMES202/)
-    - 数据科学 [UCB Data100: Principles and Techniques of Data Science](https://csdiy.wiki/数据科学/Data100/) 和 Stanford 的大数据挖掘课程 [CS246: Mining Massive Data Sets](https://web.stanford.edu/class/cs246/)
-    - 人工智能 Berkeley 的 [UCB CS188: Introduction to Artificial Intelligence](https://csdiy.wiki/人工智能/CS188/)
-    - 机器学习 Andrew Ng （吴恩达）的 [Coursera: Machine Learning](https://csdiy.wiki/机器学习/ML/)。更“数学”的课程，例如 [Stanford CS229: Machine Learning](https://csdiy.wiki/机器学习/CS229/) 或者 [UCB CS189: Introduction to Machine Learning](https://csdiy.wiki/机器学习/CS189/)。此外，李宏毅老师的 [国立台湾大学：机器学习](https://csdiy.wiki/深度学习/LHY/) 课程
+    - [CMU 15-213: Introduction to Computer System](https://csdiy.wiki/ 计算机系统基础 /CSAPP/) 是 CMU 的系统入门课，内容覆盖了体系结构、操作系统、链接、并行、网络等等
+    - [MIT 6.S081: Operating System Engineering](https://csdiy.wiki/ 操作系统 /MIT6.S081/)，MIT 著名 PDOS 实验室出品，11 个 Project 让你在一个实现非常优雅的类 Unix 操作系统 xv6 上增加各类功能模块。
+    - [UCB CS162: Operating System](https://csdiy.wiki/ 操作系统 /CS162/)，伯克利的操作系统课，采用和 Stanford 同样的 Project —— 一个教学用操作系统 Pintos
+    - [NJU: Operating System Design and Implementation](https://csdiy.wiki/ 操作系统 /NJUOS/)，南京大学的蒋炎岩老师开设的操作系统课程
+    - [HIT OS: Operating System](https://csdiy.wiki/ 操作系统 /HITOS/)，哈尔滨工业大学的李治军老师开设的中文操作系统课程
+    - [CMU 15-418/Stanford CS149: Parallel Computing](https://csdiy.wiki/ 并行与分布式系统 /CS149/) 会带你深入理解现代并行计算架构的设计原则与必要权衡
+    - [MIT 6.824: Distributed System](https://csdiy.wiki/ 并行与分布式系统 /MIT6.824/) 4 个编程作业循序渐进带你实现一个基于 Raft 共识算法的 KV-store 框架
+    - 计算机网络 [Stanford CS144: Computer Network](https://csdiy.wiki/ 计算机网络 /CS144/)，8 个 Project 带你实现整个 TCP/IP 协议栈。想在理论上对计算机网络有所了解，那么推荐阅读 [UCB CS168](https://csdiy.wiki/ 计算机网络 /CS168/) 这门课程配套的 [教材](https://textbook.cs168.io/)。
+    - [CMU 15-445: Introduction to Database System](https://csdiy.wiki/ 数据库系统 /15445/) 会通过 4 个 Project 带你为一个用于教学的关系型数据库 [bustub](https://github.com/cmu-db/bustub) 添加各种功能
+    - [UCB CS186: Introduction to Database System](https://csdiy.wiki/ 数据库系统 /CS186/) 会让你用 Java 语言实现一个支持 SQL 并发查询、B+ 树索引和故障恢复的关系型数据库
+    - 计算机图形学 [Stanford CS148](https://csdiy.wiki/ 计算机图形学 /CS148/) [Games101](https://csdiy.wiki/ 计算机图形学 /GAMES101/) [Games103](https://csdiy.wiki/ 计算机图形学 /GAMES103/) [Games202](https://csdiy.wiki/ 计算机图形学 /GAMES202/)
+    - 数据科学 [UCB Data100: Principles and Techniques of Data Science](https://csdiy.wiki/ 数据科学 /Data100/) 和 Stanford 的大数据挖掘课程 [CS246: Mining Massive Data Sets](https://web.stanford.edu/class/cs246/)
+    - 人工智能 Berkeley 的 [UCB CS188: Introduction to Artificial Intelligence](https://csdiy.wiki/ 人工智能 /CS188/)
+    - 机器学习 Andrew Ng （吴恩达）的 [Coursera: Machine Learning](https://csdiy.wiki/ 机器学习 /ML/)。更“数学”的课程，例如 [Stanford CS229: Machine Learning](https://csdiy.wiki/ 机器学习 /CS229/) 或者 [UCB CS189: Introduction to Machine Learning](https://csdiy.wiki/ 机器学习 /CS189/)。此外，李宏毅老师的 [国立台湾大学：机器学习](https://csdiy.wiki/ 深度学习 /LHY/) 课程
     - 计算机视觉
-      - [UMich EECS 498-007 / 598-005: Deep Learning for Computer Vision](https://csdiy.wiki/深度学习/EECS498-007/)
-      - [Stanford CS231n: CNN for Visual Recognition](https://csdiy.wiki/深度学习/CS231/)
+      - [UMich EECS 498-007 / 598-005: Deep Learning for Computer Vision](https://csdiy.wiki/ 深度学习 /EECS498-007/)
+      - [Stanford CS231n: CNN for Visual Recognition](https://csdiy.wiki/ 深度学习 /CS231/)
     - 自然语言处理
-      - [Stanford CS224n: Natural Language Processing](https://csdiy.wiki/深度学习/CS224n/)
+      - [Stanford CS224n: Natural Language Processing](https://csdiy.wiki/ 深度学习 /CS224n/)
     - 图神经网络
-      - [Stanford CS224w: Machine Learning with Graphs](https://csdiy.wiki/深度学习/CS224w/)
+      - [Stanford CS224w: Machine Learning with Graphs](https://csdiy.wiki/ 深度学习 /CS224w/)
     - 强化学习
-      - [UCB CS285: Deep Reinforcement Learning](https://csdiy.wiki/深度学习/CS285/)
-    - 深度学习系统。推荐 [CMU 10-414/714: Deep Learning Systems](https://csdiy.wiki/机器学习系统/CMU10-414/)，内容覆盖了深度学习系统“全栈”的知识体系。有一定基础后，可以学习 [Song Han](https://hanlab.mit.edu/songhan) 老师开设的 [MIT6.5940: TinyML and Efficient Deep Learning Computing](https://csdiy.wiki/机器学习系统/EML/) 课程，了解让神经网络轻量化的各种关键技术，例如剪枝、量化、蒸馏、网络架构搜索等等。
-    - 深度生成模型学习路线。[学习路线图 - CS自学指南](https://csdiy.wiki/深度生成模型/roadmap/)
+      - [UCB CS285: Deep Reinforcement Learning](https://csdiy.wiki/ 深度学习 /CS285/)
+    - 深度学习系统。推荐 [CMU 10-414/714: Deep Learning Systems](https://csdiy.wiki/ 机器学习系统 /CMU10-414/)，内容覆盖了深度学习系统“全栈”的知识体系。有一定基础后，可以学习 [Song Han](https://hanlab.mit.edu/songhan) 老师开设的 [MIT6.5940: TinyML and Efficient Deep Learning Computing](https://csdiy.wiki/ 机器学习系统 /EML/) 课程，了解让神经网络轻量化的各种关键技术，例如剪枝、量化、蒸馏、网络架构搜索等等。
+    - 深度生成模型学习路线。[学习路线图 - CS 自学指南](https://csdiy.wiki/ 深度生成模型 /roadmap/)
     
 ## UI
     
@@ -204,10 +205,10 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://github.com/r0x0r/pywebview-react-boilerplate pywebview starter 模板。
 - https://github.com/zhanglun/lettura RSS 简洁阅读器，基于 tauri 实现。
 - electron 工具库，有待探索。
-    - https://github.com/alex8088/electron-toolkit
-    - https://github.com/alex8088/electron-uikit
-    - https://github.com/alex8088/electron-conf
-    - https://github.com/alex8088/sqlite3-queries
+  - https://github.com/alex8088/electron-toolkit
+  - https://github.com/alex8088/electron-uikit
+  - https://github.com/alex8088/electron-conf
+  - https://github.com/alex8088/sqlite3-queries
 
 ## command line user interfaces
 
@@ -307,6 +308,7 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://www.diagrams.net/ (formerly called draw.io) 各种风格，GUI 拖拽
 - [mermaid-js](https://github.com/mermaid-js/mermaid) 基于 markdown 语法，js 实现的画图语言
 - excalidraw 手绘风格，GUI 拖拽
+  - https://github.com/liujuntao123/smart-excalidraw-next
 - https://tikz.net/ latex 生态的标准绘图工具包
 - plant UML 文本控制的 uml 图例 https://github.com/plantuml/plantuml
 - dot 语言 + graphviz 画图工具。基于代码文本。
@@ -318,6 +320,13 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 
 - a) 如果对于流程图要求比较规范，例如绝对对齐，优先考虑基于代码文本的生成方式。
 - b) 如果想要活泼自由的风格，可以选取 gui 拖拽风格的生成方式。
+
+### 屏幕录制
+- screengif 缺点是输出视频格式时渲染比较慢。
+- Xbox Game Bar（windows 11 自带） 使用之前最好调整一下快捷键，缺点是录制的视频体积很大，往往需要再次压缩。
+  - 阿米洛 VA87/108 键盘 win 键失效的重置方法：[参阅](https://blog.csdn.net/u011675334/article/details/112909549)
+- [oCam](https://ohsoft.net/eng/ocam.php) 渲染很快，小巧。录制的视频体积很小。
+- ~~openscreen~~ 基于 Electron，性能很差，功能缺失。别用。
 
 ### AI draw
 

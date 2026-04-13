@@ -25,6 +25,7 @@ Code/ - github 一切开源项目的整理。
 ## 开源网站 UI 参考
 
 - [一个 Bangumi 番组计划 web 客户端](https://github.com/Zebeqo/Bangumi) 基于现代 React +Next.js 技术栈
+- https://github.com/Jannchie/zeroroku
 
 ## 风格独特的网站
 

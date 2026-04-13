@@ -71,7 +71,7 @@
 
 ## 动画
 
-- anime.css
+- https://github.com/animate-css/animate.css 过时，基础动画：平移，缩放，旋转。
 - [anime.js](https://github.com/juliangarnier/anime)
 - [three.js](https://github.com/mrdoob/three.js) - 是一个JS 3D库。[demo](https://threejs.org/)
 - [gsap.js](https://gsap.com/)
