@@ -2,24 +2,6 @@
 
 > 致敬那些还在坚守的灵魂——中文互联网独立 blog。
 
-> your life is the result of your own decision.
-
-## 技术选型
-
-探索最为简洁的轻量 md 渲染到页面的方案。
-
-- zero-md https://github.com/zerodevx/zero-md 简洁
-- https://stackoverflow.com/questions/15214762/how-can-i-sync-documentation-with-github-pages main <-> gh-pages
-    - 分支之间同步部分 md 文件，可行，但是依旧复杂。
-- docsify 不需要预编译
-- Github
-- Jekyll
-- Hexo
-- Hugo
-- VitePress/VuePress 厚重，偏向项目说明文档。
-- ~~GitBook~~
-- [texme](https://github.com/susam/texme#render-markdown-and-latex) 在 md 中为 latex 提供渲染支持。
-
 ## 陷阱
 
 - 使用个性化域名，这可能需要长期支付续费域名使用权的费用。
