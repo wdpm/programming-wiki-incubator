@@ -1,0 +1,4 @@
+requests
+qrcode
+Pillow
+pycryptodome

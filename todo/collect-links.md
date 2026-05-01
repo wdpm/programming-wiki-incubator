@@ -455,6 +455,7 @@ api: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repo
 - https://github.com/Wandmalfarbe/pandoc-latex-template 基于 pandoc 的模板，文档规范，examples 详尽，是一个不错的项目。
 - https://github.com/sivan/heti 在 web 端优化中文文字的排版和显示，是一个侧重于 CSS 的工具库。
 - https://github.com/vercel/geist-font 一款不错的 mono 编程字体 ，由 vercel 出品。
+- [misans-webfont on GitHub](https://github.com/mi-gravity/misans-webfont) x小米字体
 
 ## game dev
 
