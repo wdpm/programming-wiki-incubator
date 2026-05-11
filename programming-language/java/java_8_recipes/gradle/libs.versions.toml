@@ -1,0 +1,33 @@
+[versions]
+assertj = "3.23.1"
+jmh = "1.35"
+junit = "5.9.0"
+mockito = "4.7.0"
+
+[libraries]
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+jmh-ann-proc = { module = "org.openjdk.jmh:jmh-generator-annprocess", version.ref = "jmh" }
+jmh-core = { module = "org.openjdk.jmh:jmh-core", version.ref = "jmh" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+junit-vintage = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito" }
+mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
+
+[bundles]
+jmh = [
+    "jmh-ann-proc",
+    "jmh-core",
+]
+junit = [
+    "junit-jupiter",
+    "junit-vintage",
+]
+mockito = [
+    "mockito-inline",
+    "mockito-junit",
+]
+
+[plugins]
+jmh-gradle = "me.champeau.jmh:0.7.2"
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.6.1"
+versions = "com.github.ben-manes.versions:0.42.0"

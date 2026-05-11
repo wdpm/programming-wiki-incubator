@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    alias(libs.plugins.versions)
+    alias(libs.plugins.version.catalog.update)
+    alias(libs.plugins.jmh.gradle)
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+compileJava {
+    options.compilerArgs << '-Xlint:-options'
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+    maxParallelForks = (int) (Runtime.runtime.availableProcessors())
+}
+
+jmh {
+    // 从系统属性读取，而不是项目属性
+    def jmhInclude = System.getProperty('jmh.include')
+    if (jmhInclude) {
+        includes = [jmhInclude]
+    } else {
+        includes = ['LongStreamBenchmark']  // 默认值
+    }
+}
+
+tasks.named('jmh') {
+//    outputs.upToDateWhen { false }  // 总是认为输出不是最新的
+}
+
+dependencies {
+    // JUnit bundle (includes vintage engine)
+    testImplementation libs.bundles.junit
+
+    // Mockito bundle (inline and JUnit Jupiter engine)
+    testImplementation libs.bundles.mockito
+
+    // AssertJ
+    testImplementation libs.assertj
+
+    // JMH
+    jmh libs.bundles.jmh
+}
+
+
